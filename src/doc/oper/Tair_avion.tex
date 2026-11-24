@@ -1,0 +1,38 @@
+%% THERMODYNAMIQUE %%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Température statique (lorsque ventilation suffisante)}
+
+\itemstyle{Op\'erateur~:} \operfmt{Tair\_avion}
+\index{Tair\_avion}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul de la température statique de l'air, à 
+partir de la mesure de température totale et de la surpression dynamique.\newline
+Ce calcul s'applique aux capteurs de température par contact
+de type Rosemount par exemple.\newline
+Le calcul n'est fait que lorsque la surpression dynamique est
+supérieure à 6 hPa. Dans le cas contraire, signe d'une
+ventilation insuffisante du capteur, la valeur retournée est
+le code "valeur manquante".
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Tair_avion.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Tair_avion.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

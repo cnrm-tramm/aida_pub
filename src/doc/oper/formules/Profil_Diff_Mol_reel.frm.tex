@@ -1,0 +1,29 @@
+%% Formule de l'operateur : Profil_Diff_Mol_reel
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : 
+
+
+La température $T$ et la pression $P$ sont interpolées linéairement sur les
+niveaux d'altitude du lidar $Z_{lid}$. \\
+
+Puis pour les niveaux $z$ de $Z_{lib}$ : \\
+
+$$
+\beta_{mol}(z) =  \frac{P(z)}{\frac{8,314}{6,023.10^{23}}.T(z)} . 5,45.\left(\frac{550}{\lambda} \right)^{4,09.10^{-32}}
+$$
+
+$$
+\alpha_{mol}(z) = \frac{8\pi}{3}.\beta_{mol}(z)
+$$
+
+$$
+T_{rayleigh}(z) = \exp \left( -2.\int_{0}^{z} \alpha_{mol}(x).dx \right)
+$$
+
+$$
+Pr^2_{mol}(z) = \beta_{mol}(z).T_{rayleigh}(z)
+$$
+
+

@@ -1,0 +1,64 @@
+%%Rotat_uv
+%
+%Algorithme utilisé :
+%
+%En entrée :
+%U	m/s	 Vitesse du vent mesurée par l'anémomètre associé
+%Cs    	   	 Résultat du comptage supérieur
+%Cl   	 	 Résultat du comptage latéral
+%En sortie
+%rr    	Mm/h	 Intensité de précipitation
+%
+Valeurs des coefficients utilisés :
+\begin{center}
+% use packages: array
+\begin{tabular}{l l}
+a1 = 2.9562289E-02 & a2 = 9.8437145E-03 \\ 
+a3 = -3.9051531E-03 & a4 = -4.8168935E-03
+\end{tabular}
+\end{center}
+
+Calcul de l'intensité de précipitation pour la surface supérieure de collection :
+
+%%\usepackage{amsmath}
+\begin{equation*}
+\begin{aligned}
+rr_{sup} = &
+\begin{cases}
+0 & \text{si $Cs = 0$,} \\
+krr_{sup} . Cs & \text{si $Cs > 0$.}\\
+\end{cases} \\
+& \text{avec } krr_{sup} =  exp ( a1 + a2 . U + a3 . log (Cs) + a4 . log (Cs) . U )
+\end{aligned}
+\end{equation*}
+
+\bigskip
+Si $U$ n'est pas nul, calcul de l'intensité de précipitation pour la surface latérale de collection :
+\begin{equation*}
+\begin{aligned}
+rr_{lat} = &
+\begin{cases}
+0 & \text{si $Cl = 0$,} \\
+20.9032 . lwc^{1.1264}
+&  \text{si $Cl > 0$.}
+\end{cases} \\
+& \text{avec } lwc = \frac{Cl}{U} . ( 1 + 0.0015 . U^{2})
+\end{aligned}
+\end{equation*}
+%\begin{eqnarray*}
+%			klwc =  1 + 0.0015 . U^{2}\\
+%%			lwc = \frac{Cl}{U} . klwc\\
+%			rr_{lat} =  20.9032 . lwc^{1.1264})\\
+%\end{eqnarray*}
+
+\bigskip
+Calcul de l'intensité de précipitation totale en fonction du vent :
+\begin{equation*}
+rr =
+\begin{cases}
+rr_{sup} & \text{si }  U < 9 m/s \\
+\left( 1 - \frac{U - 9.}{11. - 9.}\right) . rr_{sup} + \left(\frac{U - 9.}{11. - 9.}\right) . rr_{lat}  & \text{si } U \leq 11 \text{ et } U \geq 9 m/s \\
+rr_{lat} & \text{si }  U > 11 m/s \\
+\end{cases} 
+\end{equation*}
+

@@ -1,0 +1,55 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<div class="banniere"> L'interface graphique<br><span>Configurer le contenu : configurer un trac&eacute; : Op&eacute;ration sur les donn&eacute;es</span></div>
+<br><br>
+
+<p class="titre1"> Op&eacute;ration sur les donn&eacute;es</p>
+<br>
+<p class="paragraphe1">
+    Vista offre la possibilit&eacute; d'effectuer des calculs sur les donn&eacute;es. Cliquer sur le bouton <img src="calculette.png" align="center"/> pour ouvrir la fen&ecirc;tre de configuration des op&eacute;rations :<br><br>
+    <img class="img2" src="operation.png" />
+    <br><br>
+    Cette bo&icirc;te se compose de 2 parties :
+    <br><br>
+</p>
+<p class="paragraphe1">
+    <b>D&eacute;finition des variables : </b>
+    Une op&eacute;ration est une expression qui peut contenir des variables. Chaque variable est identifi&eacute;e par une lettre. Toutes les variables qui apparaissent dans l&apos;op&eacute;ration doivent &ecirc;tre d&eacute;finies. Dans tous les cas la variable <i>y</i> est r&eacute;serv&eacute;e au param&egrave;tre en ordonn&eacute;es. Pour les trac&eacute;s de type PlotXY, la variable <i>x</i> est &eacute;galement r&eacute;serv&eacute;e au param&egrave;tre en abscisses.<br><br>
+    Pour d&eacute;finir une nouvelle variable, cliquer sur le bouton <img class="img2" align="center" src="ajouter.png" />. Une bo&icirc;te de saisie permet de d&eacute;finir la variable, de la m&ecirc;me mani&egrave;re que l&apos;on d&eacute;finit une donn&eacute;e d&apos;un trac&eacute; (cf  &sect; Trac&eacute; ST)<br><br>
+    <img class="img1" src="affichage_conditionnel3.png" /><br><br>
+    Vista nomme automatiquement la variable en fonction des lettres disponibles. Au niveau de l'ihm, chaque variable est mat&eacute;rialis&eacute;e par une ligne :<br><br>
+    <img class="img1" src="affichage_conditionnel4.png" /><br><br>
+    <img class="img1" align="center" src="modifier.png" /> : permet de modifier la variable par r&eacute;ouverture de la bo&icirc;te de d&eacute;finition.<br>
+    <img class="img1" align="center" src="supprimer.png" /> : permet de supprimer la variable.<br><br>
+</p>
+<br>
+<p class="paragraphe1">
+    <b>Op&eacute;ration : </b>
+    Une op&eacute;ration est une expression alg&eacute;brique. Toutes les variables utilis&eacute;es dans l'op&eacute;ration doivent avoir &eacute;t&eacute; d&eacute;finies. On peut utiliser des fonctions math&eacute;matiques standard (cf module numpy de python). Voici quelques exemples d'op&eacute;rations valides :<br>
+    <i>
+    &nbsp; y = y+10<br>
+    &nbsp; y = y + a<br>
+    &nbsp; y = sin(a)<br>
+    &nbsp; y = sqrt(a)<br>
+    </i>
+    <i>Noter : </i> la d&eacute;finition d&apos;une op&eacute;ration sur un trac&eacute; est mat&eacute;rialis&eacute;e par le pictogramme
+    <img class="img2" align="center" src="calculette2.png" />. Une info bulle pr&eacute;cise l'op&eacute;ration associ&eacute;e aux donn&eacute;es. 
+</p>
+<br>
+<p class="paragraphe1">
+    <b>Contr&ocirc;les : </b>
+    Au moment de valider l&apos;opp&eacute;ration, Vista r&eacute;alise 2 types de contr&ocirc;les :<br>
+    <ul class="liste">
+    <li>v&eacute;rification de la d&eacute;finition de toutes les variables contenues dans l&apos;op&eacute;ration.</li>
+    <li>v&eacute;rification syntaxique de l&apos;op&eacute;ration.</li>
+    </ul>
+    
+</p>
+<br>
+<p class="paragraphe1">
+Si des erreurs sont d&eacute;tect&eacute;es, une bo&icirc;te de message appara&icirc;t.
+</p>
+<br>
+</html>

@@ -1,0 +1,24 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$P_s$ & Vecteur, \texttt{float} &  Pression statique de l'air ($hPa$)\\
+$T_s$ & Vecteur, \texttt{float} & Température statique de l'air ($K$ ou $^\circ C$)\\
+$V_p$ & Vecteur, \texttt{float} & Vitesse propre ($m/s$)\\
+$P_w$ & Vecteur, \texttt{float} & Puissance fournie \`a la sonde ($W$)\\
+$T_w$ & Vecteur, \texttt{float} & Temp\'erature de la sonde ($K$ ou $^\circ C$)\\
+$K_1$ & Coeff., \texttt{float} & Coefficient de calcul de la puissance s\`eche Robust\\
+$K_2$ & Coeff., \texttt{float} & Coefficient de calcul de la puissance s\`eche Robust\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$LWC$ & Vecteur, \texttt{float} & Contenu en eau liquide ($g/m^3$)\\
+\end{tabarg}

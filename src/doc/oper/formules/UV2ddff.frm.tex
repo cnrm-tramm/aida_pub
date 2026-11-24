@@ -1,0 +1,31 @@
+%% Formule de l'operateur : UV2ddff
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+$FF = \sqrt{ U^2 + V^2 } $ \newline
+
+Si $V=0$ alors  \newline
+\begin{tabular}{p{3cm}|l}
+ & si $U=0$ alors $DD=0$ \\
+ & si $U > 0$ alors $DD=-\pi /2$ \\
+ & si $U < 0$ alors $DD=\pi /2$ \\
+\end{tabular}
+
+Si $V > 0$ alors \newline
+\begin{tabular}{p{3cm}|l}
+ & $DD = \arctan ( U / V)  + \pi$ \\
+\end{tabular}
+
+Si $V < 0$ alors \newline
+\begin{tabular}{p{3cm}|l}
+ & $DD = \arctan ( U / V)$  \\
+\end{tabular}
+\newline
+Les éventuelles directions négatives sont rendues positives : si $DD < 0$ alors
+$ DD = DD + 2*\pi $
+
+Puis conversion en degrés :
+$ DD = DD * \frac{180}{\pi}$
+

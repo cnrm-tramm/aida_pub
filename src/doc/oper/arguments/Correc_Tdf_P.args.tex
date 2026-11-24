@@ -1,0 +1,21 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Tdf_m$ & Vecteur, \texttt{float} &  Température de rosée ou givre mesurée (°C ou K)\\
+$Ps_m$ & Vecteur, \texttt{float} & Pression de mesure (hPa)\\
+$Ps$ & Vecteur, \texttt{float} & Pression de l'air (même unité que $Ps_m$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Tdf$ & Vecteur, \texttt{float} & Température de rosée ou givre corrigée (même
+unité que $Tdf_m$)\\
+\end{tabarg}

@@ -1,0 +1,8 @@
+%%select_flag_data
+Si ((flag $>= Crit1_{min}$) et (flag $<= Crit1_{max}$) ) ou 
+((flag $>= Crit2_{min}$) et (flag $<= Crit2_{max}$)) alors :
+
+$X_{sel}[i] = X[i]$
+
+
+Sinon, $X_{sel}[i] =$ mis\_val

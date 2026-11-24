@@ -1,0 +1,43 @@
+%% Formule de l'operateur : Combine_flag_EC_Foken
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+$Flag_{ITCmax}$ est la valeur maximale entre $Flag_{ITCX}$ et $Flag_{ITCY}$ \\
+\\
+La valeur du flag résultat est calculé suivant le tableau ci-dessous : \\
+\begin{center}
+\begin{tabular}{lll}
+\hline 
+$Flag_{XY}$ & $Flag_{stat}$ & $ITC_{max}$ \\ 
+\hline 
+1 & 1 & 1-2 \\ 
+\hline 
+2 & 2 & 1-2 \\ 
+\hline 
+3 & 1-2 & 3-4 \\ 
+\hline 
+4 & 3-4 & 1-2 \\ 
+\hline 
+5 & 1-4 & 3-5 \\ 
+\hline 
+6 & 5 & $\leq$ 5 \\ 
+\hline 
+7 &  $\leq$ 6 &  $\leq$ 6 \\ 
+\hline 
+8 & $\leq$ 8 &  $\leq$ 8 \\ 
+\hline 
+9 & 9  &  - \\ 
+\hline 
+\end{tabular} 
+\end{center}
+\vspace{0.8cm}
+Indications d'utilisation des mesures de la covariance $\overline{X'Y'}$ en fonction de la valeur de $Flag_{XY}$ :
+\begin{itemize}
+\item de 1 à 3  : les mesures peuvent être utilisées pour des applications nécessitant la meilleure précision comme la recherche et le développement de paramétrisations. 
+\item de 1 à 6 : les mesures peuvent être plutôt utilisées pour des études long terme.
+\item de 7 à 8 : les mesures doivent être utilisées uniquement comme ordre de grandeur.
+Elles peuvent être une alternative à un traitement de "gap filling" si l'écart avec les valeurs avant et après n'est pas trop important.  
+\item égal à 9 : mesures à rejeter
+\end{itemize}

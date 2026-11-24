@@ -1,0 +1,41 @@
+%% Formule de l'operateur : Profil_Diff_Mol
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+
+La température $T(z)$ à une altitude z est calculée
+avec un profil standard :
+
+\begin{eqnarray*}
+ z < 13 \, km : & \frac{dT}{dz} = -0.0065 \, K/m \\
+ 13 \,km \leq z < 55 \,km : & \frac{dT}{dz} = 0.0014 \, K/m \\
+ 55 \,km \leq z  : & \frac{dT}{dz} = -0.0024 \, K/m \\
+\end{eqnarray*}
+
+
+
+La pression  $P(z)$ à une altitude z est calculée par : 
+$$
+P(z) = 100.P_0.e^{-z/P_{He} }
+$$
+avec $ P_{He} = 8000.$
+
+$$
+\beta_{mol}(z) =  \frac{P(z)}{\frac{8,314}{6,023.10^{23}}.T(z)} . 5,45.\left(\frac{550}{\lambda} \right)^{4,09.10^{-32}}
+$$
+
+$$
+\alpha_{mol}(z) = \frac{8\pi}{3}.\beta_{mol}(z)
+$$
+
+$$
+T_{rayleigh}(z) = \exp \left( -2.\int_{0}^{z} \alpha_{mol}(x).dx \right)
+$$
+
+$$
+Pr^2_{mol}(z) = \beta_{mol}(z).T_{rayleigh}(z)
+$$
+          
+

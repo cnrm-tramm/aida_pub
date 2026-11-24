@@ -1,0 +1,12 @@
+%%  Calib_aerodata_hum
+If needed, $TRT$ it converted to Kelvin, then :
+\[
+RH = \left(b_2 + 
+      \frac{b_1 - b_2}{1 + \left(\frac{TRT + 50 }{b_3}\right)^{b_4}}
+     \right)
+  RH_{brut}
++ \left(a_2 + 
+      \frac{a_1 - a_2}{1 + \left(\frac{TRT + 50 }{a_3}\right)^{a_4}}
+     \right)
+\]
+

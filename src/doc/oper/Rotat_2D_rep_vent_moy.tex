@@ -1,0 +1,49 @@
+%%%%%
+%
+\section{Rotation 2D vers le repère porté par le vent moyen}
+
+\itemstyle{Opérateur~:} \operfmt{Rotat\_2D\_rep\_vent\_moy}
+\index{Rotat\_2D\_rep\_vent\_moy}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul des 3 composantes du vecteur-vent dans 
+un repère porté par le vent moyen, qui vérifie (si U est le module du vent): 
+\[
+\begin{array}{c}
+\overline{u} = U\\
+\overline{v} = 0\\
+\overline{w} = 0\\
+\end{array}
+\]
+Chaque moyenne est calculée sur la période passée en argument $T_{int}$ ; 
+pour chaque séquence, on appelle l'opérateur Rotat\_rep\_vent\_moy avec 
+un flag à 0 pour ne faire que les deux premières rotations.
+Dans la détermination des flux par la méthode des covariances, cet 
+opérateur est utilisé avant le detrending (qui enlève le signal basse
+fréquence ou la tendance), et avant le calcul des covariances.
+ 
+\bigskip
+\input{arguments/Rotat_2D_rep_vent_moy.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Rotat_2D_rep_vent_moy.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{ Commentaire~: }
+
+Le repère ($u$, $v$, $w$) d'origine peut être géographique ou lié à l'instrument. 
+Il doit être orthonormé.
+%%%% Question en suspens : doit-il être direct ? pas de raisons...
+
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}
+Pages 26 à 28 de la note de P. Bessemoulin sur la
+détermination des flux de surface \cite{GMEI-6}.

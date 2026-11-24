@@ -1,0 +1,33 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X1_{in}$ & Vecteur, \texttt{float} & Hauteur de la base des nuages de la première couche\\
+$X2_{in}$ & Vecteur, \texttt{float} & Hauteur de la base des nuages de la deuxième couche\\
+$X3_{in}$ & Vecteur, \texttt{float} & Hauteur de la base des nuages de la troisième couche\\
+$toler_{mnq}$ & Coeff., \texttt{Int\_32} & Seuil de calcul de la moyenne (nb. échant). A chaque instant de la base de temps d'arrivée, 
+la moyenne est calculée si le nombre d'échantillons dans l'intervalle de temps est strictement supérieur à $toler_{mnq}$. Sinon, 
+le résultat est "valeur manquante". Si $toler_{mnq}$ = 0, le calcul est fait dès qu'il y a au moins une valeur valide dans l'échantillon. \\
+$time_{out}$ & Vecteur, \texttt{double} & Base de temps d'arrivée (secondes)\\
+$val_{inv}$ & Coeff., \texttt{float} & valeur invalide pour laquelle la Moyenne n'est pas calculée \\
+$val_{remplac}$ & Coeff., \texttt{float} & valeur de remplacement quand la valeur atteint val\_{inv} avec une tolérance \\
+$tolerance_{inv}$ & Coeff., \texttt{float} & proportion de valeurs nécessaires pour que le calcul de la moyenne soit valide (entre 0 et 1). Si le nb de valeurs utilisées pour calculer la moyenne divisé par le nombre de valeurs de la période est < tolérance\_{inv}, la valeur de la moyenne est mise à  val\_{remplac} \\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X1_{out}$ & Vecteur, \texttt{float} & $X1_{in}$ moyenné et échantillonné sur
+la base de $time_{out}$ (même unité que $X1_{in})$ si le nb de couches < $val_{inv}$ reste constant\\
+$X2_{out}$ & Vecteur, \texttt{float} & $X2_{in}$ moyenné et échantillonné sur
+la base de $time_{out}$ (même unité que $X2_{in})$ si le nb de couches < $val_{inv}$ reste constant\\
+$X3_{out}$ & Vecteur, \texttt{float} & $X3_{in}$ moyenné et échantillonné sur
+la base de $time_{out}$ (même unité que $X3_{in})$ si le nb de couches < $val_{inv}$ reste constant\\
+\end{tabarg}
+

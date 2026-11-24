@@ -1,0 +1,35 @@
+%%%%%
+%
+\section{Calcul simplifié des 2 composantes du vent horizontal avec
+reconnaissance de l'unité}
+
+\itemstyle{Op\'erateur~:} {\sf CalcVent\_h\_simple\_auto\_unit}
+\index{CalcVent\_h\_simple\_auto\_unit}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur calcule les 2 composantes du vecteur vent horizontal. 
+Le calcul s'effectue avec les formules simplifiées. Ces formules sont 
+valides dans le cas où l'angle d'incidence de l'air par rapport
+au mobile, l'angle de tangage, et l'angle de roulis sont petits.\newline
+Cet opérateur travaille avec les différents types d'unités dans la
+mesure où celles-ci restent homogènes.Il faut lui passer en argument l'unité de
+mesure des angles.    
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/CalcVent_h_simple_auto_unit.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/CalcVent_h_simple_auto_unit.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Bulletin NCAR-RAF Nr 23 \cite{RAF-23}.

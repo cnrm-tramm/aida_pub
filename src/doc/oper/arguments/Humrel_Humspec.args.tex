@@ -1,0 +1,20 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+SH & Vecteur, \texttt{float} & Humidité  spécifique (g/kg)\\
+$P_s$ & Vecteur, \texttt{float} & Pression statique (hPa)\\
+T & Vecteur, \texttt{float} & Température de l'air(Kelvin)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+RH & Vecteur, \texttt{float} & Humidité relative (percent)\\
+\end{tabarg}

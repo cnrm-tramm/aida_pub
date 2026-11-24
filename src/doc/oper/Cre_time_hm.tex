@@ -1,0 +1,37 @@
+%% CREATION D'UN VECTEUR TEMPS %%
+%
+\section{Cr\'eation d'un vecteur time à partir des vecteurs heure et minute}
+
+\itemstyle{Op\'erateur~:} \operfmt{Cre\_time\_hm}
+\index{Cre\_time\_hm}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction cr\'ee un vecteur temps $Time$ (format \texttt{double},
+secondes depuis 0h00 le jour de démarrage de l'acquisition), à partir
+de vecteurs heure et minute. Les secondes sont toutes supposées nulles.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Cre_time_hm.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Cre_time_hm.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Ne pas pas utiliser sur des séries passant
+la limite de minuit, où la valeur de l'heure décroit
+brusquement alors que le nombre de secondes depuis 0h00 le jour
+du début de la série (définition des "Time" dans AIDA) devrait
+continuer à croître.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

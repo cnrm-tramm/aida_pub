@@ -1,0 +1,72 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<div class="banniere"> L'interface graphique<br><span>Configurer le contenu : configurer un trac&eacute; : configurer un trac&eacute; Hov</span></div>
+<br><br>
+
+<p class="titre1"> Configurer un trac&eacute; Hov</p>
+<br>
+<p class="paragraphe1">
+    <img class="img1" src="proprietes_trace_Hov.png" />
+    <br><br>
+    Utiliser l'info-bulle sur le nom des diff&eacute;rents param&egrave;tres de configuration pour obtenir des informations.<br><br>
+</p>
+<p class="paragraphe1">
+    <b>Plateforme : </b>
+    le menu d&eacute;roulant de s&eacute;lection de la plateforme propose un mode de s&eacute;lection avanc&eacute;. Pour cela, entrer la ou les premi&egrave;res lettres de la plateforme pour n'avoir que les plateformes correspondantes propos&eacute;es, comme l'illustre l'image ci-dessous :<br>
+    <img class="img1" src="selection_plateforme.png" />
+</p>
+<br>
+<p class="paragraphe1">
+    <b>Param&egrave;tre : </b>
+    le menu d&eacute;roulant de s&eacute;lection d&apos;un param&egrave;tre se pr&eacute;sente en cascade &agrave; 3 niveaux :
+</p>
+        <ul class="liste">
+            <li>famille : la famille AIDA &agrave; laquelle appartient le param&egrave;tre (tpr, hum, pre, ...).</li>
+            <li>fr&eacute;quence : la fr&eacute;quence du param&egrave;tre avec la nomenclature AIDA (%60=1min, %720=12min, 20=20Hz, 50=50Hz).</li>
+            <li>nom : nom du param&egrave;tre.</li>           
+        </ul> 
+    <br>
+<p class="paragraphe1">
+    <i>Noter : </i> lorsque la liste des param&egrave;tres est tr&egrave;s longue, on peut utiliser les touches de d&eacute;filement des pages pour facilter la recherche.
+    <img class="img1" src="selection_parametre.png" />
+</p>
+<br>
+<p class="paragraphe1">
+    <b>Calculette : </b><img src="calculette.png" align="center"/>
+    cf &sect; Op&eacute;ration sur les donn&eacute;es.</p>
+<br>
+<p class="paragraphe1">
+    <b>Mode  :</b> 
+    Vista propose 2 modes pour tracer les donn&eacute;es :
+    <ul class="liste">
+            <li>discret : la valeur d'un niveau est associ&eacute;e &agrave; la couche. En mode auto, toute la couche est colori&eacute;e, sinon, on peut donner la largeur de la zone colori&eacute;e. Cette largeur est donn&eacute;e en pourcentage de la largeur maximale (intervalle minimal entre 2 niveaux).</li>
+            <li>interpol&eacute : interpolation de la couleur entre 2 niveaux de fa&ccedil;on &agrave; avoir un champ continu. On peut &eacute;galement tracer/superposer des isolignes.</li>
+    </ul>
+</p>
+<br>
+
+<p class="paragraphe1">       
+<br>
+<b>Seuillage :</b>
+<ul class="liste">
+    <li>couleur : choix de palette avec inversion possible.</li>
+    <li>seuillage auto : la palette couvre toute la gamme de valeurs, sinon on fixe les seuils minimum et maximum couverts par la palette.</li>
+    <li> <b><></b> : affichage des valeurs hors gamme => les valeurs inf&eacute;rieures et sup&eacute;rieures aux seuils prennent respectivement la premi&egrave;re et la derni&egrave;re couleur de la palette.</li>
+</ul> 
+</p>
+<br>
+<p class="paragraphe1">       
+<br>
+<b>Profil de vent :</b>
+Vista propose d'afficher des vecteurs de profil de vent sur un trac&eacute; Hovm&ouml;ller comme l'illustre l'image suivante :
+<img class="img1" src="quiver.png" />
+<ul class="liste">
+    <li>Plateforme : choix de la plateforme des donn&eacute;es de vent.</li>
+    <li>Mode DD/FF : le calcul des vecteurs de vent se fait en utilisant la direction et la vitesse du vent.</li>
+    <li>Mode U/V : le calcul des vecteurs de vent se fait en utilisant les composantes zonales du vent U et V.</li>
+    <li>Echantillonnage : choix de la quantit&eacute; de vecteurs de vent &agrave; afficher, pour optimiser la lisibilit&eacute; du graphique. </li>
+</ul> 
+</p>
+</html>

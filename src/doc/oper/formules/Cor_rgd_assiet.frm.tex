@@ -1,0 +1,57 @@
+%% Formule de l'operateur : Cor_rgd_assiet
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%Les angles d'attitudes de l'instrument sont calculés 
+%à partir de ceux de la plate-forme et du décalage :
+%\[ \begin{cases}
+%\phi_i &= \phi_p + \Delta\phi \\
+%\theta_i &= \theta_p + \Delta\theta
+%\end{cases}
+%\]
+\newcommand{\JDA}{\ensuremath{JDA}}
+\newcommand{\THETAZERO}{\ensuremath{\Theta_0}}
+\newcommand{\PHIZERO}{\ensuremath{\Phi_0}}
+\newcommand{\AMUZERO}{}
+\newcommand{\CAP}{\ensuremath{\psi}}
+\newcommand{\HZERO}{\ensuremath{h_0}}
+Une fonction d'éphéméride donne, à partir du
+numéro du jour dans l'année (argument \JDA), la position du soleil :
+\THETAZERO (angle solaire zénithal), \PHIZERO (angle solaire azimutal),
+\AMUZERO
+\HZERO (hauteur angulaire du Soleil sur l'horizon, $= 90-\THETAZERO$)
+
+
+Puis la correction est appliquée sous la forme :
+\[
+SW_c = \frac{SW_d}{Xn Xas}
+\]
+\newcommand{\OFROL}{\Delta\phi}
+\newcommand{\OFTAG}{\Delta\theta}
+\newcommand{\DSIR}{\sin(\phi_p)}
+\newcommand{\DCOR}{\cos(\phi_p)}
+\newcommand{\DSIP}{\sin(\theta_p)}
+\newcommand{\DCOP}{\cos(\theta_p)}
+\newcommand{\DSIA}{\sin(\PHIZERO - \CAP)}
+\newcommand{\DCOA}{\cos(\PHIZERO - \CAP)}
+\newcommand{\DTAH}{\tan(\HZERO)}
+\newcommand{\DCUN}{-\DCOR\DSIA+\DSIR\DCOA\DSIP}
+\newcommand{\DCDEUX}{\DCOP\DCOA}
+
+\noindent où $Xn$ correspond à la correction d'incidence solaire sur le capteur :
+\[
+    Xn = \sin(\OFTAG)X_0 + \sin(\OFROL)X_1 + \sqrt{1 - \sin(\OFROL)^2 - \sin(\OFTAG)^2}X_2
+\]
+avec :\newline
+$X_0 = \frac{-(\DCOP\DCOA)}{\DTAH-\DSIP} $\newline
+\newline
+$X_1 = \frac{-(\DSIP\DSIR\DCOA+\DCOR\DSIA)}{\DTAH+\DCOP\DSIR} $\newline
+\newline
+$X_2 = \frac{-(\DSIP\DCOR\DCOA-\DSIR\DSIA)}{\DTAH+\DCOP\DCOR} $\newline
+
+et $Xas$ correspond à la correction de cosinus :
+\[ Xas = 1 - \frac{3.9 - 12.5 C + 17.5 C^2 - 8.9 C^3}{100} 
+\qquad \text{avec } C = \cos(\THETAZERO)
+\]
+

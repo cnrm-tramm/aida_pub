@@ -1,0 +1,45 @@
+%%%%%
+%
+\section{Correction de valeurs hors-bornes avec flag}
+
+\itemstyle{Op\'erateur~:} {\sf Correc\_hors\_bornes\_flag}
+\index{Correc\_hors\_bornes\_flag}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction détecte et remplace les valeurs hors d'un intervalle
+spécifié. Si la durée des valeurs fausses ou manquantes consécutives est courte
+(inférieure à un seuil fixé), elles sont remplacées par interpolation
+linéaire. Dans le cas contraire, la valeur en sortie est manquante.
+
+Une variable flag indique si la valeur d'origine est valide,
+manquante ou hors bornes.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Correc_hors_bornes_flag.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Correc_hors_bornes_flag.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+\begin{itemize}
+\item Cette fonction est identique à Correc\_hors\_bornes avec l'ajout
+d'un flag en sortie.
+\item L'interpolation linéaire ne convient pas aux variables
+qui peuvent être naturellement discontinues, tels les caps et
+autres angles.
+\item Le flag peut s'utiliser de la façon suivante : si le flag
+est nul, la valeur n'a pas été modifiée (non interpolée et non manquante).
+\end{itemize}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

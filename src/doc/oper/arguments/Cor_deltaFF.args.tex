@@ -1,0 +1,22 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$ffbas$ & Vecteur, {\tt float} & Force du vent mesur\'e au niveau bas\\
+$ffhaut$ & Vecteur, {\tt float} & Force du vent mesur\'e au niveau haut\\
+$deltaff$ & Vecteur, {\tt float} & Gradient de vent : haut-bas\\
+$flag$ & Vecteur, {\tt float} & Flag de cohérence des mesures de vent (haut/bas)\\
+$offset_{bas}$ & Coeff., {\tt float} & Valeur min du vent niveau bas\\
+$offset_{haut}$ & Coeff., {\tt float} & Valeur maxi du vent niveau haut\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$ffbas\_Cdf$ & Vecteur, {\tt float} & Force du vent au niveau bas validé ou corrigé\\
+$ffhaut\_Cdf$ & Vecteur, {\tt float} & Force du vent au niveau haut validé ou corrigé\\
+$deltaff\_Cdf$ & Vecteur, {\tt float} & Gradient de vent : haut-bas validé ou corrigé\\
+$flag\_Cdf$ & Vecteur, {\tt float} & Flag de qualification (0=ok, 1=interpolation, 2= correction empirique)\\
+\end{tabarg}

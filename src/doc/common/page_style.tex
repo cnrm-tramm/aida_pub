@@ -1,0 +1,34 @@
+% format de la date pour Git
+\DTMnewdatestyle{mydate}{%
+  \renewcommand*{\DTMdisplaydate}[4]{##3 \DTMfrenchMonthname{\DTMtwodigits{##2}} ##1}%
+  \renewcommand{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+\DTMsetdatestyle{mydate}
+
+% definition du format de l'entete et du pied de page
+\pagestyle{fancyplain}
+\lhead{}
+\rhead{\leftmark}
+\rfoot{
+  \begin{scriptsize}
+  \textsl{version du \DTMusedate{gitdate}}
+  \end{scriptsize}
+}
+
+%%% warning encadré
+%%% utilisation : \begin{warning} blablabla \end{warning}
+\usepackage{pifont,mdframed}
+\newenvironment{warning}
+  %%{\par\begin{mdframed}[linewidth=2pt,linecolor=red]%
+  {\par\begin{mdframed}[linewidth=2pt]%
+    \begin{list}{}{\leftmargin=1cm
+                   \labelwidth=\leftmargin}\item[\Large\ding{43}]}
+  {\end{list}\end{mdframed}\par}
+
+%%% pour l'usage des programmes qui ne tiennent pas sur une ligne
+%%% utilisation :
+%%%%%% \minibox[frame]{
+%%%%%%  \texttt{gengraphvect\.py [-h] -a ACQID [-o FORMAT] [-n NIVEAU]} \\
+%%%%%%  \rightline{ \texttt{[-f FICHIER] [-s SENS] [-v] [VECTEUR ...]} }
+%%%%%% }
+\usepackage{minibox}

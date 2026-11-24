@@ -1,0 +1,74 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<div class="banniere"> L'interface graphique<br><span>Configurer le contenu : configurer un trac&eacute; : affichage conditionnel</span></div>
+<br><br>
+
+<p class="titre1"> Affichage conditionnel</p>
+<br>
+<p class="paragraphe1">
+    <img class="img1" src="affichage_conditionnel.png" />
+    <br><br>
+    Vista permet un affichage du trac&eacute; sous conditions pour certains types de trac&eacute;s. Pour les trac&eacute;s de type ST et PlotXY, on peut choisir une couleur et une &eacute;paisseur de trait en fonction des conditions. Pour Histo et Histo3D la condition sert de filtre &agrave; l&apos;&eacute;chantillon de donn&eacute;es.<br>
+    L&apos;appui sur le bouton affichage conditionnel ouvre une bo&icirc;te de saisie des param&egrave;tres qui vont d&eacute;finir les conditions.<br><br>
+    <img class="img2" src="affichage_conditionnel2.png" />
+    <br><br>
+    Cette bo&icirc;te se compose de 2 parties :
+    <br><br>
+</p>
+<p class="paragraphe1">
+    <b>D&eacute;finition des variables : </b>
+    Une condition est une expression logique qui contient des variables. Chaque variable est identifi&eacute;e par une lettre. Toutes les variables qui apparaissent dans les conditions doivent &ecirc;tre d&eacute;finies. Dans tous les cas la variable <i>y</i> est r&eacute;serv&eacute;e au param&egrave;tre en ordonn&eacute;es. Pour les trac&eacute;s de type PlotXY, la variable <i>x</i> est &eacute;galement r&eacute;serv&eacute;e au param&egrave;tre en abscisses.<br><br>
+    Pour d&eacute;finir une nouvelle variable, cliquer sur le bouton <img class="img2" align="center" src="ajouter.png" />. Une bo&icirc;te de saisie permet de d&eacute;finir la variable, de la m&ecirc;me mani&egrave;re que l&apos;on d&eacute;finit une donn&eacute;e d&apos;un trac&eacute; (cf  &sect; Trac&eacute; ST)<br><br>
+    <img class="img1" src="affichage_conditionnel3.png" /><br><br>
+    Vista nomme automatiquement la variable en fonction des lettres disponibles. Au niveau de l'ihm, chaque variable est mat&eacute;rialis&eacute;e par une ligne :<br><br>
+    <img class="img1" src="affichage_conditionnel4.png" /><br><br>
+    <img class="img1" align="center" src="modifier.png" /> : permet de modifier la variable par r&eacute;ouverture de la bo&icirc;te de d&eacute;finition.<br>
+    <img class="img1" align="center" src="supprimer.png" /> : permet de supprimer la variable.<br><br>
+</p>
+<br>
+<p class="paragraphe1">
+    <b>Conditions : </b>
+    Une condition est une expression logique simple ou complexe. Toutes les variables utilis&eacute;es dans l'expression doivent avoir &eacute;t&eacute; d&eacute;finies. On peut utiliser des fonctions math&eacute;matiques standard (cf module math de python). Voici quelques exemples de conditions valides :<br>
+    <i>
+    &nbsp; y > 3<br>
+    &nbsp; y == 3<br>
+    &nbsp; sin(y) > 0.5<br>
+    &nbsp; y>3 and a>3<br>
+    &nbsp; ((y+b)<10 and (y<3)) or x>5
+    </i>
+    <br><br>
+    Pour d&eacute;finir une nouvelle condition, cliquer sur le bouton <img class="img2" align="center" src="ajouter.png" />.<br>
+    Au niveau de l'ihm, chaque condition est mat&eacute;rialis&eacute;e par une ligne :<br><br>   
+    <img class="img1" src="affichage_conditionnel5.png" /><br><br>
+    <img class="img1" align="center" src="supprimer.png" /> : permet de supprimer la condition.<br><br>
+    <img class="img1" align="center" src="affichage_conditionnel6.png" /> : zone de saisie de l&apos;expression logique.<br><br>
+    <img class="img1" align="center" src="affichage_conditionnel7.png" /> : choix de la couleur (ouverture d'une fen&ecirc;tre de s&eacute;lection).<br><br>
+    <img class="img1" align="center" src="affichage_conditionnel8.png" /> : choix de l'&eacute;paisseur.<br><br>
+    <i>Noter : </i> pour les trac&eacute;s de type Histo et Histo3D les choix couleur et &eacute;paisseur ne sont pas propos&eacute;s.<br>
+    <i>Noter : </i> si plusieurs conditions sont remplies simultan&eacute;ment, c&apos; est la derni&egrave;re d&eacute;finie qui est prise en compte.<br><br>
+    <i>Noter : </i> la d&eacute;finition d&apos;un affichage conditionnel sur un trac&eacute; est mat&eacute;rialis&eacute;e par le pictogramme
+    <img class="img2" align="center" src="affichage_conditionnel9.png" /> 
+</p>
+<br>
+<p class="paragraphe1">
+    <b>Condition non &eacute;valuable : </b>
+    Pour les trac&eacute;s de type ST et PlotXY Vista propose de configurer la couleur et l'&eacute;paisseur lorsque la condition ne peut pas &ecirc;tre &eacute;valu&eacute;e. Cela se produit lorsqu&apos;une donn&eacute;e de la condition est manquante.
+</p>
+<br>
+<p class="paragraphe1">
+    <b>Contr&ocirc;les : </b>
+    Au moment de valider les conditions, Vista r&eacute;alise 2 types de contr&ocirc;les :<br>
+    <ul class="liste">
+    <li>v&eacute;rification de la d&eacute;finition de toutes les variables contenues dans les conditions.</li>
+    <li>v&eacute;rification syntaxique des expressions lolgiques.</li>
+    </ul>
+    
+</p>
+<br>
+<p class="paragraphe1">
+Si des erreurs sont d&eacute;tect&eacute;es, une bo&icirc;te de message appara&icirc;t.
+</p>
+<br>
+</html>

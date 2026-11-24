@@ -1,0 +1,48 @@
+%%%%%
+%
+\section{Correction de sauts dans le temps acquis par le Merlin IV}
+
+\itemstyle{Op\'erateur~:} {\sf correc\_time\_rec}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Correction des sauts anormaux dans le temps acquis par le
+syst\`eme d'acquisition du Merlin IV. 
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/correc_time_rec.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/correc_time_rec.frm.tex}
+
+%%%% COMMENTAIRE %%%%
+\itemstyle{Commentaire~:}
+
+En principe, le temps cro\^{\i}t r\'eguli\`erement
+de $1/f_e \pm \varepsilon $ \`a chaque instant.
+Mais, il peut se produire des "sauts" ou des "trous".
+Un "saut" est constitu\'e par N valeurs 
+cons\'ecutives "incorrectes". 
+Un "trou" est l'absence de N valeurs 
+cons\'ecutives dans la s\'erie. \\
+L'algorithme remplace les valeurs "incorrectes" des
+"sauts" et ne touche pas les "trous".\\
+$\varepsilon$ est l'incertitude sur le temps du
+syst\`eme d'acquisition. Elle doit \^etre ici
+inf\'erieure \`a $6.10^{-4} s$ ( sp\'ecifique au
+Merlin IV) pour que la valeur soit consid\'er\'ee
+correcte.
+Un "saut" ne peut pas durer plus de 20 valeurs
+cons\'ecutives sinon il est consid\'er\'e 
+comme un "trou".
+
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

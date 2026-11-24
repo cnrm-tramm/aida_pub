@@ -1,0 +1,29 @@
+%% Formule de l'operateur : Inv_Klett_sa
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+\bigskip
+A chaque pas de temps : \\
+
+Si $Alt_{nuage} \leq Z_{ref}$ et $Alt_{nuage} \neq 0$  alors : \\
+\begin{align*}
+\beta(Z) & = valeur manquante\\
+AOD & = valeur manquante
+\end{align*}
+\bigskip
+sinon :
+\begin{align*}
+I_1(Z)  & = 2.(SA -S_{mol}).\left( \sum_0^{Z_{ref}} \beta_{mol}(z_j) .\Delta z_j - \sum_0^{Z} \beta_{mol}(z_j) .\Delta z_j \right) \\
+\phi(z) & = \ln \left( \frac{X(Z)}{X(Z_{ref})} \right) + I_1(Z) \\ 
+I_2(Z) & = 2.SA.\left(\sum_0^{Z_{ref}} \exp(\phi(z_j)).\Delta z_j - \sum_0^{Z} \exp(\phi(z_j)).\Delta z_j \right) \\
+\beta (Z) & = \frac{\exp(\phi(Z))}{1/\beta(Z_{ref}) + I_2(Z) } \\
+AOD & = \sum_0^{Z_{ref}} SA*\beta(z_j).\Delta z_j  
+\end{align*}
+
+avec :
+\begin{align*}
+S_{mol} &  =   8.\pi /3 \\
+\beta(Z_{ref}) & = \beta_{mol}(Z_{ref}) + \beta_{ainit}
+\end{align*}

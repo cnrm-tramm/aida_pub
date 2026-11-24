@@ -1,0 +1,39 @@
+%%%%%
+%
+\section{Sommation d'un param\`etre 1D}
+
+\itemstyle{Op\'erateur~:} {\sf Som\_1D}
+\index{Som\_1D}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Sommation de N \'el\'ements cons\'ecutifs 
+dans le temps d'un param\`etre 1D.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Som_1D.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Som_1D.frm.tex}
+
+%%%% COMMENTAIRE %%%%
+\itemstyle{Commentaire~: }
+
+Le nombre d'\'echantillons du vecteur r\'esultat est \'egal au nombre
+d'\'echantillons du vecteur d'origine, divis\'e par  $N$, arrondi \`a
+l'entier sup\'erieur.
+Si le nombre d'\'echantillons de X n'est pas un multiple de N, la
+derni\`ere valeur de $Xs$ devrait \^etre "valeur manquante".\\
+La fr\'equence d'\'echantillonnage du param\`etre r\'esultat est le rapport de
+la fr\'equence du param\`etre d'entr\'ee par $N$.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

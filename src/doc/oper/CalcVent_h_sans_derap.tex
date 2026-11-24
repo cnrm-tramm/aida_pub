@@ -1,0 +1,31 @@
+%% THERMODYNAMIQUE %%
+%
+\section{Calcul simplifié des 2 composantes du vent horizontal sans prise en compte du dérapage}
+
+\itemstyle{ Op\'erateur~: } {\sf CalcVent\_h\_sans\_derap}
+\index{CalcVent\_h\_sans\_derap}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Cet op\'erateur calcule les 2 composantes du vecteur vent horizontal. 
+Le calcul s'effectue avec les formules simplifi\'ees. Ces formules sont 
+valides dans le cas o\`u : l'angle d'incidence de l'air par rapport
+\`a l'avion, l'angle de tangage, et l'angle de roulis sont petits.    
+Cet opérateur donne une information sur le vent sans dérapage
+celui-ci étant faux en cas de givrage des capteurs de pression.
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/CalcVent_h_sans_derap.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input {formules/CalcVent_h_sans_derap.frm.tex}
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ R\'ef\'erences~:}
+Bulletin NCAR-RAF Nr 23 \cite{RAF-23}.

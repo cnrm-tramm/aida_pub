@@ -1,0 +1,256 @@
+\part{Répertoires et variables d'environnement}
+\label{part:arbo}
+\section{Répertoires}
+\label{sec:repert}
+   Tous les fichiers et programmes qui constituent AIDA se regroupent de
+manière arborescente sous un unique répertoire racine. Il n'y a pas 
+de contrainte sur le choix de l'emplacement de ce répertoire, qui peut 
+varier d'une machine à l'autre.
+
+ Dans ce répertoire-racine, se trouvent les sous-répertoires suivants :
+\begin{description}
+  \item[src] contient les sources des programmes qui constituent AIDA. Il 
+   est divisés en sous-répertoires, un par langage (script, 
+   python3, etc), plus un pour les bibliothèques générales écrites en C
+   (\texttt{lib}) et un contenant les codes sources de la documentation
+   AIDA (\texttt{doc}).
+
+  \item[bin] contient tous les exécutables d'AIDA. Pour l'utilisation
+   confortable d'AIDA, il est recommandé de rajouter ce répertoire
+   dans sa variable PATH (voir \path{~/.profile.aida}) :
+
+  \item[appli] contient le matériel de traitements des campagnes et des
+    acquistions de l'utilisateur (scripts, programmes, fichires de
+    configuration...). \\
+    \textbf{Ce répertoire n'est pas géré par le gestionnaire de source de AIDA.}
+
+  \item[meta] contient tous les fichiers de méta-données. Il contient au moins
+   deux sous-répertoires utilisés par AIDA :
+      \begin{description}
+       \item[INF] : les meta-données des acquisitions sous forme de fichiers
+                    <acqid>.inf.
+       \item[campagnes] : les meta-données des campagnes sous forme de fichiers
+		                <campagne>.camp.
+      \end{description}
+   L'utilisateur peut y ajouter les sous-répertoires utilisés par son matériel
+   de traitement (par exemple, \texttt{crvol} pour les comptes-rendus de vol).
+   Si le réseau local le permet, ce peut être un montage NFS ou un
+   partage SMB.
+
+  \item[local] contient les fichiers spécifiques à la configuration 
+   informatique de la machine sur laquelle s'execute AIDA.
+
+  \item[config] contient un certain nombre de fichiers 
+   de configuration d'AIDA (liste des familles de paramètres, les définitions
+   de graphiques).
+   Ce répertoire peut être un montage NFS ou un partage SMB.
+
+  \item[profils] contient un sous-répertoire spécifique pour chaque profil
+   d'utilisation de AIDA (ex: 4M, EXEMPLES, SAFIRE, TRAMM).
+   Chaque sous-répertoires contient au moins un fichier \texttt{plate-formes}
+   (liste de plate-forme connues pour ce profil d'utilisation de AIDA).
+
+  \item[share] contient des fichiers partageables (cartes, logos...).
+
+  \item[data] contient toutes les données. Pour des raisons pratiques,
+   il s'agit souvent d'un lien vers un gros disque dédié aux données.
+   Si le réseau local le permet, ce peut être un montage NFS ou un
+   partage SMB.
+   L'organisation des données est décrite un peu plus loin 
+   (paragraphe \ref{sec:arbodata}).
+
+  \item[doc] contient la documentation d'AIDA (donc, en particulier, ce
+   fichier). Attention, ce n'est pas la même chose que la documentation
+   sur les vols ou les traitements, produite par AIDA.
+
+  \item[include] : contient tous les fichiers include (\path{*.h} du C, ...).
+
+  \item[lib] contient toutes les bibliothèques AIDA (fichiers \path{*.a}, 
+   \path{*.sl}, \path{*.ln}, \path{*.so} mais aussi sous le répertoire
+   \path{pythonX.Y}, les librairies python de AIDA).
+
+  \item[log] pour les programmes qui veulent laisser une trace de ce qui
+   s'est passé pendant leur éxécution.
+
+  \item[extern] accueille le matériel tierces utilisé par AIDA, lorsqu'elles
+   ne sont pas fournies par le système (par exemple \texttt{cextract}, ...)
+\end{description}
+ 
+\section{Variables d'environnement}
+   L'emplacement du répertoire racine pouvant varier, on utilise une 
+variable d'environnement, \textsf{AIDA\_HOME}, pour en 
+désigner l'emplacement. Tous les programmes prennent en compte cette
+variable, il est donc indispensable qu'elle soit établie dans 
+l'environnement de chaque utilisateur.
+
+   A l'installation de AIDA, les variables d'environnement suivantes sont
+déclarées (voir \path{~/.profile.aida}) :
+\begin{description}
+  \item[\textsf{AIDA\_HOME}] désigne l'emplacement du répertoire racine de AIDA.
+  \item[\textsf{AIDA\_PROFIL}] désigne le profil d'utilisateur AIDA.
+  \item[\textsf{AIDA\_META}] désigne l'emplacement du répertoire des
+   méta-données.
+  \item[\textsf{AIDA\_DATA}] désigne l'emplacement du répertoire des données
+\end{description}
+
+\medbreak
+   D'autre variables peuvent désigner chacun des sous-répertoires
+décrits au paragraphe \ref{sec:repert}. Elle sont utiles lorsqu'un
+utilisateur ne souhaite pas utiliser l'arborescence commune mise en place,
+par exemple pour accéder à des données situées ailleurs que dans
+\texttt{\$AIDA\_HOME\//data}, ou à des versions spécifiques
+de programmes situés ailleurs que dans \texttt{\$AIDA\_HOME\//bin}.\\
+La règle pour construire le nom de ces variables est simple : elles sont
+baptisées \textsf{AIDA\_\textit{xxx}}, où \textit{xxx} est le nom en majuscule
+du sous-répertoire qu'elle désigne. \\
+Ainsi :
+\begin{itemize}
+  \item[\texttt{AIDA\_BIN}] : sert à accéder à des programmes situé ailleurs
+    que dans \texttt{\$AIDA\_HOME\//bin},
+  \item[\texttt{AIDA\_LIB}] : sert à utiliser des librairies situées ailleurs
+    que dans \texttt{\$AIDA\_HOME\//lib},
+  \item[\texttt{AIDA\_DATA}] : sert à travailler sur des données situées
+   ailleurs que dans \texttt{\$AIDA\_HOME\//data}.
+\end{itemize}
+
+\section{Identification de chaque période de mesure}
+\label{sec:AcqId}
+   On appelle \textit{période de mesure} le temps pendant lequel
+un système d'acquisition a fonctionné. Pour les systèmes qui
+fonctionnent par période, la définition est assez simple (un 
+lâcher de ballon-sonde, un vol d'un avion). Pour les systèmes qui
+fonctionnent en continu, la période de mesure est en général
+définie comme une journée, mais rien n'empèche  de choisir une
+durée plus courte ou plus longue (le mois, pas exemple).
+
+\medbreak
+On distingue 5 types de période de mesure :
+
+\textbf{- Journee} (\textit{anciennement Acquisition})
+
+\textbf{- Vol}
+
+\textbf{- Lacher}
+
+\textbf{- Lacher\_en\_vol}
+
+\textbf{- Drone}
+
+
+\medbreak
+   Pour des raisons pratiques (nommage de fichiers, choix d'une
+période parmis les autres, ..), il est important de pouvoir désigner
+chaque période de mesure par un nom unique, appelé \textbf{\texttt{acqid}}.
+
+\medbreak
+Un \textbf{\texttt{acqid}} est une chaîne de 8 caractères, de la forme : \\
+\begin{center}
+{\fbox{ \texttt{ppAAnnnN}}}
+\end{center}
+
+\medbreak
+\begin{itemize}
+  \item Les 2 premiers (\texttt{pp}) sont alpha-numériques, et désignent la 
+   plate-forme de mesure. La correspondance entre cette abbréviation et
+   le nom usuel, la description, etc se fait par le fichier
+   {\texttt plate-formes} décrit au paragraphe \ref{sec:platef}, page 
+   \pageref{sec:platef}.
+
+  \medbreak
+  \item Les 2 suivants (\texttt{AA}) sont numériques, et désignent l'année.
+   Les valeurs supérieures à 70 correspondent aux années 1970 à 1999,
+   et les autres aux années 2000 à 2069.
+
+  \medbreak
+  \item Les 4 suivants (\texttt{nnnN}) désignent le
+   numéro d'acquisition de manière différente selon le type de période de
+   mesure :
+
+   \begin{itemize}
+
+     \item[\textbf{Journee}] : \texttt{nnnN} est le quantième du jour dans
+                               l'année (numérique)
+
+     \item[\textbf{Vol}] : \texttt{nnnN} est le quantième du vol dans l'année
+                           (numérique, sur 4 chiffres commençant par 0)
+
+     \item[\textbf{Lacher}] : \texttt{nnnN} est le nombre d'heures depuis le 01/01
+                              de l'année (numérique)
+
+     \item[\textbf{Lacher\_en\_vol}] : \texttt{nnn} est le numéro du vol (numérique),
+                                       \texttt{N} est le numéro du lâcher
+                                       (alphanumérique [0-9] puis [a-z] puis [A-Z]
+                                       soit 62 numéros de lâcher)
+
+     \item[\textbf{Drone}] : \texttt{nnn} est le quantième du jour dans l'année
+                             (numérique), \texttt{N} est le numéro du vol (idem
+                             numéro de lâcher pour \texttt{Lacher\_en\_vol})
+   \end{itemize}
+\end{itemize}
+
+\textbf{\textit{Note : avant 2008, la partie \texttt{nnnN} des acqids de type
+vol n'était constitué que de 2 chiffres.}}
+
+
+\section{Détail des arborescences principales}
+
+Certains des sous-répertoires présentés ci-dessus contiennent
+une information volumineuse et/ou complexe : ils sont en fait le sommet
+d'une arborescence. Nous décrivons ici les plus importantes.
+
+\subsection{L'arborescence des données} 
+\label{sec:arbodata}
+
+    Dans le cadre d'un fonctionnement normal, l'utilisateur 
+n'a pas besoin de connaître les détails du stockage
+des données.
+
+    Les programmes (et les bibliothèques sous-jacentes) sont conçues 
+pour qu'il suffise à l'utilisateur de spécifier 
+l'identification d'une période de mesure (par exempl
+ l'\textbf{\texttt{acqid}} \texttt{Tf210356})
+pour que les programmes d'AIDA sachent accéder aux données.
+
+   Pour que cela fonctionne, il faut évidement spécifier une 
+organisation de stockage, qui doit être respectée par tous les 
+programmes.  Actuellement, cette organisation du stockage repose
+sur le système de fichiers et de répertoires arborescents 
+fourni par le système d'exploitation. C'est une arborescence 
+à trois niveaux : le \textbf{premier correspond à la plate-forme,
+le second à l'année, et le troisième à la période de mesure}.
+
+    Cette organisation permet d'avoir une architecture complètement
+ouverte, en permettant au plus grand nombre de logiciels
+et de langages des programmation de travailler sur les données d'AIDA.
+
+    L'emplacement d'un fichier se déduit automatiquement
+du nom unique donné à chaque période de mesure :
+
+    Le répertoire \texttt{\$AIDA\_HOME\//data} est le
+point de départ de toute l'arborescence des données. Il contient un
+répertoire par plate-forme de mesure. Le nom de ces répertoires
+est exactement le même que celui inscrit dans le fichier
+\texttt{plate-forme} (décrit au paragraphe \ref{sec:platef}).
+A son tour, chacun de ces répertoires contient un répertoire par 
+année, dont le nom est écrit en quatre chiffres, et qui contient
+un répertoire par période de mesure. Enfin, dans ce répertoire
+«feuille», il y a un fichier par
+paramètre, qui contient la série complète des données (format
+\textit{vecteur} décrit en détail dans la partie suivante).
+
+ En reprennant l'exemple de  l'acquisition \texttt{Tf210356}, le 
+répertoire sera : \\
+\texttt{\$AIDA\_HOME\//data\//toulouse-flux\//2021\//0356}.
+
+\subsection{L'arborescence des applications} 
+    Pour chaque campagne de mesure, il est nécessaire
+d'avoir des fichiers particularisés : des \textit{scripts}
+de traitements, des scripts de production des fichiers
+ASCII, ....
+
+     Ces fichiers correspondent à des \textbf{applications}
+utilisant AIDA, et sont regroupés dans \texttt{\$AIDA\_HOME\//appli},
+plus précisément dans :
+\texttt{\$AIDA\_HOME\//appli\//script\//\$nom\_campagne}.
+
+

@@ -1,0 +1,23 @@
+%% Formule de l'operateur : Filtre_spectral_1D
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+A chaque pas de temps, le spectre du signal est calculé par FFT. Ce spectre est multiplié par une gaussienne centrée sur les plus basses fréquences. 
+La largeur de la gaussienne est fonction du paramètre $W$ qui varie de 0 à 1 (voir figure \ref{fig-filtre-gauss-spectral})
+Si $W=0$ il n'y a aucun filtrage, lorsque $W$ tend vers 1 la plage de fréquences filtrées
+est plus large.  
+
+Les valeurs du profil pour lesquelles $z < z_{min}$ sont interpolées linéairement entre 0 et la valeur $X(z_{min})$ ($Type\_{extrap}='lin'$), ou mis à la valeur $X(z_{min})$ ($Type\_{extrap}='cst'$).
+
+\begin{center}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.3]{./images/gaussiennes_filtre_spectral_1D.png}
+\caption{Gaussienne appliquée à la FFT du signal en fonction du paramètre W}
+\label{fig-filtre-gauss-spectral}
+\end{figure}
+
+\end{center}

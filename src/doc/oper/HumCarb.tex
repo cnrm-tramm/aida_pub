@@ -1,0 +1,35 @@
+%% THERMODYNAMIQUE %%
+%
+\section{Humidit\'e relative \`a partir de la sonde carbone}
+
+\itemstyle{ Op\'erateur~: } {\sf HumCarb}
+\index{HumCarb}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Cet op\'erateur calcule l'humidit\'e \`a partir de la tension
+de la sonde carbone. Il utilise 3 relations diff\'erentes en 
+fonction de la temp\'erature (seuils \`a $-10$ et$+12^\circ$C).\newline
+Une correction de vitesse est ensuite appliqu\'ee.
+
+%%%%%ARGUMENTS%%%%%
+\bigskip
+\input {arguments/HumCarb.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input{formules/HumCarb.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+Les fonctions $ew()$ et $ewi()$ sont d\'ecrites en annexe \ref{annexe-thermo}. 
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ R\'ef\'erences~:}
+Note du CAM sur les appareils de mesure de l'hygrom\'etrie \cite{CAM-hum}

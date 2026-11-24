@@ -1,0 +1,43 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Hauteur de la base des nuages moyenne des 3 couches de nuages quand le nombre de couches reste constant}
+
+\itemstyle{Op\'erateur~:} \operfmt{HbnMoyInvEch\_tps\_bnds}
+\index{HbnMoyInvEch\_tps\_bnds}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction calcule, pour chaque instant $t$ d'une
+base de temps $time_{out}$, 
+la moyenne de chaque couche de hauteur de base de nuage $X_{i_{out}}$ entre les bornes données par le $time_{bnds}$ associé à $time_{out}$.
+Le calcul n'est réalisé que pour des valeurs < $val_{inv}$ et si le nombre de couches < $val_{inv}$ reste constant
+Aucune supposition n'est faite sur la régularité de
+l'échantillonnage des 2 variables. Il est cependant nécessaire
+que $time_{in}$ (le temps des $X_{i_{in}}$) soit "à peu près" trié par ordre
+croissant.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/HbnMoyInvEch_tps_bnds.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/HbnMoyInvEch_tps_bnds.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+\textit{tb} est un tableau d'intervalles de temps déterminés à partir du vecteur temps $time_{out}$.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Néant.

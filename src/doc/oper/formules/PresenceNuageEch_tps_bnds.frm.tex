@@ -1,0 +1,32 @@
+%% Formule de l'operateur : PresenceNuageEch_tps_bnds
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+Pour chaque couche Xn:
+
+Pour  i=$0$, Nbre  $Time_{bnds}$ :
+
+%Pour chaque j entre $t_b[i][0]$ et $t_b[i][1]$:
+
+\[
+X_{out}[i] =
+\frac{\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} (top < val_{inv} ) * 100} }{N_i}
+\]
+%\frac{\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} Xn_{in}[j]} }{Nn_i}$
+%$\frac{\displaystyle{\texttt{nb de }X_{in}[j]}}{N_i}$
+%\frac{\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} {\max_{{1}\lt i \lt {3} }(Xn_{in}[j] < val_{seuil}) }} }{Nn_i}
+%\frac{\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} \max_{{1}\lt i \lt {3} } \texttt{Xn\_{in}[j] < val\_{seuil}} } }{Nn_i}
+\[
+\texttt{Avec top = }
+\begin{cases}
+\begin{tabular}{ll}
+\texttt{1}
+&
+\texttt{ si  au moins 1 $Xn_{in}[i]$ est inf\'erieure \`a $val_{inv}$ } \\
+\texttt{0} & \texttt{ sinon} \\
+\end{tabular} 
+\end{cases}
+\]
+Avec $N_i$ le nombre de donn\'ees dans l'intervalle tb .

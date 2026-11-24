@@ -1,0 +1,36 @@
+%%%%%
+%
+\section{Correction de vitesse sur l'humidité relative}
+
+\itemstyle{Op\'erateur~:} \operfmt{Calc\_Static\_RH\_From\_Dynamic\_RH\_V1}
+\label{OP-Calc_Static_RH_From_Dynamic_RH_V1}
+\index{Calc\_Static\_RH\_From\_Dynamic\_RH\_V1}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Correction des effets de compression et de
+réchauffement qui affectent la mesure d'humidité relative
+sur plate-forme mobiles.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Calc_Static_RH_From_Dynamic_RH_V1.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Calc_Static_RH_From_Dynamic_RH_V1.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+Le programme originel était écrit en Pascal, et nous a été
+transmis par M. Helten (Research centre Juelich GmbH). La version
+en C, aussi fidèle que possible à l'original, a été écrite par B. Piguet.
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+La tension de vapeur saturante est calculée avec
+les formules 3.17 et 3.18 données dans Sonntag (1982)
+% : Formula 3.17 & 3.18
+%  with regards to Liquid Water and Ice respectivily.
+

@@ -1,0 +1,28 @@
+%% Formule de l'operateur : CalcVent_rect
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+Dans un premier temps, le vent est calculé dans le repère lié
+à la plate-forme mobile. Ses 3 composantes sont notées $U_a$, $V_a$,
+et $W_a$. 
+\begin{align*}
+U_a &= V_x + U_m + L_z . Vr_y - L_y . Vr_z\\
+V_a &= V_y + V_m + L_x.Vr_z - L_z.Vr_x\\
+W_a &= V_z + W_m + L_y . Vr_x - L_x.Vr_y
+\end{align*}
+
+Ensuite, une rotation est appliquée pour exprimer
+le résultat dans le repère géographique local : 
+\begin{align*}
+U &= U_a * \sin \psi * \cos \theta
+        + V_a * (\cos \psi * \cos \phi + \sin \psi * \sin \theta * \sin \phi)
+	+ W_a * (\sin \psi * \sin \theta * \cos \phi - \cos \psi * \sin \phi)\\
+V &= U_a * \cos(\psi) * \cos(\theta)
+        - V_a * (\sin \psi * \cos \phi  - \cos \psi * \sin \theta * \sin \phi)
+	+ W_a * (\cos \psi * \sin \theta * \cos \phi + \sin \psi  * \sin \phi)\\
+W &= U_a * \sin \theta 
+     - V_a * \cos \theta * \sin \phi
+     - W_a * \cos \theta * \cos \phi\\
+\end{align*}
+

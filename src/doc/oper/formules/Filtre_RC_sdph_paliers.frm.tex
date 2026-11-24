@@ -1,0 +1,11 @@
+%% Formule de l'operateur : Filtre_RC_sdph_paliers
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\[
+X_f[i] = e^{-\frac{2\pi.f_c}{f_e}}.X_f[i-1] + 
+         \left( 1 - e^{-\frac{2\pi.f_c}{f_e}} \right). X[i]
+\]
+si $Type = 1$ alors $X_f = X - X_f$
+

@@ -1,0 +1,23 @@
+%%CalcVentNA
+In a first step, the wind is computed with respect to 
+the aircraft axes. The three components are noted :
+$U_a$, $V_a$, and $W_a$. 
+\begin{eqnarray*}
+U_a & = & V_x - V_p.D^{-1} + L_z . Vr_y - L_y . Vr_z\\
+V_a & = & V_y - V_p.D^{-1}.\tan\beta + L_x.Vr_z - L_z.Vr_x\\
+W_a & = & V_z - V_p.D^{-1}.\tan\alpha + L_y . Vr_x - L_x.Vr_y
+\end{eqnarray*}
+where~: $ D = \sqrt{1+\tan^2\alpha+\tan^2\beta}$
+
+Then, these values are rotated to the local earth axes :
+
+$U = U_a.\sin\psi.\cos\theta +$
+        $V_a.(\cos\psi.\cos\phi+\sin\psi.\sin\theta.\sin\phi) +$
+        $W_a.(\sin\psi.\sin\theta.\cos\phi - \cos\psi.\sin\phi)$ \newline
+$V = U_a.\cos\psi.\cos\theta -$
+        $V_a.(\sin\psi.\cos\phi - \cos\psi.\sin\theta.\sin\phi) +$
+        $W_a.(\cos\psi.\sin\theta.\cos\phi + \sin\psi.\sin\phi)$ \newline
+$W = U_a.\sin\theta -$ 
+        $V_a.\cos\theta.\sin\phi -$
+        $W_a.\cos\theta.\cos\phi$
+

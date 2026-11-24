@@ -1,0 +1,48 @@
+%%%%%
+%
+\section{Rotation vers le repère porté par le vent moyen}
+
+\itemstyle{Op\'erateur~:} {\sf Rotat\_rep\_vent\_moy}
+\index{Rotat\_rep\_vent\_moy}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul des 3 composantes du vecteur-vent dans 
+un repère porté par le vent moyen, qui vérifie : 
+\[
+\begin{array}{c}
+\overline{u} = U\\
+\overline{v} = 0\\
+\overline{w} = 0\\
+\overline{v'w'} = 0\\
+\end{array}
+\]
+
+  En pratique, on minimise (mais n'annule pas toujours) le 
+terme $\overline{v'w'}$.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Rotat_rep_vent_moy.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Rotat_rep_vent_moy.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{ Commentaire~: }
+
+Le repère ($u$, $v$, $w$) d'origine peut être géographique ou lié à l'instrument. 
+Il doit être orthonormé.
+%%%% Question en suspens : doit-il être direct ?
+
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Pages 26 à 28 de la note de P. Bessemoulin sur la
+détermination des flux de surface \cite{GMEI-6}.

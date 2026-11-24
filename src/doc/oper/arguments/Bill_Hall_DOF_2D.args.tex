@@ -1,0 +1,34 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Time_{reg}$ & Vecteur, {\tt Float\_64} & Temps avec fr\'equence de 1 Hertz ($s$)\\
+$Image_{2D}$ & Matrice X1024, {\tt Int\_32} & Image\\
+$Time_{asyn}$ & Vecteur, {\tt Float\_64} & Temps de la variable d'entr\'ee Image ($s$)\\
+$TAS_{2D}$ & Vecteur, {\tt Int\_16} & True Air Speed ($m/s$)\\
+$Code_Hexa_sonde$ & Coefficient, {\tt String} & Code hexadecimal de la sonde\\
+$Masque\_sonde$ & Coefficient, {\tt String} & Masque hexadecimal des donn\'ees images\\
+$Bits\_temps$ & Coefficient, {\tt Int\_16} & Nombre de bits de codage du temps dans les s\'eparateurs\\
+$Nbval_{as}$ & Coefficient, {\tt Int\_32} & Nombre d'\'el\'ements dans le vecteur de temps ascynchrone\\
+$Temps_{debut}$ & Coefficient, {\tt Int\_32} & Temps du d\'ebut de l'analyse en secondes depuis minuit\\
+$Temps_{fin}$ & Coefficient, {\tt Int\_32} & Temps de la fin de l'analyse en secondes depuis minuit\\
+$Tronq_{debut}$ & Coefficient, {\tt Int\_16} & Num\'ero de la diode \`a consid\'erer (d\'ebut)\\
+$Tronq_{fin}$ & Coefficient, {\tt Int\_16} & Num\'ero de la diode \`a consid\'erer (fin)\\
+$DOF_{ok}$ & Coefficient, {\tt Int\_16} & Si on calcule le spectre en nombre (0) ou en concentrations cm-3 micron-1 (1)\\
+$dof_{pms}$ & Coefficient, {\tt Int\_16} & Si on utilise le DOF du constructeur (1) ou le DOF corrig\'e (0)\\
+$xwid$ & Coefficient, {\tt Float\_32} & Espacement en microns en X des diodes\\
+$ywid$ & Coefficient, {\tt Float\_32} & Espacement en microns en Y des diodes\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Spec\_tot_{2D}$ & Vecteur, {\tt Float\_32} & Spectre total 2D\\
+$Spec\_moy_{2D}$ & Matrice X74, {\tt Float\_32} & Spectre moyen total 2D particules non-tronqu\'ees\\
+$Spec\_moyt_{2D}$ & Matrice X74, {\tt Float\_32} & Spectre moyen total 2D particules tronqu\'ees\\
+$Spec_{2D}$ & Matrice X74, {\tt Float\_32} & Spectre 2D particules non-tronqu\'ees\\
+$Spect_{2D}$ & Matrice X74, {\tt Float\_32} & Spectre 2D particules tronqu\'ees\\
+\end{tabarg}
+

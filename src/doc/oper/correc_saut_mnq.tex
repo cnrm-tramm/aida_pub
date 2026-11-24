@@ -1,0 +1,46 @@
+%%%%%
+%
+\section{Correction de sauts simples avec prise en compte des valeurs manquantes}
+
+\itemstyle{Op\'erateur~:} \operfmt{correc\_saut\_mnq}
+\index{correc\_saut\_mnq}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+
+D\'etection de sauts sup\'erieurs \`a un seuil 
+se produisant sur une seule valeur. La valeur "fausse"
+est remplac\'ee par la moyenne des valeurs qui l'encadrent. 
+D\'etection de sauts sup\'erieurs \`a un seuil\_mnq 
+se produisant sur une seule valeur après une valeur manquante.
+ La valeur "fausse"
+est remplac\'ee par une valeur manquante.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/correc_saut_mnq.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/correc_saut_mnq.frm.tex}
+
+%%%%%COMMENTAIRES%%%%
+\itemstyle{Commentaires}
+
+Cet opérateur a quelques problèmes pour : 
+\begin{itemize}
+\item le traitements de tous les cas de sauts avant ou après une valeur manquante
+\item l'interpolation linéaire en cas de pics successifs
+\item le remplacement des valeurs manquantes existantes dans $x$
+\end{itemize}
+
+Utiliser l'opérateur \operfmt{Correc\_pics\_mnq}.
+
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

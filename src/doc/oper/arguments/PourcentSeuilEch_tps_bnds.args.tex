@@ -1,0 +1,25 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X_{in}$ & Vecteur, \texttt{float} & Variable d'origine\\
+$toler_{mnq}$ & Coeff., \texttt{Int\_32} & Seuil de calcul du pourcentage (nb d'échantillons). A chaque instant de la base de temps d'arrivée, 
+le pourcentage est calculé si le nombre d'échantillons dans l'intervalle de temps est strictement supérieur à $toler\_mnq$. Sinon, 
+le résultat est "valeur manquante". Si $toler\_{mnq}$ = 0 le calcul est fait dès qu'il y a au moins une valeur valide dans l'échantillon\\
+$time_{out}$ & Vecteur, \texttt{double} & Base de temps d'arrivée (secondes)\\
+$val_{seuil}$ & Coeff., \texttt{float} & Seuil de validité (en meme unité que $X_{in}$ )\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X_{out}$ & Vecteur, \texttt{float} & pourcentage de $X_{in}$ échantillonné sur
+la base de $time_{out}$ (même unité que $X_{in})$\\
+\end{tabarg}
+

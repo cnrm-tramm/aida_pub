@@ -1,0 +1,43 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{FSSP: Calcul de l'activité à partir des comptages}
+
+\itemstyle{Op\'erateur~:} \operfmt{fssp\_activ\_calc}
+\index{fssp\_activ\_calc}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul de la fraction d'activité d'une sonde de type FSSP, à partir des comptages
+dans la DOF ("\texttt{strobe}") et hors de la DOF ("\texttt{fastreset}").
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/fssp_activ_calc.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/fssp_activ_calc.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+La formule de la note 24 du NCAR ne tient pas compte du temps
+de transit moyen des gouttes dans le faisceau ($\tau_T$). Les
+délais longs et courts ($\tau_1$ et $\tau_2$) sont des délais 
+de traitement électronique, il est  donc logique de leur rajouter
+le temps de transit moyen.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Darrel Baumgardner, Bulletin NCAR/RAF n°24,
+\textit{Airborne Measurements for Cloud Microphysics}.
+\cite{RAF-24}

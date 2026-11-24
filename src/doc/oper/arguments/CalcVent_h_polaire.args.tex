@@ -1,0 +1,21 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+DD$_a$ & Vecteur, \texttt{float} & Direction du vent relatif (degré, dans le sens indirect
+ à partir de l'axe poupe-proue)\\
+FF$_a$ & Vecteur, \texttt{float} & Vitesse du vent relatif ou apparent (m/s)\\
+DD$_r$ & Vecteur, \texttt{float} & Route du navire (degré,  dans le sens indirect
+ à partir du nord géographique)\\
+VV$_r$ & Vecteur, \texttt{float} & Vitesse du navire selon la route (m/s)\\
+CAP & Vecteur, \texttt{float} & Cap du navire : angle entre nord géographique et l'axe poupe-proue (degré)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+DD & Vecteur, \texttt{float} & Direction du vent vrai au sens météo par rapport au nord géographique (degré)\\
+FF & Vecteur, \texttt{float} & Vitesse du vent vrai (même unité que FF$_a$ et VV$_r$)\\
+\end{tabarg}

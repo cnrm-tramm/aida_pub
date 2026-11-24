@@ -1,0 +1,48 @@
+%%%%%
+%
+\section{Invalidation de valeurs selon un flag}
+
+\itemstyle{Op\'erateur~:} \operfmt{Valide\_vent\_givrage}
+\index{Valide\_vent\_givrage}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Crée une copie de 2 vecteurs, en remplaçant éventuellement
+les valeurs initiales par zéro selon les indications d'un flag.
+
+Les valeurs du premier vecteur sont remplacées par zéro lorsque
+le chiffre des milliers du flag est non-nul.
+
+Les valeurs du premier vecteur sont remplacées par zéro lorsque
+le chiffre des centaines ou le chiffre des dizaines du flag est non-nul.
+
+Le choix d'une valeur de remplacement égale à zéro (plutôt que valeur
+manquante, par exemple), a été fait parce que, dans certains cas,
+zéro est une valeur dégradée mais utilisable de certaines
+mesures (par exemple, sur un avion, un vent
+horizontal calculé avec une incidence et un dérapage nul
+peut être considéré comme une approximation acceptable).
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Valide_vent_givrage.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Valide_vent_givrage.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Cet opérateur est particulièrement adapté au cas où flag provient de
+l'opérateur \operfmt{Qualite\_vent\_relatif}, $X$ est un dérapage,
+et $Y$ une incidence.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

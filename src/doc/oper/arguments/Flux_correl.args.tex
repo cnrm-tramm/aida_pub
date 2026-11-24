@@ -1,0 +1,26 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entrées}}\\
+\hline
+$Cov\_wt$ & Vecteur, \texttt{float} & Covariance entre la température et la vitesse verticale de l'air ($m.K/s$)\\
+$Cov\_wu$ & Vecteur, \texttt{float} & Covariance entre la composante du vent suivant l'axe du vent moyen et la vitesse verticale de l'air ($m^2/s^2$)\\
+$Cov\_wv$ & Vecteur, \texttt{float} & Covariance entre la composante du vent suivant l'axe perpendiculaire au vent moyen et la vitesse verticale de l'air ($m^2/s^2$)\\
+$Cov\_wr$ & Vecteur, \texttt{float} & Covariance entre le rapport de mélange en vapeur d'eau et la vitesse verticale de l'air ($m.g/kg.s$)\\
+$P_a$ & Vecteur, \texttt{float} & Pression atmosphérique (hPa)\\
+$T_a$ & Vecteur, \texttt{float} & Température de l'air ($°C$ ou $°K$)\\
+$r$ & Vecteur, \texttt{float} & Rapport de mélange en vapeur d'eau  ($g/kg$)\\
+$T_i$& Coeff., \texttt{float} & Temps d'intégration pour le calcul du flux ($s$)\\
+$R_a$ & Coeff., \texttt{double} & Constante spécifique de l'air sec ($J.kg^{-1}.K^{-1}$)\\
+$C_{pa}$ & Coeff., \texttt{double} & Capacité calorifique pour l'air sec ($J.kg^{-1}.K^{-1}$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$H$ & Vecteur, \texttt{float} & Flux de chaleur sensible ($W/m^2$)\\
+$LE$ & Vecteur, \texttt{float} & Flux de chaleur latente ($W/m^2$)\\
+$\tau$ & Vecteur, \texttt{float} & Flux de quantité de mouvement ($N/m^2$)\\
+$U_*$ & Vecteur, \texttt{float} & Vitesse de frottement ($m/s$)\\
+\end{tabarg}

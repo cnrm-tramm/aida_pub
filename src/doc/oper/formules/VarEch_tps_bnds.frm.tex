@@ -1,0 +1,12 @@
+%%Var_Ech_tps_bnds
+Pour  i=$0$, $Nbre\_Time\_bnds$ :
+\[
+I_i = \left\{X_j | tb[i][0] \leq time_{in}[j] \le tb[i][-1],
+ X_j \in \mathbb{R}\right\}
+\]
+\[
+m_i = \frac{1}{\mathrm{card}(I_i)} \sum_{I_i} X
+\]
+\[
+V_x[i] = \frac{1}{\mathrm{card}(I_i)} \sum_{I_i} (X -m_i)^2
+\]

@@ -1,0 +1,39 @@
+%%%%%
+%
+\section{Transformation du temps GPS en temps UTC}
+
+\itemstyle{Op\'erateur~:} \operfmt{GPS\_to\_UTC}
+\index{GPS\_to\_UTC}
+\label{OP-GPS_to_UTC}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Le temps GPS est compté en secondes depuis le début de
+la semaine, dans le système GPS (décalé d'une valeur
+constante avec le TAI et d'une valeur variable avec l'UTC).
+Cet opérateur
+convertit des temps exprimés dans le système GPS en temps UTC
+(compté en secondes depuis 0h00). 
+Le décalage GPS/UTC doit être explicitement donné en argument.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/GPS_to_UTC.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/GPS_to_UTC.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Si un vecteur des différences GPS-UTC est disponible, il est plus simple 
+d'utiliser \hyperref[OP-GPS_to_UTC_auto]{\operfmt{GPS\_to\_UTC\_auto}}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+\textit{GPS, theory and practice}, par B. Hofmann-Wellenhof, H. Lichtenegger, and J. Collins \cite{Hofmann-GPS}

@@ -1,0 +1,17 @@
+%%Correc_hors_bornes_flag
+1- recherche de périodes de valeurs hors-bornes consécutives.\newline
+2- Pour chaque période :\newline
+\indent Si elle est de durée $< seuil_{duree}$, et encadrée par 
+des valeurs correctes,\newline
+\hspace*{2cm} remplacement par une interpolation linéaire\newline
+sinon\newline
+\hspace*{2cm} remplacement par des «valeurs manquantes».\newline
+\newline
+En sortie : le flag permet de connaître l'origine des valeurs :
+\begin{description}
+\item[ ~0] si la valeur initiale $X$ est valide (non manquante et comprise entre les 2 bornes fixées)
+\item[ -1] si la valeur initiale $X$ est inférieure à la borne minimale
+\item[ +1] si la valeur initiale $X$ est supérieure à la borne maximale
+\item[-10] si la valeur initiale est manquante
+\end{description}
+

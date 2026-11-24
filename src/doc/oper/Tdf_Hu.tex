@@ -1,0 +1,42 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%
+\section{Point de rosée ou de givre sachant l'humidité relative}
+
+\itemstyle{Opérateur~:} \operfmt{Tdf\_Hu}
+\index{Tdf\_Hu}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+ Calcul de la température du point de rosée ou de givre à partir
+de l'humidité relative à l'eau liquide et la température de l'air.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Tdf_Hu.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Tdf_Hu.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+
+Les formules directes et réciproques de $ew(T)$ sont
+celles de l'article Bolton-1980 \cite{Bolton-80} :
+eq. 10, page 1047, décrite en annexe 
+\ref{annexe-ewbolton}.
+
+La formule réciproque de $ei(T)$ est celle 
+recommandée par l'OMM dans l'annexe 4.B du  \emph{Guide des instruments
+et des méthodes d'observation météorologique} \cite{OMM-N8-1996},
+décrite en annexe \ref{annexe-invewiOMM} de ce propre document.

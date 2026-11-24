@@ -1,0 +1,27 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$JDA$ & Coeff., \texttt{int} & Numéro du jour dans l'année (de 1 à 366)\\
+$Time$ & Vecteur, \texttt{double} & Heure UTC (sec. depuis 0h00 du jour passé en premier argument)\\
+$Lon$ & Vecteur, \texttt{float} & Longitude (degree)\\
+$Lat$ & Vecteur, \texttt{float} & Latitude (degree)\\
+$\psi$ & Vecteur, \texttt{float} & Azimut (ou cap) de la plate-forme de mesure (degree)\\
+$\phi_p$ & Vecteur, \texttt{float} & Angle de gîte, ou roulis (degree)\\
+$\theta_p$ & Vecteur, \texttt{float} & Assiette longitudinale, ou tangage (degree)\\
+$\Delta\phi$ & Coeff., \texttt{double} & Décalage entre l'angle de gîte de l'instrument et celui de la plate-forme (degree)\\
+$\Delta\theta$ & Coeff., \texttt{double} & Décalage entre l'angle de tangage de l'instrument et celui de la plate-forme (degree)\\
+SW$_d$ & Vecteur, \texttt{float} & Flux global incident (W/m$^2$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+SW$_c$ & Vecteur, \texttt{float} & Flux global incident corrigé (W/m$^2$)\\
+\end{tabarg}

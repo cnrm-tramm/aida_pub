@@ -1,0 +1,35 @@
+%% Formule de l'operateur : pos_sol_mobile_loa
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+Calcul des deux coordonnées du soleil dans le repère équatorial local :
+\[
+\begin{cases} \omega &=  15  \frac{\pi}{180} \left(\frac{Time}{3600} + \frac{Lon}{15} - \frac{ET}{60} - 12 \right)\\
+\delta &= f\left(2\pi \frac{(JDA-1)}{365}\right)
+\end{cases} 
+\]
+%équation du temps
+$\omega$: angle horaire, l'angle sur le plan équatorial, 
+entre la position du plan méridien contenant le soleil et le méridien local,
+compté  positivement vers l'Est.
+%  	Angle horaire:
+%L'une des coordonnées horaires. Angle dièdre du cercle horaire de la direction et du méridien du lieu pris comme
+%origine. L'angle horaire est compté positivement dans le sens rétrograde. 
+
+$\delta$ : déclinaison, l'angle que forme la direction Terre-Soleil par rapport au 
+plan de l'équateur terrestre, dans le cercle méridien contenant le soleil.
+
+$ET$ : l'«équation» du temps, la différence (Temps solaire vrai) - (Temps solaire moyen).
+
+Puis conversion géométrique en azimut ($\Phi_0$) et angle solaire zénithal ($\Theta_0$):
+\[
+\begin{cases}
+Elev &=  \arcsin \left( \sin(Lat) \sin(\delta) + \cos(Lat)\cos(\delta)\cos(\omega) \right)\\
+ \Theta_0 &=  90 - Elev\\
+\Phi_0 &\text{est tel que } \begin{cases}\sin(\Phi_O)&= \cos(\delta)*\sin(\omega)/\cos(Elev) \\
+\cos(\Phi_O)&= \frac{-\cos(Lat)\sin(\delta)+\sin(Lat)\cos(\delta)\cos(\omega)}{\cos(Elev)}
+\end{cases} 
+\end{cases} 
+\]

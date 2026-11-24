@@ -1,0 +1,164 @@
+*{
+	margin:0;
+	padding:0;
+}
+#menu{
+	width:300px;
+	margin:20px auto 0 auto;
+}
+.menu, .sousmenu, .sousmenu2, .sousmenu3, .sousmenu4{
+	text-align:left;
+}
+.menu{
+	height:18px;
+	width:300px;
+	#padding:2px 0;
+	background:#404040;
+	color:#fff;
+}
+.sousmenu{
+	height:18px;
+	width:300px;
+	#padding:1px 0;
+	background:#808080;
+	color:#fff;
+}
+.sousmenu2{
+    margin:0 auto 0 auto;
+    height:18px;
+	width:300px;
+    #padding:1px 0;
+    background:#808080;
+	color:#fff;
+}
+.sousmenu3{
+	height:18px;
+	width:300px;
+	#padding:1px 0;
+	background:#cccccc;
+	color:#606060;
+}
+.sousmenu4{
+	height:18px;
+	width:300px;
+	#padding:1px 0;
+	background:#eeeeee;
+	color:#404040;
+}
+
+.menu a{
+	display:block;
+	width:100%;
+	height:100%;
+	color:#fff;
+	font-family:arial,sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	background:#404040;
+}
+.sousmenu a{
+	display:block;
+	width:100%;
+	height:100%;
+	color:#fff;
+	font-family:arial,sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	background:#808080;
+}
+.sousmenu2 a{
+	display:block;
+	width:100%;
+	height:100%;
+	color:#fff;
+	font-family:arial,sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	background:#808080;
+}
+.sousmenu3 a{
+	display:block;
+	width:100%;
+	height:100%;
+	color:#606060;
+	font-family:arial,sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	background:#cccccc;
+}
+.sousmenu4 a{
+	display:block;
+	width:100%;
+	height:100%;
+	color:#404040;
+	font-family:arial,sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	background:#eeeeee;
+}
+.menu a:hover, .sousmenu a:hover, .sousmenu2 a:hover, .sousmenu3 a:hover, .sousmenu4 a:hover, .menu a:active, .sousmenu a:active, .sousmenu2 a:active, .sousmenu3 a:active, .sousmenu4 a:active{
+    background-color:#F8670E;
+}
+a:focus
+{
+outline:0;
+background:#F8670E;
+} 
+table {
+    border : 1px solid #222222;
+    border-collapse : collapse;
+}
+.tdgauche {
+    width : 200px;
+    vertical-align : top;
+    background:#404040;
+}
+.tddroite {
+}
+#framedoc {
+    width : 600px;
+    height : 600px;
+    border-width : 0px;
+}
+.banniere {
+    #border : 1px solid #EF10AD;
+    background : #F8670E;
+    font-size:20px;
+	font-weight:bold;
+    text-align : center;
+}
+.banniere span {
+    font-size:12px;
+    
+}
+.titre1 {
+    margin-left : 10px;
+    margin-bottom : 10px;
+    margin-top : 20px;
+    font-size:14px;
+	font-weight:bold;
+    text-decoration :underline;  
+}
+.titre2 {
+    margin-left : 20px;
+    margin-bottom : 10px;
+    margin-top : 20px;
+    font-size:14px;
+	font-weight:bold;
+}
+.paragraphe1 {
+    margin-left : 20px;
+    font-size:12px;  
+}
+.img1 {
+    margin-left : 100px;
+}
+.liste {
+    margin-left : 40px;
+    font-size:12px;
+}

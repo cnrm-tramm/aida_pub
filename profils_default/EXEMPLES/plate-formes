@@ -1,0 +1,28 @@
+# vim: set fileencoding=iso-8859-15 :
+# -*- coding: iso-8859-15 -*-
+# Les 2 lignes ci-dessus sont pour vi et emacs, respectivement.
+# Le paragraphe ci-dessous est pour un parser scrupuleux.
+[FORMAT]
+file_encoding = iso-8859-15
+format_position = latitude/longitude/altitude, ou "mobile"
+
+[falcon]
+nom_long         = Falcon20
+abrev            = fs
+tri              = acqid
+aliases          = Falcon, F-Falcon, M20
+call-sign        = X-XXXX
+nom_serie_mesure = Vol
+position         = mobile
+responsable      = X Y
+logo_ecran       = my_logo.png
+
+[test-AIDA]
+nom_long         = Plateforme de tests AIDA
+abrev            = ts
+tri              = freq
+nom_serie_mesure = Journee
+duree_vecteur    = journee
+position         = +43.574167 / +1.373889 / 140.0m 
+responsable      = Equipe EXEMPLES
+logo_ecran       = my_logo.png

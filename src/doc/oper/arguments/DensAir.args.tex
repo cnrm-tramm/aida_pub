@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$P$ & Vecteur, \texttt{float} & Pression de l'air (hPa)\\
+$T$ & Vecteur, \texttt{float} & Température de l'air (K)\\
+$H_a$ & Vecteur, \texttt{float} & Humidité absolue de l'air (gram/m$^3$)\\
+$R_a$ & Coeff., \texttt{double} & Constante spécifique de l'air sec (J.kg$^{-1}$.K$^{-1}$)\\
+$R_v$ & Coeff., \texttt{double} & Constante spécifique de la vapeur d'eau (J.kg$^{-1}$.K$^{-1}$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$\rho$ & Vecteur, \texttt{float} & Masse volumique (``densité'') de l'air (kg/m$^3$)\\
+\end{tabarg}

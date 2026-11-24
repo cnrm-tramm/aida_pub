@@ -1,0 +1,522 @@
+
+% Partie 2 : Format des fichiers vecteurs
+\part{Format des fichiers vecteurs}
+\label{part:formvec}
+\section{Présentation générale}
+  Les \emph{fichiers-vecteurs} sont destinés au stockage de séries
+temporelles de paramètres mesurés ou calculés. Ils associent
+étroitement la donnée (dans un format binaire,
+copie directe de la représentation en mémoire de
+l'ordinateur), et sa description (dans une en-tête au format ASCII).
+%Ce format d
+
+  L'en-tête descriptive contient toutes les informations
+utiles (format, unité, appareil ou algorithme d'origine...), \textbf{sauf}
+la datation, car celle-ci
+est parfois très complexe à gérer (variables
+asynchrones). A chaque fichier de données, on associe donc un fichier
+temps qui indique l'instant de la mesure de chaque
+échantillon. Il y a strictement concordance entre ces deux fichiers :
+la date de la i\up{ème} donnée est la i\up{ème}
+valeur du fichier temps.
+
+      Naturellement, plusieurs fichiers de données
+synchrones sont associés au même fichier \og temps\fg{} : on
+ne duplique pas inutilement ces fichiers (dans le cas simplifié
+où toutes les variables seraient acquises à la même
+fréquence par le même système, il n'y aurait qu'un seul vecteur-temps).
+
+\section{Contenu}
+
+Ces fichiers sont organisés en 2 parties :
+\begin{enumerate}
+  \item Un en-tête descriptif (souvent nommé \og header\fg{})
+  \item Les données en binaire.
+\end{enumerate}
+
+\subsection{Format de l'en-tête.}
+L'en-tête est un bloc d'une taille multiple de 512
+octets, qui contient quelques informations techniques et le descriptif de la
+variable dans un bloc ASCII. Ce bloc ASCII est encadré entre deux
+marqueurs de début et de fin.
+Voici la structure précise de l'en-tête :
+\begin{itemize}
+  \item Une chaîne de repérage : \og VECT-DATA\texttt{\textbackslash{}n}\fg{}
+  \item La taille de l'en-tête (complète, avec les marqueurs, le bloc
+ASCII, le remplissage de fin), en octets. Cette taille est forcément un
+multiple de 512, et elle est écrite en ASCII cadré à
+droite sur 10 caractères suivis d'un saut de ligne 
+(\og \texttt{\textbackslash{}n}\fg{}).
+  \item le marqueur de début du bloc ASCII, qui se compose 
+    d'un caractère \og STX\fg{} (\texttt{\textbackslash{}002} ou \^{}B)
+    et d'un caractère \og LF\fg{} (\texttt{\textbackslash{}n}).
+  \item Le bloc ASCII, portion de texte documentant la variable, dont la
+description précise est donnée plus loin.
+  \item Le marqueur de fin du bloc ASCII, qui se compose de :
+  \begin{itemize}
+    \item une chaîne \og FIN\_HDR\texttt{\textbackslash{}{}n}\fg{}
+    \item la suite des caractères \og NP\fg{} (\texttt{\textbackslash{}}0cx ou \^{}L),
+       \og ETX\fg{} (\texttt{\textbackslash{}}003 ou \^{}C),
+      \og SUB\fg{} (\texttt{\textbackslash{}}1ax ou \^{}Z)
+  \end{itemize}
+\end{itemize}
+Ensuite, cet en-tête, jusqu'à la fin (c.a.d jusqu'au prochain
+multiple de 512 octets), est rempli de caractères \og \fg{} (espace).
+
+
+\subsubsection{Syntaxe du \og bloc-ASCII\fg{}}
+Le texte décrivant la variable prend la forme suivante :
+\begin{itemize}
+  \item une première ligne contenant le nom de la variable (normalement
+identique au \texttt{basename} du nom de fichier), encadré de crochets.
+  \item les lignes suivantes sous la forme \og \textsf{attribut = valeur}\fg{}
+\end{itemize}
+Les caractères sont codés selon la norme ASCII, ou
+éventuellement selon son extension ISO-8859-1 (ou ISO-Latin1).
+Le caractère de fin de ligne est le \og NL\fg{}
+(Il n'y a pas actuellement de spécification de longueur de ligne maximale).
+
+%%%\paragraph{attributs obligatoires}
+Les attributs suivants sont obligatoires :
+
+\begin{description}
+  \item[Nom du paragraphe] (entre crochet) nom du paramètre
+et \texttt{basename} du nom de fichier.
+  \item[vol] nom unique attribué à la série de mesure. C'est une chaîne de
+6 à 8 caractère au format \texttt{PPaann[nn]}, et qui est décrite de façon
+détaillée section \ref{sec:AcqId} page \pageref{sec:AcqId}. Pour des raisons
+de compatibilité historique, ce champ s'appelle exactement «vol», même pour des
+mesures de station de surface, ou à bord de bateaux.
+  \item[format] le codage informatique des données. La liste des
+  formats connus par la version actuelle d'AIDA est la suivante :
+
+  \begin{description}
+    \item[\textsf{Byte}, \textsf{Int\_16}, \textsf{Int\_32}, \textsf{Int\_64}] :\\
+       entiers signés
+    \item[\textsf{U\_Int\_8}, \textsf{U\_Int\_16}, \textsf{U\_Int\_32}] : \\
+       entiers non signés
+    \item[\textsf{Ieeefloat\_32}, \textsf{Ieeefloat\_64}] : \\
+       Nombres \og flottants\fg{} codés selon la norme ANSI/IEEE 754-1985.
+    \item[\textsf{Quanta\_12\_bits},
+          \textsf{Quanta\_14\_bits},
+          \textsf{Quanta\_16\_bits},
+          \textsf{Quanta\_32\_bits}] : \\
+       «mots-machine» provenant d'un convertisseur analogique-numérique. \\
+       Les \textsf{Quanta\_12\_bits} et \textsf{Quanta\_14\_bits} sont
+       stockés dans des mots de 16 bits, avec seulement 12 (ou 14) bits
+       significatifs.
+    \item[\textsf{Quanta\_14\_bits\_signe}] : \\
+       la version signée d'un \textsf{Quanta\_14\_bits}.
+    \item[\textsf{Arinc\_SY429}] : \\
+       codage selon la norme aéronautique ARINC-SY429 (mot de 64 bits)
+    \item[\textsf{BC635\_Time}] : Codage produits par la carte BC635.
+    \item[\textsf{Special}] : Codages particuliers.
+    \item[\textsf{Hpfloat\_32}] : \\
+       nombre «flottantsi» codés à la manières des machines HP-1000.
+    \item[\textsf{NCAR2D\_time}] : Le champ de datation des échantillons 
+«2D» enregistrés par la carte développée au NCAR.
+  \end{description}
+
+  Dans les noms de formats, la casse (majuscule/minuscule) n'est pas signifiante.
+  \item[endianness] indique l'ordre de la séquences d'octets des données. Ce champ peut prendre la valeur \texttt{little} ou \texttt{big}. Ce champ a été ajouté en 2021. Afin de conserver la compatibilité avec les anciens vecteurs, si ce champ n'est pas présent alors on considère endianness = big. 
+  \item[dimension] taille en octet d'une
+représentation de la variable. Si la valeur de l'attribut
+\textsf{format} était un type connu du
+langage C, on aurait : \textsf {dimension = sizeof(format)}. En
+général, donc, \textsf{dimension} peut se
+déduire de \textsf{format}, l'exception étant bien sûr le format 
+\textsf{Special}.
+  \item[dim\_array]  Dans le cas où chaque échantillon de la
+variable est représenté par un tableau au lieu d'une simple
+valeur (par exemple les spectres des FSSP), on indique ici les dimensions de
+ce tableau. Dans le cas où le tableau a plus d'une dimension (une
+image, par exemple), les tailles sont indiquées séparées par un \textsf{|}.
+L'ordre des tailles indiquées suit la convention
+du langage C. Ce champ n'est pas obligatoire; en son absence on suppose
+que la variables est scalaire (un seul échantillon par instant de mesure).
+   \item[ref\_time] Nom (\og logique\fg{}, sans le \texttt{.vbn} à la fin)
+du paramètre qui contient la datation de cette
+variable; ce champ n'est généralement pas présent
+dans les variables qui contiennent elle-même un temps, mais il n'est pas
+vraiment interdit qu'il y soit présent, dans les cas où l'on
+souhaiterais comparer plusieurs systèmes, et donc savoir à
+quelle heure (du premier système) correspond l'heure (du deuxième).
+   \item[time\_bnds] dans ref\_time, précise les bornes temps de 2 manières possibles : 
+   
+time\_bnds = vector : <nom du vecteur de bornes temps> 
+
+time\_bnds = decal\_av, decal\_ap (exemple : time\_bnds = -1800, 0 ) 
+
+les bornes temps sont calculées par time+decal\_av, time+decal\_ap 
+
+le nom du vecteur bornes temps est sous la forme : rft\_bnds\_<chaine libre>\_freq
+    \item[datation\_convention] attribut informatif dans le reftime pour indiquer la norme de codage
+     
+	datation\_convention = N avec N variant entre 0 et 1  (0, : debut, 1 : fin intervalle)
+    \item[type\_ech] Indique la façon dont la variable a
+   été échantillonnée. Deux valeurs sont 
+  possibles : \textsf{regulier} et \textsf{irregulier}.
+   Ce champ n'est obligatoire que pour les vecteurs de datation; 
+  S'il n'est pas présent dans un vecteur de données, on le déduit du
+vecteur de datation (celui désigné par
+\textsf{ref\_time}); et si celui-ci est absent, on finit par supposer que
+l`échantillonnage est irrégulier.
+    \item[freq\_ech] Si la variable a été
+régulièrement échantillonnée, la valeur de la
+fréquence d'échantillonnage, en Hz\footnote{Attention, cette
+fréquence n'est pas forcément un entier $\ge$ 1, c'est un
+réel $>$ 0}. Cette valeur peut être écrite avec toutes les décimales
+nécessaires (dans une limite raisonnable, disons 30 caractères), mais
+les expressions mathématiques (par exemple $ 1 / 3$) ne sont pas admises.
+Pour les variables irrégulièrement échantillonnées (\textsf{type\_ech = irregulier}), ce champ est
+présent et vaut 0.\\
+  (Pour préserver une compatibilité
+avec les précédentes versions du format, qui utilisaient le
+mot-clef \textsf{sample}, les programmes qui lisent des fichiers vecteurs
+doivent prévoir le cas où \textsf{freq\_ech} est absent, et
+lire alors le champ \textsf{sample}).
+    \item[unit] une unité répertoriée par la librairie \textit{udunits} du
+                groupe unidata ou \textsf{unitless} (pour les valeurs issues
+                d'un système de numérisation, l'unité la plus appropriée est
+                \textsf{bit}). \\
+                Pour des raisons historiques, on peut trouver l'unité
+                \textsf{without} qu'il convient alors d'interpréter comme
+                \textsf{unitless}.
+%%%%On trouvera en annexe 1 une liste
+%%%%des unités les plus fréquemment employées.
+  \item[orientation] lorsque le paramètre contenu dans un vecteur est
+une grandeur physique orientée (un angle, une distance sur un axe, une
+composante d'un vecteur), ce champ contient une description de cette
+orientation. Par exemple, pour un roulis : «~>0 lorsque le coté droit
+de l'avion (ou du navire) est enfoncé~». La présence de cet attribut n'empêche
+pas d'utiliser un nom explicite, lorsque c'est possible, par exemple
+"\texttt{ray\_glo\_d\_...}" pour un rayonnement global descendant, ou ``\texttt{vit\_e\_\ldots}"
+pour une composante de vitesse positive vers l'est.
+
+  \item[date\_creation] au format \textsf{jj/mm/aaaa hh\string:mm\string:ss}.
+  \item[origine] est un champ qui décrit à partir de quoi la variable a été
+    crée.  Il est composé de plusieurs mots séparés par des espaces. Le
+    premier décrit la fonction du programme producteur : c'est soit
+    \textsf{lecture}, soit \textsf{calibration}, soit \textsf{synchronisation}, 
+    soit enfin \textsf{traitement}.\\
+
+    La suite du champs précise la description. Elle varie selon les cas :
+
+    \begin{description}
+      \item{Dans le cas \textsf{lecture}}, le mot suivant est le type de
+        fichier d'origine [bande/f\_turb/NetCDF,...] puis le nom (sans le
+        chemin complet) si il s'agit d'un fichier.
+
+      \item{Dans le cas \textsf{calibration}}, le mot suivant est le nom du
+        fichier vecteur d'origine, suivi de l'éventuelle méthode employée pour
+        la calibration.
+
+      \item{Dans le cas \textsf{traitement}}, la suite indique le  nom du
+        programme de traitement (par compatibilité historique, si la suite est
+        vide, on considérera que le programme d'origine est adc).
+    \end{description}
+
+\end{description}
+
+%%%\paragraph{attributs optionnels}
+  Les champs suivants sont optionnels, mais il est recommandé de les
+renseigner chaque fois que c'est possible :
+\begin{description}
+   \item[name] Nom complet du paramètre, ne dépassant pas une
+ligne, en français.
+   \item[english\_name] Nom complet du paramètre, ne dépassant 
+pas une ligne, en anglais (dans un fichier NetCDF, ce serait l'attribut
+\textsf{long\_name}).
+   \item[information] Description textuelle élargie, pouvant compléter 
+le champ «name». 
+  \item[date\_vol] la date de mise en route de l'acquisition, au 
+format \textsf{jj/mm/aa hh\string:mm\string:ss}. L'information
+sur le jour doit correspondre au champ date de la section [IDENTIFICATION]
+du fichier .inf de l'acquisition. Si ces informations sont contradictoires,
+le fichier .inf fait foi.
+%% Ajouts suite à la réunion CAM/TRAMM du 02/12/1999
+   \item[bornes] Dans le cas où chaque échantillon du paramètre est un 
+tableau (attribut \textsf{dim\_array} supérieur à 1), ce champ précise 
+les bornes de chacun des éléments du tableau.
+Les bornes peuvent être être définie littéralement, sous la forme d'une expression permettant de les
+calculer, ou être contenues dans un autre vecteur pour le cas où les bornes sont variables dans le temps.
+La syntaxe peut prendre 3 formes :
+\begin{itemize}
+\item une suite de couples sous la forme :\\
+\texttt{bornes = ($x_1$,$y_1$); ...; ($x_n$,$y_n$) }.\\
+Les $x_i$ sont en général des réels, ou le caractère - si la
+limite n'est pas définie (+ ou - l'infini). Le nombre de
+couples est la valeur de \textsf{dim\_array}. (\textbf{Exception} : Les
+vecteurs "quanta" provenant de la carte-coupleur \textsc{CNRM-1D} contiennent
+une structure complexe : tableau de comptage et voies annexes. Dans 
+ce cas, le champ \textsf{bornes} ne décrit que le tableau de comptage,
+et le nombre de couples correspond à la valeur de l'attribut \textsf{classes}).
+
+\item une formule permettant de calculer les bornes : \\
+bornes = <range> : <debut> $d$, <fin>$f$, <nclasses>$N$, <pas>$P$, <largeur>$L$
+Les valeurs des champs $d$, $f$, $N$, $P$, $L$ sont des valeurs numériques réelles.\\
+L'ordre des champs n'a pas d'importance et 3 d'entre eux sont obligatoires.\\
+Le champ <pas> est obligatoire dans tous les cas.\\
+Le champ <largeur> est optionnel.  S'il n’est pas présent, alors $L = P$ \\
+Parmi les 3 champs : <debut>, <fin> , <nclasses>, 2 d’entre eux sont obligatoires \\
+La relation entre les champs est :  $f = d + (N -1)*P + L$ 
+
+\item la réference à un  autre vecteur contenant les bornes variables dans le temps : \\
+<vector> : \textsf{vecteur\_bornes}. Ce vecteur a 2 dimensions \textsf{dim\_array} et 2. Il contient à chaque pas de temps les bornes de début et fin de chaque classe.\\ 
+
+\end{itemize}
+
+Pour les vecteurs à plusieurs dimensions, les bornes de chaque dimension sont décrites par 
+les mêmes syntaxes séparées par des \textsf{|} si plusieurs dimensions. \\
+Par exemple : 
+
+\-\hspace{1cm} {bornes = <range>: .... | <vector>: ...  | ($x_1$,$y_1$); ...; ($x_n$,$y_n$)}
+
+L'ordre suit la même règle que \textsf{dim\_array}.
+
+   \item[unit\_bornes] Indique l'unité de l'attribut \textsf{bornes}
+décrit ci-dessus, séparés par des \textsf{|} s'il y a plusieurs dimensions.
+   \item[type\_acq]indique la façon dont la variable a
+    été acquise. Deux valeurs sont possibles :\\
+    \textsf{synchrone} (dans le cas où l'instant de l'acquisition est
+     commandé par le système d'acquisition),\\
+     ou \textsf{asynchrone}
+      (dans le cas où l'appareil lui-même décide du moment où
+      il envoie ses données au système d'acquisition).
+   \item[position] Un mot qui désigne un emplacement sur la plate-forme
+    de mesure.
+
+   \item[misval] la valeur spéciale pour les cas où la valeur
+           n'est pas disponible.
+   \item[invval] la valeur spéciale pour les cas où la valeur
+           était manifestement hors-norme.
+   \item[obs\_min] La plus petite valeur contenue dans la série
+   \item[obs\_max] La plus grande valeur contenue dans la série
+   \item[normal\_min] La plus petite valeur physiquement possible.
+   \item[normal\_max] La plus grande valeur physiquement possible.
+   \item[famille] Le type de grandeur physique de la mesure. La liste des
+familles connues est contenue dans le fichier \path{famille}, décrit
+en section \ref{sec:familles}, page \pageref{sec:familles}.
+   \item[fct\_origine] Une description de la fonction de calcul qui a
+produit ce vecteur.  Dans les cas où l'origine est «~lecture~» ou
+«~calibration~», il peut servir à donner des précisions sur le calcul
+effectué (formule, valeur des coefficients). Dans le cas où l'origine
+est «~traitement~», il doit indiquer
+tous les éléments d'entrée du calcul (vecteurs, coefficients), ainsi
+que les éléments de sortie (vecteurs ou paramètres produits
+simultanément). Dans le cas de traitement par adc, ce champ est une copie
+de la ligne de commande du calcul.
+   \item[fct\_comment] Commentaires ou compte-rendu produit(s) par la
+fonction de traitement.
+   \item[origine\-WARNING] messages d'avertissement ou de détection
+d'anomalie qui ont été émis lors de la fabrication du fichier-vecteur
+(par exemple « unité non reconnue »).
+
+\end{description}
+
+  Pour les vecteurs issus directement d'instruments (les \og quanta\fg{}
+et \og cal\fg{} ), il existe deux méthodes (deux séries de champs optionnels)
+pour décrire la mesure. Les programmes recherchant cette information doivent
+donc savoir traiter les deux cas.
+
+Le premier modèle est simple, et se base sur trois attributs :
+\begin{description}
+   \item[sensor] : nom de l'appareil de mesure.
+%% ajouts 2005
+La désignation complète d'un instrument comporte : le nom du constructeur,
+le nom du modèle, le numéro de série, et une éventuelle référence interne 
+(inventaire, ...).
+Pour un meilleur traitement automatique ultérieur, il est recommandé de  
+fournir ces quatre informations, séparées par des ":".
+%% Fin ajouts 2005
+   \item[transducer] : transducteur. Format exact non spécifié.
+   \item[calibration] : méthode et date de calibrage ou étalonnage. Format exact
+non spécifié.
+\end{description}
+
+Le second modèle est plus complexe, mais plus détaillé :
+\begin{description}
+%% Fin ajouts suite à la réunion CAM/TRAMM du 02/12/1999
+   \item[chaine\_acquisition] (anciennement chaine\_mesure obsolète) : pour les paramètres bruts, description de la chaîne 
+d'acquisition, selon le format : \\
+\texttt{chaine\_acquisition = module\_1 module\_2 module\_3 module\_4 ...}
+
+Les noms des modules sont de la forme module\_N, toujours en minuscules,
+et séparés par des espaces.
+
+   \item[module\_N] : description du N\up{ieme} module de la chaîne
+     d'acquisition, suivant le format : \\
+     \texttt{module\_N = <type\_module>:<fabricant>:<Modèle>:<Numéro de série>:<Numéro de référence interne>:<date et lieu de calibrage ou étalonnage>}
+
+\smallbreak
+Il n'est pas interdit qu'il y ait plusieurs modules de même
+type dans une chaîne d'acquisition.\\
+
+\smallbreak
+La définition précise des types est : \\
+  \begin{tabular}{rp{10cm}}
+    antenna & Élément mécanique permettant de capter
+    soit le flux d'air et de l'amener sur l'élément sensible,
+    soit un signal radio-électrique (radars, récepteurs GPS, ...) \\
+    
+    sensor & Élément sensible. Une de ses propriétés physique varie en fonction
+    de la grandeur que l'on veut mesurer. \\
+    
+    transducer & Transforme une propriété physique en tension, fréquence, 
+    courant, ... Il peut être constitué d'un ensemble sensor+transducer 
+    lorsqu'ils sont fortement liés (sensor pas facilement interchangeable) \\
+    
+    conditionner & Circuit électronique de traitement du signal issu 
+    d'un capteur ou d'un transducteur. Il est utilisé pour simplifier l'interface
+    du capteur avec le système d'acquisition de données. Il intervient entre le 
+    capteur ou le transducteur, et l'unité d'acquisition. \\
+    
+    acquisition\_unit & Interface entre le monde extérieur (tensions, bus 
+    numériques, lignes RS232) et le système d'acquisition.\\
+    
+    instrument & Appareil autonome se suffisant à lui-même, disposant 
+    d'un affichage ou d'un système de stockage des données.\\
+  \end{tabular}
+\end{description}
+
+%%%\paragraph{attributs libres}
+  Enfin, tous les noms qui ne sont pas décrits ici sont libres d'utilisation
+pour certaines applications spécifiques. En particulier les vecteurs résultant
+d'une simple lecture, ou d'une calibration, conservent, pour que
+l'auto-documentation soit complète, les attributs qui sont définis dans le
+fichier d'origine (en-tête de fichier NetCDF, fiches de configuration du
+système d'acquisition du CAM, etc...).
+
+  Le tableau suivant recense les mots déjà définis par le système
+d'acquisition du CAM, que d'autres applications doivent donc éviter
+d'utiliser : \\
+
+  \begin{tabular}{p{5cm}p{5cm}p{5cm}}
+      bloc                 & calibration                 & channel      \\
+      classes\footnotemark[1]
+                           & cnv\texttt{*} (cnvi, cnvj, cnvrtn, ...) & codage \\
+      code                 & codeRT                      & coupleur     \\
+      cutoff\_freq         & delay                       & gain         \\
+      index                & label                       & law          \\
+      laws                 & mode                        & module       \\
+      msgindex             & range\footnotemark[2]
+                                                         & raz          \\
+      recup                & reftime\footnotemark[3]     & resolution   \\
+      sample\footnotemark[4]
+                           & transducer                  & typeofdata   \\
+      version              & voiesup\footnotemark[1]     & voie\_sup\_\textit{x}\\
+  \end{tabular}
+
+%%% notes de bas de page
+\footnotetext[1]{\textsf{classes} et \textsf{voiesup} servent à préciser
+  \textsf{dim\_array} pour les vecteurs «quanta» de sondes 1D. Normalement,
+  \textsf{dim\_array}=\textsf{classes} + \textsf{voiesup}.}
+\footnotetext[2]{Attention : cet attribut n'a pas le même sens pour les données
+  issues de l'INS et des cartes analogiques.}
+\footnotetext[3]{Attention : ne pas confondre avec ref\_time !!!}
+\footnotetext[4]{Attention : n'est pas obligatoirement exprimée en Hz ! Voir
+  aussi le mot-clef «blocage» dans les descripteurs de blocs}  
+
+\subsection{Format de la partie binaire}
+Cette partie du fichier contient la suite des
+échantillons de la variable, dans le format indiqué dans la
+partie descriptive.
+
+    Le cas des variables qui ne sont pas de simples scalaires, mais des
+tableaux (\texttt{dim\_array>1}) nécessite quelques précisions.  Le principe
+général est que chaque tableau est considéré comme un échantillon, et le fichier
+contient donc la suite chronologique des tableaux. Lorsqu'un tel fichier sera
+chargé directement en mémoire, la façon de le décrire sera donc différente
+selon le langage informatique utilisé.
+
+Par exemple, pour des données se présentant sous la forme d'un tableau 
+unidimensionnel (dim\_array=n), la déclaration correspondante en C sera :\\
+\texttt{float data [nombre\_de\_secondes] [taille\_du\_tableau]}, ou encore\\
+\texttt{float data [] [taille\_du\_tableau],}
+
+alors qu'en FORTRAN, on écrirait plutôt :\\
+\texttt{DIMENSION data (taille\_du\_tableau, nombre\_de\_secondes)}, ou encore\\
+\texttt{DIMENSION data (taille\_du\_tableau, *)}
+
+Une autre façon de voir les choses est de considérer un programme "universel", qui 
+doit être capable de traiter des variables dont le dimensionnement est différent;
+il faut alors considérer la zone de données comme un tableau unidimensionnel, 
+et faire lui-même les calculs d'indice. La formule qui donne l'indice $k$ de la $i$\up{ème}
+valeur de la $s$\up{ème} seconde de donnée est : $k = i + s*\textrm{taille\_du\_tableau}$.
+
+Les cas de nombre de dimensions supérieures (par exemple les images pour lesquelles
+\textsf{dim\_array=m|n}) se traitent de la même façon;
+la formule générale qui donne l'indice $k$ du pixel $i$,$j$ de
+l'image de la $s$\up{ème} seconde est :
+$ k = s*m*n + i*m + j $
+
+\subsection{Cas particulier des variables temps}
+
+Elles contiennent toutes un temps depuis 00h00 UTC le jour de la mise en route du
+système d'acquisition, exprimé 
+en secondes. (Attention, pour les acquisitions qui chevauchent minuit
+UTC, le nombre de seconde peut donc dépasser 86400)
+
+Elles sont toutes au format \textsf{Ieeefloat\_64}, avec
+\textsf{dimension = 8}, et \textsf{unit = second}
+(le système unidata permettrait de rajouter  since 00h00 ).
+
+Pour éviter de lire tout le fichier lorsque l'on recherche juste les heures de
+début et de fin, on rajoute des champs \textsf{heure\_deb} et \textsf{heure\_fin},
+au format \textsf{hh\string:mm\string:ss.ddd}
+
+\section{Nommage}
+
+  L'extension de nom utilisée pour ces fichiers est : \texttt{.vbn}.
+
+  Le corps du nom de fichier (``\texttt{basename}'') correspond au
+nom de la variable, tel qu'il est défini dans l'en-tête.
+
+  Le nom d'un vecteur est à la fois un nom de fichier, et un nom de
+variable, qui est utilisé pour faire référence à ces données (sélection
+pour un graphique, formule de calcul, ...). La liste des caractères
+possibles dans ce nom
+cumule donc les contraintes des systèmes de fichiers et des interpréteurs.
+
+\medbreak
+  Les caractères suivants sont explicitement autorisés :
+
+\begin{itemize}
+	\item les lettres : de A à Z, en majuscule et en minuscul.
+	\item les chiffres :  de 0 à 9
+    \item le caractère souligné : « \_ »
+    \item le caractère pourcent : « \% »
+    \item le caractère 'deux points' : « : »
+    \item le caractère 'deux points' : « : »
+    \item le caractère arobase       : « @ »
+    \item le caractère point         : « . »
+\end{itemize}
+
+\medbreak
+  Il peut être envisagé d'utiliser les caractères suivants, qui ne sont pas
+explicitement interdits  :
+%– Enfin, il est recommandé que les programmes sachent manipuler des noms
+%contenant les caractères qui n'ont pas encore été mentionnés («!#,:@[]
+%{} ») mais le support de ces caractères n'est pas une obligation.
+
+\begin{itemize}
+  \item le caractère 'point d’exclamation' : « ! »
+  \item le caractère 'dièze'               : « \# »
+  \item le caractère 'virgule'             : « , »
+  \item les caractères accolades ouvrante et fermante : « \{ » et « \} »
+\end{itemize}
+
+\medbreak
+  A titre documentaire, les raisons d'exclusion des autres caractères sont
+données en annexe, page \pageref{sec:exclu}
+
+  D'un point de vue sécurité, l'interdiction de certains caractères ne veut
+pas dire que les scripts ne doivent pas se protéger contre les noms de fichiers
+qui contiendraient ces caractères. Cela signifie seulement qu'il est légitime,
+dans le cadre AIDA, d'ignorer ou de signaler ces fichiers.
+
+\textbf{Remarque} : les règles de nommage des paramètres (règles de
+construction des noms en fonction de taxonomies et référentiels) ne sont pas
+purement techniques, et sont donc décrites dans le volume 2 : manuel
+d'utilisation (\url{user.pdf}).
+

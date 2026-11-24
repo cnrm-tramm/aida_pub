@@ -1,0 +1,39 @@
+%%%%%
+%
+\section{Vent 3D à partir de vitesses mesurées dans un repère mobile}
+
+\itemstyle{Op\'erateur~:} \operfmt{CalcVent\_rect}
+\index{CalcVent\_rect}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+
+Calcul des trois composantes du vecteur vent à partir de mesures faites
+dans un repère lié à une plate-forme mobile (avion, bateau, ballon, ...). 
+et exprimées en coordonnées rectangulaires.
+
+Cet opérateur tient compte des trois composantes de
+la distance entre le point de mesure de la vitesse du vent relatif 
+(l'air par rapport au mobile)
+et le point de mesure de la vitesse par rapport au sol.
+
+Le calcul est effectué dans le repère lié au mobile, puis les composantes 
+sont transformées vers le repère géographique terrestre local
+(ENU : axes orientées vers l'Est, le Nord, et verticalement).
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/CalcVent_rect.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/CalcVent_rect.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}
+Bulletin NCAR-RAF Nr 23 \cite{RAF-23}.

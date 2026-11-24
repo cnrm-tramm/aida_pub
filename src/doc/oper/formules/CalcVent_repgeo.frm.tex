@@ -1,0 +1,47 @@
+Les composantes de la vitesse  de l'air
+par rapport à l'avion, corrigées de la vitesse d'entrainement
+de rotation, sont d'abord calculées dans le repére avion~: 
+\begin{eqnarray*}
+U_a & = & - V_p.D^{-1} \\
+V_a & = & - V_p.D^{-1}.\tan\beta + L.Vr_z\\
+W_a & = & - V_p.D^{-1}.\tan\alpha - L.Vr_y
+\end{eqnarray*}
+
+avec~: $ D = \sqrt{1+\tan^2\alpha+\tan^2\beta}$
+
+Une rotation fournit les componsantes 
+dans le repère géographique :
+\newcommand\relphantom[1]{\mathrel{\phantom{#1}}}
+\begin{equation*}\begin{split}
+U_{ag} &= U_a.\sin\psi.\cos\theta +  
+          V_a.(\cos\psi.\cos\phi + \sin\psi.\sin\theta.\sin\phi) \\
+      &\relphantom{=} +  W_a.(\sin\psi.\sin\theta.\cos\phi - \cos\psi.\sin\phi) \\   
+V_{ag} &= U_a.\cos\psi.\cos\theta - 
+          V_a.(\sin\psi.\cos\phi - \cos\psi.\sin\theta.\sin\phi) \\
+      &\relphantom{=}  + W_a.(\cos\psi.\sin\theta.\cos\phi + \sin\psi.\sin\phi) \\
+W_{ag} &= U_a.\sin\theta - 
+          V_a.\cos\theta.\sin\phi -
+          W_a.\cos\theta.\cos\phi
+\end{split}\end{equation*}
+%\begin{equation*}
+%\begin{pmatrix}
+%U_{ag} \\ V_{ag} \\ W_{ag} \\
+%\end{pmatrix} =
+%\begin{pmatrix}
+%\sin\psi.\cos\theta & \cos\psi.\cos\phi + \sin\psi.\sin\theta.\sin\phi & 0 \\
+%\cos\psi.\cos\theta & \sin\psi.\cos\phi - \cos\psi.\sin\theta.\sin\phi & 0 \\
+%\sin\theta & 1 & 0 \\
+%\end{pmatrix}
+%\begin{pmatrix}
+%U_{a} \\ V_{a} \\ W_{a} \\
+%\end{pmatrix}
+%\end{equation*}
+
+Enfin, le vent est la somme des vitesses
+de l'air par rapport à l'avion et de l'avion par rapport
+au sol~:
+\begin{equation*}
+\begin{pmatrix}U \\ V \\ W  \end{pmatrix} = 
+\begin{pmatrix}U_{ag} \\ V_{ag} \\  W_{ag} \end{pmatrix} + 
+\begin{pmatrix} V_e \\ V_n \\ V_v  \end{pmatrix}
+\end{equation*}

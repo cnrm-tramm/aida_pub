@@ -1,0 +1,46 @@
+%%Cor_deltaFF
+Selon la valeur du flag :\\
+1- si le flag est égal à 0 (mesures ok) alors : \\
+\hspace*{2cm} $flag\_Cdf$ = 0 et $ffbas\_Cdf$ = $ffbas$ etc...
+\\
+\\
+2- si le flag est positif ($ffhaut$ trop faible par rapport à $ffbas$) alors : \\
+\\
+\indent Si le point est isolé (flag avant et après égaux à 0) , on recalcule $ffhaut\_Cdf$ à partir des valeurs interpolés selon la formule suivante : \\
+\hspace*{2cm} $coeff$ = (( $ffhaut_{i-1}$ / $ffbas_{i-1}$ ) + ( $ffhaut_{i+1}$/$ffbas_{i+1}$ )) / 2.  \\
+\hspace*{2cm} $ffhaut\_Cdf$ = ( 1. / $coeff$ ) * $ffbas$  \\
+\hspace*{2cm} $ffbas\_Cdf$ = $ffbas$  \\
+\hspace*{2cm} $flag\_Cdf$ = 1 \\
+\\
+\indent Si le point n'est pas isolé (flag avant et/ou après différent de 0) , on recalcule $ffhaut\_Cdf$ par la méthode empirique qui a servi à détecter les points de mesures incohérents entr'eux : \\
+\hspace*{2cm} $ffhaut\_Cdf$ = ( 1.1647 * $ffbas$ ) + 0.1  \\
+\hspace*{2cm} $ffbas\_Cdf$ = $ffbas$  \\
+\hspace*{2cm} $flag\_Cdf$ = 2 \\
+\\
+\\
+3- si le flag est négatif ($ffbas$ trop faible par rapport à $ffhaut$) alors : \\
+\\
+\indent Si le point est isolé (flag avant et après égaux à 0) , on recalcule $ffbas\_Cdf$ à partir des valeurs interpolés selon la formule suivante : \\
+\hspace*{2cm} $coeff$ = (( $ffhaut_{i-1}$ / $ffbas_{i-1}$ ) + ( $ffhaut_{i+1}$/$ffbas_{i+1}$ )) / 2.  \\
+\hspace*{2cm} $ffbas\_Cdf$ = $coeff$ * $ffbas$  \\
+\hspace*{2cm} $ffhaut\_Cdf$ = $ffhaut$  \\
+\hspace*{2cm} $flag\_Cdf$ = 1 \\
+\\
+\indent Si le point n'est pas isolé (flag avant et/ou après différent de 0) , on recalcule $ffbas\_Cdf$ par la méthode empirique qui a servi à détecter les points de mesures incohérents entr'eux : \\
+\hspace*{2cm} $ffbas\_Cdf$ = ( 0.8586 * $ffhaut$ ) - 0.08586  \\
+\hspace*{2cm} $ffhaut\_Cdf$ = $ffhaut$  \\
+\hspace*{2cm} $flag\_Cdf$ = 2 \\
+\\
+\\
+RAPPEL : Formules des droites empiriques délimitant la zone de cohérence utilisées pour la "détection" des anomalies (opérateur Valid\_empir\_deltaFF) :\\
+\hspace*{1cm} Si $ffbas$ < 4 m/s :\\
+\hspace*{2cm} $ffhaut$ doit être inférieur à $ffhaut_{maxi1}$ avec \\ 
+$ffhaut_{maxi1}$ = 1.225 * $ffbas$ + 0.7\\
+\\
+\hspace*{1cm} Sinon :\\
+\hspace*{2cm} $ffhaut$ doit être inférieur à $ffhaut_{maxi2}$ avec \\ 
+$ffhaut_{maxi2}$ = 1.6 * $ffbas$ - 0.8\\
+\\
+\hspace*{1cm} Dans tous les cas (quelle que soit la valeur de $ffbas$):\\
+\hspace*{2cm} $ffhaut$ doit être supérieur à $ffhaut_{min}$ avec \\ 
+$ffhaut_{min}$ = 1.08 * $ffbas$ - 0.5\\

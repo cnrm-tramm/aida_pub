@@ -1,0 +1,23 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$JDA$ & Coeff., \texttt{int} & Numéro du jour dans l'année (de 1 à 366)\\
+$Time$ & Vecteur, \texttt{double} & Heure UTC (sec. depuis 0h00 du jour passé en premier argument)\\
+$Lon$ & Vecteur, \texttt{float} & Longitude (degree)\\
+$Lat$ & Vecteur, \texttt{float} & Latitude (degree)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$\Theta_0$ & Vecteur, \texttt{float} & Angle solaire zénithal (degree)\\
+$\Phi_{0}$ & Vecteur, \texttt{float} & Angle solaire azimutal (degree)\\
+$AMU0$ & Vecteur, \texttt{float} & Cosinus de $\Theta_0$\\
+\end{tabarg}

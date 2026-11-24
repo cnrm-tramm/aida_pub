@@ -1,0 +1,49 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : 1/2
+\section[Rapport de mélange en vapeur d'eau à partir du
+point de rosée ou de givre]{Rapport de mélange en vapeur d'eau à partir de la température du
+point de rosée ou de givre}
+
+
+\itemstyle{Opérateur~:} \operfmt{RapM\_Tdf}
+\label{OP-RapM_Tdf}
+\index{RapM\_Tdf}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul du rapport de mélange en vapeur d'eau à partir
+de la température du point de rosée ou de givre et 
+de la pression de l'air.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/RapM_Tdf.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/RapM_Tdf.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+Le fonctions $e_{w}(t)$ et $e_{wi}(t)$ sont décrites en annexe
+\ref{annexe-thermo}.
+
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}
+
+Triplet-Roche\cite{Triplet-Roche}, p55\\
+et définitions des humidités (relatives, absolues, spécifiques)
+et du rapport de mélange
+selon la table 4.3 des tables météorologiques internationales
+de l'OMM \cite{OMM-188.TP.94}.

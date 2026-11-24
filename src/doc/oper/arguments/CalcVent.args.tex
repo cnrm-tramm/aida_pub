@@ -1,0 +1,36 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab{ Entr\'ees}}\\
+\hline
+$L$ & Coeff., float& Distance alg\'ebrique entre le point de mesure de la vitesse 
+de l'air par rapport \`a l'avion, et le point de mesure de la 
+vitesse avion par rapport au sol ($m$)\\
+$V_p$ & Vecteur, {\tt float} & Vitesse propre ($m/s$) \\
+$\alpha$ & Vecteur, {\tt float} & Angle d'attaque, positif lorsque le vent relatif vient de sous l'avion ($radians$) \\
+$\beta$ & Vecteur, {\tt float} & Angle de d\'erapage, positif lorsque le 
+vent relatif vient de tribord ($radians$)\\
+$V_x$ & Vecteur, {\tt float} & Vitesse de l'avion par rapport au sol suivant 
+l'axe longitudinal de l'avion dirig\'e vers l'avant ($m/s$)\\
+$V_y$ & Vecteur, {\tt float} & Vitesse de l'avion par rapport au sol suivant l'axe 
+transversal de l'avion dirig\'e de babord vers tribord ($m/s$)\\ 
+$V_z$ & Vecteur, {\tt float} & Vitesse de l'avion par rapport au sol suivant l'axe 
+vertical de l'avion dirig\'e vers le bas ($m/s$)\\
+$Vr_y$ & Vecteur, {\tt float} & Vitesse de rotation suivant l'axe Y, positif quand $\theta$ cro\^{\i}t($rad/s$) \\
+$Vr_z$ & Vecteur, {\tt float} & Vitesse de rotation suivant l'axe Z, positif quand $\psi$ cro\^{\i}t ($rad/s$) \\
+$\theta$ & Vecteur, {\tt float} & Angle de tangage de l'avion, positif quand
+l'avion est cabr\'e ($radians$)\\
+$\phi$ & Vecteur, {\tt float} & Angle de roulis de l'avion, positif quand
+l'aile tribord est enfonc\'ee ($radians$)\\
+$\psi$ & Vecteur, {\tt float} & Cap g\'eographique de l'avion ($radians$) \\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab{ Sorties}}\\
+\hline
+$U$ & Vecteur, {\tt float} & Composante zonale du vent (Ouest en Est) ($m/s$)\\
+$V$ & Vecteur, {\tt float} & Composante m\'eridienne du vent (Sud au Nord) ($m/s$)\\
+$W$ & Vecteur, {\tt float} & Composante verticale du vent (Bas en Haut) ($m/s$)\\
+\end{tabarg}
+

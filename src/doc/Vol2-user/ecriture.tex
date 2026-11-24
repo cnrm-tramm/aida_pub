@@ -1,0 +1,39 @@
+\part{Production de fichiers exportables}
+\label{part:ecriture}
+\section{Introduction}
+On appelle \textit{fichiers exportables} des fichiers qui vont pouvoir être
+relus par d'autres programmes (tableurs, grapheurs) ou transférés dans une
+base de données.
+
+\section{Fichiers texte («ASCII»)}
+Le programme \texttt{simple\_vivect.py} permet de visualiser un fichier
+vecteur en texte («ASCII»)
+
+\subsection{Lancement}
+\texttt{simple\_vivect.py} peut être lancé sous \texttt{aito} (lorsqu'un
+vecteur est sélectionné), par le bouton \texttt{vivect} de l'onglet
+\texttt{données} ou en ligne de commande dans un terminal. \\
+Lancer la commande \fbox{\texttt{simple\_vivect.py -h}} pour obtenir de l'aide.
+
+\medbreak
+\textbf{\textit{Note : sous \texttt{aito}, le résultat de
+\texttt{simple\_vivect.py} est visualisé sous  éditeur \texttt{vi}}}
+
+
+%%% \section{prod_NASA-AMES-1001.sh}
+%%% \section{turbulence}
+%%%   \subsection{vec2turb}
+%%%   \subsection{check\_tur.py}
+
+
+\section{Fichiers CVS et nasa-ames-1001}
+Le programme \texttt{prod\_csv.py} permet de générer un fichier au format CSV
+ou au format nasa-ames-1001 à partir des vecteurs de différentes acquisitions.
+
+\subsection{Lancement}
+\texttt{prod\_csv.py} doit être lancé en ligne de commande dans un terminal. \\
+Lancer la commande \fbox{\texttt{prod\_csv.py -h}} pour obtenir de l'aide.
+
+
+\input{prod_CDF}
+

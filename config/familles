@@ -1,0 +1,130 @@
+[acceleration]
+acronyme = acc
+nom:fr = accélération
+nom:en = acceleration
+
+[altitude]
+acronyme = alt
+nom:fr = altitude
+nom:en = altitude
+
+[attitude]
+acronyme = att
+nom:fr = attitude
+nom:en = attitude
+
+[controle]
+acronyme = ctl
+nom:fr = contrôle
+nom:en = control
+
+[eau_liquide]
+acronyme = lwc
+nom:fr = eau liquide
+nom:en = liquid water
+
+[eau_vapeur]
+acronyme = hum
+nom:fr = vapeur d'eau
+nom:en = water vapour
+
+[indice_de_refraction]
+acronyme = irf
+nom:fr = indice de réfraction
+nom:en = refractive index
+
+[microphysique]
+acronyme = mic
+nom:fr = microphysique
+nom:en = microphysics
+
+[navigation]
+acronyme = nav
+nom:fr = navigation
+nom:en = navigation
+
+[optique]
+acronyme = opt
+nom:fr = optique
+nom:en = optics
+
+[physicochimie]
+acronyme = chm
+nom:fr = chimie
+nom:en = chemistry
+
+[position_horizontale]
+acronyme = pos
+nom:fr = position
+nom:en = position
+
+[precipitation]
+acronyme = prp
+nom:fr = précipitation
+nom:en = precipitation
+
+[pression]
+acronyme = pre
+nom:fr = pression
+nom:en = pressure
+
+[rayonnement]
+acronyme = ray
+nom:fr = rayonnement
+nom:en = radiation
+
+[temperature]
+acronyme = tpr
+nom:fr = température
+nom:en = temperature
+
+[temps]
+acronyme = rft
+nom:fr = temps
+nom:en = time
+
+[vent]
+acronyme = ven
+nom:fr = vent
+nom:en = wind
+
+[vitesse]
+acronyme = vit
+nom:fr = vitesse
+nom:en = velocity
+
+[turbulence]
+acronyme = trb
+nom:fr = turbulence
+nom:en = turbulence
+
+[flux]
+acronyme = flx
+nom:fr = flux
+nom:en = flux
+
+[statistiques]
+acronyme = sta
+nom:fr = statistiques
+nom:en = statistics
+
+[thermodynamique]
+acronyme = tmd
+nom:fr = thermodynamique
+nom:en = thermodynamics
+
+[top]
+acronyme = top
+nom:fr = top évènement
+nom:en = event marker
+
+[plateforme]
+acronyme = plf
+nom:fr =  données de la plateforme
+nom:en = platform data
+
+[inconnue]
+acronyme = xxx
+nom:fr = inconnue
+nom:en = unknown
+

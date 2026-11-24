@@ -1,0 +1,23 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float} & Paramètre X \\
+$Y$ & Vecteur, \texttt{float} & Paramètre Y \\
+$f_e$ & Coeff., \texttt{float} & Fréquence d'échantillonnage X et Y (Hz)\\
+$T_1$ & Coeff., \texttt{int} & Durée de la période d'intégration partielle  (s)\\
+$T_2$ & Coeff., \texttt{int} & Durée de la période d'intégration totale  (s)\\
+$R_{manq}$ & Coeff., \texttt{int} & Fraction minimale de valeurs non manquantes tolérées (compris entre 0 et 1) \\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$I_{stat}$ & Vecteur, \texttt{float} & Indice de stationnarité (sans unité)\\
+\end{tabarg}

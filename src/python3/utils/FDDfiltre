@@ -1,0 +1,186 @@
+#!/usr/bin/env python3
+
+"""
+Remplacement simpliste de FDDfiltre.c
+    Récupération d'informations contenues dans un fichier au format INI.
+
+    Ce script est un _portage simplifié_ de l'ancien utilitaire FDDfiltre.c
+    Les fichiers FDD sont des fichiers au format INI
+"""
+
+import os
+import sys
+
+import argparse
+import configparser
+
+PYTHON_X_Y = 'python%d.%d' % (sys.version_info[0], sys.version_info[1])
+sys.path.append(os.path.join(os.getenv('AIDA_HOME'), 'lib', PYTHON_X_Y))
+
+import AIDA
+from fct_messages import (info, warning, stop_error, result, wait_user)
+
+
+# concernant ce programme
+__version__ = "1.0.0"
+me = os.path.split(sys.argv[0])[1]
+
+
+def print_out(rubrique, champ, valeur, read_values, out_format):
+    """
+    """
+    if valeur:
+        if isinstance(read_values, list):
+            if valeur in read_values:
+                read_value = valeur
+                print(eval(f"f'{out_format}'"))
+        else:
+            if valeur == read_values:
+                read_value = valeur
+                print(eval(f"f'{out_format}'"))
+
+    else: # valeur == None
+        if isinstance(read_values, list):
+            for read_value in read_values:
+                print(eval(f"f'{out_format}'"))
+        else:
+            read_value = read_values
+            print(eval(f"f'{out_format}'"))
+
+
+if __name__ == '__main__':
+
+    # format de sortie
+    out_formats = {1: "{rubrique}",
+                   2: "{champ}",
+                   3: "{read_value}",
+                   4: "{champ}={read_value}",
+                  }
+
+    # parsing de la ligne de commande
+    description = "Récupération d'informations contenues dans un fichier au format INI."
+    epilog      = "Remplacement simpliste de l'utilitaire ancestral FDDfiltre"
+
+    parser = argparse.ArgumentParser(description     = description,
+                                     epilog          = epilog,
+                                     formatter_class = argparse.RawTextHelpFormatter)
+
+    parser.add_argument('-i',
+                        dest='input_file',
+                        metavar='input_file', type=str,
+                        help="fichier d'entrée \n" +\
+                             "(si option non fournie lecture de l'entrée standard)")
+
+    parser.add_argument('-l',
+                        required = True,
+                        dest='mode_list',
+                        action='store_true',
+                        help="mode list (le pendant -t n'est pas codé)")
+
+    parser.add_argument('-f',
+                        dest='out_format',
+                        metavar='niveau', type=int,
+                        help="avec niveau :      \n" +\
+                             "  1 : rubrique,      \n" +\
+                             "  2 : champ,         \n" +\
+                             "  3 : valeur,        \n" +\
+                             "  4 : champs=valeur. \n" +\
+                             "sans -f : [rubrique] champ=valeur")
+
+    parser.add_argument('-r', '-r0',
+                        dest='rubrique',
+                        metavar='rubrique', type=str,
+                        help="nom de la rubrique")
+
+    parser.add_argument('-c', '-c0',
+                        dest='champ',
+                        metavar='champ', type=str,
+                        help="nom du champ")
+
+    parser.add_argument('-v', '-v0',
+                        dest='valeur',
+                        metavar='valeur', type=str,
+                        help="valeur du champ")
+
+    args = parser.parse_args()
+
+    out_format = "[{rubrique}] {champ}={read_value}"
+    if  args.out_format in out_formats.keys():
+        out_format = out_formats[ args.out_format ]
+
+    rubrique = args.rubrique
+    champ    = args.champ
+    valeur   = args.valeur
+
+    # tester l'existance du fichier (configparser n'est pas très cool sur la
+    # remontée d'erreur "FileNotFoundError")
+    if args.input_file:
+        if not os.path.isfile(args.input_file):
+            AIDA.stop_error(f"{args.input_file} : le fichier n'existe pas.")
+
+    # lecture de l'input (fichier ou stdin) en gérant les problèmes d'encodage
+    parser = configparser.ConfigParser(allow_no_value=True)
+    # empêcher configparser de passer les noms d'option en minuscule
+    parser.optionxform = lambda option: option
+
+    if args.input_file:
+        try:
+            parser.read(args.input_file)
+        except Exception as e:
+            try:
+                parser.read(args.input_file, encoding='ISO8859-15')
+            except Exception as e:
+                AIDA.stop_error(f"{args.input_file} : erreur de lecture")
+    else: # stdin
+        # lorsque FDDfiltre est utilisé comme  un filtre (cmd | FDDfiltre),
+        # il peut recevoir des input codés en ISO8859-15 (vec2hdr ... | FDDfiltre)
+        import codecs
+        input_str = codecs.getreader('ISO8859-15')(sys.stdin.buffer).read()
+
+        try:
+            parser.read_string(input_str)
+        except Exception as e:
+            AIDA.stop_error(f"sys.stdin : erreur de lecture")
+
+    # traitement
+    if rubrique:
+        if not rubrique in parser.sections():
+            sys.exit(1)
+
+        if champ:
+            if not champ in parser.options(rubrique):
+                sys.exit(1)
+
+            read_values = parser.get(rubrique, champ)
+
+            # valeur vaut None ou la valeur passée par l'utilisateur
+            print_out(rubrique, champ, valeur, read_values, out_format)
+            sys.exit(0)
+
+        else: # pas champ, pas valeur => le contenu de la rubrique
+            for champ in parser.options(rubrique):
+                read_values = parser.get(rubrique, champ)
+
+                print_out(rubrique, champ, None, read_values, out_format)
+            sys.exit(0)
+
+
+    if champ:
+        for rubrique in parser.sections():
+            if champ in parser.options(rubrique):
+                read_values = parser.get(rubrique, champ)
+
+                # valeur vaut None ou la valeur passée par l'utilisateur
+                print_out(rubrique, champ, valeur, read_values, out_format)
+        sys.exit(0)
+
+
+    if valeur:
+        for rubrique in parser.sections():
+            for champ in parser.options(rubrique):
+                read_values = parser.get(rubrique, champ)
+
+                print_out(rubrique, champ, valeur, read_values, out_format)
+        sys.exit(0)
+
+    sys.exit(0)

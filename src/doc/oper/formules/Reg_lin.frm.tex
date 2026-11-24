@@ -1,0 +1,16 @@
+%%Reg_lin
+
+Les coefficients de la régression sont calculés par :
+\begin{eqnarray*}
+a &=& \frac{\overline {X.Y} - \overline{X}.\overline{Y} }
+        {\overline {X^2} - \overline{X}.\overline{X}} \\
+b &=& \overline{Y} - a. \overline{X} \\
+\end{eqnarray*}
+
+où \[ \overline{X} = \frac{1}{N} \sum_{i=0}^{N-1} X[i] \]
+
+Le paramètre estimé est calculé par  :
+\[
+Z = a.X + b
+\]
+

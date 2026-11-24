@@ -1,0 +1,38 @@
+%% Formule de l'operateur : Humrel_Humspec
+%\[
+Humidité spécifique à saturation en g/kg:
+\[
+Q_s = \frac{SH}{1000.} 
+\]
+
+Pression de vapeur: 
+\[
+E_s = \frac{Q_s  \times P_s} {\frac{R_a}{R_v} + Q_s \times \frac{1-R_a}{R_v}}
+\]
+avec    
+\[
+    R_a= \frac{8.314510}  {0.028964} 
+\]
+et
+\[
+R_v=461.51
+\]
+ 
+Calcul de la tension de vapeur saturante en fonction de $T0$=273.15°K
+
+\[
+\begin{tabular}{lll}
+    \text{Si} T > $T0$ \text{alors} &ewt= ew(T) & \text{la tension de vapeur saturante de l'eau} \\
+
+    \text{sinon}& ewt=ewi(T) & \text{la tension de vapeur saturante de la glace} 
+\end{tabular}
+\]
+
+Calcul de humidité relative:
+
+\[
+RH = \frac{100 \times E_s }{ ewt}
+\]
+
+%\]
+

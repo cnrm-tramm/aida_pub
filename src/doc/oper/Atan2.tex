@@ -1,0 +1,50 @@
+%%%%%
+%
+\section{Arctangente}
+
+\itemstyle{Op\'erateur~:} \operfmt{Atan2}
+\label{OP-Atan2}
+\index{Atan2}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcule l'arctangente du rapport de deux variables, en fournissant
+un résultat dans la gamme $]-\pi, \pi[$ (ou $]-180, 180[$).
+Cela revient à calculer l'arctangente de y/x,
+puis  utiliser le signe de x pour 
+déterminer le quadrant du résultat.
+
+Le résultat est la mesure de l'angle entre l'axe
+des X d'un repère othonormé du plan et le segment
+joignant l'origine de ce repère au point de coordonnées (x,y),
+compté positivement dans le sens trigonométrique direct.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Atan2.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Atan2.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+Attention à l'ordre des arguments : $Y$ est le premier argument.
+
+La valeur du résultat pour le cas $X = Y = 0$ n'est 
+pas définie mathématiquement. Cet opérateur suit la
+convention de la bibliothèque mathématique du langage C, pour
+qui atan2(0,0) = 0, afin d'éviter de créer de fausses
+valeurs manquantes lors d'opérations
+de conversion de coordonnées rectangulaire/polaires.
+
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+%\itemstyle{R\'ef\'erences~:}
+%INCONNU

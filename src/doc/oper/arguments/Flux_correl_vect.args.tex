@@ -1,0 +1,33 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$T_a$ & Vecteur, {\tt float} & Temp\'erature de l'air ($C$ ou $K$)\\
+$r$ & Vecteur, {\tt float} & Rapport de m\'elange en vapeur d'eau ($g/kg$)\\
+$U$ & Vecteur, {\tt float} & 1ère Composante horizontal du vent ($m/s$)\\
+$V$ & Vecteur, {\tt float} & 2ème Composante horizontal du vent ($m/s$)\\
+$W$ & Vecteur, {\tt float} & Composante verticale du vent ($m/s$) \\ 
+$P_m$ & Vecteur, {\tt float} & Pression à la fr\'equence du vecteur de sortie ($hPa$)\\
+$T_m$ & Vecteur, {\tt float} & Temp\'erature à la fr\'equence du vecteur de sortie ($C$ ou $K$)\\
+$r_m$ & Vecteur, {\tt float} & Rapport de m\'elange en vapeur d'eau à la fr\'equence du vecteur de
+sortie (g/kg)\\
+$f_e$ & Coeff., {\tt float} &  Fr\'equence d'\'echantillonnage des paramètres ($Hz$)\\
+$T_{int}$ & Coeff., {\tt float} & Temps d'int\'egration pour le calcul des covariances ($s$)\\
+$R_a$ & Coeff., {\tt double} & Constante sp\'ecifique de l'air sec ($J.kg^{-1}.K^{-1}$)\\
+$C_{pa}$ & Coeff., {\tt double} & Capacit\'e calorifique pour l'air sec ($J.kg^{-1}.K^{-1}$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$H$ & Vecteur, {\tt float} & Flux de chaleur sensible ($W/m^2$)\\
+$LE$ & Vecteur, {\tt float} & Flux de chaleur latente ($W/m^2$)\\
+$\tau$ & Vecteur, {\tt float} & Flux de quantit\'e de mouvement ($N/m^2$)\\
+%$u'w'$ & Vecteur, {\tt float} & Covariance UW ($m^2/s^2$)\\
+%$v'w'$ & Vecteur, {\tt float} & Covariance VW ($m^2/s^2$)\\
+$C_{uw}$ & Vecteur, \texttt{float} & Covariance UW ($m^2/s^2$)\\
+$C_{vw}$ & Vecteur, \texttt{float} & Covariance VW ($m^2/s^2$)\\
+
+\end{tabarg}

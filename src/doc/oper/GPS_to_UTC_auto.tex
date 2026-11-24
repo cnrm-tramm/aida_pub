@@ -1,0 +1,48 @@
+%%%%%
+%
+\section{Transformation d'un temps GPS en temps UTC (version automatique synchrone)}
+
+\itemstyle{Op\'erateur~:} \operfmt{GPS\_to\_UTC\_auto}
+\index{GPS\_to\_UTC\_auto}
+\label{OP-GPS_to_UTC_auto}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Le temps GPS est compté en secondes depuis le début de
+la semaine, dans le système GPS (décalé d'une valeur
+constante avec le TAI et d'une valeur variable avec l'UTC).
+ Cet opérateur
+convertit des temps exprimés dans le système GPS en temps UTC,
+compté en secondes depuis 0h00.
+
+Cet opérateur est dit automatique, car il utilise 
+la valeur du décalage GPS-UTC fournie par
+le récepteur.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/GPS_to_UTC_auto.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/GPS_to_UTC_auto.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Si un vecteur des différences GPS-UTC n'est pas disponible ou 
+inutilisable, il faut utiliser l'opérateur 
+\hyperref[OP-GPS_to_UTC]{\operfmt{GPS\_to\_UTC}} avec un argument explicite
+
+Si le vecteur des différences GPS-UTC n'est pas synchrone avec
+le vecteur des temps, il faut utiliser l'opérateur 
+\hyperref[OP-GPS_to_UTC_irreg]{\operfmt{GPS\_to\_UTC\_irreg}}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+\textit{GPS, theory and practice}, par B. Hofmann-Wellenhof, H. Lichtenegger, 
+and J. Collins \cite{Hofmann-GPS}

@@ -1,0 +1,39 @@
+%% THERMODYNAMIQUE %%
+%
+\section[Temp\'erature de l'air \`a partir de 
+la temp\'erature «sonique» et du rapport de mélange]
+{Temp\'erature de l'air \`a partir de 
+la temp\'erature sonique et du rapport de mélange en vapeur d'eau}
+
+\itemstyle{ Op\'erateur~: } {\sf Tair\_soni}
+\index{Tair\_soni}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Calcul de la temp\'erature de l'air, \`a partir de la
+temp\'erature sonique, et du rapport de mélange en vapeur d'eau.
+
+%%%%%ARGUMENTS%%%%%
+\bigskip
+\input {arguments/Tair_soni.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input{formules/Tair_soni.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+ On appelle température "sonique" une température calculée
+à partir de la vitesse de propagation du son dans l'air
+en assimilant l'air à un gaz parfait sec : $c = \sqrt{ \gamma_a R_a T}$
+donne $T = \frac{c^2}{\gamma_a R_a}$.
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ R\'ef\'erences~:}
+Triplet-Roche \cite{Triplet-Roche}, Kaimal 1990 \cite{Kaimal-1990}, 
+Pr\'esentation \`a l'atelier intrumentation de 1996 \cite{AIE96-TAA}.

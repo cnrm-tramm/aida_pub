@@ -1,0 +1,12 @@
+nom : le nom du vecteur (chaîne de caractères )
+array_dim : la dimension de chaque échantillon (nombre)
+sample : la fréquence d'échantillonnage (nombre)
+NbVal : le nombre d'échantillons (nombre)
+unit : l'unité (chaîne de caractère)
+ref_time : le nom du vecteur de datation (chaîne de caractères )
+misval : la valeur manquante (même type que le vecteur)
+famille : la famille du paramètre (chaîne de caractères )
+name : le nom long (chaîne de caractères )
+english_name : le nom long en anglais (chaîne de caractères )
+bornes : definition des bornes (chaîne de caractères )
+time_bnds : bornes de la plage temporelle de chaque échantillon

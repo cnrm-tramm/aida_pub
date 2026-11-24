@@ -1,0 +1,48 @@
+%% Formule de l'operateur : Cospectre_Chaleur_Moncrieff97
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+
+\medskip
+
+Pour j variant de 0 à $N_{freq} -1$, on calcule le tableau des fréquences $f_j$  : 
+
+$$
+f_j = \exp(\ln(f_0)+ \frac{\ln(10.)-\ln(f_0)}{N_{freq}} * (j+1)
+$$
+
+avec $f_0 = 1/7200.$ \\
+
+
+Pour chaque pas de temps $i$ on calcule :
+
+
+\begin{eqnarray*}
+k_{i,j} & = & f_j*\left\vert\frac{z - d}{U_{moy i}} \right\vert \\
+\zeta_i & = & (z - d)/L_i
+\end{eqnarray*}
+     
+Si $\zeta_i > 0. $ (conditions stables ) alors : 
+\begin{eqnarray*}
+ A_i & = & 0.284 * (1. + 6.4 * \zeta_i )^{0.75} \\
+ B_i & = & 2.34 * A_i^{-1.1} \\
+ Cosp_{i,j} & = & \frac{ k_ {i,j} }{ f_j * (A_i + B_i * f_j^{2.1}) }
+\end{eqnarray*}
+           
+sinon (conditions instables et neutres)  : 
+
+
+\hspace{3cm} si $k_{i,j} < 0.54$
+\begin{eqnarray*}
+Cosp_{i,j} & = & \frac{ 12.92 * k_{i,j} }{ f_j * (1. + 26.7 * k_{i,j})^{1.375} }
+\end{eqnarray*}
+
+\hspace{3cm} sinon :
+\begin{eqnarray*}            
+Cosp_{i,j} & = &  \frac{4.378 * k_{i,j} }{ f_j * (1. + 3.8 * k_{i,j})^{2.4} }
+\end{eqnarray*}
+
+
+

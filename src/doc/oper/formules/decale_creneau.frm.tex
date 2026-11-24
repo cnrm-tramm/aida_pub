@@ -1,0 +1,16 @@
+%% Formule de l'operateur : decale_creneau
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+A chaque instant :
+\[
+Y_i = 
+\begin{cases}
+X_i \qquad \text{ si } X_i > \text{seuil et délai franchissement seuil > decal\_up}\\
+X_{\text{pre\_seuil}} \qquad \text{ si } X_i > \text{seuil et délai franchissement seuil < decal\_up}\\
+X_i \qquad \text{ si } X_i < \text{seuil et délai franchissement seuil > decal\_down}\\
+X_{\text{pre\_seuil}} \qquad \text{ si } X_i < \text{seuil et délai franchissement seuil < decal\_down}\\
+\end{cases}
+\]
+

@@ -1,0 +1,23 @@
+%%%%%ENTREES%%%%
+\newcommand\Arga{Tab$_{in}$}
+\newcommand\Argb{NC$_{in}$}
+\newcommand\Argc{col\_remp}
+\newcommand\Argd{val\_remp}
+\newcommand\Arge{Tab$_{out}$}
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+\Arga & Vecteur, \texttt{float[any]} & Vecteur-tableau d'origine (unité quelconque)\\
+\Argb & Coeff., \texttt{Int\_32} & Taille de la première dimension (non-temporelle) du vecteur \Arga\\
+\Argc & Coeff., \texttt{Int\_32} & Numéro de la "colonne" à remplacer
+                                    (convention "C", début à zéro)\\
+\Argd & Vecteur, \texttt{float} & Valeurs de remplacement (même unité que \Arga)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+\Arge & Vecteur, \texttt{float[\Argb]} & Vecteur-tableau résultat (même unité que \Arga)\\
+\end{tabarg}

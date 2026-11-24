@@ -1,0 +1,13 @@
+%% Formule de l'operateur : CorFlux_spectral
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+
+\begin{eqnarray*}
+SCF & = & \frac{\sum\limits_{f_i=1/5000.}^{f_{max }} Cosp(f_i).(f_{i+1} -f_i) }
+{\sum\limits_{f_i=1/5000.}^{f_{max }} TF(f_i).Cosp(f_i).(f_{i+1} -f_i) } \\
+Flux_{cor} & = & SCF * Flux 
+\end{eqnarray*}
+

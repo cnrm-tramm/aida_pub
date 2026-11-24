@@ -1,0 +1,35 @@
+%%%%%
+%
+\section{Conversion du format \texorpdfstring{\texttt{double}}{double}
+vers {\texorpdfstring{\texttt{float}}{float}} }
+
+\itemstyle{Op\'erateur~:} \operfmt{CnvDbl2Flt}
+\index{CnvDbl2Flt}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Transcodage d'un param\`etre du format \texttt{double} vers le format \texttt{float}.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/CnvDbl2Flt.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/CnvDbl2Flt.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Cette opération comporte des risques de perte de précision, et 
+de débordement. C'est à l'utilisateur de s'assurer que la
+précision réelle du paramètre d'entrée correspond à la 
+précision d'un \texttt{float}, et qu'il n'y a pas de
+valeurs supérieures (en valeur absolue) à \texttt{FLT\_MAX}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

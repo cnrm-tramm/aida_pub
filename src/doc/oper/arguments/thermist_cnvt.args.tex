@@ -1,0 +1,21 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$R_{\textrm{brut}}$ & Vecteur, {\tt float} & R\'esistance de la thermistance (unité quelconque)\\
+$\textrm{Cnvt}$ & Coeff., {\tt float[2]} &  Coefficients pour la
+conversion d'unité \\
+$C_1$ & Coeff., {\tt float[4]} &  1er jeu de coefficients de la
+fonction de transfert \\
+$C_2$ & Coeff., {\tt float[4]} & 2\`eme jeu de coefficients de la
+fonction de transfert \\
+$R_0$ & Coeff., {\tt float} & Seuil (avant conversion) au-dessus duquel on applique $C_2$
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$T$ & Vecteur, \texttt{float} & Température ($K$)\\
+\end{tabarg}

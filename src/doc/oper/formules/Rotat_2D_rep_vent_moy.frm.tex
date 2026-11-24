@@ -1,0 +1,34 @@
+%%Rotat_rep_vent_moy
+Application d'une rotation 2D destin\'ee \`a annuler
+les composantes transverses (v) et verticales (w) moyennes du vent ;
+  
+\[
+  \left(
+\begin{array}{c}
+u_r \\ v_r \\ w_r \\
+\end{array}
+  \right)
+=
+  \left(
+\begin{array}{ccc}
+\cos\epsilon \cos\theta & \sin\epsilon \cos\theta & \sin\theta \\
+-\sin\epsilon & \cos\epsilon & 0 \\
+-\cos\epsilon \sin\theta & -\sin\epsilon \sin\theta & \cos\theta \\
+\end{array}
+  \right)
+.
+  \left(
+\begin{array}{c}
+u \\ v \\ w \\
+\end{array}
+  \right)
+\]
+
+avec $\cos\epsilon=\frac{\overline{u}}{\sqrt{\overline{u}^2+\overline{v}^2}}$,
+    $\sin\epsilon=\frac{\overline{v}}{\sqrt{\overline{u}^2+\overline{v}^2}}$,
+    $\cos\theta=\frac{\sqrt{\overline{u}^2+\overline{v}^2}}
+                     {\sqrt{\overline{u}^2+\overline{v}^2+\overline{w}^2}}$,
+et  $\sin\theta=\frac{\overline{w}}
+                     {\sqrt{\overline{u}^2+\overline{v}^2}+\overline{w}^2}$ 
+(avec $\theta$ limit\'e \`a 20 degr\'es).
+

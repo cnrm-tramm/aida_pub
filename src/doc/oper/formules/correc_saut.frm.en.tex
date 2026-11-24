@@ -1,0 +1,5 @@
+%%correc_saut
+The $i$th sample is considered to be a spike if :\newline
+$|X[i] - X[i-1]| > S_0$ and $|X[i] - X[i+1]| > S_0$  and $ (X[i] - X[i - 1]) * (X[i] - X[i + 1]) > 0$ 
+
+then $X_c[i] = \frac{X[i+1] + X[i-1]}{2}$ . Otherwise, $X_c[i] = X[i]$

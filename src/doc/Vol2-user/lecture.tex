@@ -1,0 +1,989 @@
+\part{Lecture de fichiers externes}
+\label{part:lecture}
+
+\section{Introduction}
+  Pour stocker les séries de mesure, AIDA utilise son propre format de 
+fichiers de données, dit \textit{vecteur}. Les données issues de sources
+diverses (en général des systèmes d'acquisition) doivent
+donc être converties dans ce format de travail. Pour ce faire, il convient
+d'utiliser le programme \texttt{mtv.py} (\textit{miscellaneous to vector})
+(page : \pageref{lec-mtv})
+
+
+\section{Lecture des fichiers d'acquisition : \texttt{mtv.py}}
+\label{lec-mtv}
+\texttt{mtv.py} permet de convertir des fichiers de données de différents
+formats en fichiers-vecteur.
+
+\subsection {Lancement}
+\texttt{mtv.py} peut être lancé sous \texttt{aito} (onglet \texttt{Importation})
+ou en ligne de commande dans un terminal. \\
+Lancer la commande \fbox{ \texttt{mtv.py -h} } pour obtenir de l'aide.
+
+\subsection {Manuel d'utilisation}
+\fbox{ \texttt{mtv.py [\textit{options}] <\textit{source}>} }
+
+\medskip
+avec :
+\begin{itemize}
+\item[•] \textit{source} : argument obligatoire. \\
+         \textit{source} est :
+    \begin{itemize}
+      \item \textbf {un fichier} : \\
+            toute l'acquition est contenue dans ce seul fichier.
+      \item \textbf {liste de fichiers} : \\
+            l'acquition est découpée en plusieurs fichiers. La listes des
+            fichiers doit être fournie dans l'ordre chronologique de
+            l'acquisition.
+      \item \textbf {un répertoire} : \\
+            le répertoire ne contient que les fichiers des différentes
+            parties de l'acquition. \\
+            Les fichiers du répertoire sont lus dans l'ordre
+            alphabétique : la chronologie de l'acquisition doit donc
+            suivre l'ordre alphabétique des fichiers du répertoire.
+      \item \textbf {une liste de répertoires} : \\
+            la liste des répertoires est lue dans l'ordre fourni. Chaque
+            répertoire doit suivre la logique décrite ci-dessus.
+    \end{itemize}
+
+\medskip
+\item[•] \textit{options} :
+    \begin{itemize}
+      \item[] \texttt{-a/{}-{}-acqid <acqid>}           : acqid.
+      \item[] \texttt{-p/{}-{}-plateforme <plateforme>} : nom long de la plateforme.
+      \item[] \texttt{-c/{}-{}-campagne <campagne>}     : nom de la campagne (utile pour renseigner le fichier .inf).
+      \item[] \texttt{-f/{}-{}-file <fichier>}          : fichier de configuration (chemin absolu ou relatif).
+      \item[] \texttt{-t/{}-{}-type <type>}             : type de fichier à lire (csv\_like, ...).
+      \item[] \texttt{-s/{}-{}-start <début>}           : AAAA[MMJJHHMMSS.sss] : date/heure de début des données à lire (inclus).
+      \item[] \texttt{-e/{}-{}-end <fin>}               : AAAA[MMJJHHMMSS.sss] : date/heure de fin des données à lire (exclus).
+      \item[] \texttt{-n/{}-{}-dry-run}                 : dry run (lecture sans écriture des vecteurs).
+      \item[] \texttt{-F/{}-{}-force}                   : écrase les fichiers vecteurs existants.
+      \item[] \texttt{-g/{}-{}-graphic}                 : trace les données.
+      \item[] \texttt{-C/{}-{}-config <type>}           : aide sur la configuration associée au type de fichier (csv\_like, ...)
+      \item[] \texttt{-k/{}-{}-keep}                    : conserve les valeurs hors \textit{[normal\_min, normal\_max]}.
+      \item[] \texttt{-L/{}-{}-log\_dir <log\_dir>}     : répertoire des logs (fichier mtv.log).
+      \item[] \texttt{-l/{}-{}-logger <logger>}         : fichier de log (chemin complet) dans lequel mtv rajoute ses logs.
+      \item[] \texttt{-nc/{}-{}-no-cal}                 : pas de suffixe i\texttt{cal}.
+      \item[] \texttt{-nk/{}-{}-no-checksum}            : pas de checksum.
+      \item[] \texttt{-r/{}-{}-readers}                 : liste des readers.
+      \item[] \texttt{-h/{}-{}-help}                    : affiche l'aide.
+    \end{itemize}
+\end{itemize}
+
+\medskip
+Remarques :
+
+\begin{itemize}
+\item la présence d'une des 2 options \texttt{acqid} ou \texttt{plateforme} est obligatoire.
+\item si la plateforme est de type acquisition (\texttt{duree\_vecteur} dans le fichier \\
+      \texttt{\$AIDA\_HOME/profils/<PROFIL>/plate-formes)} la présence de l'acqid est obligatoire.
+\end{itemize}
+
+\subsection {Format du fichier configuration :}
+Le fichier de configuration permet à \texttt{mtv.py} de décoder le fichiers
+d'acquisition qui peut être des différentes type. Ex :
+\begin{itemize}
+  \item fichier ASCII avec un en-tête, et des données rangées en colonnes séparées par un ou plusieurs séparateurs).
+  \item fichier de type netCDF.
+\end{itemize}
+
+\medskip
+Liste non exhaustive de fichiers de type ASCII : AROME/ARPEGE, CampbelRAY, G24D1M (Picarro), XSENS, GILL, LI7500, ...
+
+\medskip
+Le format du fichier configuration est de type "INI" : il est composé de paragraphes entre crochets suivi d'une liste
+d'attributs de type «~champ = valeur~»
+
+\medskip
+De manière générale, la colonne est désignée par son numéro \textbf{commençant à 1} ou le nom de colonne définie dans la
+ligne de nom de colonne si présente dans l'entête. Cette valeur est désignée :
+\ col\_{\textless}\textit{1{\textgreater}} à \ col\textit{\_{\textless}N{\textgreater}} par la suite.
+
+\medskip
+Les paragraphes \ [col\_defaut] et [instru\_{\textless}N{\textgreater}] sont optionnels. Ils permettent de définir des
+valeurs par défaut des variables. Si les valeurs ne sont pas définies dans le paragraphe de la variable alors les
+valeurs des paragraphe [col\_defaut] et [instru\_N] sont utilisées. Cela évite de répéter les informations.
+
+Si on veut utiliser pour un paramètre les valeurs des champs définies dans le paragraphe [instru\_N] alors ajouter un
+champ instru = instru\_{\textless}N{\textgreater} dans la description du paramètre.
+
+\medskip
+Le paragraphe [msg\_{\textless}ID{\textgreater}] permet de décrire des fichiers où dans un même fichier on trouve des
+lignes avec un nombre colonnes et/ou une fréquence des données différentes et dépendant d'une valeur de colonne. 4M
+produit couramment ce genre de fichier. Pour les autres types de fichiers les champs définis dans
+[msg\_{\textless}ID{\textgreater}] \ doivent être définis dans le paragraphe [structure]
+
+\medskip
+{\large \color{blue} [structure] (OBLIGATOIRE)}
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline champ &
+valeur &
+Statut &
+commentaire\\}
+\tabletail{\hline}
+\tablelasttail{}
+\begin{supertabular}{|p{3.592cm}|p{2.116cm}|p{4.099cm}|p{5.393cm}|}
+\hline
+champ &
+valeur &
+Statut &
+commentaire\\\hline
+nb\_lignes\_entete &
+{\itshape nombre} &
+Optionnel
+
+défaut = 0 &
+Nombre de ligne de l'en{}-tête. \\\hline
+numero\_ligne\_nom &
+{\itshape nombre ${\geq}$ 1} &
+Optionnel
+
+défaut = None &
+Numéro de la ligne commençant à 1 contenant les noms des variables correspondant aux colonnes de données. Le séparateur
+des noms doit être identique au séparateur de colonnes de données.
+
+Ce système devra être étendu pour traiter des lignes complexes du type : \textit{\textcolor{black}{\#variables : param1,
+param2, .{\dots}}}\\\hline
+numero\_ligne\_unit &
+{\itshape nombre ${\geq}$ 1} &
+Optionnel
+
+défaut = None &
+Numéro de la ligne contenant les unités des variables correspondant aux colonnes de données. Le séparateur des noms doit
+être identique au séparateur de colonnes de données.\\\hline
+\textbf{numero\_ligne}
+
+\textbf{\_misval}  
+
+(non implémenté) &
+{\itshape nombre ${\geq}$ 1} &
+Optionnel
+
+défaut = None &
+Numéro de la ligne contenant la valeur de données manquante des variables correspondant aux colonnes de données. Le
+séparateur des noms doit être identique au séparateur de colonnes de données.\\\hline
+numero\_ligne
+
+\_borne\_inf  &
+{\itshape nombre ${\geq}$ 1} &
+Optionnel
+
+défaut = None &
+Numéro de la ligne contenant les valeurs inférieures des intervalles représentant les bornes des donées 2D. Le
+séparateur des bornes doit être identique au séparateur de colonnes de données.\\\hline
+numero\_ligne
+
+\_borne\_sup  &
+{\itshape nombre ${\geq}$ 1} &
+Optionnel
+
+défaut = None &
+Numéro de la ligne contenant les valeurs supérieures des intervalles représentant les bornes des donées 2D. Le
+séparateur des bornes doit être identique au séparateur de colonnes de données.\\\hline
+{\color{black} separateurs\_colonnes} &
+{\color{black} \textit{c}\textit{aractère}\textit{\textcolor[rgb]{0.4,0.4,1.0}{ }}\textit{ou \ ESPACE ou TAB}} &
+{\color{black} OBLIGATOIRE}
+
+{\color{black} Pas de valeur par défaut.} &
+{\color{black} Liste des séparateurs existants dans le fichier de données.}
+
+
+~
+
+{\itshape\color{black} exemple : ESPACE , ; TAB}
+
+~
+\\\hline
+{\color{black} separateurs\_multiples}
+
+{\color{black} \_ignores} &
+{\color{black} \textit{c}\textit{aractère}\textit{\textcolor[rgb]{0.4,0.4,1.0}{ }}\textit{ou \ ESPACE ou TAB}} &
+{\color{black} Optionnel}
+
+{\color{black} défaut = None} &
+{\color{black} Séparateurs à ignorer s'ils se succèdent sur la ligne.}
+
+~
+
+{\itshape\color{black} Par exemple : si~ separateurs\_multiples\_ignores= TAB alors plusieurs TAB successifs sur la
+ligne seront considérés comme un seul séparateur. }\\\hline
+{\bfseries\color{black} separateur\_decimal} 
+
+(non implémenté)&
+{\itshape\color{black} caractère} &
+{\color{black} Optionnel}
+
+{\color{black} defaut=~'.' (point)} &
+~
+\\\hline
+debut\_ligne\_a\_ignorer &
+{\itshape chaîne} &
+Optionnel
+
+défaut=None &
+Définition d{}'une chaîne de caractères de début de ligne à ignorer par la lecture.\\\hline
+colonne\_msg\_id &
+{\itshape col\_{\textless}N{\textgreater}}
+
+{\itshape avec N ${\geq}$ 1}
+
+{\itshape ou }
+
+{\itshape col\_{\textless}NOM{\textgreater}}
+
+~
+
+~
+ &
+Optionnel.
+
+défaut=None
+
+~
+
+Si colonne\_msq\_id n'est pas défini alors on ignore les paragraphes [msg\_{\textless}ID{\textgreater}]
+
+et 
+
+liste\_msg\_id &
+~
+
+Numéro de colonne contenant l'identifiant de message pour le cas des fichiers contenant des messages différents
+(fréquence et nombre de colonnes).
+
+Si ce champ est renseigné, renseigner les paragraphes [msg\_{\textless}ID1{\textgreater}],
+[msg\_{\textless}ID2{\textgreater}], {\dots}.\\\hline
+liste\_msg\_id &
+\textit{{\textless}ID1{\textgreater}, {\textless}ID2{\textgreater},{\textless}ID3{\textgreater}}
+
+{\itshape (chaîne de caractères)} &
+Optionnel mais fortement recommandé dans le cas si colonne\_msg\_id est défini 
+
+défaut = None &
+Liste des msg\_ID possibles pour faire du contrôle.\\\hline
+traite\_doublons  &
+True/False &
+Optionnel
+
+défaut = True &
+Si True : élimine les données en double (temps et valeur identiques)
+
+Sinon toutes les données sont conservées.\\\hline
+ignore\_doublons &
+col\_5,col\_8 &
+Optionnel
+
+défaut = None &
+Liste des colonnes ignorées par la recherche des doublons (séparateur = `,')\\\hline
+\end{supertabular}
+\end{center}
+
+\medskip
+{\itshape\color{black}
+Exemple~de fichiers avec plusieurs séparateurs:}
+
+{\itshape\color{black}
+18/09/2016 12:00:01.23 CAX1 3.1, 5.2, 7.3}
+
+\medskip
+{\itshape\color{black}
+separateurs\_colonnes = ESPACE ,}
+
+{\itshape\color{black}
+separateurs\_multiples\_ignores= ESPACE}
+
+\medskip
+{\texttt{\textbf{\large \color{blue} {[msg\_{\textless}ID{\textgreater}]}}} (existe si colonne\_msg\_id est défini)
+
+\medskip
+Si aucun [msg\_{\textless}ID{\textgreater}] n'est défini, les champs ci-dessous \textbf{doivent} se trouver dans le
+paragraphe [structure]
+
+\medskip
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline champ &
+valeur &
+Statut &
+commentaire\\}
+\tabletail{\hline}
+\tablelasttail{}
+\begin{supertabular}{|p{3.504cm}|p{3.7cm}|p{3.642cm}|p{4.448cm}|}
+\hline
+Champ &
+Valeur &
+Statut &
+Commentaire\\\hline
+nb\_colonnes &
+{\itshape \ nombre ${\geq}$ 1} &
+Optionnel 
+
+{\color{black} Pas utile si numero\_ligne\_nom est défini.}
+
+~
+
+{\color{black} Sinon \ il est OBLIGATOIRE}
+
+~
+
+{\color{black} défaut = None} &
+Nombre de colonne de données \\\hline
+{\bfseries\color{black} \textmd{temps} }
+
+~
+
+~
+ &
+{\itshape\color{black} source[d:f],...,source[d:f]
+
+où source peut-être :
+
+col\_{\textless}N{\textgreater}
+
+NOMFIC
+
+NOMREP} &
+{\color{black} OBLIGATOIRE}
+
+~
+ &
+{\color{black} NOMFIC et NOMREP sont des mots clefs.}
+
+{\color{black} d et f représentent les indices de début de et fin de chaîne à décoder (cf. slice python).}
+
+{\color{black} Le séparateur «~,~» est obligatoire et doit se retrouver dans format\_temps. }\\\hline
+{\bfseries\color{black} \textmd{format\_temps} } &
+{\itshape\color{black} fmt\_1,fmt\_2, ...}
+
+~
+
+{\itshape\color{black} Possibilité de définir plusieurs formats pour un même temps avec le séparateur | :}
+
+
+{\itshape\color{black} fmt\_1|fmt\_2,fmt\_3,...}  &
+{\color{black} OBLIGATOIRE} &
+{\color{black} fmt\_1, fmt\_n sont des chaînes de caractères }
+
+{\color{black} décrivant le codage du temps suivant strptime de Python enrichi des formats de délais : }
+
+{\color{black} \%Ds (délai millisecondes),}
+
+{\color{black} \%DS (délai secondes),}
+
+{\color{black} \%DM (delai en minutes),}
+
+{\color{black} \%DH(delai en heures),}
+
+{\color{black} \%Dd(delai en jours),}
+
+{\color{black} ainsi que du format temps GPS : }
+
+{\color{black} \%G(nombre de semaines depuis le 06/01/1980),}
+
+
+{\color{black} \%Di(secondes intercalaires à enlever)}\\\hline
+{\color{black} UTC\_offset} &
+{\itshape\color{black} +HHMM} &
+{\color{black} Optionnel.}
+
+{\color{black} défaut = +0000} &
+{\color{black} UTC Offset (option \%z de strptime) }
+
+~
+
+{\color{black} meta-donnée qui se retrouve dans l'en{}-tête du fichier temps.}\\\hline
+{\color{black} nom\_variable\_temps} &
+{\itshape\color{black} chaîne } &
+{\color{black} Optionnel}
+
+~
+
+{\color{black} défaut = rft\_time\_[nom\_fic config]\_[msg\_ID]} &
+{\color{black} Nom du fichier vecteur temps si écriture vecteur , ou nom de variable si renvoi d'une structure de
+données.}\\\hline
+colonne\_checksum  &
+{\itshape col\_{\textless}N{\textgreater} avec N ${\geq}$ 1}
+
+{\itshape ou }
+
+{\itshape col\_{\textless}NOM{\textgreater}} &
+Optionnel
+
+défaut = None &
+Colonne contenant le check\_sum 
+
+{\itshape ex : col\_7 , col\_CHECK}\\\hline
+methode\_check\_sum &
+{\itshape\color{black} nom de fonction} &
+Optionnel
+
+défaut = None &
+Fonction connue de \texttt{mtv.py} avec range comme argument par ex :
+
+{\itshape {\textless}xor\_checksum{\textgreater}:'{\textbackslash}x02', '{\textbackslash}x03'}\\\hline
+freq\_ech &
+{\itshape\color{black} nombre} &
+Optionnel : par défaut la fréquence est calculée à partir des données. &
+Fréquence du message en Hz.\\\hline
+type\_ech &
+{\itshape\color{black} chaîne} &
+Optionnel~
+
+défaut = None &
+Type d{}'échantillonnage attendu du fichier :
+
+regulier {\textbar} irregulier\\\hline
+\end{supertabular}
+\end{center}
+
+\medskip
+\texttt{\textbf{\large \color{blue} {[col\_defaut]}}} (optionnel)
+
+\medskip
+Si les champs ci-dessous ne sont pas définis dans le paragraphe décrivant la colonne alors on prend ces valeurs par
+défaut.
+
+\medskip
+Les champs autorisés dans ce paragraphe sont :
+
+\begin{itemize}
+\item {\bfseries
+normal\_min}
+\item {\bfseries
+normal\_max}
+\item {\bfseries
+misval\_in}
+\item {\bfseries
+misval\_out}
+\item {\bfseries
+invval\_in}
+\item {\bfseries
+invval\_out}
+\item {\bfseries
+format}
+\item {\bfseries
+unit}
+\end{itemize}
+
+\medskip
+Pour le format de ces champs, voir le paragraphe \ (col\_{\textless}A{\textgreater}) de description des colonnes.
+
+\medskip
+\large      \color{blue}\textbf{[\texttt{instru\_N}]}
+\normalsize \color{black} (optionnel)
+
+\medskip
+Ce paragraphe permet de définir des valeurs de champ liés à un instrument. La prise en compte de ces valeurs pour une
+variable se fait via le champ instru= instru\_{\textless}N{\textgreater} dans le paragraphe colonne
+(col\_{\textless}A{\textgreater})
+
+\medskip
+Les champs autorisés dans ce paragraphe sont :
+
+\begin{itemize}
+\item {\bfseries
+position}
+\item {\bfseries
+chaîne acquisition}
+\item {\bfseries
+module\_{\textless}1{\textgreater} à module\_{\textless}n{\textgreater} }
+\end{itemize}
+
+\medskip
+Pour le format de ces champs, voir le paragraphe \ (col\_{\textless}A{\textgreater}) de description des colonnes.
+
+\medskip
+\large      \color{blue}\textbf{[\texttt{col\_A:\{col\_B\{@msg\_msg\_id\}\}}]}
+\normalsize \color{black} (Optionnel)
+
+\medskip
+Exemples de nom de paragraphe descriptif de variable :
+
+\medskip
+[col\_1] : paramètre de colonne 1
+
+[col\_TPR] : paramètre correspondant à la colonne nommée TPR dans l'en-tête
+
+[col\_2 : col\_10] : paramètre 2D entre les colonnes 2 et 10
+
+[col\_10@msg\_1] : paramètre en colonne 10 pour le msg\_id = 1
+
+\medskip
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline champ &
+valeur &
+Statut &
+commentaire\\}
+\tabletail{\hline}
+\tablelasttail{}
+\begin{supertabular}{|p{2.9099998cm}|p{3.783cm}|p{4.058cm}|p{4.4500003cm}|}
+\hline
+{\bfseries\color{black} Champ} &
+{\bfseries\color{black} Valeur} &
+{\bfseries\color{black} Statut} &
+{\bfseries\color{black} Commentaire}\\\hline
+ignore  &
+{\itshape True/ False} &
+Optionnel
+
+défaut = False &
+Si 'True' \ la colonne de données correspondante est lue mais la variable n'est pas dans la structure de données
+renvoyée (vecteur, ou autre...)\\\hline
+{\color{black} controle } &
+{\color{black} \textit{{\textless}nom\_fonction{\textgreater}:~{\textless}valeur{\textgreater}}} &
+Optionnel
+
+défaut = None &
+Permet de spécifier un contrôle sur \ une colonne du fichier. 
+
+Exemples des fonctions implémentées:
+
+{\itshape {\textless}egal{\textgreater} :{}'L751'}\\\hline
+instru &
+{\itshape instru\_{\textless}N{\textgreater}} &
+Optionnel
+
+défaut = None
+
+~
+
+Vérifier que le paragraphe [instru\_{\textless}N{\textgreater}] \ existe. &
+Correspond au paragraphe 
+
+instru\_{\textless}N{\textgreater}\\\hline
+nom\_variable &
+{\itshape chaîne} &
+Optionnel
+
+défaut = col\_A ou nom de la colonne &
+nom du fichier vecteur si écriture vecteur , ou nom de variable si renvoi d'une structure de données.\\\hline
+name &
+{\itshape chaîne} &
+Optionnel.\newline
+défaut = «~col\_A du fichier NOMFIC~» &
+Nom long explicite de la variable\\\hline
+english\_name &
+{\itshape chaîne} &
+Optionnel
+
+défaut = «~col\_A from file NOMFIC~» &
+Nom long explicite en anglais de la variable\\\hline
+unit &
+{\itshape chaîne} &
+Optionnel mais fortement recommandé.
+
+défaut = unknown &
+Unité de la variable après application de la «~law~» éventuelle, \ acceptable par libudunits2\\\hline
+format  &
+{\itshape chaîne} &
+Optionnel
+
+défaut=ieeefloat32 &
+Format connu de AIDA\\\hline
+law &
+{\itshape chaîne} &
+Optionnel.
+
+defaut = None &
+Loi à appliquer selon norme AIDA 
+(voir doc package readers,
+ 
+module abstract\_reader,
+ 
+rechercher 'law')
+
+Si pas de law écriture directe d'un vecteur « cal »
+
+Si présence de law écriture du vecteur BRUT « raw » et du vecteur « cal »
+
+~
+
+~
+\\\hline
+normal\_min &
+{\itshape nombre} &
+Optionnel
+
+defaut=None &
+Borne min de l'intervalle de validité de la variable (après application d'une éventuelle law).\\\hline
+normal\_max &
+{\itshape nombre} &
+Optionnel
+
+defaut=None &
+Borne max de l'intervalle de validité de la variable (après application d'une éventuelle law).\\\hline
+misval\_in &
+{\itshape chaîne} &
+Optionnel
+
+défaut = NULL &
+Valeur manquante dans le fichier d'entrée.
+
+Si non NULL la présence d'un champ vide doit générer un signalement.\\\hline
+misval\_out &
+{\itshape chaîne} &
+Optionnel
+
+défaut = NaN &
+Valeur manquante dans les données de sortie.\\\hline
+invval\_in &
+{\itshape chaîne} &
+Optionnel
+
+défaut = NULL &
+Valeur invalide (différente de misval\_in) dans le fichier d'entrée\\\hline
+invval\_out &
+{\itshape chaîne} &
+Optionnel
+
+défaut = misval\_out &
+Valeur invalide dans le tableau ou vecteur produit (champ invval du fichier vecteur)\\\hline
+bornes  &
+{\itshape (x{1} ,y{1} ); ...; (x{n },y{n} )}
+
+(cf documentation de référence)
+
+ou
+
+{\itshape auto}&
+Optionnel mais fortement recommandé si la variable est un tableau 1D
+
+défaut = None &
+Ce champ précise les bornes de chacun des éléments du tableau. S'il vaut auto, les valeurs des bornes sont automatiquement lues dans le fichier de données en utilisant les champs numero\_ligne\_borne\_inf et numero\_ligne\_borne\_sup.\\\hline
+unit\_bornes &
+{\itshape chaîne} &
+Optionnel mais fortement recommandé
+
+défaut = None &
+Indique l'unité de l'attribut bornes\\\hline
+position &
+{\itshape chaîne} &
+Optionnel mais fortement recommandé !
+
+défaut = None &
+Position de la mesure\\\hline
+orientation &
+{\itshape chaîne} &
+Optionnel
+
+défaut = None &
+Lorsque le paramètre contenu dans un vecteur est une grandeur physique orientée
+
+(un angle, une distance sur un axe, une composante d'un vecteur), ce champ contient une
+
+description de cette orientation\\\hline
+chaîne\_acquisition &
+\textit{module\_1 {\dots}. module\_n} &
+Optionnel mais fortement recommandé !
+
+défaut = None &
+Description de la chaîne d'acquisition selon norme AIDA (liste des modules)\\\hline
+module\_{\textless}1{\textgreater} à module\_{\textless}n{\textgreater} &
+{\itshape {\textless}type\_module{\textgreater}:{\textless}fabricant{\textgreater}:{\textless}Modèle{\textgreater}
+:{\textless}Numéro de série{\textgreater}:{\textless}Numéro de référence}
+
+{\itshape interne{\textgreater}:{\textless}date et lieu de calibrage ou étalonnage{\textgreater}} &
+Optionnel mais fortement recommandé !
+
+défaut = None &
+Description d{}'un module d'acquisition selon norme AIDA\\\hline
+information &
+{\itshape chaîne } &
+Optionnel
+
+défaut = None &
+Commentaire libre\\\hline
+\end{supertabular}
+\end{center}
+
+\medskip
+{\color{black}
+Il est possible d'ajouter des champs à cette liste mais ils ne seront pas écrits dans les vecteurs. Ils seront dans la
+structure de données renvoyée.}
+
+\medskip
+Les champs suivants sont présents dans les vecteurs produits mais déterminés automatiquement :
+
+\medskip
+\begin{itemize}
+\item \textbf{dim\_array}~: est déterminé \ à partir de la dimension de chaque variable 
+\item \textbf{obs\_min }et \textbf{obs\_max}~: sont calculées automatiquement
+\item \textbf{freq\_ech} : calculée à partir du \ temps lu (inverse de la médiane de \texttt{${\Delta}$}t)
+\item \textbf{famille}\textbf{~}: déterminée à partir des 3 premières lettres du champ \textbf{nom\_variable}
+\item \textbf{origine~ }vaut «~lecture~»
+\item \textbf{fct\_origine : }est la copie de la commande mtv complète~: «~ mtv {\dots}.~»
+\end{itemize}
+
+%%%\medskip
+%%%\begin{itemize}
+%%%\item[] 
+%%%\bigskip
+%%%\end{itemize}
+
+\subsection{Evolution des fichiers de configuration dans le temps}
+\label{sec:histo_config}
+\texttt{mtv.py} ne prend pas en charge la gestion de l'évolution des fichiers
+de configuration au cours du temps. Cela doit être fait en amont. AIDA dispose de
+l'outil \texttt{histo\_config.py}. Cet outil utilise des fichiers .histo et
+permet de connaître le fichier de configuration à utiliser par mtv en fonction de la
+date.
+
+\medskip
+\subsubsection{Format des fichiers .histo}
+Les fichiers .histo sont des fichiers de type .ini contenant des {\bfseries [sections]} et des lignes de type {\bfseries attribut = valeur} où :
+
+{\bfseries section} = coupleur
+
+{\bfseries attribut} = intervalle de temps => YYYY-mm-ddTHH:MM:SS~~YYYY-mm-ddTHH:MM:SS
+
+{\bfseries valeur} = fichier de configuration utilisé par mtv
+
+\subsubsection{Exemple de fichier .histo}
+\# METEOPOLE-FLUX
+
+\# Historique des fichiers configuration de la plateforme toulouse-flux
+
+\#
+
+\#
+
+[campbel1]
+
+2012-06-15T00:00:00 2015-06-20T23:59:59 = METEOPOLE\_FLUX.toulouse-flux.campbel1.V0.config
+
+\# ajout du KT15
+
+2015-06-21T00:00:00 2030-12-31T23:59:59 = METEOPOLE\_FLUX.toulouse-flux.campbel1.V1.config
+
+
+
+[campbel2]
+
+2012-06-15T00:00:00 2016-01-20T23:59:59 = METEOPOLE\_FLUX.toulouse-flux.campbel2.V0.config
+
+\# ajout de la ventilation du CNR1
+
+2016-01-21T00:00:00 2030-12-31T23:59:59 = METEOPOLE\_FLUX.toulouse-flux.campbel2.V1.config
+
+
+
+[campbel3]
+
+2012-06-15T00:00:00 2030-12-31T23:59:59 = METEOPOLE\_FLUX.toulouse-flux.campbel3.V0.config
+
+
+
+\subsection{Gestion des «~log~»}
+Le programme mtv.py écrit ses logs aux moyen du module python loggin.
+
+Plusieurs loggers sont utilisés :
+
+\begin{itemize}
+\item mtv.log : ce fichier est systématiquement créé avec le niveau DEBUG. Par défaut, il se trouve sous /tmp mais son
+emplacement peut être défini par l'option {}-L/-{}-log\_dir. Le fichier mtv.log est un logger de type
+RotatingFileHandler~: dès que le fichier atteint une taille de 100Mo il est renommé et un autre fichier se crée. On
+conserve ainsi une archive de 10 fichiers en mode tournant.
+\item stdout : l'écriture sur stdout se fait en mode INFO par défaut. La variable d'environnement MTV\_LEVEL (DEBUG
+{\textbar} INFO {\textbar} WARNING {\textbar} ERROR) permet de modifier le niveau de log
+\item l'utilisateur peut également spécifier un fichier de log via l'option -l/-{}-logger dans lequel mtv ajoutera ses
+logs en mode DEBUG.
+\end{itemize}
+
+\subsection[Architecture ]{Architecture} 
+Le package «~readers~» contient les fonctions de «~lecture données~» et
+«~contrôle temps~». Il est appelable par n'importe quel programme Python.
+Il n'est pas spécifique ni de AIDA ni du format vecteur. Pour plus de
+commodité nous installons néanmoins ce package dans AIDA.
+
+\medskip
+\texttt{mtv.py} est basé sur le package de lecture de données «~readers~».
+
+\medskip
+«~readers~» se trouve sous \texttt{\$AIDA\_HOME/src/python3/packages/readers}
+
+\medskip
+\texttt{mtv.py} se trouve sous \texttt{\$AIDA\_HOME/src/python3/lecture/mtv}
+
+\clearpage
+\subsection[Exemples de description du temps]{Exemples de description du temps dans le fichier configuration}
+\tiny
+\begin{flushleft}
+\tablefirsthead{}
+\tablehead{\normalsize\hline
+{\bfseries Type de fichier} &
+{\bfseries Format de la datation} &
+{\bfseries Description dans fichier configuration }\\\tiny}
+\tabletail{\hline}
+\tablelasttail{}
+\begin{supertabular}{|p{4.109cm}|p{5.3cm}|p{6.284cm}|}
+\hline
+{\bfseries \normalsize Type de fichier} &
+{\bfseries \normalsize Format de la datation} &
+{\bfseries \normalsize Description dans fichier configuration }\\\hline
+AROME/ARPEGE &
+2016050113 12.43 {\dots}.  &
+separateur\_colonnes = ESPACE
+
+temps = col\_1
+
+format\_temps =\%Y\%m\%d\%H\\\hline
+Fichier Campbel 4M (avant MEF)  &
+17/05/2016 00:00:00.060 CMI1 {\textquotedbl}05/17/2016 00:00:00{\textquotedbl} , {\dots}.
+
+~
+ &
+separateur\_colonnes = ,
+
+temps = col\_1[0:23]
+
+format\_temps =\%d/\%m/\%Y \%H:\%M:\%S.\textcolor{black}{\%f}\textcolor{red}{ }
+
+(respecter l'espace entre date et heure dans \ 
+
+format\_temps)\\\hline
+Fichier GILLV 4M  &
+\ 31/05/2016 00:30:00.022 GIV1 220 9 56 17049  &
+separateur\_colonnes = ESPACE
+
+temps = col\_1, col\_2
+
+format\_temps=\%d/\%m/\%Y,
+
+\%H:\%M:\%S.\textcolor{black}{\%f }\\\hline
+Fichier GILL et XSENS nacelle turbulente &
+Nom de fichier : tr\_09080842.GIL ou tr\_09080842.XSE
+
+Dans les fichiers :
+
+~
+
+08:08:42.261,3, {\dots}. &
+On n'a pas la date complète ni dans le nom du fichier, ni dans les données. Passer l'Acqid en argument de \texttt{mtv.py}
+
+~
+
+Dans le fichier configuration on aura :
+
+separateur\_colonnes = ,
+
+temps = col\_1
+
+format\_temps = \%H:\%M:\%S.\textcolor{black}{\%f}\textcolor{red}{ }
+
+~
+
+{\color{black} \textbf{ou} si on a la date complète dans nom de fichier (Eric peut nous faire ça ..)}
+
+{\color{black} comme par exemple : \ tr\_2016\_09080842.GIL}
+
+~
+
+{\color{black} separateur\_colonnes = ,}
+
+{\color{black} temps = NOMFIC[3:12], col\_1}
+
+{\color{black} format\_temps =\%Y\_\%m\%d, \%H:\%M:\%S.\%f }
+
+~
+\\\hline
+Essais KH20~(4M): &
+Dans les fichiers :
+
+{\textquotedbl}2015-07-02 12:59:14.9{\textquotedbl},382355,{\dots}..
+
+{\textquotedbl}2015-07-02 12:59:15{\textquotedbl},382356, {\dots}.. &
+separateur\_colonnes = ,
+
+temps = col\_1
+
+format\_temps =~'{}'\%Y-\%m{}-\%d\%H:\%M:\%S.\%f'{}'
+
+~
+
+Attention parfois on n'a pas les décimales ...\\\hline
+RADOME vidage Degreanne &
+20141029000600 70 2.4 &
+separateur\_colonnes = ESPACE
+
+temps = col\_1
+
+format\_temps =\%Y\%m\%d\%H\%M\%S\\\hline
+PICARRO  &
+DATE \ \ \ \ \ \ \ \ \ \ \ \ TIME \ \ \ \ \ \ \ \ FRAC\_DAYS\_SINCE\_JAN1
+
+2015-11-05 \ \ \ \ 13:04:00.000 \ 308.54444444 &
+separateur\_colonnes = \ ESPACE
+
+temps = col\_DATE,col\_TIME
+
+format\_temps =\%Y-\%M{}-\%d,\%H :\%M :\%S\\\hline
+Message AIPOV de l'AIRINS &
+\$AIPOV,133306.6012,...
+
+\$AIPOV,133306.6112,... &
+separateur\_colonnes = ,
+
+temps = col\_2
+
+format\_temps =\%H\%M\%S.\%f\\\hline
+Températures de brillance issues de rad2Tb  &
+2013-05-30,07:54:01.392, 7.90039,284.696...
+
+2013-05-30,07:54:01.552, 7.90043,284.714...
+
+2013-05-30,07:54:01.712, ... &
+separateur\_colonnes = ,
+
+temps = col\_Date,col\_ClockTime
+
+format\_temps =\%Y-\%m-\%d,\%H :\%M :\%S.f \\\hline
+PACS &
+1,\#2014-03-26 13:31:06\#,633,\#2014-03-26 13:31:06\#,633,1000 &
+separateur\_colonnes = ,
+
+temps = col\_2
+
+format\_temps= \#\%Y-\%m-\%d \%H :\%M :\%S\#\\\hline
+Licor7500 &
+DATAH\ \ Time\ \ Date\ \ Sequence Number 
+
+DATA\ \ 04:39:30:549\ \ 2012-09-26\ \ 298870 &
+separateur\_colonnes = TAB
+
+temps = col\_Date,col\_Time
+
+format\_temps =\%Y-\%m-\%d,\%H :\%M :\%S
+
+~
+\\\hline
+RS format \ 
+
+RS\_FLEDT\_G4253301\_
+
+20121031085852.tsv
+
+~
+
+~
+ &
+time Pscl T RH v u ...
+
+0000 28372.5 291.85 81 1.84228 3.32355 2 ...
+
+0002 28368.4 291.666 85.172 1.85628 2.9116 ... &
+separateur\_colonnes = ESPACE
+
+temps = NOMFIC~[18:32], col\_time
+
+format\_temps =\%Y\%m\%d\%H\%M\%S,\%Ds\\\hline
+\end{supertabular}
+\end{flushleft}
+\normalsize
+
+\subsection{Fichier d'acquisition au format netCDF}
+\fbox{ \texttt{mtv.py -C netcdf} } \\
+permet d'obtenir de l'aide sur la structure du fichier de configuration attendu
+par le reader \texttt{netcdf}.

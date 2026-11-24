@@ -1,0 +1,39 @@
+%%%%%
+%
+\section{Correction de pics isolés dans une série de valeurs modulaires}
+
+\itemstyle{Op\'erateur~:} \operfmt{correc\_pics\_angle\_auto\_unit}
+\index{correc\_pics\_angle\_auto\_unit}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Les pics isolés sont définis comme les échantillons dont
+les écarts au précédant et au suivant sont 
+de signe opposés, et supérieurs (en valeur absolue)
+à un certain seuil. 
+
+Cet opérateur détecte les pics dans une série de
+données, et les remplace par une interpolation entre
+les valeurs contiguës.
+
+Cet opérateur est adapté au cas des variables définies sur un domaine
+périodique (arithméthiqe modulaire), typiquement les angles : la 
+transition entre 359 degrés et 1 degré n'est pas considérée comme 
+une discontinuité.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/correc_pics_angle_auto_unit.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/correc_pics_angle_auto_unit.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

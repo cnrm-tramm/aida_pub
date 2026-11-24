@@ -1,0 +1,41 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Échantillonnage (et moyenne) d'une variable \texttt{double} sur une nouvelle base
+de temps}
+
+\itemstyle{Opérateur~:} \operfmt{MoyEch\_tps\_impos\_dbl}
+\index{MoyEch\_tps\_impos\_dbl}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction calcule, pour chaque instant $t$ d'une
+base de temps "time\_out", 
+une variable "X\_out", contenant la moyenne des
+valeurs de  "X\_in" entre $t$-écart\_avant et $t$+écart\_après.
+
+Aucune supposition n'est faite sur la régularité de
+l'échantillonnage des 2 variables. Cette fonction peut
+donc servir, par exemple, à transformer une série temporelle
+asynchrone en une série régulière. Il est cependant nécessaire
+que time\_in (le temps de X\_in) soit "à peu près" trié par ordre
+croissant.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/MoyEch_tps_impos_dbl.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/MoyEch_tps_impos_dbl.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}

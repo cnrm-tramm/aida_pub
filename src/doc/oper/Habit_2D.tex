@@ -1,0 +1,51 @@
+%%%%%
+%
+\section{D\'etermination du type de particules selon la m\'ethode de Korolev et Sussman}
+
+\itemstyle{Op\'erateur~:} {\sf Habit\_2D}
+\index{Habit\_2D}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur calcule les fractions de types de particules
+(Dendrites, aiguilles, sphères, irrégulières) des données d'une sonde PMS 2D-C.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Habit_2D.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Habit_2D.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Les données images de la sonde PMS-2D-C sont analysées en utilisant plusieurs
+enregistrements à la fois. Un nombre de 10 semble correct. Pour que l'analyse
+(statistique) soit valide, il faut au moins 200 à 400 particules.
+Cette méthode ne calcule la fraction des dendrites que pour les particules
+tronquées, pour des raisons évidentes. Cette méthode fonctionne sur l'hypothèse
+que les distributions de ratios des différents types de particules sont
+uniques et la distribution totale est une superposition linéaire des
+différentes distributions. Les ratios utilisés par cette méthode ont été
+déduits à partir de sets de données homogènes. Les ratios utilisés sont
+différents selon que nous calculons les fractions des particules tronquées ou
+non-tronquées.
+
+Certaines particules sont rejetées, soient celles qui ont moins de 20 pixels
+(impossible de détecter le type de particule à cause de la faible résolution);
+de même que les particules tronquées dont la plus grande partie de la particule
+est hors de la zone de données.
+
+Si des valeurs négatives sont calculées dans les fractions, celles-ci sont
+régularisées (méthode statistique), c'est-à-dire que ces valeurs sont
+redistribuées aux fractions positives de façon pondérée.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+Christian Pag\'e, CNRM/GMEI/MNP
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Korolev-2000 \cite{Korolev-2000}.

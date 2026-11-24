@@ -1,0 +1,134 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Utilisons palatino pour plaire à certains afficheurs de PDF
+\usepackage{pxfonts} 
+\usepackage{fancyhdr}
+\usepackage{moreverb}
+\usepackage{tocbibind}
+\usepackage{geometry}
+\usepackage{graphicx}
+%\usepackage{rcs}
+\usepackage{hyperref}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{ulem}
+\lstset{
+    language=bash, %% Bon défaut dans notre cas
+    inputencoding=utf8,
+    literate=%
+    {é}{{\'e}}1%
+    {è}{{\`e}}1%
+}
+\usepackage{supertabular}
+\usepackage{longtable,booktabs}
+
+%%% présentation de code coloré
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+
+\usepackage{datetime2}
+\usepackage[local]{gitinfo2}
+
+%%\usepackage{lscape}
+\usepackage{pdflscape}
+\fancypagestyle{mylandscape}{
+  \fancyhf{} %Clears the header/footer
+  \fancyfoot{% Footer
+    \makebox[\textwidth][r]{% Right
+      \rlap{\hspace{.75cm}% Push out of margin by \footskip
+        \smash{% Remove vertical height
+          \raisebox{4.87in}{% Raise vertically
+            \rotatebox{90}{\thepage}% Rotate counter-clockwise
+	      }
+		}
+      }
+	}
+  }
+  \renewcommand{\headrulewidth}{0pt}% No header rule
+  \renewcommand{\footrulewidth}{0pt}% No footer rule
+}
+
+\input{../common/page_style}
+
+\hypersetup{
+       colorlinks=true,%  Liens en couleur 
+       linkcolor=blue,%   Liens bleus
+       urlcolor=blue,%    Liens bleus
+       hyperindex=true,%  Ajoute des liens dans les index.
+       pdftitle={Documentation AIDA Volume 2 : guides de l'utilisateur},
+       pdfauthor={CNRM/GMEI/TRAMM - SAFIRE},
+       pdfkeywords={Utilisation AIDA}
+}
+
+% Let's have some nice headings
+\addtolength{\headheight}{2.3pt}
+\title{Documentation AIDA \\Volume 2 : guides de l'utilisateur}
+\author{CNRM/GMEI/TRAMM \and SAFIRE}
+\date{Version du \DTMusedate{gitdate}}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section*{Présentation}
+Ce document rassemble les informations nécessaires
+à l'utilisation d'AIDA.
+
+Après une première partie présentant les conventions
+générales  et la terminologie spécifique
+(\nameref{part:conventions}, page \pageref{part:conventions}), on trouvera 
+les modes d'emploi des différents programmes disponibles dans l'environnement
+AIDA, répartis selon les domaines d'utilisation :
+\begin{itemize}
+  \item \nameref{part:aito},     page \pageref{part:aito}
+  \item \nameref{part:lecture},  page \pageref{part:lecture}
+  \item \nameref{part:traite},   page \pageref{part:traite}
+  \item \nameref{part:graphe},   page \pageref{part:graphe}
+  \item \nameref{part:ecriture}, page \pageref{part:ecriture}
+%%%  \item \nameref{part:doc},      page \pageref{part:doc}
+%%%  \item \nameref{part:utile},    page \pageref{part:utile}
+\end{itemize}
+
+% Partie 1 : Conventions
+\newpage
+\input{conventions}
+
+% Partie 2 : IHM aito
+\newpage
+\input{aito}
+
+% Partie 3 : Lecture de fichiers externes
+\newpage
+\input{lecture}
+
+% Partie 4 : Traitements
+\newpage
+\input{traite}
+
+% Partie 5 :  Production de graphiques
+\newpage
+\input{graphe}
+
+% Partie 6 : Production de fichiers exportables
+\newpage
+\input{ecriture}
+
+%%%% Partie 6 : production de documentation
+%%%\newpage
+%%%\input{doc}
+
+% Partie 7 : utilitaires
+\newpage
+\input{utile}
+
+% Annexes
+\newpage
+\input{annexes}
+
+\end{document}

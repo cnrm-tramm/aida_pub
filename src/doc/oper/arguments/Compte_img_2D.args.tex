@@ -1,0 +1,24 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Time_{reg}$ & Vecteur, {\tt Float\_64} & Temps avec fr\'equence de 1 Hertz ($s$)\\
+$Image_{2D}$ & Matrice X1024, {\tt Int\_32} & Image\\
+$Time_{asyn}$ & Vecteur, {\tt Float\_64} & Temps de la variable d'entr\'ee Image ($s$)\\
+$TAS_{2D}$ & Vecteur, {\tt Int\_16} & True Air Speed ($m/s$)\\
+$Overload_{2D}$ & Vecteur, {\tt Int\_16} & Nombre d'overload\\
+$Code\_Hexa\_sonde$ & Coefficient, {\tt String} & Code hexadecimal de la sonde\\
+$Masque\_sonde$ & Coefficient, {\tt String} & Masque hexadecimal des donn\'ees images\\
+$Bits\_temps$ & Coefficient, {\tt Int\_16} & Nombre de bits de codage du temps dans les s\'eparateurs\\
+$Nbval_{as}$ & Coefficient, {\tt Int\_32} & Nombre d'\'el\'ements dans le vecteur de temps ascynchrone\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Compte_{2D}$ & Vecteur, {\tt Int\_32} & Compte total des imagettes 2D\\
+$Compte\_vide_{2D}$ & Vecteur, {\tt Int\_32} & Compte des imagettes 2D vides\\
+$Compte\_art_{2D}$ & Vecteur, {\tt Int\_32} & Compte des imagettes 2D considérées comme des artifacts électroniques\\
+\end{tabarg}

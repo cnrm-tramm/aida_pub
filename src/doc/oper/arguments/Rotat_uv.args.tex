@@ -1,0 +1,19 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$U$ & Vecteur, {\tt float} & Première composante horizontale (unité quelconque)\\
+$V$ & Vecteur, {\tt float} & Seconde composante horizontale (même unité que $U$)\\
+$offset$ & Coeff., {\tt float} & Angle (sens trigonométrique) entre le Nord géographique et U (en degrés)\\
+$flag$ & Coeff., {\tt float} & Flag à 1 (i,j,k) direct, ou -1 (-j,i,k) direct (sans unité)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$U_{G}$ & Vecteur, {\tt float} & Composante Est, comptée depuis l'Ouest (même unité que $U$ et $V$)\\
+$V_{G}$ & Vecteur, {\tt float} & Composante Nord, comptée depuis le sud (même unité que $U$ et $V$)\\
+\end{tabarg}
+

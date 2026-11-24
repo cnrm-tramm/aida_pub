@@ -1,0 +1,9 @@
+%%GPS_to_UTC
+  Calcul d'un offset sur le premier $Temps_{GPS}$ non-nul :
+\[
+offset = 86400 . [(Temps_{GPS}-Decal) / 86400]
+\]
+Puis :
+\[
+   Temps_{UTC} = Temps_{GPS} - Decal - offset
+\]

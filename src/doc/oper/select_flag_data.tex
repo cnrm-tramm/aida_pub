@@ -1,0 +1,39 @@
+%%%%%
+%
+\section{Sélection dans un vecteur selon un second vecteur («\textit{flag}», \texttt{entier})}
+
+\itemstyle{Op\'erateur~:} \textsf{select\_flag\_data}
+\label{OP-select_flag_data}
+\index{select\_flag\_data}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Sélection des données d'un vecteur selon des
+critères appliqués à un second vecteur de type \texttt{int} ("flag").
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/select_flag_data.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/select_flag_data.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+        Particularité : les bornes de validité sont passées sous
+forme de \texttt{float} (même si elles doivent être appliqués à des \texttt{int})
+pour pouvoir être NaN (pour signifier : pas de critère à appliquer).
+
+  Dans le cas où le vecteur-critère («\textit{flag}») est de type \texttt{float}, 
+utiliser l'opérateur \hyperref[OP-select_X_selon_Y]{\operfmt{select\_X\_selon\_Y}}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

@@ -1,0 +1,18 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$RRB_{i}$ & Vecteur, {\tt float} & cumul des pr\'ecipitations sur une minute (mm)\\
+$A$ & Coeff., \texttt{double} & Coefficient multiplicateur A du coefficient de correction Ki\\
+$B$ & Coeff., \texttt{double} & Coefficient multiplicateur B du coefficient de correction Ki\\
+$C$ & Coeff., {\tt double} & Coefficient C du coefficient de correction Ki.\\
+$R$ & Coeff., {\tt double} & Résolution du pluviom\`etre.\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$RRC_{i}$ & Vecteur, {\tt float[$Dim_{RRB_{i}}$]} & Cumul des pr\'ecipitations corrig\'ees(même unit\'e que $RRB_{i}$)\\
+\end{tabarg}

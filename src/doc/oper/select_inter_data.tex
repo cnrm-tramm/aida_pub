@@ -1,0 +1,49 @@
+%%%%%
+%
+\section{Sélection de données dans deux vecteurs selon des critères 
+appliqués à l'un d'entre eux}
+
+\itemstyle{Op\'erateur~:} \textsf{select\_inter\_data}
+\index{select\_inter\_data}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+On sélectionne les données de Vect$1$ et Vect$2$ si les données de Vect$2$ sont 
+dans un (voire deux) intervalles de validité (c.à d. comprises 
+entre crit$1$\_min et crit$1$\_max et éventuellement entre crit$2$\_min et 
+crit$2$\_max).
+
+On peut ne renseigner qu'un seul critère, dans ce cas on passe pour les critères 
+non renseignés la valeur ($0.$/$0.$).
+
+Les données non sélectionnées sont mises à la valeur choisie par l'utilisateur
+et passée en argument ("misval", $0$, autre valeur).
+
+On obtient en sortie deux vecteurs de données sélectionnées : $Vect1_{sel}$ et 
+$Vect2_{sel}$. 
+
+Cet opérateur est bien adapté à la sélection de mesures de 
+vent (DD,FF) sur des critères d'intervalle de validité de la direction. 
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/select_inter_data.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/select_inter_data.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Commentaire~:}
+Pour les valeurs manquantes du
+vecteur «critère», les valeurs des 2 vecteurs-résultats
+sont manquantes.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

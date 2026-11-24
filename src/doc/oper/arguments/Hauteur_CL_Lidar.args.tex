@@ -1,0 +1,25 @@
+%% Dans ce fichier, les ï¿½ventuels accents sont codï¿½s
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : ï¿½, e accent grave : ï¿½, e-dans-l'o : ï¿½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$PR2$ & Vecteur, \texttt{float} &  Signal rétrodiffusé\\
+$base\_cld$ & Vecteur, \texttt{float} & Hauteur de base des nuages\\
+$width\_wave$ & Coeff., \texttt{float} & Epaisseur de l'ondelette \\
+$thr\_cloud$ & Coeff., \texttt{float} & Seuil nuage \\
+$zmin_bl$ & Coeff., \texttt{float} & Altitude min de la HCLA \\
+$zmax_bl$ & Coeff., \texttt{float} & Altitude max de la HCLA \\
+$zmax_tl$ & Coeff., \texttt{float} & Altitude max de la TL \\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$z_bl$ & Vecteur, \texttt{float} & Hauteur de couche limite atmosphérique\\
+$z_tl$ & Vecteur, \texttt{float} & Hauteur de la TL\\
+\end{tabarg}

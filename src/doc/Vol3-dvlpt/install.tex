@@ -1,0 +1,97 @@
+\part{Distribution et installation}
+\label{part:install}
+
+%% On compte sur la commande path du package url
+\newcommand{\pathfmt}[1]{\path{#1}}
+\newcommand{\clavier}[1]{\texttt{#1}}
+
+  Les bibliothèques de fonctions qui sont au c\oe{}ur du système AIDA
+(manipulation de fichiers, traitements) sont écrites en langage C et en
+langage Python.
+
+\section{Pré-requis}
+  Pour installer et utiliser les différents programmes qui constituent
+AIDA sur une machine, celle-ci doit offrir un certain nombre de
+services. Ce sont :
+
+\begin{description}
+  \item[un système de développement \texttt{C-ANSI}] : un compilateur, un
+    éditeur de liens, les programmes \texttt{make} et \texttt{makedepend}.
+    AIDA est développé avec les versions standard disponibles sur la
+    distribution GNU/Linux \textbf{Ubuntu} (architecture x86\_64),
+    avec gcc et clang.
+
+  \item[python] : les programmes python dans AIDA sont compatibles avec la
+    version installée en standard sur Ubuntu. La présence des packages
+    nécessaires est testée par l'installateur de AIDA.
+
+  \item[\LaTeX] : cette documentation, et les documentations des fonctions de
+    traitement («opérateurs») sont écrites en \LaTeX.
+
+  \item[la bibliothèque udunits2] : c'est une bibliothèque de manipulation
+    d'unités développée par le groupe \textit{UNIDATA}. Dans AIDA,
+    elle sert, par exemple, à vérifier que l'unité d'un vecteur correspond
+    bien à ce que le programme de traitement attend.
+
+  \item[la bibliothèque lapack (et blas)] : Lapack (\textbf{L}inear
+    \textbf{A}lgebra \textbf{PACK}age), est une bibliothèque de routines
+    Fortran 77 utilisée pour résoudre des problèmes d'algèbre
+    linéaire : résolution de systèmes linéaires, problèmes de moindres carrés,
+    problèmes aux valeurs propres, factorisations de matrice, ...
+
+  \item[la bibliothèque Z] : la bibliothèque zlib permet de compresser ou de
+    décompresser des données en mémoire ou de lire et écrire des fichiers au
+    format gzip.
+
+  \item[cextract] : ce programme génère automatiquement les prototypes de
+    fonctions écrites en langage C. Ce programme n'est donc nécessaire
+    \emph{que lors de modifications des sources}. Il n'est pas nécessaires
+    pour une utilisation courante. L'auteur est Adam Bryant (adb@bu.edu). AIDA
+    utilise la version 1.7, qui date de 1992.
+    Ce programme qui a été diffusé sur le newsgroup
+    \texttt{comp}\texttt{.sources.reviewed}, et que l'on pouvait trouver à
+    \url{http://www.cs.bu.edu/ftp/pub/adb/}, ou inclus dans divers packages
+    logiciels, par exemple les sources de Thot
+    (\url{http://www.inrialpes.fr/opera/Thot/index.html}) a été enregistré
+    dans \$AIDA\_HOME/extern/src/.  Il est accompagné de
+    \texttt{cextdoc}, générateur automatique de documentation, qui n'est plus
+    utilisé dans AIDA.
+    Si les difficultés d'utilisation deviennent trop grandes,
+    une alternative serait Makeheaders (\url{http://www.hwaci.com/sw/mkhdr/})
+
+  \item[doxygen] : doxygen est un logiciel permettant de générer de la
+    documentation technique à partir du code source d'un programme.
+    Il extrait les déclarations et certains commentaire du code source,
+    et crée un manuel de référence (format HTML, ou pdf via LaTeX),
+    pour permettre au programmeur de localiser rapidement une fonction
+    ou une structure quelconque. C'est un logiciel libre.
+
+\end{description}
+
+D'autres outils peuvent être nécessaires pour des applications qui ne sont pas
+utilisées partout :
+
+\begin{description}
+  \item[Labview] : LabVIEW est un logiciel de développement d'applications
+    par programmation graphique. Il est développé et vendu par la
+    société américaine National Instruments (\url{http://www.ni.com/labview/f/}).
+    Il est principalement orienté vers les tests, la mesure et
+    l'automatisation, mais il permet aussi de développer des applications
+    d'analyse de données.
+
+  \item[la bibliothèque netcdf] : elle sert à lire et écrire des fichiers au
+    format NetCDF, et ne sera utile que si vous avez à manipuler des fichiers
+    à ce format.
+
+  \item[graphviz] : logiciel de visualisation de graphes
+    \url{http://www.graphviz.org/}.
+
+\end{description}
+
+
+\section{Modes de distributions et installation}
+
+La méthode de distribution de AIDA est basée sur un fichier \texttt{tar}.
+%%%Se repporter à la documentation \texttt{\textbf{installateur\_aida.pdf}}.
+Se repporter à la documentation \url{installateur\_aida.pdf}.
+

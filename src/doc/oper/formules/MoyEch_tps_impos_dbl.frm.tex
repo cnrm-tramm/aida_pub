@@ -1,0 +1,11 @@
+%% Formule de l'operateur : MoyEch_tps_impos_dbl
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\[
+X_{out}[i] = \frac{
+\displaystyle{\sum_{t[i] - ecart\_avant}^{t[i] + ecart\_apres} X_{in}[j]} }
+{N} 
+\qquad i=0,Nbre\_Echant(time_{out})
+\]

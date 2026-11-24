@@ -1,0 +1,20 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$ X $ & Vecteur, \texttt{float} & Paramètre à traiter (unité quelconque)\\
+$N_{bpt}$ & Coeff., \texttt{int} & Nombre de points sur lequel on calcule la moyenne glissante\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X_f$ & Vecteur, \texttt{float} & Paramètre résultat (même unité que $X$)\\
+$Flag$ & Vecteur, \texttt{float} & Flag indiquant les valeurs remplacées (0 ou 1)\\
+\end{tabarg}

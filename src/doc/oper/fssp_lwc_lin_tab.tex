@@ -1,0 +1,40 @@
+%%%%%
+%
+\section{FSSP: Rapport de m\'elange en eau liquide, pour 
+des classes lin\'eaires en diam\`etre}
+
+\itemstyle{Op\'erateur~:} \operfmt{fssp\_lwc\_lin\_tab}
+\label{OP-fssp_lwc_lin_tab}
+\index{fssp\_lwc\_lin\_tab}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul du rapport de m\'elange en eau liquide (g/m3)
+à partir d'un tableau de comptages issu d'un granulomètre
+et d'une concentration totale, pour le cas où
+le diamètre moyen dans chaque classe est
+une fonction linéaire du numéro de classe.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/fssp_lwc_lin_tab.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/fssp_lwc_lin_tab.frm.tex}
+
+%%%%% COMMENTAIRE %%%
+\itemstyle{ Commentaire~: }
+Si les comptages sont disponibles sous la forme de
+15 vecteurs correspondant chacun à une classe, 
+utiliser l'opérateur 
+\hyperref[OP-fssp_lwc_lin]{\operfmt{fssp\_lwc\_lin}}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Bulletin NCAR-RAF Nr 24 \cite{RAF-24}.

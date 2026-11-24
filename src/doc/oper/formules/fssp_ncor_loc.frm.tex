@@ -1,0 +1,24 @@
+%%fssp_ncor_specacr
+L'algorithme et les formules \'etant complexes
+seul le principe de calcul est pr\'esent\'e ici.\\
+Selon Brenguier-89 \cite{Brenguier-89}, le
+temps de transit moyen d'une gouttelettes   
+s'exprime comme une fonction~: \\ 
+\begin{equation}
+\overline{T}_c = f_{\overline{T}} ( N_c, \tau, \tau_1, \tau_2, \tau_r )
+\label{eqn:tbar}  
+\end{equation}
+o\`u~:\\
+$\overline{T_c} $ : Temps de transit moyen \\
+$N_c$ : nombre de gouttes corrig\'e des
+co\"{\i}ncidences \\
+$\tau $ : temps de transit d'une particule \\
+\\
+On pose $\tau = \tau_{spec}$, $\overline{T}_c = \overline{T}$.
+L'\'equation (\ref{eqn:tbar}) ne poss\`ede plus qu'une inconnue $N_c$. 
+Elle est r\'esolue par it\'erations successives et donne  
+$N_{loc}$.  $H_c$ est calcul\'e par
+$H_c = A_m/A$ o\`u 
+$A = f_A(N_{loc}, \tau_{spec}, \tau_1, \tau_2, \tau_r )$.\\ 
+Si $Reset\times f_e \le Crt_0$ alors aucune correction
+est calcul\'ee et $N_{loc}=0$ et $H_c=0$.

@@ -1,0 +1,16 @@
+%% Formule de l'operateur : Nuage_lidar
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+
+L'algorithme est décrit dans la thèse citée en référence dans la partie 2.3.4.2. Il est basé sur la variabilité verticale de chaque profil. Les minimuns et maximums du profil sont dans un premier temps déterminés à partir de la dérivée du profil. Puis ces valeurs sont sélectionnées en fonction des 2 seuils $S_1$ et $S_2$.\\
+Pour qu'un nuage soit identifié il faut que : \\
+\begin{itemize}
+\item la différence du signal lidar entre le maximum et la base détectés soit supérieur à $S_1$ fois le bruit du signal 
+\item le rapport de signal lidar entre le maximum et le sommet du nuage détecté soit supérieur à $S_2$.
+\end{itemize}
+Les valeurs recommandées pour les seuils de détection sont $S_1= 10$ et $S_2=4$.
+
+ 

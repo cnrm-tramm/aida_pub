@@ -1,0 +1,37 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Filtre numérique équivalent à un circuit RC sans déphasage du signal de sortie sur des plages temporelles}
+
+\itemstyle{Op\'erateur~:} \operfmt{Filtre\_RC\_sdph\_paliers}
+\index{Filtre\_RC\_sdph\_paliers}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur applique à un param\`etre un filtrage numérique équivalent
+à un circuit électrique RC. Il est défini par sa fréquence de coupure à -3dB $f_c$.
+
+L'utilisateur spécifie si l'opérateur doit appliquer un filtre passe-bas ou 
+passe-haut avec l'argument $Type$.
+
+Le filtrage est effectué sur les plages temporelles définies en entrée. En dehors de ces plages temporelles on trouvera des valeurs manquantes.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Filtre_RC_sdph_paliers.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Filtre_RC_sdph_paliers.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

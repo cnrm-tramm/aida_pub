@@ -1,0 +1,23 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$U$ & Vecteur, \texttt{float} & 1ère composante du vent horizontal (m/s) \\
+$V$ & Vecteur, \texttt{float} & 2ème composante du vent horizontal (m/s) \\
+$W$ & Vecteur, \texttt{float} & Composante du vent vertical (m/s) \\
+$N_{s}$ & Coeff., \texttt{int} & Nombre de sous-périodes par période\\
+$p$ & Coeff., \texttt{float} & pourcentage de données en deça duquel le calcul ne sera pas effectué (valable pour périodes et sous-périodes)\\
+$time_{out}$ & Vecteur, \texttt{double} & Base de temps d'arrivée (secondes) dont le time\_bnds définit les périodes de calcul.\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$I_{stat}$ & Vecteur, \texttt{float} & Indice de stationnarité (sans unité)\\
+\end{tabarg}

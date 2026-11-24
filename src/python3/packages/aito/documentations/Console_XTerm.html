@@ -1,0 +1,24 @@
+<h4>Configuration de la console (XTerm)</h4>
+	<ol>
+		<li> Éditer le fichier <pre>~/.Xresources</pre></li>
+		<li> Ajouter les lignes :
+			<pre>
+!  *************************
+!  xrdb -remove -all
+!  xrdb -load ~/.Xresources
+!  *************************
+xterm*geometry: 150x24
+xterm*faceName: Monospace
+xterm*faceSize: 12
+xTerm*background: black
+xTerm*foreground: white
+xterm*allowTitleOps: false
+!xterm*renderFont: true
+			</pre>
+		</li>
+		<li> dans un terminal, passer les 2 commandes suivantes :
+			<pre>
+xrdb -remove -all
+xrdb -load ~/.Xresources
+			</pre>
+		</li>

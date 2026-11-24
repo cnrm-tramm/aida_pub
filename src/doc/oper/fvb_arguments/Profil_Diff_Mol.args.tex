@@ -1,0 +1,27 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float[$N_{level}$]} & Signal lidar\\
+$X_{gate}$ & Coeff., \texttt{string[$N_{level}$]} & Portes du lidar (\$Arg1.bornes) ($m$)\\
+$Z$ & Vecteur, \texttt{float[$N_{level}$]} & Altitudes réelles des portes du lidar ($m$)\\
+$N_{level}$ & Coeff., \texttt{float} & Nombre de portes (\$Arg1.array\_dim)\\
+$T_0$ & Coeff., \texttt{float} & Température à Z=0 ($K$ ou $Celsius$)\\
+$P_0$ & Coeff., \texttt{float} & Pression à Z=0 ($hPa$)\\
+$\lambda$ & Coeff., \texttt{float} & Longueur d'onde du signal lidar ($nm$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$\alpha_{mol}$ & Vecteur, \texttt{float[$N_{level}$]} & Profil du coefficient d'extinction moléculaire ($m^{-1}$)\\
+$\beta_{mol}$ & Vecteur, \texttt{float[$N_{level}$]} &  Profil du coefficient de rétro-diffusion moléculaire ($m^{-1}$)\\
+$T_{rayleigh}$ & Vecteur, \texttt{float[$N_{level}$]} & Profil du coefficient de Rayleigh \\
+$Pr^2_{mol}$ & Vecteur, \texttt{float[$N_{level}$]} & Signal moléculaire rétro-diffusé ($Photons.m^2$)\\
+\end{tabarg}

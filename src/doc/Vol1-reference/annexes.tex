@@ -1,0 +1,55 @@
+
+% Annexes
+\part{Annexes}
+\section{exclusion des autres caractères}
+\label{sec:exclu}
+\noindent
+
+\begin{tabular}{p{0.33\textwidth}p{0.66\textwidth}}
+  Caractère(s) & Raison\\ 
+  \hline
+  Caractère hors du jeu ASCII 7~bits 
+  et l'espace.
+  & Même si les
+  systèmes de fichier des systèmes d’exploitation actuels savent gérer accents
+  , espaces et caractères non-latins, il subsiste des problèmes de portabilité
+  (notamment lors de l'utilisation de NFS ou SMB entre systèmes avec 
+  des codages différents), et il n'y
+  a pas suffisamment d'avantages à utiliser les accents pour accepter les
+  inconvénients associés.\\
+  \hline
+  Les caractères de contrôle, de code entre 0 et
+  31, et 127(« del ») & Ne sont pas faits pour cet usage. \\
+  \hline
+  \texttt{/} (barre oblique) et\newline
+  \texttt{\textbackslash} (barre oblique inversée) &
+   Ils servent de séparateurs de nom de répertoire dans les
+  chemins d'accès aux fichiers sur différents systèmes d'exploitation et dans
+  les URL/URI.\\
+  \hline
+  \texttt{"} (guillemet droit),\newline
+  \texttt{*} (astérisque ou étoile),\newline
+  \texttt{?} (point d'interrogation),\newline
+  \texttt{>} et \texttt{<} (supérieur et inférieur),\newline
+  \texttt{|} (barre verticale)
+   & Ils sont impossibles sur certains systèmes de fichiers.\\
+  \hline
+  \texttt{'} (apostrophe),\newline
+  \texttt{\$} (dollar),\newline
+  \texttt{;} (point-virgule),\newline 
+  \texttt{\&} (esperluette) et\newline
+  \texttt{`} (guillemet ouvrant simple) & Les
+  inconvénients qu'ils engendrent pour les utiliser correctement dans des
+  environnements usuels (shell unix, par exemple) ne sont pas supérieurs à
+  l'intérêt que pourrait avoir leur utilisation\\
+  \hline
+  \texttt{+} (plus),\newline
+  \texttt{-} (moins, trait d'union ou tiret),\newline
+  \texttt{\^{}} (accent circonflexe avec chasse),\newline
+  \texttt{(} et \texttt{)} (parenthèses ouvrante et fermante),\newline
+  \texttt{[} et \texttt{]} (crochets ouvrant et fermant) et\newline
+  \texttt{=} (signe égal) & Ils servent aux opérations
+  mathématiques usuelles lors de l'interprétation d'une formule (avec « * » et
+  « / ». qui sont déjà impossibles pour d'autres raisons).\\
+  \hline
+\end{tabular}

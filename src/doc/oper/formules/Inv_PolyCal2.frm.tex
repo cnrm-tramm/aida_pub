@@ -1,0 +1,16 @@
+%%Inv_PolyCal2
+Les 2 racines réelles du polyn\^ome sont calcul\'ees :
+\begin{align*}
+\Delta &=  C_1^2 - 4.(C_0 - X).C_2 \\
+Z_0 &= \frac{ - C_1 - \sqrt{\Delta} }{2.C_2} \\
+Z_1 &= \frac{ - C_1 + \sqrt{\Delta} }{2.C_2}
+\end{align*}
+La racine choisie est celle qui se trouve dans 
+l'intervalle $[Min, Max]$.
+
+L'exécution de la fonction est interrompue si :
+\begin{itemize}
+\item les 2 racines appartiennent à l'intervalle $[Min, Max]$
+\item aucune racine appartient à l'intervalle $[Min, Max]$  
+\item $\Delta <0$
+\end{itemize}

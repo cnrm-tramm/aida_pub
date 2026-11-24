@@ -1,0 +1,520 @@
+Pour chaque acquisition, il existe un fichier contenant toutes
+ses méta-données.
+
+Il est utilisable par les logiciels de visualisation et traitement,
+ou simplement lisible par l'utilisateur. Il facilite le travail
+de dépouillement des données.
+
+Le format de ce fichier est décrit dans ce chapitre.
+
+\subsection{Nom du fichier}
+
+Pour une acquisition donnée le fichier ``inf'' s'appelle :
+\texttt{\$\{Acq\_Id\}.inf}
+
+ Acq\_Id est l'identificateur d'acquisition AIDA. Par exemple,
+\path{fa110015} pour la quinzième acquisition de l'année 2011
+sur le site du Fauga.
+    Il n'y a aucune correspondance entre le numéro et la date de mesure.
+
+
+\subsection{Stockage}
+
+Tous les fichiers sont rangés dans le répertoire : 
+
+\texttt{\$AIDA\_META\//INF}
+
+
+\subsection{Format}
+
+C'est un fichier de type texte, constitué d'une série de paragraphes,
+eux-mêmes constitués d'une série d'égalités "champ = valeur". 
+
+Le début d'un paragraphe est défini par la présence de son
+nom en majuscules et entre crochets suivi d'un retour à la ligne.
+
+A l'intérieur d'un paragraphe, la fin de ligne est marquée
+par un point virgule:~\texttt{;}.
+
+A l'intérieur de la valeur les informations sont séparées par un caractère:
+\texttt{/}. Ces informations ne doivent pas contenir ce caractère \texttt{/}.
+
+Les lignes vides, les espaces, et les tabulations sont permis.
+
+Les lignes de commentaires doivent commencer par un caractère
+dièse: \texttt{\#};
+
+Les champs ne doivent pas contenir d'accents.
+
+Les valeurs peuvent contenir des accents, à condition d'utiliser
+le codage iso8859-1 (ou latin1).
+
+Le fichier doit se terminer par \texttt{{[}FIN{]}}.
+
+La liste des paragraphes ainsi que leur caractère "obligatoire"
+ou "optionnel" est présentée dans le tableau ci-dessous.
+
+\begin{center}
+
+\begin{tabular}{|l|l|}
+\hline 
+Nom du Paragraphe& Caractère\\
+\hline 
+\hline 
+\textbf{FORMAT}& \textbf{obligatoire}\\
+\hline 
+\textbf{IDENTIFICATION}& \textbf{obligatoire}\\
+\hline 
+\textbf{PARAMETRES\_ACQUIS}&\textbf{obligatoire}\\
+\hline 
+\textbf{ACQUISITION}& \textbf{obligatoire}\\
+\hline 
+HORAIRES\_UTC & optionnel\\
+\hline 
+INS& optionnel\\
+\hline 
+SEQUENCES& optionnel\\
+\hline 
+PERSONNEL& optionnel\\
+\hline 
+POINTS\_CARACTERISTIQUES& optionnel\\
+\hline 
+METEO\_DEBUT& optionnel\\
+\hline  
+METEO\_FIN& optionnel\\
+\hline 
+ETAT\_CAPTEURS& optionnel\\
+\hline 
+\end{tabular}
+\end{center}
+
+
+\subsubsection{{[}FORMAT{]}}
+
+\label{parag-FORMAT}
+Ce paragraphe décrit les formats utilisés dans les valeurs.
+
+\ttfamily
+\saute
+\noindent\begin{tab2col}
+\hline 
+\textnormal{Champ}& \textnormal{Valeur}\\
+\hline 
+\hline 
+format\_coord &
+C (D)DDdMM.X(X) (C=lettre (N, E, S ou W), (D)DD=degrés 2 ou 3 chiffres, MM=minutes,
+X(X)=fraction décimale de minutes;\\
+\hline 
+format\_heure&
+HHMMSS (HH=heures, MM=minutes, SS=secondes);\\
+\hline 
+format\_date&
+JJ/MM/AAAA (JJ=jour, MM=mois, AAAA=année, le tout en chiffres);\\
+\hline 
+format\_duree&
+HH.D (HH=heure, D=dixièmes d'heure);\\
+\hline 
+\end{tab2col}
+\saute
+
+\normalfont
+
+\subsubsection{{[}IDENTIFICATION{]}}
+\label{parag-IDENTIFICATION}
+
+
+\saute
+\noindent\begin{tab4col}
+\hline 
+Champ& Caractère& Format valeur& Description \\
+\hline 
+\hline 
+\texttt{plate-forme}& \textbf{obligatoire} & \textit{texte;}&
+nom de la plate-forme en toutes lettres \\
+\hline 
+\texttt{acq\_id}& \textbf{obligatoire} & \textit{texte;} & identificateur d'acquisition AIDA\\
+\hline 
+\texttt{date}& \textbf{obligatoire} & \textit{JJ/MM/AAAA;} &
+JJ= jour, MM= mois, AAAA= année (format décrit dans le paragraphe FORMAT)\\
+\hline 
+\texttt{campagne}& \textbf{obligatoire} & \textit{texte;}& nom de la campagne\\
+\hline 
+\texttt{theme}& optionnel& \textit{texte;}& thème scientifique de l'acquisition\\
+\hline 
+\texttt{lieu\_depart}& optionnel& \textit{texte;}&
+lieu de départ de la plate-forme de mesure\\
+\hline 
+\texttt{lieu\_arrivee}& optionnel& \textit{texte;}&
+lieu d'arrivée de la plate-forme de mesure\\
+\hline 
+\end{tab4col}
+\saute
+
+ Le nom de la plate-forme doit être connu d'AIDA par le fichier
+\texttt{plate-forme}
+
+Le champ \texttt{campagne} doit contenir une seule valeur.
+Les acquisitions faites
+hors de la période opérationnelle de la campagne ont comme nom de
+campagne ESSAI, CALIB, ou TRANSIT.
+
+Le champ \texttt{theme} doit expliciter plus librement le but de 
+l'acquisition (ex : essais réfractomètre, vol type P1-flux, 
+transit Brétigny-Dole, ....).
+
+\subsubsection{{[}HORAIRES\_UTC{]}}
+
+Ce paragraphe est utilisé dans le cas où la plate-forme de mesure est "mobile"
+(avion, ballon, drone à ailes...)
+
+\newcommand{\formathoraire}{\textit{hhmmss} ou\newline \textit{AAAA}-\textit{MM}-\textit{JJ}T\textit{hh}:\textit{mm}:\textit{ss}}
+\saute
+\noindent\begin{tab3col}
+\hline 
+Champ& Format valeur& Description\\
+\hline 
+\hline 
+\texttt{depart\_parking}& \formathoraire & heure UTC de départ du parking\\
+\hline 
+\texttt{decollage}& \formathoraire & heure UTC de décollage\\
+\hline 
+\texttt{atterrissage}& \formathoraire & heure UTC d'atterrissage\\
+\hline 
+\texttt{retour\_parking}& \formathoraire & heure UTC de retour au parking\\
+\hline 
+\texttt{duree\_reglementaire}& \textit{hh.d}& durée réglementaire du vol\\
+\hline 
+\end{tab3col}
+\saute
+
+
+L'existence de deux formats impose aux programmes qui utilisent
+ces données de savoir décoder les deux. La distinction se fait sur la
+longueur du champ. La forme courte n'indique qu'une heure, et est donc ambigüe
+dans les cas où l'acquisition s'étend sur plusieurs jours. Les différents cas
+possibles sont :
+\begin{itemize}
+ \item utilisation d'un champ \textit{hh} >=24. Dans ce cas, l
+ \item utilisation d'un champ \textit{hh} <24, mais avec une fin 
+antérieure au début (par exemple \texttt{decollage = 223344} et 
+\texttt{atterrissage = 001122})
+\end{itemize}
+
+
+Pour l'écriture de 
+La forme longue du champ est recommandée, car elle n'est pas ambigüe,
+et suit un format reconnu (ISO8601) par de nombreux langages et 
+bibliothèques informatiques.
+
+On reconnait que, lorsque les données sont saisies manuellement, 
+la forme courte est plus concise et rapide. Il est cependant recommandé 
+d'appliquer rapidement une normalisation après
+
+
+\subsubsection{{[}ACQUISITION{]}}
+
+\saute
+\noindent\begin{tab4col}
+\hline 
+Champ& Caractère & Format valeur& Description \\
+\hline 
+\hline 
+\texttt{systeme\_acquisition}& \textbf{obligatoire} & \textit{texte;}& nom du système d'acquisition\\
+\hline 
+\texttt{debut\_acquisition}& \textbf{obligatoire} & \textit{JJ/MM/AAAA/hhmmss;}& 
+date et heure de début d'acquisition \\
+\hline 
+\texttt{fin\_acquisition}& \textbf{obligatoire} & \textit{JJ/MM/AAAA/hhmmss;}&
+date et heure de fin d'acquisition \\
+\hline 
+\texttt{media}& \textbf{obligatoire} & \textit{texte;}& 
+support de stockage du système d'acquisition\\
+\hline 
+\texttt{autre\_acquisition}& optionnel & \textit{texte/texte/...;}&
+nom d'autres acquisitions sur la m\^eme plate-forme\\
+\hline 
+\texttt{commentaire}& optionnel & \textit{texte;}& commentaire\\
+\hline 
+\end{tab4col}
+\saute
+
+\noindent\texttt{media} peut prendre les valeurs floppy, dat, exabyte, hd,
+don
+
+\texttt{systeme\_acquisition} peut prendre les valeurs :
+\begin{itemize}
+\item RESUM, CL, PP, PPI pour l'ARAT
+\item MC, MC95  pour le Merlin IV
+\item EDISOL, ... pour les stations sols 
+\item 4M-BATEAU, .... pour les acquisitions 4M  sur bateau
+\item STAR, ... pour les radio-sondages
+\end{itemize}
+
+\subsubsection{{[}INS{]}}
+
+Ce paragraphe donne les principales informations relatives à
+la centrale à inertie de la plate-forme.
+
+\saute
+\noindent\begin{tab3col}
+\hline 
+Champ& Format valeur& Description\\
+\hline 
+\hline 
+\texttt{ramp\_depart}& \textit{Nxxdxx.x/Wxxxdxx.x/xxxxft;}&
+coordonnées du point de départ\\
+\hline 
+\texttt{type\_aln}&
+\textit{xxx}~\texttt{\textit{s}}\textit{;} ou \textit{xxx}~\texttt{\textit{mn}}\textit{;}&
+durée de l'alignement en secondes ou minutes\\
+\hline 
+\texttt{ramp\_arrivee}&
+\textit{Nxxdxx.x/Wxxxdxx.x/xxxxft;}& coordonnées du point d'arrivée\\
+\hline 
+\texttt{pp\_arrivee}& \textit{Nxxdxx.x/Wxxxdxx.x/xxxxft;}&
+coordonnées réelles à l'arrivée\\
+\hline 
+\end{tab3col}
+\saute
+
+\subsubsection{{[}POINTS\_CARACTERISTIQUES{]}}
+
+Ce paragraphe décrit les différents points 
+géographiques intéressant l'acquisition.
+
+\saute
+\noindent\begin{tab3col}
+\hline 
+Champ& Format valeur& Description\\
+\hline 
+\texttt{wpt}& \textit{nom/Nxxdxx.x/Wxxxdxx.x;}&
+abréviation et coordonnées du point \\
+\hline 
+\texttt{radar}& \textit{nom/Nxxdxx.x/Wxxxdxx.x;}&
+abréviation et coordonnées du point \\
+\hline 
+\texttt{balise}& \textit{nom/Nxxdxx.x/Wxxxdxx.x;}&
+abréviation et coordonnées du point \\
+\hline 
+\texttt{bouee}& \textit{nom/Nxxdxx.x/Wxxxdxx.x;}&
+abréviation et coordonnées du point \\
+\hline 
+\texttt{station}& \textit{nom/Nxxdxx.x/Wxxxdxx.x;}&
+abréviation et coordonnées du point \\
+\hline 
+\texttt{ville}& \textit{nom/Nxxdxx.x/Wxxxdxx.x;}&
+abréviation et coordonnées du point \\
+\hline 
+\end{tab3col}
+\saute
+
+\subsubsection{{[}PERSONNEL{]}}
+
+\saute
+\noindent\begin{tab3col}
+\hline 
+Champ&
+Format valeur&
+Description\\
+\hline 
+\hline 
+\texttt{pilote}& \textit{Initiale du prénom. Nom;}&
+Nom du pilote de la plate-forme (avion)\\
+\hline 
+\texttt{copilote}& idem&
+Nom du copilote de la plate-forme\\
+\hline 
+\texttt{operateur}& idem&
+Nom de l'opérateur du système d'acquisition\\
+\hline 
+\texttt{scientifique}& idem&
+Nom du scientifique de la mission\\
+\hline 
+\texttt{directeur\_de\_mission}& idem&
+Nom du directeur de la mission\\
+\hline 
+\texttt{invite}& idem&
+Nom de l'invité \\
+\hline 
+\texttt{commandant\_de\_bord}& idem&
+Nom du commandant de bord (bateau)\\
+\hline 
+\end{tab3col}
+\saute
+
+Les champs peuvent être répétés si plusieurs personnes
+correspondent à la même désignation (ex: plusieurs 
+scientifiques).
+
+
+\subsubsection{{[}METEO\_DEBUT{]}}
+
+Ce paragraphe décrit les conditions météorologiques 
+en début d'acquisition.
+
+\saute
+\noindent\begin{tab3col}
+\hline 
+Champ& Format valeur& Description\\
+\hline 
+\hline 
+\texttt{QNH}& \textit{xxx hPa;} ou \textit{xxx inHg;} 
+ou  \textit{xxx mmHg;}& Valeur du QNH\\
+\hline 
+\texttt{QFE}& \textit{xxx hPa;} ou \textit{xxx inHg;} 
+ou  \textit{xxx mmHg;} & Valeur du QFE\\
+\hline 
+\texttt{vent}& \textit{ddd/ff kt;} ou  \textit{ddd/ff m.s-1;}
+& Direction en degrés et force du vent réel\\
+\hline 
+\texttt{temperature}& \textit{xxx C;} ou \textit{xxx F;} & Température en degrés C ou F\\
+\hline 
+\texttt{point\_de\_rosee}& \textit{xxx C;} ou \textit{xxx F;} & Température en degrés C ou F\\
+\hline 
+\texttt{visibilite}& \textit{xxxx m;} ou \textit{xx km;}& Visibilité\\
+\hline 
+\texttt{humidite}& \textit{xx \%;} & Humidité relative\\
+\hline
+\texttt{nuage}& \textit{texte;} & Description des nuages\\
+\hline
+\texttt{temps\_present}& \textit{texte;} & Description du temps présent\\
+\hline
+\texttt{origine}& \textit{texte;} & Origine de l'information météorologique\\
+\hline
+\texttt{commentaire}& \textit{texte;} & Commentaire de l'opérateur\\
+\hline
+\end{tab3col}
+\saute
+
+Le champ commentaire sert à recueillir les remarques de
+l'opérateur sur l'information météorologique. Celles-ci
+peuvent par exemple, décrire l'évolution rapide d'une situation,
+ou apporter des informations non fournies dans les autres champs
+du paragraphe.
+
+\subsubsection{{[}METEO\_FIN{]}}
+
+Ce paragraphe décrit les conditions météorologiques en fin
+d'acquisition.
+
+Le format est identique à \hbox{[METEO\_DEBUT]}.
+
+
+\subsubsection{{[}SEQUENCES{]}}
+
+Ce paragraphe décrit les différentes séquences spatiales et temporelles
+au cours de l'acquisition.
+
+\saute
+\noindent\begin{tab2col}
+\hline 
+Champ& Format valeur\\
+\hline 
+\texttt{palier}&
+\textit{nom/hhmmss\( _{deb} \)/hmmss\( _{fin} \)/Wpt\( _{deb} \)/Wpt\( _{fin} \)/Cap/Alt./comment;}\\
+\hline 
+\texttt{sondage}&
+\textit{nom/hhmmss\( _{deb} \)/hmmss\( _{fin} \)/Wpt\( _{deb} \)/Wpt\( _{fin} \)/Alt\( _{deb} \)/Alt\( _{fin} \)/comment;}\\
+\hline 
+\texttt{cercle}&
+\textit{nom/hhmmss\( _{deb} \)/hmmss\( _{fin} \)/Wpt/Alt/comment;}\\
+\hline 
+\texttt{zoom}&
+\textit{nom/hhmmss\( _{deb} \)/hmmss\( _{fin} \)/Wpt\( _{deb} \)/Wpt\( _{fin} \)/Cap/Alt\( _{deb} \)/Alt\( _{fin} \)/comment;}\\
+\hline 
+\texttt{virage}&
+\textit{nom/hhmmss\( _{deb} \)/hmmss\( _{fin} \)/Cap\( _{av} \)/Cap\( _{ap} \)/Angle parcouru/Alt/comment;}\\
+\hline 
+\texttt{station}&
+\textit{nom/hhmmss\( _{deb} \)/hmmss\( _{fin} \)/Wpt/Cap/Alt/comment;}\\
+\hline 
+\texttt{sequence}&
+\textit{nom/hhmmss\( _{deb} \)/hmmss\( _{fin} \)/comment;}\\
+\hline 
+\end{tab2col}
+\saute
+
+ \textit{nom} : abréviation de la séquence
+
+ \textit{hhmmss\( _{deb} \)} : \textit{}heure de début de la
+séquence sous la forme hhmmss
+
+ \textit{hmmss\( _{fin} \)} : \textit{}heure de début de la
+séquence sous la forme hhmmss
+
+ \textit{Wpt} : abréviation du point géographique où se déroule
+la séquence
+
+ \textit{Wpt\( _{deb} \)} : abréviation du point de début de la
+séquence
+
+ \textit{Wpt\( _{fin} \)} : abréviation du point de fin de la
+séquence
+
+ \textit{Cap} : cap de la plate-forme durant la séquence en
+degrés
+
+ \textit{Cap$_{av}$} : cap de la plate-forme avant la séquence en
+degrés 
+
+ \textit{Cap$_{ap}$} : cap de la plate-forme après la séquence en
+degrés
+
+ \textit{Alt.} : altitude de la plate-forme durant la séquence
+suivie de l'unité ft ou m, ou notée en niveau de vol FLxxx
+
+ \textit{Alt\( _{deb} \)} : altitude de la plate-forme au début
+de la séquence suivie de l'unité ft ou m, ou notée en niveau de vol FLxxx
+
+ \textit{Alt\( _{fin} \)} : altitude de la plate-forme au début
+de la séquence suivie de l'unité ft ou m,
+ou notée en niveau de vol FLxxx
+
+ \textit{Angle parcouru} : angle parcouru par la plate-forme au cours de la
+séquence. Il est noté positif dans le sens des aiguilles d'une montre.
+
+ \textit{comment} : commentaire texte
+
+
+\subsubsection{{[}ETAT\_CAPTEURS{]}}
+
+\saute
+\noindent\begin{tab3col}
+\hline 
+Champ& Format valeur& Description\\
+\hline 
+\hline 
+\texttt{avant\_acq}& \textit{texte;} &
+commentaire sur l'état des capteurs avant l'acquisition\\
+\hline 
+\texttt{pendant\_acq}& \textit{texte;} &
+commentaire sur l'état des capteurs pendant l'acquisition\\
+\hline 
+\texttt{apres\_acq}& \textit{texte;} &
+commentaire sur l'état des capteurs après l'acquisition\\
+\hline 
+\end{tab3col}
+\saute
+
+
+\subsubsection{{[}PARAMETRES\_ACQUIS{]}}
+
+\saute
+\noindent\begin{tab3col}
+\hline 
+Champ& Format valeur& Description valeur\\
+\hline 
+\hline 
+\texttt{abréviation}& \textit{texte;}& nom détaillé du paramètre\\
+\hline 
+\end{tab3col}
+\saute
+
+Ce paragraphe contient une ligne "\texttt{champ = valeur}" par paramètre
+acquis. 
+Le nom du champ est l'abréviation du paramètre.\\ 
+Ce paragraphe peut être très long, car pour certaines plates-formes
+le nombre de paramètres est important. Par conséquent pour améliorer la lisibilité
+du fichier, ce paragraphe doit être \textbf{placé en fin de fichier}.
+
+

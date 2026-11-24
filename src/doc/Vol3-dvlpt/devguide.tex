@@ -1,0 +1,91 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Utilisons palatino pour plaire à certains afficheurs de PDF
+\usepackage{pxfonts} 
+\usepackage{fancyhdr}
+\usepackage{moreverb}
+\usepackage{tocbibind}
+\usepackage{geometry}
+\usepackage{graphicx}
+%\usepackage{rcs}
+\usepackage{hyperref}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{ulem}
+\lstset{
+    language=bash, %% Bon défaut dans notre cas
+    inputencoding=utf8,
+    literate=%
+    {é}{{\'e}}1%
+    {è}{{\`e}}1%
+}
+\usepackage{supertabular}
+
+\usepackage{datetime2}
+\usepackage[local]{gitinfo2}
+
+\input{../common/page_style}
+
+\hypersetup{
+       colorlinks=true,%  Liens en couleur 
+       linkcolor=blue,%   Liens bleus
+       urlcolor=blue,%   Liens bleus
+       %%hyperindex=true,%  Ajoute des liens dans les index.
+       pdftitle={Documentation AIDA Volume 3 : Guide du développeur et de l'administrateur},
+       pdfauthor={CNRM/GMEI/TRAMM - SAFIRE},
+       pdfkeywords={Guide du développeur et de l'administrateur}
+}
+
+% Let's have some nice headings
+\addtolength{\headheight}{2.3pt}
+\title{Documentation AIDA \\Volume 3 : Guide du développeur et de l'administrateur}
+\author{CNRM/GMEI/TRAMM \and SAFIRE}
+\date{Version du \DTMusedate{gitdate}}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section*{Présentation}
+	Le guide du développeur regroupe les informations nécessaires à :
+\begin{itemize}
+  \item installer AIDA sur une machine,
+  \item écrire un programme spécifique (application personnelle),
+  \item modifier un des programmes d'usage général (adc, aidaplot, vec2asc, ...).
+\end{itemize}
+Il décrit les méthodes de travail choisies, et les outils disponibles.
+Il est divisé en plusieurs chapitres :
+\begin{itemize}
+  \item \nameref{part:install},    page \pageref{part:install}
+  \item \nameref{part:dev_C},      page \pageref{part:dev_C}
+  %% \item Développements avec R  page \pageref{part:dev_R}
+  \item \nameref{part:dev_Python}, page \pageref{part:dev_Python}
+  \item \nameref{part:dev_sh},     page \pageref{part:dev_sh}
+\end{itemize}
+
+
+% Partie 1 : Diffusion et installation
+\input{install}
+
+% Partie 2 : Infos générales sur le Développement
+\input{dev_gene}
+
+% Partie 3 : Développements en C
+\input{dev_C}
+
+% Partie 4 : Développements avec R
+%% \input{dev_R}
+
+% Partie 5 : Développements avec Python
+\input{dev_Python}
+
+% Partie 6 : Développements en langage de commande du shell
+\input{dev_sh}
+
+\end{document}

@@ -1,0 +1,77 @@
+%%Flux_Aero
+
+selon 3 cas de stabilite : "convection libre" / neutre / autre.
+Resolution iterative jusqu'à ce que deux valeurs successives de la
+longueur de Monin Obukhov diffèrent de moins de 5 % (seuil choisi).
+La convergence du processus itératif n'est assuré que pour des conditions
+instables.
+
+Cas de la convection libre :
+\begin{eqnarray*}
+ustar = 0.\\
+tstar = -999.\\
+vlmon = 0.\\
+vhs = 0.\\
+\end{eqnarray*}
+
+cas neutre :
+
+\begin{eqnarray*}
+ustar = frac{K.dv}{log(zu_2/zu_1)}\\
+tstar = 0.\\
+vlmon = 9999.0.sign(1.,dt_air)\\
+vhs = 0.\\
+\end{eqnarray*}
+
+autres cas (stratification neutre, soit vlmon infinie) :
+
+\begin{eqnarray*}
+vlmon = 1000000.\\
+ustar = frac{K . dv}{log(zu_2/zu_1) - psi_m(zu_2/vlm_1) + psi_m(zu_1/vlm_1)}\\
+tstar = frac{K . dt_air}{log(zu_2/zu_1) - psi_h(zu_2/vlm_1) + psi_h(zu_1/vlm_1)}\\
+vlmon = frac{tk . ustar^2}{karman . g . tstar}\\
+\end{eqnarray*}\\
+ 
+Calcul du flux de chaleur sensible vhs :
+
+Cas instable (avec convergence)
+
+vhs = -roo . cp . ustar . tstar
+
+rho : calcul de la masse volumique d'une particule d'air humide
+definie par : pression , temperature , humidite
+rho     : reel   : masse en kg/m**3
+pres   : reel   : pression em mb
+temp   : reel   : temperature en celsius
+humi   : reel   : humidite en %
+
+fonction tvir\_4m(pres,temp,humi)
+calcul de la temp\'erature virtuelle d'une particule
+donnee definie par : pression , temperature , humidite
+tvir\_4m : reel  : temp\'erature en degr\'es Celsius
+
+%%%
+%% Reste à décrire l'itération. En général, c'est
+%% sous la forme :
+%% soit F(x) dont on chreche les zéros
+%% 1) estimation de X0
+%% 2) Calcul de F(Xi)
+%% 3) Calcul de F'(Xi)
+%% 4) Calcul de Xi+1 par une méthode
+%% (Si Newton, xi+1 = Xi - F(xi)/F'(xi) )
+%%  5) si pas convergence, bouclage en 2
+%%
+Cas stable (sans convergence)
+
+$vhs = {-karman^2 . roo . cp . dv . dt_air}{\log(zu_2/zu_1)^2 / 10}$
+
+
+
+
+avec~:\\
+$t_0 = 273.15 $ \\
+$karman = 0.4 $ \\
+$cp = 1005.0 $ \\
+$g = 9.81 $ \\
+
+Dyer 74

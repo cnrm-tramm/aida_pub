@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+\$Arg1 & Vecteur, \texttt{float[any]} & blabla ()\\
+\$Arg2 & Vecteur, \texttt{int[any]} & blabla ()\\
+\$Arg3 & Coeff., \texttt{int} & blabla ()\\
+\$Arg4 & Coeff., \texttt{String} & blabla ()\\
+\$Arg5 & Coeff., \texttt{float} & blabla (\$Arg1.unit)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+\$Arg6 & Vecteur, \texttt{float[$Arg1.array_dim]} & blabla (\$Arg1.unit)\\
+\end{tabarg}

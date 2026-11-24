@@ -1,0 +1,25 @@
+%% Formule de l'operateur : HbnMoyInvEch_tps_bnds
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+Pour chaque couche Xn:
+
+Pour  i=$0$, Nbre  $Time_{bnds}$ :
+
+\[
+Xn_{out}[i] =
+\begin{cases}
+\begin{tabular}{ll}
+$\frac{\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} Xn_{in}[j]} }{Nn_i}$
+&
+\texttt{ si  nb couche inf\'erieure \`a $val_{inv}$ est constant}
+\\
+\texttt{$val_{replac}$} & \texttt{ sinon}
+\end{tabular} 
+\\
+\end{cases}
+\]
+
+Avec $Xn_{in}[j]$ inf\'erieur \`a $val_{inv}$ et  $Nn_i$ le nombre de donn\'ees dans l'intervalle tb  pour lesquels $Xn_{in}[j]$ est inf\'erieur \`a $val_{inv}$ .

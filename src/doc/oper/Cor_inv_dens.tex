@@ -1,0 +1,46 @@
+%%%%%
+%
+\section{Correction d'un param\`etre \texttt{float} par le rapport des masses volumiques
+$\rho_0 / \rho$ }
+
+\itemstyle{Op\'erateur~:} \textsf{Cor\_inv\_dens}
+\index{Cor\_inv\_dens}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur multiplie un param\`etre de type \texttt{float} par le 
+facteur $\rho_0/\rho$, qui est le rapport entre 
+la masse volumique de l'air sec standard \`a 1013.5 hPa et 15 $^{\circ}C$
+ et 
+la masse volumique de l'air ambiant.
+
+Le paramètre d'entrée peut être scalaire ou de taille quelconque sur une
+dimension.
+ 
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Cor_inv_dens.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Cor_inv_dens.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire :}
+Cette correction est utilis\'ee pour certaines sondes
+micro-physique (PCASP, TSI) lorsque le débitmètre
+mesure un flux de masse (réglé à 1 en conditions standard) 
+alors qu'on souhaite obtenir un flux volumétrique.
+
+%%%%%AUTEUR%%%%
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}\\
+Principe de la correction :\\
+Valeur de $\rho_0$ : \\
+Standard ISO2533-1975 (Atmosphère-type) \cite{ISO-2533}, tableau 5.

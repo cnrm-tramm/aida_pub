@@ -1,0 +1,35 @@
+%%%%%
+%
+\section{Correction de sauts simples}
+
+\itemstyle{Op\'erateur~:} \operfmt{correc\_saut}
+\index{correc\_saut}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+D\'etection de sauts sup\'erieur \`a un seuil 
+se produisant sur une seule valeur. La valeur "fausse"
+est remplac\'ee par la moyenne des valeurs qui l'encadrent. 
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/correc_saut.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/correc_saut.frm.tex}
+
+%%%%%COMMENTAIRES%%%%
+\itemstyle{Commentaires}
+
+\emph{Attention} : L'interpolation linéaire ne convient pas aux variables
+qui peuvent être naturellement discontinues, tels les caps et
+autres angles.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

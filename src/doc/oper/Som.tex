@@ -1,0 +1,40 @@
+%% TRANSFORMATIONS TEMPORELLES %%
+%
+\section{Sommation}
+
+\itemstyle{ Op\'erateur~: } {\sf Som}
+\index{Som}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Sommation de $N$ \'elements cons\'ecutifs dans le temps.\newline
+
+
+%%%%%ARGUMENTS%%%%%
+\bigskip
+\input {arguments/Som.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input{formules/Som.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{ Commentaire~:}
+
+Le nombre d'\'echantillons du vecteur r\'esultat est \'egal au nombre
+d'\'echantillons du vecteur d'origine, divis\'e par  $N$, arrondi \`a
+l'entier sup\'erieur.
+Si le nombre d'\'echantillons de X n'est pas un multiple de $N$, la
+derni\`ere valeur de $Xs$ est identique à la précédente.\\
+La fr\'equence d'\'echantillonnage du param\`etre r\'esultat est le rapport de
+la fr\'equence du param\`etre d'entr\'ee par $N$.\\ 
+Cas particulier :\\
+Si le nombre d'\'echantillons de X est inférieur à $N$, on renvoie un NaN (modification du source en date du 26/10/2007)
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ R\'ef\'erences~:}

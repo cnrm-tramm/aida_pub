@@ -1,0 +1,65 @@
+\part{Développements en langage de commande du shell}
+\label{part:dev_sh}
+
+\section{Type de shell}
+   Pour les scripts simples reposant sur peu de fonctionnalités
+du shell, il est préférable de privilégier la portabilité et de
+se limiter à une syntaxe POSIX. On pourra tester, par exemple,
+que les scripts fonctionnement avec plusieurs interpréteurs (dash, bash, ...)
+
+   Pour les scripts plus complexes, l'usage actuel est d'utiliser préférentiellement
+bash, car il est largement répandu. Quelques scripts existent en ksh.
+
+\smallbreak
+  Les codes shell doivent débuter par un sheebang sous la forme suivante : \\
+ (ex pour un shell \texttt{bash}): 
+\begin{boxedverbatim}
+#!/usr/bin/env  bash
+\end{boxedverbatim}
+
+\section{Bibliothèque de fonctions}
+   Les fonctions les plus courantes ont été regroupées dans \url{AIDA_shell_lib.sh}, 
+qui est installé dans  \url{$AIDA_HOME/lib}. 
+   Pour l'utiliser, voici un exemple typique de code d'initialisation, à placer
+en début de script : 
+
+\begin{lstlisting}[language=sh,frame=trbl,basicstyle=\small\ttfamily]
+AIDA_LIB=${AIDA_LIB:-${AIDA_HOME}/lib}
+SHELL_LIB=${AIDA_LIB}/AIDA_shell_lib.sh
+if ! test -f $SHELL_LIB
+then
+  echo "Bibliotheque de fonctions shell absente ! ${SHELL_LIB}"
+  exit
+fi
+. ${SHELL_LIB}
+
+AIDA_env_init
+export PATH=${AIDA_BIN}:$PATH
+\end{lstlisting}
+
+\section{Exemples de code}
+\subsection{Travail sur des données particulières}
+  Pour offrir la possibilité de travailler sur fichiers (données, exécutables,...) autres
+que que ceux de l'arborescence standard, l'utilisateur à la possibilité, par des
+variables d'environnement AIDA\_DATA, AIDA\_BIN, ... de spécifier un chemin
+particulier (exemple : un cd-rom) pour un type de fichiers.
+
+   Pour prendre cela en compte dans un script, la méthode
+la plus adaptée est la suivante :
+\begin{verbatim}
+AIDA_HOME=${AIDA_HOME}
+AIDA_DATA=${AIDA_DATA:${AIDA_HOME}/data}
+AIDA_BIN=${AIDA_DATA:${AIDA_HOME}/bin}
+\end{verbatim}
+
+   Pour les scripts qui utilisent la bibliothèque \url{AIDA_shell_lib.sh}, 
+ces initialisations sont faites dans la fonction \texttt{AIDA\_env\_init}
+
+\subsection{Récupérer des propriétés d'un vecteur dans son en-tête}
+Le plus portable est d'utiliser \texttt{vec2hdr} et \texttt{FDDfiltre} 
+(les solutions à base de \texttt{strings}, \texttt{grep} peuvent
+donner des résultats différents selon les versions Unix/linux).
+Par exemple, pour connaître l'unité : 
+\begin{verbatim}
+ unit_str=`vec2hdr $Acq_id $VECT | FDDfiltre -l -f 3 -c unit`
+\end{verbatim}

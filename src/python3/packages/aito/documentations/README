@@ -1,0 +1,7 @@
+Dans Short_cuts.html
+--------------------
+pour ajouter une icone, faire précéder le nom de l'icone de : AIDA_ICON 
+aito se chargera de remplacer AIDA_ICON par le path d'accès aux icones
+
+Ex : <img src="AIDA_ICON/left_arrow.png" alt="Left">
+

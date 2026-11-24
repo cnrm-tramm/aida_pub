@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$N_{freq}$ & Coeff., \texttt{float} & Nombre de points du cospectre \\
+$z$ & Coeff., \texttt{float} & Hauteur de mesure (m)\\
+$d$ & Coeff., \texttt{float} & Hauteur de déplacement (m)\\
+$L$ & Vecteur, \texttt{float} & Longueur de Monin-Obhukof (m)\\
+$U_{moy}$ & Vecteur, \texttt{float} & Force du vent moyen (m/s)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Cosp$ & Vecteur, \texttt{float[$N_{freq}$]} & Cospectre \\
+\end{tabarg}

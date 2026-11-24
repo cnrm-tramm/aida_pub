@@ -1,0 +1,86 @@
+\part{Choix généraux d'organisation des développements}
+\label{part:dev_gene}
+
+Cette partie traite du cadre général des développement dans AIDA, c'est à dire
+l'écriture (ou la modification) de programme ou fonction d'usage général, de
+documentation, mais pas l'utilisation d'AIDA pour effectuer tel ou tel
+traitement.
+
+Les sources sont stockés dans un système de gestion
+de source (\texttt{git}).
+
+%% problème avec dev.bib  : remplacement de \cite{Miller1997} par l'url seule
+Le processus de compilation/installation est basé sur l'utilisation récursive
+de make\footnote{\label{make}Cette technique est controversée, notamment par
+Peter Miller, qui explique pourquoi les make récursifs ne permettent pas de
+voir l'arbre complet des dépendances, et obligent soit à en négliger certaines,
+soit à faire du travail en double
+(\url{http://aegis.sourceforge.net/auug97.pdf}).  AIDA n'est pas un gros projet
+(au sens de P. Miller) et on parvient à faire une compilation ordonnée
+(bibliothèques avant programmes) qui évite les dépendances complexes.}
+sur toute l'arborescence AIDA.
+
+
+\section{Utilisation des makefile}
+\label{sec:make}
+
+\subsection{Cibles usuelles}
+Chaque makefile devra définir au moins trois cibles  :
+
+\begin{description}
+  \item[clean] : supprime tous les fichiers générés au cours du processus de
+    construction.
+  \item[depend] : calcule les dépendances qui peuvent être construites
+    automatiquement.
+  \item[install] : construit le résultat attendu (bibliothèque, programme,
+    document, ...) dans le répertoire actuel puis copie le résultat vers un
+    répertoire
+    (\texttt{\$AIDA\_HOME/lib, \$AIDA\_HOME/bin, \$AIDA\_HOME/doc, ...}).
+\end{description}
+\bigbreak
+
+Il est souhaitable que le makefile définisse la cible \texttt{\textbf{all}} :
+\begin{description}
+  \item[all] : construit le résultat attendu (bibliothèque, programme,
+    document, ...) dans le répertoire actuel (le plus souvent, "all" est la
+    cible par défaut).
+\end{description}
+\bigbreak
+
+Une cinquième cible, \texttt{\textbf{check}}, qui exécute des tests, est pour
+l'instant recommandée mais pas encore systématique.
+
+
+\subsection{Configuration et portabilité}
+Pour éviter d'effectuer au sein de chaque makefile une reconnaissance de la
+machine hôte, et une adaptation à l'environnement local (versions et options
+des compilateurs et autres utilitaires), ces réglages sont regroupés dans un
+fichier unique \path{$AIDA_HOME/config/local_cfg.mk}, et tous les makefiles
+incluent ce fichier de configuration grâce à la ligne :
+\smallbreak
+\begin{boxedverbatim}
+-include $(AIDA_HOME)/config/local_cfg.mk 
+\end{boxedverbatim}
+\medbreak
+
+Le fichier \path{$AIDA_HOME/config/local_cfg.mk} contient toutes les
+définitions de macros pouvant être différentes selon l'environnement. C'est un
+lien sur :\\
+\path{AIDA_HOME/local/make/Linux_$DISTRIB_$DISTRIB_RELEASE_$ARCH.auto.mk}. \\
+
+Le fichier
+\path{AIDA_HOME/local/make/Linux_$DISTRIB_$DISTRIB_RELEASE_$ARCH.auto.mk} et
+le lien \path{$AIDA_HOME/config/local_cfg.mk} sont générés automatiquement par
+l'installateur (voir : \path{$AIDA_HOME/scr/script/set_make_config.sh})
+
+\subsection{Quelques points techniques spécifiques}
+\begin{itemize}
+\item Pour compatibilité avec
+un système de gestion de sources,
+les dépendances générées automatiquement par
+makedepend ne sont pas écrites en fin de makefile,
+mais dans un fichier séparé.
+%TODO : explication de la technique
+\item .SECONDEXPANSION pour gmake version $\geq$ 3.81
+\end{itemize}
+

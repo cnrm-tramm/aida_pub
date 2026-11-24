@@ -1,0 +1,27 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Strobe$ & Vecteur, {\tt float} & Nombre de particules dans la D.O.F.
+   (comptes par p\'eriode d'\'echantillonnage)\\
+$Reset$& Vecteur, {\tt float} & Nombre total de particules compt\'ees 
+    (comptes par p\'eriode d'\'echantillonnage)\\
+$\tau_{spec}$ & Vecteur, {\tt float} & temps de transit estim\'e \`a
+          partir du spectre de gouttes ($s$)\\
+$f_e$ & Coeff., {\tt float} & Fr\'equence d'\'echantillonnage ($Hz$)\\
+$\tau_1$ & Coeff., {\tt float} & D\'elai \'electronique court ($s$)\\
+$\tau_2$ & Coeff., {\tt float} & D\'elai \'electronique long ($s$)\\
+$\tau_r$ & Coeff., {\tt float} & D\'elai \'electronique pour le reset ($s$)\\
+$Crt_0$ & Coeff., {\tt float} & Taux de comptage minimal au dessus
+duquel on peut effectuer la correction ($count.second^{-1}$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$N_{rs}$ & Vecteur, {\tt float} & Nombre total de gouttelettes
+corrig\'e des co\"{\i}ncidences par le taux de comptage
+(\textit{comptes par p\'eriode d'\'echantillonnage}) \\
+\end{tabarg}

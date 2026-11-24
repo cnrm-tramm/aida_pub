@@ -1,0 +1,54 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$L_x$ & Coeff., \texttt{float} & Coordonnée du point de mesure de la vitesse 
+de l'air par rapport au mobile, sur l'axe X du repère dans lequel
+sont exprimées les mesures de la vitesse par rapport au sol (m)\\
+$L_y$ & Coeff., \texttt{float} & Coordonnée du point de mesure de la vitesse 
+de l'air par rapport au mobile, sur l'axe Y du repère dans lequel
+sont exprimées les mesures de la vitesse par rapport au sol (m)\\
+$L_z$ & Coeff., \texttt{float} & Coordonnée du point de mesure de la vitesse 
+de l'air par rapport au mobile, sur l'axe Z du repère dans lequel
+sont exprimées les mesures de la vitesse par rapport au sol (m)\\
+
+$U_m$ & Vecteur, \texttt{float} & Première composante de la vitesse du 
+vent par rapport au mobile (Même axe que pour $V_x$  ($m/s$)\\
+$V_m$ & Vecteur, \texttt{float} & Seconde composante de la vitesse du 
+vent par rapport au mobile (Même axe que pour $V_y$  ($m/s$)\\
+$W_m$ & Vecteur, \texttt{float} & Troisième composante de la vitesse du 
+vent par rapport au mobile (Même axe que pour $V_z$  ($m/s$)\\
+
+$V_x$ & Vecteur, \texttt{float} & Première composante de la vitesse du 
+mobile par rapport au sol (en général, suivant l'axe longitudinal de
+la plate-forme, positif vers l'avant) ($m/s$)\\
+$V_y$ & Vecteur, \texttt{float} & Seconde composante de la vitesse du 
+mobile par rapport au sol (en général, suivant l'axe 
+transversal de la plate-forme, positif de bâbord vers tribord) ($m/s$)\\ 
+$V_z$ & Vecteur, \texttt{float} & Troisième composante de la vitesse du
+mobile par rapport au sol (en général, suivant l'axe 
+"vertical" de la plate-forme, positif vers le bas) ($m/s$)\\
+
+$Vr_x$ & Vecteur, \texttt{float} & Vitesse de rotation suivant l'axe X, positif 
+quand $\phi$ cro\^{\i}t($rad/s$) \\
+$Vr_y$ & Vecteur, \texttt{float} & Vitesse de rotation suivant l'axe Y, positif
+quand $\theta$ cro\^{\i}t($rad/s$) \\
+$Vr_z$ & Vecteur, \texttt{float} & Vitesse de rotation suivant l'axe Z, positif
+quand $\psi$ cro\^{\i}t ($rad/s$) \\
+
+$\theta$ & Vecteur, \texttt{float} & Angle de tangage du mobile, positif quand
+le mobile est cabré (axe X au-dessus du plan horizontal) ($radians$)\\
+$\phi$ & Vecteur, \texttt{float} & Angle de roulis du mobile, positif quand
+le coté tribord est enfoncé (axe Y en-dessous du plan horizontal) ($radians$)\\
+$\psi$ & Vecteur, \texttt{float} & Cap géographique du mobile ($radians$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$U$ & Vecteur, \texttt{float} & Composante zonale du vent (Ouest vers Est) ($m/s$)\\
+$V$ & Vecteur, \texttt{float} & Composante m\'eridienne du vent (Sud vers Nord) ($m/s$)\\
+$W$ & Vecteur, \texttt{float} & Composante verticale du vent (Bas en Haut) ($m/s$)\\
+\end{tabarg}

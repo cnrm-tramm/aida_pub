@@ -1,0 +1,43 @@
+%%%%%
+%
+\section{Création d'un vecteur composite}
+
+\itemstyle{Op\'erateur~:} \textsf{select\_sur\_vect}
+\index{select\_sur\_vect}
+\label{select_sur_vect}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Création d'un vecteur composite, qui contient les données de $X$ 
+si elles sont présentes et comprises entre crit\_min 
+et crit\_max, et les données de $Y$ (sans filtrage) dans le cas contraire.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/select_sur_vect.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/select_sur_vect.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire}
+
+Ne pas oublier que les vecteurs $X$ et $Y$ doivent avoir le même 
+nombre d'échantillons.
+
+Cet opérateur peut être considéré comme une version plus puissante de
+l'opérateur \textsf{Complete\_X\_avec\_Y} (\ref{Complete_X_avec_Y}) : ce 
+dernier ne traite que les valeurs manquantes, alors que 
+\textsf{select\_sur\_vect} applique aussi un filtre simple (valeur
+entre deux bornes). Mais il a un gros défaut : il ne produit pas de 
+flag indiquant l'origine de chaque valeur.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

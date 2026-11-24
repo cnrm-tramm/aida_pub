@@ -1,0 +1,18 @@
+%%Correc_hors_stat
+  Average and standard-deviations of X samples and 
+their derivative are computed on a window
+of width $fenetre$, moving by steps of $fenetre/10$.
+
+  Every sample matching one of the following criteria are then
+replaced by missing\_value.
+\begin{itemize}
+    \item not in the [$Borne_{inf}$ , $Borne_{sup}$] interval.
+    \item or which deviation from the average 
+is larger than $Toler\_X . \mathrm{ecart-type}$ 
+    \item or which  deviation of the derivative from its average 
+is  larger than $Toler\_{dX} . \mathrm{ecart-type}$ 
+\end{itemize}
+  
+  Eventually, consecutives series of missing values
+of length less than $seuil\_duree$ are replaced 
+by linear interpolation.

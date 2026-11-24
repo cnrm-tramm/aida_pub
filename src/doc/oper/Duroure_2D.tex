@@ -1,0 +1,52 @@
+%%%%%
+%
+\section{Calcul de spectre en concentrations par la m\'ethode \`a Duroure}
+
+\itemstyle{Op\'erateur~:} {\sf Duroure\_2D}
+\index{Duroure\_2D}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur calcule le spectre moyen en concentrations, par la méthode à
+Duroure, des données d'une sonde PMS 2D-C ou 2D-P.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Duroure_2D.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Duroure_2D.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Les données images de la sonde PMS-2D-C ou 2D-P sont analysées par imagette.
+La méthode de détection des imagettes a été modifiée afin d'utiliser la même
+que celle de l'opérateur Compte\_img\_2D.
+La taille d'une particule non-tronquée est estimée en comptabilisant le nombre
+de pixels actifs de l'imagette (la surface). Alors,
+le diamètre de la particule correspond
+au diamètre d'une particule circulaire ayant la même surface.
+La taille d'une particule doublement tronquée est calculée correspond au
+diamètre selon l'axe des X.
+Les particules simplement tronquées ne sont pas traitées car il n'y a pas de
+méthode qui fonctionne bien pour calculer les concentrations avec celles-ci.
+Les imagettes vides sont considérées comme des particules de la plus petite
+taille dans le spectre.
+Certaines particules sont rejetées, soient celles qui sont en splash
+(dimension X au moins 4 fois plus grande que celle en Y) et les simplement
+tronquées.
+Le calcul des concentrations s'effectue en calculant un volume
+d'échantillonnage qui est calculé en utilisant les valeurs fournies par PMS
+pour la sonde utilisée.
+En sortie, deux fichier ASCII ayant les noms
+Spec\_moy\_Duroure\_2d.dat et Spec\_moyt\_Duroure\_2d.dat sont créés et contiennent
+le spectre moyen pour la période spécifiée, en unités de cm-3*micron-1.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+Christian Pag\'e CNRM/GMEI/MNP
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

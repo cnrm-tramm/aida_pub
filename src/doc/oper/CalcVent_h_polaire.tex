@@ -1,0 +1,40 @@
+%%%%%
+%
+\section{Calcul du vent horizontal à partir de mesures polaires}
+
+\itemstyle{Op\'erateur~:} {\sf CalcVent\_h\_polaire}
+\index{CalcVent\_h\_polaire}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur calcule le vecteur vent horizontal (DD et FF) à partir
+des mesures du vent relatif et du vecteur-vitesse de la plate-forme 
+de mesure considérée comme un point. Tout est exprimé
+en coordonnées polaires (directions avec convention météo).
+On fait l'hypothèse que toutes les vitesses angulaires et en particulier
+dcap/dt sont quasi nulles ou très inférieures à la vitesse navire.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/CalcVent_h_polaire.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/CalcVent_h_polaire.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire}
+Le calcul (somme vectorielle) et les  définitions des arguments de cette fonction sont 
+décrits sur le schéma ci-dessous :
+\begin{center}
+\includegraphics[angle=270,width=0.7\linewidth]{images/graph_arg_vent_bateau_polaire.png}
+\end{center}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

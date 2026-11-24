@@ -1,0 +1,11 @@
+%% Formule de l'operateur : Extract_param_profil
+\begin{tabular}{lll}
+    Pour chaque échantillon $i$: & \\
+    &On recherche $z$ et $z_{prec}$ \\
+    &\text{ Jusqu'à ce que  $z_{prec} < alti < z$}& \\
+
+    Puis par interpolation linéaire: & \\
+\end{tabular}
+$$
+    X_{param}(i) = {(X_{alti}(i) -z)} \times {\frac{Profil_{param}(i,z) - profil_{param}(i,z_{prec})} {z-z_{prec}} + profil_{param}(i,z)  } 
+$$

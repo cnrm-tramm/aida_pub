@@ -1,0 +1,37 @@
+%%%%%
+%
+\section{Correction des deltaFF (vents mesurés par le dispositif flux a\'erodynamique)}
+
+\itemstyle{Op\'erateur~:} {\sf Cor\_deltaFF}
+\index{Cor\_deltaFF}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction corrige les incoh\'erences dans les valeurs de vitesses
+de vent mesur\'es (niveau bas et niveau haut) à partir du flag créé par l'opérateur Valid\_empir\_deltaFF (voir doc de cet opérateur). 
+Si le flag est égal à 0, les mesures de vent haut et bas ont été détectées cohérentes entr'elles. Si le flag est négatif, ffhaut est trop "fort" par rapport à ffbas (ffbas trop "faible"...). Si le flag est positif, ffhaut est trop faible...
+Le cas le plus fréquemment rencontré est une mesure de vent bas (ffbas) trop "faible" (donc flag<0) , souvent l'anémomètre est bloqué à la valeur offset (flag=-1).\\
+Selon la valeur du flag, ffbas ou ffhaut sont corrigés par méthode empirique ou par valeur interpolée (cas de points incohérents "isolés").
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Cor_deltaFF.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Cor_deltaFF.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Cette fonction ne permet que de corriger un problème de coh\'erence des
+mesures (haut et bas) entre elles. Elle ne donne pas de      
+diagnostic absolu de la validit\'e des mesures en elles-mêmes.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

@@ -1,0 +1,24 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Strobe$ & Vecteur, \texttt{float} & Nombre de particules dans la DOF 
+(\textit{comptes par période d'échantillonnage})\\
+$Fast\_Reset$ & Vecteur, \texttt{float} & nombre de particules hors de la DOF
+(\textit{comptes par période d'échantillonnage})\\
+TAS & Vecteur, \texttt{float} & Vitesse propre (m/s)\\
+$\tau{}_1$ & Coeff., \texttt{float} & délai long (second)\\
+$\tau{}_2$ & Coeff., \texttt{float} & délai court (second)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$A_c$ & Vecteur, \texttt{float} & Activité (proportion : $s$/$s$)\\
+\end{tabarg}

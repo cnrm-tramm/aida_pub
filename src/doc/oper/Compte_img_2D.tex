@@ -1,0 +1,43 @@
+%%%%%
+%
+\section{Comptage des imagettes de la sonde PMS-2D-C}
+
+\itemstyle{Op\'erateur~:} {\sf Compte\_img\_2D}
+\index{Compte\_img\_2D}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur calcule le nombre d'imagettes comprises dans les données images
+d'une sonde PMS-2D-C ou 2D-P.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Compte_img_2D.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Compte_img_2D.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Le nombre d'imagettes est calculé à partir du calcul du nombre de séparateurs
+inclus dans les données images. Les règles de détermination des séparateurs est
+moins stricte que dans la définition des séparateurs des données images de la
+sonde 2D-C ou 2D-P. Habituellement, les séparateurs sont constitués de la séquence
+suivante (pixel 0 = diode obscurcie): une ou plusieurs ligne(s) de pixels à 1; 
+une ligne avec l'information du temps interne codé sur 24 ou 32 bits (si le
+codage est sur 24 bits, les 8 derniers bits contiennent le code
+d'identification de la sonde: dans le cas de la sonde du CAM, le code est
+101010); une ligne de pixels à 0 sur 24 bits avec les 8
+derniers bits contenant le code d'identification de la sonde. Dans notre cas,
+nous avons omis la vérification de la présence d'une ou de plusieurs ligne(s)
+de pixels à 1. Cela ne provoque pas d'erreurs dans la détection des
+séparateurs et permet de ne pas en omettre.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+Christian Pag\' CNRM/GMEI/MNP
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

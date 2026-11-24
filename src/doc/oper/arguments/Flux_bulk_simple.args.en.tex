@@ -1,0 +1,22 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$P_{s}$ & Vecteur, \texttt{float} & Pressure on surface (\textit{hPa})\\
+$U_{z}$ & Vecteur, \texttt{float} & Relative Humidity (\textit{\%})\\
+$T_{s}$ & Vecteur, \texttt{float} & Air Temperature at height 0 (\textit{C} ou \textit{K})\\
+$T_{z}$ & Vecteur, \texttt{float} & Air Temperature at height $H_{z}$ (\textit{C} ou \textit{K})\\
+$V_{z}$ & Vecteur, \texttt{float} & Wind Strength (speed) at height $H_{z}$, relative to sea stream (\textit{m/s})\\
+$Ustar$ & Vecteur, \texttt{float} & Friction velocity (\textit{m/s})\\
+$H_{z}$ & Coeff., \texttt{float} & Height of (Tz, Uz) measurements ($T_{z}$, $U_{z}$)(\textit{m})\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$H_{s}$ & Vecteur, \texttt{float} & Sensible heat flux (\textit{W/m2})\\
+$L_{e}$ & Vecteur, \texttt{float} & latent heat flux (\textit{W/m2})\\
+$Tau$ & Vecteur, \texttt{float} & Turbulent part of wind stress (\textit{N/m2})\\
+\end{tabarg}

@@ -1,0 +1,24 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$V_p$ & Vecteur, {\tt float} & Vitesse propre ($m/s$ ou $kt$)\\
+$\beta$ & Vecteur, {\tt float} & Angle de dérapage, positif lorsque le vent 
+relatif vient de tribord ($radians$ ou $degres$)\\
+$\Psi$ & Vecteur, {\tt float} & Cap géographique du mobile ($radians$ ou $degres$)\\ 
+$unit$  & Coeff., {\tt String         } & Unite de mesure des angles ($radians$
+ou $degres$)\\
+$V_x$ & Vecteur, {\tt float} & Vitesse du mobile par rapport au sol, sur l'axe 
+longitudinal du mobile, dirigé vers l'avant ($m/s$ ou $kt$)\\
+$V_y$ & Vecteur, {\tt float} & Vitesse du mobile par rapport au sol, sur l'axe 
+transversal du mobile, dirigé vers de babord vers tribord ($m/s$ ou $kt$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$U$ & Vecteur, {\tt float} & Composante zonale du vent (Ouest vers Est) (même unité que $V_p$)\\
+$V$ & Vecteur, {\tt float} & Composante méridienne du vent (Sud au Nord) (même unité que $V_p$)\\
+\end{tabarg}

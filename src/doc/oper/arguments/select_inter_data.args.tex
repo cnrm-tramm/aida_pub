@@ -1,0 +1,26 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Vect1$ & Vecteur, {\tt float} & Données à sélectionner (unité
+quelconque)\\
+$Vect2$ & Vecteur, {\tt float} & Données sur lesquelles porteront les tests (unité
+quelconque)\\
+$crit1\_min$ & Coeff., {\tt float} & Première borne min (même unité que $Vect2$)\\
+$crit1\_max$ & Coeff., {\tt float} & Première borne max (même unité que $Vect2$)\\
+$crit2\_min$ & Coeff., {\tt float} & Deuxième borne min (même unité que $Vect2$)\\
+$crit2\_max$ & Coeff., {\tt float} & Deuxième borne max (même unité que $Vect2$)\\
+$val1$ & Coeff., {\tt float} & Valeur de remplacement des données de Vect$1$ non
+selectionnées qui ne sont pas manquantes (même unité que $Vect1$)\\
+$val2$ & Coeff., {\tt float} & Valeur de remplacement des données de Vect$2$ non
+selectionnées qui ne sont pas manquantes (même unité que $Vect2$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Vect1_{sel}$ & Vecteur, \texttt{float} & Données de $Vect1$ sélectionnées, ou $val1$ (même unité que $Vect1$)\\
+$Vect2_{sel}$ & Vecteur, \texttt{float} & Données de $Vect2$ sélectionnées, ou $val2$ (même unité que $Vect2$)\\
+\end{tabarg}

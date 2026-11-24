@@ -1,0 +1,24 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X_{in}$ & Vecteur, \texttt{float} & Variable d'origine\\
+$time_{in}$ & Vecteur, \texttt{double} & Base de temps de $X_{in}$ (secondes)\\
+$ecart\_avant$ & Coeff., \texttt{double} & Écart maxi avant (secondes)\\
+$ecart\_apres$ & Coeff., \texttt{double} & Écart maxi après (secondes)\\
+$toler\_mnq$ & Coeff., \texttt{Int\_32} & Seuil de calcul de la moyenne (nb. échant). A chaque instant de la base de temps d'arrivée, 
+la moyenne est calculée si le nombre d'échantillons dans l'intervalle de temps est strictement supérieur à $toler\_mnq$. Sinon, 
+le résultat est "valeur manquante". Une valeur de 0 provoque le calcul dans tous les cas (même s'il n'y a qu'un seul échantillon).\\
+$time_{out}$ & Vecteur, \texttt{double} & Base de temps d'arrivée (secondes)\\
+$size_{out}$ & Coeff., \texttt{Int\_32} & Nombre de valeurs dans la base de temps 
+d'arrivée (dans adc, utiliser \$Arg6.NbVal)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X_{out}$ & Vecteur, \texttt{float} & $X_{in}$ moyenné et échantillonné sur
+la base de $time_{out}$ (même unité que $X_{in})$\\
+\end{tabarg}

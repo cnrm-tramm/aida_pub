@@ -1,0 +1,16 @@
+
+[FORMAT]
+format_coord  = C (D)DDdMM.X(X)  (C=Lettre (N, E, S ou W), (D)DD=degres 2 ou 3 chiffres, MM=minutes, (X)=fraction decimale de minutes);
+format_date   = JJ/MM/AAAA/HHMMSS (JJ=jour, MM=mois, AAAA=annee, le tout en chiffres);
+format_duree  = HH.D (HH=heure, D=dixiemes dheure);
+format_heure  = HHMMSS (HH=heures, MM=minutes,SS=secondes);
+
+[IDENTIFICATION]
+acq_id      = ts210213;
+campagne    = inconnue;
+date        = 01/08/2021;
+plate-forme = test-AIDA;
+
+[ACQUISITION]
+debut_acquisition = 01/08/2021/022736;
+fin_acquisition   = 02/08/2021/000029;

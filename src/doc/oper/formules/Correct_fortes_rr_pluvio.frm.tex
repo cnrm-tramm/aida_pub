@@ -1,0 +1,71 @@
+%Correct_fortes_rr_pluvio
+%
+%Algorithme utilisé :
+%
+%En entrée :
+%vecteur Mm	 Cumul des précipitation minutes 
+%A valeur du parametre de correction
+%B  valeur du parametre de correction
+%	m/s	 Vitesse du vent mesurée par l'anémomètre associé
+%C  valeur du parametre de correction
+%  	   	 Résultat du comptage supérieur
+%R  Résolution du pluviometre
+%En sortie
+%vecteur Mm	 Cumul corrigé des précipitation minutes 
+%
+
+%Algorithme de traitement des fortes précipitations:
+
+Calcul de la correction \`a appliquer chaque minute i:
+
+$I_i$: intensité des précipitations à la minute $i$ en mm 
+$$
+I_i = \left\lbrace
+\begin{array}{ll}
+0.7 & \text{ Si $I_i$ > 0.7 (250mm/h)}\\
+RRB_i/60 & \text{ sinon} \\
+\end{array}\\
+\right.
+$$
+
+$K_i$: le coefficient de correction calculé de la minute i\  :
+$$K_i =  A \times I_i ^2 + B \times I_i +C$$
+
+\begin{center}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.5]{./images/graph_formule_forte_pluie_K.png}
+    \caption{Courbe de correction Ki en fonction de la quantité de pluie par minute (pour un pluviomètre précis-mécanique 3070)}
+\label{fig-formule}
+\end{figure}
+\end{center}
+
+Et la Correction a appliquer a chaque minute $C_i$:
+$$
+C_i = K_i \times RRB_i
+$$
+
+Calcul de $RRC_i$: cumul des corrections à la minute $i$:
+
+$$
+RRC_i = RRB_i+INC_i
+$$
+
+$INC_i$ est la correction à appliquer au cumul des précipitations \`a l'intant $i$ par pas de 0.1 mm. 
+Si la correction $C_i$ n'atteint pas 0.1 mm, on garde le reste $RES_i$ en mémoire pour la minute suivante.
+$RES_i$ est réinitialisé au bout de 2 minutes sans pluie.
+
+$$
+INC_i = \dfrac{\text{Partie Enti\`ere}  (10  \times ( Ci +RES_{i-1} ))}{10}
+$$
+$$
+\text{et }  RES_i = \left\lbrace
+\begin{array}{ll}
+0 & \text{si } RRB_i = 0  \text{ et } RRB_{i-1} =0 \\
+RES_{i-1}  + C_i  -INC_i & sinon \\
+\end{array}\\
+\right.
+$$
+
+

@@ -1,0 +1,20 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Flag_{stat}$ & Vecteur, \texttt{float} & Flag qualité de la stationnarité de la covariance $\overline{X'Y'}$\\
+$Flag_{ITCX}$ & Vecteur, \texttt{float} & Flag qualité de la caractéristique intégrale de la turbulence suivant X\\
+$Flag_{ITCY}$ & Vecteur, \texttt{float} & Flag qualité de la caractéristique intégrale de la turbulence suivant Y\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Flag_{XY}$ & Vecteur, \texttt{float} & Flag qualité de la covariance $\overline{X'Y'}$ \\
+\end{tabarg}

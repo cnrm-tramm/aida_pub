@@ -1,0 +1,14 @@
+%% GPS_to_UTC_auto
+  Recherche des valeurs non-nulles de $Decal$, et
+vérification qu'elles sont identiques. Si c'est le
+cas, on définit $D$ comme cette valeur.
+
+  Sur le premier $T_{GPS}$ non-nul, calcul d'un offset : 
+\[
+offset = 86400 . [(T_{GPS}-D) / 86400]
+\]
+Puis :
+\[
+   T_{UTC} = T_{GPS} - D - offset
+\]
+

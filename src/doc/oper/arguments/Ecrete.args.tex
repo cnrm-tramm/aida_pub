@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float} & blabla (unité quelconque)\\
+\$Arg2 & Coeff., \texttt{String} & Unité de $X$ \\
+$X_l$ & Vecteur, \texttt{float} & Valeur limite supérieur de $X$ (unité compatible avec celle de $X$)\\
+\$Arg4 & Coeff., \texttt{String} & Unité de $X_l$\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+\$Arg5 & Vecteur, \texttt{int} & Indicateur de remplacement (0/1)\\
+$Z$ & Vecteur, \texttt{float} & Nouvelle série de données composite (même unité que $X$)\\
+\end{tabarg}

@@ -1,0 +1,25 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float} & Paramètre à sélectionner (unité quelconque)\\
+$Y$ & Vecteur, \texttt{float} & Paramètre selon lequel s'effectue la sélection (unité quelconque)\\
+$Freq$ & Coeff.,\texttt{float} & Fréquence d'échantillonnage de X \\
+$Crit\_{min}$ & Coeff., \texttt{float} & Valeur mini de $Y$ pour laquelle $X$ est considéré valide\\
+$Crit\_{max}$ & Coeff., \texttt{float} & Valeur maxi de $Y$ pour laquelle $X$ est considéré valide\\
+$\Delta Y$ & Coeff., \texttt{float} & Valeur minimale de variation de $Y$ au-delà de laquelle on invalide $X$\\
+$\tau_{av}$ & Coeff., \texttt{float} & Temps pendant lequel X est invalidé avant une variation de $Y > \Delta Y $\\
+$\tau_{ap}$ & Coeff., \texttt{float} & Temps pendant lequel X est invalidé après une variation de $Y > \Delta Y $\\
+$Y_{inval}$ & Coeff., \texttt{float} & valeur de $Y$ qui permettra d'éliminer également des valeurs de $X$ (également pour le cas où la "valeur manquante" est mal reconnue (attribut misval non renseigné dans $Y$)) \\
+$Inv\_val$ & Coeff., \texttt{float} & valeur de remplacement de $X$ lorsque $Y$ ne correspond pas aux critères, le plus souvent "valeur manquante", 
+soit \texttt{\$Arg1.misval}\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sortie}}\\
+\hline
+$X_{valid}$ & Vecteur, \texttt{float} & $X$ lorsque $Y$ correspond aux critères. $Inv\_val$ dans les autres cas. 
+(même unité que $X$).\\
+\end{tabarg}

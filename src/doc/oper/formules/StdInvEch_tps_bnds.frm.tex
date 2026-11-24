@@ -1,0 +1,31 @@
+%% Formule de l'operateur : StdInvEch_tps_bnds
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+Pour  i=$0$, Nbre $Time_{bnds}$ :
+\[
+Proportion_{valid}=\frac{\texttt{nb de }X_{in} < val_{inv}}{\texttt{nb de valeur dans l'intervalle } Time\_bnds}
+\]
+
+\[
+X_{moy} = \frac{
+\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} X_{in}[j]} }
+{N_{i}} 
+\]
+
+\[
+X_{out}[i] =
+\begin{cases}
+\begin{tabular}{ll}
+$ \frac{ \sqrt{
+\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} (X_{in}[j] - X_{moy})²} }}{N_{i}} $
+&
+\texttt{ si  $proportion_{valid}$ < $tolerance_{inv}$}
+\\
+\texttt{$val_{replac}$} & \texttt{ sinon}
+\end{tabular} 
+\\
+\end{cases}
+\]
+Pour chaque $X_{in}[j]$ inf\'erieur \`a $val_{inv}$ avec $N_i$ le nombre de donn\'ees dans l'intervalle tb  pour lesquels $X_{in}[j]$ est inf\'erieur \`a $val_{inv}$ .

@@ -1,0 +1,94 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Utilisons palatino pour plaire à certains afficheurs de PDF
+\usepackage{pxfonts} 
+\usepackage{fancyhdr}
+\usepackage{moreverb}
+\usepackage{tocbibind}
+\usepackage{geometry}
+\usepackage{graphicx}
+%\usepackage{rcs}
+\usepackage{hyperref}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{ulem}
+\lstset{
+    language=bash, %% Bon défaut dans notre cas
+    inputencoding=utf8,
+    literate=%
+    {é}{{\'e}}1%
+    {è}{{\`e}}1%
+}
+\usepackage{supertabular}
+
+\usepackage{datetime2}
+\usepackage[local]{gitinfo2}
+
+\input{../common/page_style}
+
+\hypersetup{
+       colorlinks=true,%  Liens en couleur 
+       linkcolor=blue,%   Liens bleus
+       urlcolor=blue,%   Liens bleus
+       %%hyperindex=true,%  Ajoute des liens dans les index.
+       pdftitle={Documentation AIDA Volume 1 : documents de référence},
+       pdfauthor={CNRM/GMEI/TRAMM - SAFIRE},
+       pdfkeywords={Références AIDA}
+}
+
+\newenvironment{tab4col}{\begin{tabular}{|p{4cm}|p{2cm}|p{3.5cm}|p{5.5cm}|}}{\end{tabular}}
+\newenvironment{tab3col}{\begin{tabular}{|p{4cm}|p{4cm}|p{7cm}|}}{\end{tabular}}
+\newenvironment{tab2col}{\begin{tabular}{|p{4cm}|p{11cm}|}}{\end{tabular}}
+\newcommand{\saute}{\vspace{0.6cm}}
+
+% Let's have some nice headings
+\addtolength{\headheight}{2.3pt}
+\title{Documentation AIDA \\Volume 1 : documents de référence}
+\author{CNRM/GMEI/TRAMM \and SAFIRE}
+\date{Version du \DTMusedate{gitdate}}
+
+%   Refmark sert à appeler plusieurs fois la même
+% note de bas de page. Idée lue dans cahier Gut
+%nr 15, avril 1993, pp 51-52
+%%%\def\refmark#1{\hbox{\textsuperscript{\ref{#1}}}}
+\usepackage[bottom]{footmisc}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section*{Présentation}
+	AIDA est un \emph{atelier de traitement}
+qui regroupe un ensemble de programmes utiles à l'analyse et
+l'interprétation de séries temporelles de mesures de l'atmosphère
+(issues de stations sol, de bateaux, d'avions, ou de tout autre plate-forme).
+ Ces programmes sont interdépendants, et partagent un environnement
+informatique commun. Ils doivent donc respecter certaines 
+règles : formats de fichiers, nommages et organisation des
+répertoires, variables d'environnement, etc. Ces règles sont divisées en
+plusieurs chapîtres :
+\begin{itemize}
+  \item \nameref{part:arbo}, page \pageref{part:arbo}
+  \item \nameref{part:formvec} ("\textit{séries temporelles}"), page \pageref{part:formvec}
+  \item \nameref{part:meta}, page \pageref{part:meta}
+\end{itemize}
+
+% Partie : description de l'arborescence
+\input{arbo}
+
+% Partie : Format "vecteur"
+\input{formvec}
+
+% Partie : description des meta-données
+\input{meta}
+
+% Annexes
+\input{annexes}
+
+\end{document}

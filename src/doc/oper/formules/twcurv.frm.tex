@@ -1,0 +1,61 @@
+%%% twcurv
+La température $T'_w$ est calculée de la façon suivante :
+\[
+rap = \left(\frac{P_{calc}}{P_s - ew_t}\right)^\alpha 
+\]
+\[
+fact = \frac{0.62198}{C_p . P_{calc}} 
+\]
+\[
+\rho_p = \frac{0.62198 . Clw\left(t\right) . ew_t . P_s}{C_p . T_s} 
+\]
+Itération jusqu'à la convergence entre la température $y$ et la température $x$.\newline
+La température $x$ est initialisée à $T_s$ avant la boucle. \\
+Début de la boucle de calcul itératif : \\
+\[
+de = \left(r_1 + x . \left(r_2 + x . \left(r_3 + x . \left(r_4 + x . \left(r_5 + x. \left(r_6 - x . r_7\right)\right)\right)\right)\right)\right)
+\]
+\[
+x_{kelvin} = x + T_0
+\]
+\[
+a = T_s . rap . \left(1 - \frac{ew_x}{P_{calc}}\right) 
+\]
+\[
+b = \exp{ \frac{\left(\rho_p - Clw\left(x\right)\right) . fact . ew_x}{x_{kelvin}}} 
+\]
+\[
+y = \left(a . b\right) - T_0 
+\]
+Test de convergence :  \newline
+Si la différence entre $x$ et $y$ est inférieure à 0.05 (convergence), alors : 
+\[
+t'_w = y + T_0 
+\]
+Sinon : 
+\[
+dydx = a . b . \left( -\alpha . \frac{de}{\left(P_{calc}-ew_x\right)} 
+ + fact . Clw\left(x\right) . \frac{\left(\frac{ew_x}{x_{kelvin}}
+ - de\right)}{xk}\right) 
+\]
+\[
+x = \frac{\left( y - x . dydx\right)}{\left(1. - dydx\right)} 
+\]
+Fin de boucle
+
+avec~:\newline
+$P_s = $ Pression du niveau de condensation en hPa \newline
+$T_s = $ Température du niveau de condensation en degres Celsius \newline
+$P_{calc} = $ Pression du niveau de calcul en hPa \\
+$ew_t = $ Tension de vapeur partielle, calculé par la formule
+ donnée dans Bolton-80.  \\
+$\alpha = \frac{R_a}{C_{pa}} = 0.28562 $ \\
+$C_p = 1005. $ \\
+$r_1 = 4.438099984e^{-1} $ \\
+$r_2 = 2.857002636e^{-2} $ \\
+$r_3 = 7.938054040e^{-4} $ \\
+$r_4 = 1.215215065e^{-6} $ \\
+$r_5 = 1.036561403e^{-7} $ \\
+$r_6 = 3.532421810e^{-10} $ \\
+$r_7 = 7.090244484e^{-13} $ \\
+$T_0 = 273.15 $ \\

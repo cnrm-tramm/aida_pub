@@ -1,0 +1,40 @@
+%%%%%
+%
+\section{Moyenne-Echantillonnage 
+ en tolérant des valeurs manquantes (param\`etre {\tt double})}
+
+\itemstyle{Op\'erateur~:} \operfmt{ MoyEch\_mnq\_dbl}
+\index{MoyEch\_mnq\_dbl}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Moyenne glissante et \'echantillonnage d'un
+param\`etre \`a une fr\'equence donn\'ee, diviseur
+de la fr\'equence du param\`etre d'entr\'ee.
+Le calcul tient compte de la présence des valeurs manquantes
+et permet à l'utilisateur de choisir la tolérance en terme 
+de nombre de valeurs manquantes.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/MoyEch_mnq_dbl.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/MoyEch_mnq_dbl.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+$R_f$ doit \^etre l'inverse d'un entier. \newline
+Le nombre d'\'echantillons du vecteur de sortie est le produit du
+nombre d'\'echantillons du vecteur d'entr\'ee par $R_f$, arrondi
+\`a l'entier sup\'erieur. \newline
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

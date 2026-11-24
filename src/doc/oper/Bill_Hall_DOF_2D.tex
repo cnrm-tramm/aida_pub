@@ -1,0 +1,61 @@
+%%%%%
+%
+\section{Calcul de spectre en concentrations par la m\'ethode \`a Bill Hall}
+
+\itemstyle{Op\'erateur~:} {\sf Bill\_Hall\_DOF\_2D}
+\index{Bill\_Hall\_DOF\_2D}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur calcule le spectre moyen en concentrations, par la méthode à
+Bill Hall (NCAR), modifi\'ee pour corriger le DOF,
+des données d'une sonde PMS 2D-C ou 2D-P.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Bill_Hall_DOF_2D.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Bill_Hall_DOF_2D.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Les données images de la sonde PMS-2D-C ou 2D-P sont analysées par imagettes, puis
+dans chacune des imagettes, une analyse par groupes de pixels est effectuée.
+La méthode de détection des imagettes a été modifiée afin d'utiliser la même
+que celle de l'opérateur Compte\_img\_2D.
+La première colonne est reconstruite car celle-ci est perdue à cause parce que
+la sonde fait une acquisition en asynchrone: elle démarre celle-ci lorsque
+des diodes sont obscurcies, et par le fait même, elle perd la première tranche
+de données qui ont démarré l'acquisition.
+La taille d'une particule non-tronquée est estimée en comptabilisant le nombre
+de pixels actifs de l'imagette (la surface).
+Le diamètre de la particule correspond au diamètre maximal de la particule
+(selon sa forme).
+Les particules simplement et doublement tronquées sont reconstruites. Nous
+n'avons pas de référence sur la méthode de reconstruction jusqu'ici.
+Certaines particules sont rejetées: celles qui ont un aspect-ratio plus petit
+que 0.25; celles qui ont une dimension X beaucoup trop grande par rapport
+à la dimension Y; celles dont la dimension X est trop grande.
+Le calcul des concentrations s'effectue en calculant un Depth-Of-Field selon
+la méthode à Korolev et Baumgardner (1997) (le DOF est limité à 61.0 mm pour le 2D-C et 267.0mm pour le 2D-P),
+puis en calculant avec ce DOF
+la valeur du volume d'échantillonnage selon la méthode entire-in. Ceci est
+la méthode utilisée pour toutes les particules, soient les tronquées et les
+non-tronquées. Cela sous-estime le volume pour les particules tronquées, mais
+tant que nous n'avons pas les détails sur la méthode de reconstruction, nous
+ne pouvons pas déterminer la méthode à utiliser pour calculer le volume pour
+les particules tronquées.
+En sortie, un fichier ASCII ayant le nom Spec\_moy\_Hall\_2d.dat est créé et contient
+le spectre moyen pour la période spécifiée, en unités de cm-3*micron-1. De plus, un fichier ASCII ayant le nom LWC\_moy\_Hall\_2d.dat est aussi créé et contient le LWC pour la période spécifiée, en unités g/cm3. De même, la valeur du Diamètre Volumique Moyen (MVD) et du LWC moyen sont écris dans à l'écran et dans les diagnostiques d'exécution.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+Christian Pag\'e CNRM/GMEI/MNP
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Korolev-1997 \cite{Korolev-1997}.
+Heymsfield-1978 \cite{Heymsfield-1978}.

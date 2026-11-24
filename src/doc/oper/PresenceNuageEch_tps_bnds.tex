@@ -1,0 +1,43 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Presence d'un top de hauteur de base de nuage < a une valeur de seuil}
+
+\itemstyle{Op\'erateur~:} \operfmt{PresenceNuageEch\_tps\_bnds}
+\index{PresenceNuageEch\_tps\_bnds}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction calcule, pour chaque instant $t$ d'une
+base de temps $time_{out}$, le pourcentage de top de hauteur de base de nuage 
+ inférieur à une valeur de seuil pour au moins une des 3 couches de hauteur de base de nuage $X_{i_{in}}$ 
+entre les bornes données par le $time_{bnds}$ associé à $time_{out}$.
+Aucune supposition n'est faite sur la régularité de
+l'échantillonnage des 2 variables. Il est cependant nécessaire
+que $time_{in}$ (le temps des $X_{i_{in}}$) soit "à peu près" trié par ordre
+croissant.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/PresenceNuageEch_tps_bnds.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/PresenceNuageEch_tps_bnds.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+\textit{tb} est un tableau d'intervalles de temps déterminés à partir du vecteur temps $time_{out}$.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Néant.

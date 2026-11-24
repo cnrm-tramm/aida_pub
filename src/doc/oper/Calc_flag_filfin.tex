@@ -1,0 +1,44 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Calcul d'un flag qualité pour la mesure de température dans les abris "fil fin" développés par 4M}
+
+\itemstyle{Op\'erateur~:} \operfmt{Calc\_flag\_filfin}
+\index{Calc\_flag\_filfin}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Les abris dits "fil fin" pour la mesure de température ont été développés par 4M pour la campagne Passy-2015.
+L'étude des données de la campagne de test EFFIGI-2015 a montré que l'incertitude de mesure de la température avec ces abris dépend de l'orientation de l'ouverture de l'abri par rapport à la direction du vent et de la force du vent.
+Le flag qualité calculé indique le niveau d'incertitude lié à l'abri :
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+$Flag$ & Incertitude \\
+\hline
+1 & $0.15^\bullet C$ \\
+2 & $0.30^\bullet C$\\
+3 & $0.5^\bullet C$\\
+\hline
+\end{tabular}
+
+\end{center}
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Calc_flag_filfin.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Calc_flag_filfin.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Note de travail interne Sandrine Girres.

@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$T$ & Vecteur, \texttt{float} & Température de l'air dont on veut connaître la tension
+de vapeur saturante (K ou °C)\\
+Formule & Coeff., \texttt{String} & Nom de la formule utilisée 
+(chaîne vide pour la formule par défaut, ou l'un
+des noms suivants : pyrex, afnor, abadie ou bolton)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$e_w$ & Vecteur, \texttt{float} & Tension de vapeur saturante (hPa)\\
+\end{tabarg}

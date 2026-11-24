@@ -1,0 +1,29 @@
+%% Formule de l'operateur : MoyHarmInvEch_tps_bnds
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+Pour  i=$0$, Nbre  $Time_{bnds}$ :
+%%%% tolerance_inv n'est pas implémentée dans cet opérateur
+%\[
+%Proportion_{valid}=\frac{\texttt{nb de }X_{in}[j] < %val_{inv}}{\texttt{nb de valeur dans l'intervalle } %Time\_bnds}
+%\]
+
+\[
+X_{out}[i] =
+\begin{cases}
+\begin{tabular}{ll}
+$
+\frac{N_{i}}
+{\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} \frac{1}{X_{in}[j]}} }
+$
+&
+\texttt{ si tous les terme de l'intervalle sont $<  val_{inv}$}
+\\
+\texttt{$val_{replac}$} & \texttt{ si $val_{inv}$ est atteint au moins un fois}
+\end{tabular} 
+\\
+\end{cases}
+\]
+
+Pour chaque $X_{in}[j]$ inf\'erieur \`a $val_{inv}$ avec $N_i$ le nombre de donn\'ees dans l'intervalle tb  pour lesquels $X_{in}[j]$ est inf\'erieur \`a $val_{inv}$ .

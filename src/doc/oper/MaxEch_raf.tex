@@ -1,0 +1,40 @@
+%%%%%
+%
+\section{Maximum-Echantillonnage type rafale d'un param\`etre {\tt float}}
+
+\itemstyle{Op\'erateur~:} {\sf MaxEch\_raf}
+\index{MaxEch\_raf}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul des valeurs maxi par \'echantillon d'un
+param\`etre \`a une fr\'equence donn\'ee, le temps
+en sortie correspond \`a la fin de l\'echantillon
+(et non au temps du maxi comme dans MaxEch)
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/MaxEch_raf.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/MaxEch_raf.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+$R_f$ doit \^etre compris dans l'intervalle $]0, 1]$,
+et \^etre l'inverse d'un entier. \newline
+Le nombre d'\'echantillons du vecteur de sortie est le produit du
+nombre d'\'echantillons du vecteur d'entr\'ee par $R_f$, arrondi
+\`a l'entier sup\'erieur.
+
+%%
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

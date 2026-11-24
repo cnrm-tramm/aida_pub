@@ -1,0 +1,19 @@
+%%Flux_correl_vect
+
+\begin{align*}
+TKE & = \frac{1}{2}.(\overline{U'^2} + \overline{V'^2} + \overline{W'^2} ) \\
+\end{align*}
+
+avec $\overline{U'^2}$, $\overline{V'^2}$, $\overline{W'^2}$ calculés 
+avec la formule suivante : \\
+\begin{align*}
+\overline{X'^2} & = \frac{1}{N}.\sum^{N}_{i=1}{(X[i] - \overline{X})^2} \\
+\end{align*}
+où  : \\
+\begin{itemize}
+\item $\overline{X}$ est la valeur moyenne de $X$ sur la période definie par un time\_bnds. \\
+\item $N$ est le nombre de valeurs non manquantes de  $U$, $V$, et $W$, 
+sur la période d'intégration definir par un time\_bnds.\\ 
+\end{itemize}
+
+Si $N < Rap\_mnq$ alors $TKE = \$Arg1.misval$ \\

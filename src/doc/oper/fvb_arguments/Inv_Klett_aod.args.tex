@@ -1,0 +1,31 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+
+$X$ & Vecteur, \texttt{float[$N_{level}$]} & Signal lidar \\
+$N_{level}$ & Coeff., \texttt{float} & Nombre de portes (\$Arg1.array\_dim)\\
+$X_{gate}$ & Coeff., \texttt{String} & Bornes ou portes du profil (\$Arg1.bornes) (m)\\
+$Z$ & Vecteur, \texttt{float[$N_{level}$]} & Altitudes réelles des portes du lidar (m)\\
+$\beta_{mol}$ & Vecteur, \texttt{float[$N_{level}$]} &  Profil du coefficient de rétro-diffusion moléculaire ($m^{-1}$)\\
+$Alt_{nuage}$ & Vecteur, \texttt{float} & Altitude des nuages (vaut 0 si pas de nuage) (m)\\
+$AOD$ & Vecteur, \texttt{float} & Epaisseur optique des aérosols\\
+$Z_{ref}$ & Vecteur, \texttt{float} & Altitude de référence pour le signal moléculaire (m)\\
+$D_{min}$ & Vecteur, \texttt{float} & Distance minimale du lidar à partir de laquelle on détermine le profil (m)\\
+$\beta_{ainit}$ & Coeff., \texttt{float} & Valeur d'initialisation de $\beta$  ($m^{-1}$)\\
+$Extrap$ & Coeff., \texttt{String} & Type d'extrapolation pour la zone proche du lidar (< $D_{min}$) :"lin" ou "cst" \\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$\sigma$ & Vecteur, \texttt{float[$N_{level}$]} & Coefficient d'extinction des aérosols (m-1)\\
+$\beta$ & Vecteur, \texttt{float[$N_{level}$]} & Coefficient de rétro-diffusion des aérosols (m-1)\\
+$SA$ & Vecteur, \texttt{float} & Rapport lidar\\
+\end{tabarg}

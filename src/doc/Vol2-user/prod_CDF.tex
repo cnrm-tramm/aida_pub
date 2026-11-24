@@ -1,0 +1,1365 @@
+\section{Fichiers NetCDF}
+
+\newcommand{\prodcdf}{\textbf{\texttt{prod\_CDF.py}} }
+\newcommand{\netcdf}{\texttt{NetCDF} }
+\newcommand\myfontsize{\fontsize{9pt}{10pt}\selectfont}
+
+%%%\subsection{\prodcdf}
+Le programme \prodcdf convertit un ensemble de
+fichiers-vecteurs \textbf{synchronisés sur une même base de temps} d'une même
+plateforme en un (ou plusieurs) fichier(s) au format \netcdf.\\
+
+\subsection{Lancement}
+\prodcdf doit être lancer en ligne de commande dans un terminal. \\
+Pour obtenir de l'aide sur \prodcdf, lancer la commande :
+\fbox{\texttt{prod\_CDF.py -h}}
+
+\medbreak
+\textbf{\textit{Note : le programme lancé sous \texttt{aito}, onglet
+\texttt{Exportation} est : \texttt{prod\_CDF\_histo.py}. \\
+Lancer la commande \fbox{\texttt{prod\_CDF\_histo.py -h}} pour obtenir de
+l'aide.}
+}
+
+
+\subsection{Manuel d'utilisation}
+Par convention, l'extension des fichiers générés est : \texttt{.nc}.
+
+\medbreak
+Il utilise plusieurs sources d'information :
+\begin{itemize}
+\item
+  la ligne d'appel
+\item
+  le fichier de configuration par défaut
+\item
+  le fichier de configuration
+\item
+  le fichier AIDA \texttt{plate-formes}
+\item
+  le fichier de sélection de vecteur
+\item
+  les fichiers Vecteur AIDA
+\item
+  les fichiers .INF
+\end{itemize}
+
+\medbreak
+Il s'appuie sur plusieurs conventions et documentations :
+\begin{itemize}
+\item
+  \texttt{Normalisation\_des\_métadonnées\_NetCDF\_TRAMM\_usage.pdf}
+  (la documentation TRAMM)
+\item
+  \url{http://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html}
+\item
+  \url{https://wiki.esipfed.org/Attribute\_Convention\_for\_Data\_Discovery\_1-3 }
+\item
+  \url{https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html}
+\item
+  \url{https://docs.unidata.ucar.edu/udunits/current/}
+\end{itemize}
+
+
+\subsection{Syntaxe de la ligne d'appel}
+
+La syntaxe d'appel de \prodcdf est la suivante :
+\medbreak
+
+\fbox{ \myfontsize\texttt{\prodcdf [-h] [-r dir] [-S select\_file] [-v version] -c config\_file prod\_deb prod\_fin} }
+\medbreak
+
+avec :
+\medbreak
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline
+  \textbf{option} &
+  \textbf{défaut} &
+  \textbf{commentaire} \\}
+\tabletail{\hline}
+\tablelasttail{}
+  \begin{supertabular}{|p{4.5cm}|p{1.2cm}|p{9cm}|}
+\hline
+\textbf{option} &
+\textbf{défaut} &
+\textbf{commentaire} \\
+\hline
+
+\texttt{-h} &
+&
+affichage de l'aide.
+\\ \hline
+
+\texttt{-r dir} \smallbreak
+\texttt{-{}-rep\_out dir} \smallbreak
+\texttt{-o dir} \smallbreak
+\texttt{-{}-out\_dir dir} &
+\texttt{./} &
+nom du repertoire de sortie
+\\ \hline
+
+\texttt{-S select\_file} \smallbreak
+\texttt{-{}-select select\_file} &
+&
+chemin du fichier de sélection des vecteurs \smallbreak
+pour les paramètres. \smallbreak
+voir \nameref{ref:vector_select}
+\\ \hline
+
+\texttt{-c config\_file} \smallbreak
+\texttt{-{}-config config\_file} &
+&
+chemin du fichier de configuration.
+\\ \hline
+
+\texttt{-v version} \smallbreak
+\texttt{-{}-version version} &
+\texttt{1} &
+numéro de version des fichiers à produire
+\\ \hline
+
+prod\_deb \smallbreak
+prod\_fin &
+&
+sous la forme JJMMAAAA : date de début et de fin à traiter. \smallbreak
+sous la forme acqid    : premier et dernier acqid à traiter.
+\\ \hline
+
+\end{supertabular}
+\end{center}
+
+\begin{warning}
+  \begin{itemize}
+  \item
+    La version historique \texttt{prod\_CDF\_histo.py} est lancée si le
+    fichier de configuration ne contient pas de section
+    \texttt{[DIRECTIVE]} (voir \nameref{ref:configuration}).
+  \item
+    L'option \texttt{-S\ select} est incompatible avec la configuration
+    \texttt{mode\ =\ periode} (voir \nameref{ref:configuration})
+  \item
+    \textbf{Le numéro de version ne peut être précisé que par cette
+    option}.\\
+    Il renseigne l'attribut global \texttt{product\_version} du fichier
+    \netcdf.\\
+    L'option \texttt{product\_version} dans le fichier de configuration
+    est ignorée.
+  \item
+    Le nom du fichier \netcdf généré dépend de différentes options
+    fournies. Voir \nameref{ref:nom_NetCDF}.
+  \end{itemize}
+\end{warning}
+
+\subsection{Configuration par défaut}
+
+Les informations à inscrire dans les fichiers \netcdf qui
+ne changent que très rarement pour une équipe peuvent être définies dans
+un fichier de configuration par défaut.
+\medbreak
+
+Son nom et sa localisation sont :
+\texttt{\textbf{\$AIDA\_HOME/profils/\$AIDA\_PROFIL/CDF.defaults}}
+\medbreak
+
+Ce fichier est de type INI (voir \nameref{sec:anx_ini}). \\
+\medbreak
+
+Il ne contient qu'une seule section : \texttt{[GENERAL]}
+\medbreak
+
+
+\begin{warning}
+Les valeurs des options inscrites dans le fichier de configuration écrassent
+celles inscrites dans le fichier de configuration par défaut.\\
+Ex :
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.30\columnwidth}\raggedright
+configuration par défaut\strut
+\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
+configuration\strut
+\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
+\netcdf\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.30\columnwidth}\raggedright
+processing\_level = L2\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+processing\_level = L1\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
+:processing\_level = "L1" ;\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+\end{warning}
+
+\subsubsection{Remarque}
+
+Pour plus de lisibilité du fichier de configuration, les longues valeurs
+des options peuvent être enregistrées sur plusieurs lignes (le caractère
+de retour à la ligne (\texttt{\textbackslash{}n}) sera inscrit dans le
+fichier \netcdf).
+
+Ex :\\
+Si le fichier de configuration contient :
+
+\begin{verbatim}
+contributor_name = prénom1: nom1: prénom1.nom1@x.fr: institut1;
+                   prénom2: nom2: prénom2.nom2@x.fr: institut2;
+\end{verbatim}
+
+le fichier \netcdf contiendra :
+
+\begin{verbatim}
+string :contributor_name = "prénom1: nom1: prénom1.nom1@x.fr: institut;\nprénom2: [...]
+\end{verbatim}
+
+\subsection{Configuration}\label{ref:configuration}
+
+Les informations spécifiques à la génération d'un fichier
+\netcdf sont définies dans un fichier de configuration.
+\medbreak
+
+L'extension de son nom est préférentiellement \texttt{.ccdf}.
+\medbreak
+
+Ce fichier est de type INI (voir \nameref{sec:anx_ini}). \\
+\medbreak
+
+Ce fichier est constitué de plusieurs sections :
+\medbreak
+
+\begin{itemize}
+\item
+  une section \texttt{[DIRECTIVES]}\\
+  elle rassemble des informations permettant à \prodcdf de
+  travailler (en particulier des informations utiles pour générer le nom
+  des fichiers \netcdf) ou pour générer la partie
+  \textit{dimensions} du fichier \netcdf.
+\item
+  une section \texttt{[GENERAL]}\\
+  on \textbf{n'y trouve que} des informations qui seront inscrites sous
+  le même nom dans le fichier \netcdf dans la partie
+  \textit{global attributes}.
+\item
+  une section par paramètre\\
+  pour chaque paramètre, on trouve des informations qui seront inscrites
+  dans la partie \textit{variables} du fichier \netcdf ou
+  dans la partie \textit{dimensions} .
+\end{itemize}
+\medbreak
+
+Hors la section \texttt{[DIRECTIVES]}, les sections peuvent
+également contenir des \textit{options libres} (voir
+\nameref{ref:options_libres})
+
+\subsubsection{Section \texttt{[DIRECTIVES]}}
+
+Cette section des \textbf{obligatoire}. \\
+Si elle est absente, \prodcdf lancera la version historique :
+\texttt{prod\_CDF\_histo.py}\strut
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline
+  \textbf{option} &
+  \textbf{nature}
+
+  \textbf{défaut} &
+  \textbf{commentaire} &
+  \textbf{exemple} \\}
+\tabletail{\hline}
+\tablelasttail{}
+\begin{supertabular}{|p{3.85cm}|p{1.7cm}|p{4.6cm}|p{5.3cm}|}
+\hline
+\textbf{option} &
+\textbf{nature}
+
+\textbf{défaut} &
+\textbf{commentaire} &
+\textbf{exemple} \\
+\hline
+
+prefix &
+obligatoire &
+utilisé dans la génération du nom du fichier \netcdf \smallbreak
+voir \nameref{ref:nom_NetCDF} &
+\textit{CNRM\_MTO\_L2A-30min-Mean}\\
+\hline
+
+plateforme &
+obligatoire &
+\textbf{il ne s'agit pas du champ "platform" du fichier \netcdf} mais de la
+plateforme AIDA &
+\textit{toulouse-flux} \\
+\hline
+
+reftime &
+obligatoire &
+référence temporelle du fichier \netcdf  \smallbreak
+\textbf{et des vecteurs à traiter} &
+\textit{rft\_time\_REG\_\%1800} \\
+\hline
+
+mode &
+obligatoire &
+periode ou jour ou mobile \smallbreak
+voir \nameref{ref:mode} &
+\textit{mobile} pour les plateformes mobiles \\
+\hline
+
+date\_format &
+facultatif \smallbreak
+\%Y\%m\%d &
+utilisé dans la génération du nom du fichier \netcdf &
+\textit{\%Y-\%m-\%d} \\
+\hline
+
+replace\_missing\_vector &
+facultatif \smallbreak
+False &
+les données absentes pour une acquisition sont remplacées par Nan &
+\textit{True} \\
+\hline
+
+datation\_convention &
+facultatif \smallbreak
+fin &
+utilisé pour la création des bornes temporelles &
+\textit{debut} \\
+\hline
+
+dimensions &
+facultatif \smallbreak
+Unlimited &
+Unlimited ou Limited
+
+champ \texttt{dimensions} du fichier \netcdf &
+\textit{Limited} \\
+\hline
+
+\end{supertabular}
+\end{center}
+
+\begin{warning}
+L'absence d'une option obligatoire de la section
+\texttt{[DIRECTIVES]} génère l'affichage d'une erreur (\texttt{+++})
+et l'arrêt du programme.
+\end{warning}
+
+\begin{warning}
+Si la référence temporelle de l'un des vecteurs à traiter n'est pas cohérente
+avec le vecteur nommé par l'option \texttt{reftime}, la génération
+affiche un message d'erreur (\texttt{+++}) et s'arrête.
+\end{warning}
+
+
+\paragraph{Nom du fichier \netcdf} : \label{ref:nom_NetCDF}
+
+Le nom du fichier \netcdf généré dépend :
+
+\begin{itemize}
+\item
+  des options fournies dans le fichier de configuration par défaut
+\item
+  des options fournies dans le fichier de configuration
+\item
+  de la version précisée par l'option -v de la ligne d'appel
+\item
+  de l'acqid (pour le champ \{acqid\_date\} du mode \texttt{jour})
+\item
+  de la date de l'acquisition lues dans le fichier .INF (pour le champ
+  \{acqid\_date\} du mode \texttt{mobile})
+\end{itemize}
+
+\medbreak
+Il est construit de la façon suivante, selon les informations positionnées :
+
+\begin{itemize}
+\item
+  si mode vaut \textbf{jour} : \\
+    \{prefix\}\_\{acqid\_date\}\_V\{version\} ou \\
+    \{prefix\}\_\{acqid\_date\}\_\{processing\_level\}\_V\{version\}
+    \medbreak
+
+\item
+  si mode vaut \textbf{periode} : \\
+    \{prefix\}\_\{date\_start\}\_\{date\_end\}\_V\{version\} ou \\
+    \{prefix\}\_\{date\_start\}\_\{date\_end\}\_\{processing\_level\}\_V\{version\}
+    \medbreak
+
+\item
+  si mode vaut \textbf{mobile} : \\
+    \{prefix\}\_\{acqid\_date\}\_\{acqid\}\_V\{version\} ou \\
+    \{prefix\}\_\{acqid\_date\}\_\{acqid\}\_\{processing\_level\}\_V\{version\} \\
+\end{itemize}
+
+
+\paragraph{Option mode} : \label{ref:mode}
+
+L'option \texttt{mode} permet de spécifier le type de fichier
+\netcdf à générer.
+\medbreak
+
+Cette option peut prendre une des trois valeurs : \texttt{periode},
+\texttt{jour}, \texttt{mobile}.
+
+\begin{itemize}
+\item
+  \texttt{mode = periode} :
+
+    \prodcdf produit un seul fichier \netcdf couvrant la période définie par
+    les arguments \texttt{prod\_deb} \texttt{prod\_fin} de la ligne d'appel.
+
+\item
+  \texttt{mode = jour} :
+    
+    \prodcdf produit un fichier \netcdf pour chaque acquisition de la période
+    définie par les arguments \texttt{prod\_deb} \texttt{prod\_fin} de la ligne
+    d'appel.
+
+\item
+  \texttt{mode = mobile} :
+    \prodcdf produit un fichier \netcdf de type \textit{Trajectory} pour chaque
+    acquisition de la période définie par les arguments \texttt{prod\_deb}
+    \texttt{prod\_fin} de la ligne d'appel.
+\end{itemize}
+
+\subsubsection{Section \texttt{[GENERAL]}}
+
+Les options \textcolor{orange}{colorées en orange} sont spécifiques au mode
+\textcolor{orange}{\texttt{mobile}}.
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline
+  \textbf{option} &
+  \textbf{nature}
+
+  \textbf{défaut} &
+  \textbf{commentaire} \\}
+\tabletail{\hline}
+\tablelasttail{}
+\begin{supertabular}{|p{4.6cm}|p{4cm}|p{7.5cm}|}
+\hline
+\textbf{option} &
+\textbf{nature}
+
+\textbf{défaut} &
+\textbf{commentaire}
+\\ \hline
+
+title &
+obligatoire &
+\\ \hline
+
+summary &
+obligatoire &
+\\ \hline
+
+Conventions &
+obligatoire  \smallbreak
+\textit{CF-1.8, ACDD-1.3} &
+\\ \hline
+
+keywords &
+obligatoire &
+devraient être issus de \smallbreak
+\url{https://gcmd.earthdata.nasa.gov/KeywordViewer/scheme/all?gtm\_scheme=all}
+\\ \hline
+
+keywords\_vocabulary &
+obligatoire \smallbreak
+\textit{GCMD: }\url{https://gcmd.earthdata.nasa.gov/KeywordViewer/scheme/all?gtm\_scheme=all} &
+\\ \hline
+
+data\_policy &
+obligatoire \smallbreak
+\textit{""} &
+il est souhaitable d'indiquer un data\_policy
+\\ \hline
+
+processing\_level &
+obligatoire \smallbreak
+\textit{L2} &
+automatique avec fichier .defaults
+\\ \hline
+
+source &
+facultatif &
+cf. documentation TRAMM : \smallbreak
+\textit{surface observation, radiosonde, airborne measurements}
+\\ \hline
+
+platform &
+souhaité si défini sous \smallbreak
+\url{https://skosmos.aeris-data.fr/aeris\_pf/en/}
+\\ \hline
+
+doi &
+obligatoire &
+\\ \hline
+
+creator\_name &
+obligatoire &
+\\ \hline
+
+source\_config &
+automatique &
+le nom du fichier de configuration
+\\ \hline
+
+institution &
+souhaitable &
+automatique avec fichier .defaults
+\\ \hline
+
+creator\_institution &
+souhaitable &
+automatique avec fichier .defaults
+\\ \hline
+
+creator\_email &
+souhaitable &
+automatique avec fichier .defaults
+\\ \hline
+
+contributor\_role &
+souhaitable &
+cf. documentation TRAMM : \smallbreak
+\textit{principalinvestigator resourceprovider contributor}
+\textit{owner funder sponsor editor coauthor custodian pointofcontact author}
+\textit{originator distributor processor stakeholder}
+\textit{collaborator metadatapointofcontact publisher}
+\textit{mediator user rightsholder metadatapointofcontact}
+\\ \hline
+
+contributor\_name &
+souhaitable &
+cf. documentation TRAMM : \smallbreak
+\textit{prenom:nom:email:institution}
+\\ \hline
+
+id &
+automatique &
+\{prefix\}\_\{processing\_level\}
+\\ \hline
+
+project &
+souhaitable &
+\\ \hline
+
+comment &
+souhaitable &
+cf. documentation TRAMM
+\\ \hline
+
+coordinates &
+préférable pour une plateforme mobile &
+voir \nameref{ref:geospatial}
+\\ \hline
+
+featureType &
+automatique \smallbreak
+(si l'option `coordinates` est fournie) \textit{Trajectory} &
+voir \nameref{ref:featureType}
+\\ \hline
+
+history &
+souhaitable et \smallbreak
+automatique &
+\prodcdf ajoute sa ligne de lancement au champ fourni
+\\ \hline
+
+date\_created &
+automatique &
+date et heure d'exécution de \prodcdf
+\\ \hline
+
+date\_modified &
+automatique &
+date et heure d'exécution de \prodcdf
+\\ \hline
+
+time\_coverage\_start &
+automatique &
+première datation
+\\ \hline
+
+time\_coverage\_end &
+automatique &
+dernière datation
+\\ \hline
+
+time\_coverage\_resolution &
+automatique \smallbreak
+PT\{1./freq\_ech\}S &
+ex : PT1800.000000S
+\\ \hline
+
+geospatial\_lat\_min \smallbreak
+geospatial\_lat\_max \smallbreak
+geospatial\_lon\_min \smallbreak
+geospatial\_lon\_max \smallbreak
+\textcolor{orange}{geospatial\_lat\_units} \smallbreak
+\textcolor{orange}{geospatial\_lon\_units} \smallbreak
+\textcolor{orange}{geospatial\_vertical\_min} \smallbreak
+\textcolor{orange}{geospatial\_vertical\_max} \smallbreak
+\textcolor{orange}{geospatial\_vertical\_units} \smallbreak
+\textcolor{orange}{geospatial\_vertical\_positive} &
+automatique &
+A partir du fichier plate-formes pour les plateformes fixes. \smallbreak
+A partir des vecteurs de l'option \texttt{coordinates} pour les plateformes mobiles. \smallbreak
+voir \nameref{ref:geospatial}
+\\ \hline
+
+acqid / \textcolor{orange}{flight\_id} &
+automatique &
+\textcolor{orange}{flight\_id} pour toutes les plateformes mobiles même les voitures...
+\\ \hline
+
+\textcolor{orange}{flight\_date} &
+automatique &
+A partir du fichier \texttt{.inf}.
+\\ \hline
+
+\textcolor{orange}{time\_take\_off} &
+automatique &
+A partir du fichier \texttt{.inf}.
+\\ \hline
+
+\textcolor{orange}{time\_landing} &
+automatique &
+A partir du fichier \texttt{.inf}.
+\\ \hline
+
+\end{supertabular}
+\end{center}
+
+\begin{warning}
+  Les options qui ne sont pas explicitées ci-dessus sont inscrites dans la
+  partie \textit{global attributes} du fichier \netcdf.
+\end{warning}
+
+
+\paragraph{Champs \texttt{geospatial}} : \label{ref:geospatial}
+
+S'ils ne sont pas initialisés manuellement dans le fichier de
+configuration, la génération des champs \textit{geospatial\_XXX} dans le
+fichier \netcdf se fait de la façon suivante :
+
+\begin{itemize}
+\item
+  pour une plateforme fixe :\\
+  les champs \textit{geospatial\_XXX} sont initialisés avec les
+  informations trouvées dans le fichier
+  \texttt{\$AIDA\_HOME/profils/\$AIDA\_PROFIL/plate-formes} :
+\end{itemize}
+
+\begin{verbatim}
+  geospatial_lat_min      = geospatial_lat_max      = latitude  de la plateforme
+  geospatial_lon_min      = geospatial_lon_max      = longitude de la plateforme
+  geospatial_vertical_min = geospatial_vertical_max = altitude de la plateforme
+\end{verbatim}
+
+\begin{itemize}
+\item
+  pour une plateforme mobile :\\
+
+  \begin{itemize}
+  \item
+    si l'option \texttt{coordinates} est fournie, alors les champs
+    \textit{geospatial\_XXX} sont initialisés avec les données trouvées
+    dans les fichiers Vecteurs des paramètres de la liste \texttt{coordinatess}.
+  \item
+    si l'option \texttt{coordinates} n'est pas fournie, \prodcdf
+    affiche un warning.\\
+    Les champs \textit{geospatial\_XXX} sont initialisés à \texttt{NaN}
+    (ils doivent alors être initialisés manuellement dans le fichier de
+    configuration).
+  \end{itemize}
+\end{itemize}
+
+
+\paragraph{Champs \texttt{featureType}} : \label{ref:featureType}
+
+Les spécificités de traitement liées à des options \texttt{featureType}
+autre que \textit{Trajectory} n'ont pas (encore) été étudiées et
+implémentées dans \prodcdf. (voir
+\url{https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html\#discrete-sampling-geometries})
+
+\subsubsection{Sections \textit{paramètre}}
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline
+  \textbf{option} &
+  \textbf{nature} &
+  \textbf{commentaire} \\}
+\tabletail{\hline}
+\tablelasttail{}
+\begin{supertabular}{|p{3cm}|p{4cm}|p{9cm}|}
+\hline
+\textbf{option} &
+\textbf{nature} &
+\textbf{commentaire} \\
+\hline
+
+long\_name &
+obligatoire &
+pour une variable auxiliaire : \texttt{+modifier} ou \texttt{modifier+} \smallbreak
+voir \nameref{ref:variables_auxiliaires}
+\\ \hline
+
+origin &
+obligatoire &
+nom du paramètre AIDA \smallbreak
+(nom du vecteur \textbf{sans} son extension)
+\\ \hline
+
+ancillary\_variables &
+obligatoire \smallbreak
+(si des variables auxiliaires existent) &
+liste des variables auxiliaires séparées par un espace
+\\ \hline
+
+standard\_name &
+automatique &
+pour une variable auxiliaire : \texttt{+modifier} ou \texttt{modifier+} \smallbreak
+voir \nameref{ref:variables_auxiliaires} \smallbreak
+voir \nameref{ref:note_standard_name}
+\\ \hline
+
+flag\_values \smallbreak
+flag\_meanings &
+obligatoire \smallbreak
+(pour les variables auxiliaires de type \textbf{status\_flag}) &
+voir \nameref{ref:variables_auxiliaires}
+\\ \hline
+
+units &
+facultatif &
+voir \nameref{ref:units}
+\\ \hline
+
+source &
+facultatif &
+voir \nameref{ref:source}
+\\ \hline
+
+\end{supertabular}
+\end{center}
+
+\begin{warning}
+  les options qui ne sont pas explicitées ci-dessus sont inscrites dans la
+  partie \textit{variables} du fichier \netcdf.
+\end{warning}
+
+\paragraph{Note \texttt{standard\_name}} : \label{ref:note_standard_name}
+
+  Il peut arriver que la recherche automatique du \texttt{standard\_name} ne
+  fonctionne pas. Dans ce cas, \prodcdf affiche un warning préfixé par
+  \texttt{-+-}. Il est alors souhaitable de positionner l'option
+  \texttt{standard\_name} dans le fichier de configuration.
+
+
+\paragraph{Variables auxiliaires} : \label{ref:variables_auxiliaires}
+
+Concernant l'utilisation et la description des variables auxiliaires
+selon la norme CF, se reporter à \nameref{ref:annexes}.
+\medbreak
+
+Afin de faciliter la saisie du \texttt{long\_name} et du
+\texttt{standard\_name} des variables auxiliaires dans le fichier de
+configuration, ces 2 options peuvent être données sous les formes :
+
+\begin{itemize}
+\item
+  \textbf{+\textit{modifier}}
+\item
+  \textbf{\textit{modifier}+}
+\end{itemize}
+
+A la génération du fichier \netcdf, le signe \texttt{+}
+(plus) sera remplacé par le \texttt{long\_name} ou le
+\texttt{standard\_name} de la \textit{variable principale}. Un espace sera
+inséré entre les 2 parties du nom.
+\medbreak
+
+\textbf{Note} :
+
+Le mot \textit{modifier} devrait être l'un de ceux décrits dans
+la convention CF (voir \nameref{ref:annexes}).
+\medbreak
+
+\subparagraph{Exemple d'utilisation} : 
+
+Si le fichier de configuration contient :
+
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+[SWD]
+long_name           = Downward short wave radiation
+origin              = ray_rgd_cnr1_c2_%60_Met_%1800
+ancillary_variables = SWD_FLAG
+
+
+long_name           = \textcolor{red}{+ancillary}
+origin              = ctl_SB_invalid_cnr1_Ftp_%1800
+standard_name       = \textcolor{blue}{+percentage_of_gap_filled_values}
+\end{Verbatim}
+
+sera retranscrit dans le fichier \netcdf sous la forme :
+
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+SWD:standard_name = "\textcolor{green}{surface_downwelling_shortwave_flux_in_air}" ;
+
+SWD_FLAG:long_name = "Downward short wave radiation \textcolor{red}{ancillary}" ;
+SWD_FLAG:standard_name = "\textcolor{green}{surface_downwelling_shortwave_flux_in_air} \textcolor{blue}{percentage_of_gap_filled_values}" ;
+\end{Verbatim}
+
+\begin{warning}
+Attention ! \\
+Les variables auxiliaires \textbf{ne sont pas toutes de type
+\textit{status\_flag}}. Ce type de variable auxiliaire est réservé à des
+variables qui ont un nombre fini de valeurs possibles. Leur descritpion
+doit donc contenir les 2 options \texttt{flag\_values} et
+\texttt{flag\_meanings} (voir \nameref{ref:annexes}).
+\end{warning}
+
+
+\paragraph{Unité d'un paramètre} : \label{ref:units}
+
+L'unité des paramètres est lue dans le fichier Vecteur associé.
+Cependant elle peut être positionnée par la configuration de l'option
+\texttt{units}.\\
+Si l'unité lue ou configurée est \texttt{unitless} (ou pour des raisons
+historiques \texttt{unknown} ou \texttt{without}), elle est inscrite dans le
+fichier \netcdf avec la valeur : \texttt{1} (standard UDUNITS).
+
+
+\paragraph{Source d'un paramètre} : \label{ref:source}
+
+Les capteurs sources d'un paramètre sont recherchés automatiquement par
+\prodcdf par interrogation l'outil AIDA
+\textbf{\texttt{gengraphvect.py}}. Cependant, elle peut être positionnée par la
+configuration de l'option \texttt{source} (en particulier si
+\texttt{gengraphvect.py} n'arrive pas à touver l'information, ce qui
+peut se produire si un vecteur a été copié depuis une autre
+acquisition).
+\medbreak
+
+Le format préconisé pour l'option \texttt{source} est :\\
+\begin{Verbatim}[fontsize=\myfontsize]
+fabricant_1 : modèle_1 : numéro_de_série_1; fabricant_2 : modèle_2 : numéro_de_série_2
+\end{Verbatim}
+
+Ex :\\
+
+\begin{Verbatim}[fontsize=\myfontsize]
+source = Atexis : PT1000 : 0001; Vaisala : HMP110 : L4150552; Vaisala : PTB220 : X2050007
+\end{Verbatim}
+
+\subsubsection{Options libres}\label{ref:options_libres}
+
+  Les \textit{options libres} positionnées dans la section
+  \texttt{[GENERAL]} du fichier de configuration seront
+  retranscrites sans vérification, dans la partie \textit{global
+  attributes} du fichier \netcdf.
+  \medbreak
+
+  Les \textit{options libres} positionnées dans les sections \textit{paramètre}
+  du fichier de configuration seront retranscrites sans vérification, dans
+  la partie \textit{variables} du fichier \netcdf.
+
+
+\paragraph{Format} :
+
+Les \textit{options libres} sont retranscrites sous forme de
+\textbf{chaîne de caractères} dans le fichier \netcdf.
+
+Il est cependant possible, pour \textbf{les sections \textit{paramètre}
+seulement}, de forcer l'inscription \textbf{au même format} que celui
+du vecteur de données. Pour cela, il suffit d'ajouter le mot-clé \texttt{:NUM}
+au nom de l'option.
+\medbreak
+
+Exemples :
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.47\columnwidth}\raggedright
+fichier de configuration\strut
+\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
+fichier \netcdf\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+valid\_min = 0.\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+valid\_min = "0."\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+valid\_min:NUM = 0\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+valid\_min = 0.f\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+valid\_range:NUM = 0., 1000.\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+valid\_range = 0.f, 1000.f\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+(les affichages pour la colonne 'fichier \netcdf' sont ceux donnés par
+l'outil \texttt{ncdump})
+\medbreak
+
+Il est également possible de forcer une inscription \textbf{dans un
+autre format numérique} que celui du vecteur de données (bien que ceci
+pourrait ne pas avoir beaucoup de sens\ldots\hspace{0pt}). Pour cela, il
+suffit d'ajouter \texttt{:fmt} au nom de l'option, avec pour valeur de
+\texttt{fmt} une valeur parmi : \texttt{int8}, \texttt{int16},
+\texttt{int32}, \texttt{int64}, \texttt{float32}, \texttt{float64}.
+
+Exemples :
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.47\columnwidth}\raggedright
+fichier de configuration\strut
+\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
+fichier \netcdf\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+valid\_range:int8 = 0, 2\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+valid\_range = 0b, 2b ;\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+flag\_values:int8 = 0, 1, 2\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+flag\_values = 0b, 1b, 2b ;\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+flag\_meanings = bon, moyen, mauvais\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+flag\_meanings = "bon, moyen, mauvais" ;\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+(les affichages pour la colonne 'fichier \netcdf' sont ceux donnés par
+l'outil \texttt{ncdump})
+\medbreak
+
+
+\subsection{Sélection de vecteur}\label{ref:vector_select}
+
+La mécanique de \textit{sélection de vecteur} permet de sélectionner le
+vecteur (et éventuellement son commentaire assissié) à utiliser pour un
+paramètre \textbf{en fonction d'un acqid}.\\
+\medbreak
+
+Exemple : utilisation du vecteur d'altitude généré par l'instrument
+\textit{aipov} ou par l'instrument \textit{gps} en fonction de l'acqid
+traité.
+\medbreak
+
+La mise en oeuvre de la mécanique de \textit{sélection de vecteur} se fait
+dans un fichier de type INI (voir \nameref{sec:anx_ini}).
+
+\subsubsection{Formalisme}
+
+Chaque section décrit un choix possible.  \\
+
+Chaque section \textbf{doit obligatoirement} contenir un couple d'options
+\textbf{\textit{default}} et \textbf{\textit{default\_cmt}} : ces
+options seront utilisées s'il n'existe pas de ligne spécifique pour
+l'acqid traité. \\
+
+Chaque section peut contenir plusieurs couples d'options :
+\begin{itemize}
+  \item \textbf{\textit{XXX}} = valeur
+  \item \textbf{\textit{XXX\_cmt}} = valeur
+\end{itemize}
+\medbreak
+
+où \textbf{\textit{XXX}} peut prendre l'une des trois formes suivantes :
+
+\begin{tabular}{|l|p{8cm}|}
+\hline
+ acqid & un acqid unique
+ 
+ (ex: Tf230001) \\
+\hline
+ acqid1-acqid2 & une liste d'acqids compris entre acqid1 et acqid2
+ 
+ (ex Tf230001-Tf23005) \\
+\hline
+ acqid1-* & une liste d'acqids compris entre acqid1 et le dernier acqid à
+ traiter
+ 
+ (ex Tf230001-*) \\
+\hline
+\end{tabular}
+\medbreak
+
+Ces options (\textbf{\textit{XXX}} et \textbf{\textit{XXX\_cmt}}) seront
+utilisées pour sélectionner les valeurs spécifiques pour
+l'acqid ou la liste d'acqids traité(s).
+\medbreak
+
+\subsubsection{Utilisation dans le fichier de configuration de \prodcdf}
+
+La syntaxe d'utilisation dans le fichier de configuation de
+\prodcdf est la suivante : \\
+- pour sélectioner la variable :
+  \texttt{\textbf{\textcolor{red}{\$\{section\}}}} \\
+- pour sélectioner le commentaire de la variable :
+  \texttt{\textbf{\textcolor{red}{\$\{section\_cmt}\}}}
+\medbreak
+
+\subsubsection{Exemple}
+
+Fichier de sélection :
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+[choix_lat]
+default      : gps
+default_cmt  : le GPS est plus précis dans les sondages que l'AIPOV
+fs170012     : aipov
+fs170012_cmt : utilisation de l'AIPOV car le GPS est HS
+\end{Verbatim}
+
+Fichier de configuration de \prodcdf :
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+[LAT]
+long_name = latitude $\{choix_lat\}
+origin    = pos_lat_$\{choix_lat\}_1
+comment   = $\{choix_lat_cmt\}
+\end{Verbatim}
+
+
+\subsection{Exemples de fichiers de configuration de \prodcdf}
+
+\newgeometry{margin=1cm}
+\begin{landscape}
+
+\subsubsection{Mode \texttt{periode}}
+
+Excécution :
+
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+prod_CDF.py -c tests/Tf-AERIS-base.V7.ccdf -S -o /tmp/Tf -v 1 Tf210001 Tf210365
+\end{Verbatim}
+
+Extrait du fichier Tf-AERIS-base.V7.ccdf
+
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+[DIRECTIVES]
+prefix                 = CNRM_MTO_L2A-30min-Mean
+plateforme             = toulouse-flux
+reftime                = rft_time_REG_%1800
+mode                   = periode
+date_format            = %Y-%m-%d
+replace_missing_vector = True
+
+[GENERAL]
+title        = Meteopole-Flux Meteorological Data
+summary      = This dataset contains air temperature, humidity at 2 levels...
+keywords     = earth science, atmosphere, atmospheric radiation, ...
+doi          = https://doi.org/10.25326/44
+source       = ground station
+
+creator_name = X Y
+
+contributor_name = X1: Y1: X1.Y1@domain.fr: Institute;
+                   X2: Y2: X2.Y2@domain.fr: Institute;
+                   X3: Y3: X3.Y3@domain.fr: Institute;
+
+contributor_role = principalinvestigator;
+                   resourceprovider;
+                   contributor;
+
+...
+
+[SWD]
+long_name           = Downward short wave radiation
+origin              = ray_rgd_cnr1_c2_%60_Met_%1800
+ancillary_variables = SWD_FLAG
+
+[SWD_FLAG]
+long_name           = +ancillary
+origin              = ctl_flag_invalid_cnr1_Ftp_%1800
+standard_name       = +percentage_of_gap_filled_values
+...
+
+# Pourcentage de points de visi sur 30 min < 60km OK
+[VISI_MEAS_RATE]
+long_name           = Rate of visibility measurement in valid measurement range
+origin              = opt_pom_dso_tr30_%60_per_%1800
+comment             = Rate of measurements in valid (0, 59999 m), measurement range computed during 30 min
+
+# Moyenne harmonique sur 30mn
+[VISI_MOYH]
+long_name           = Visibility's harmonic mean
+origin              = opt_pom_dso_tr30_%60_Moyh_%1800
+valid_range:NUM     = 0, 59999
+comment             = Harmonic mean of visibility computed during 30 minutes with measurements into valid range (0,  59999 m). If one of the values was out of valid range the result is set to -99
+\end{Verbatim}
+
+\subsubsection{Mode \texttt{mobile}}
+
+Excécution :
+
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+prod_CDF.py -c tests/prod_g2401m_%60.ccdf -S tests/choix_vecteurs_params -o /tmp/as -v 1 as220024 as220025
+\end{Verbatim}
+
+Extrait du fichier tests/prod\_g2401m\_\%60.ccdf
+
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+[DIRECTIVES]
+prefix     = ACROSSS-2022_SAFIRE-ATR42_SAFIRE_CHEMISTRY-PICARRO_1MN
+plateforme = atr
+reftime    = rft_time_PICARRO_%60
+mode       = mobile
+
+
+[GENERAL]
+title        = ACROSS-2022 data from Picarro instrument G2401-m
+summary      = SAFIRE ATR42 Picarro-G2401-m in situ measurements
+keywords     = earth science, atmosphere, aircraft, aircraft motion sensor,
+               altitude, CH4, CO2, CO
+project      = ACROSS-2022
+doi          = http://dx.doi.org/10.25326/467
+
+source       = airborne observation
+platform     = SAFIRE-ATR42
+coordinates  = time LONGITUDE LATITUDE ALTITUDE
+
+creator_name = X1 Y1, X2, Y2
+comment      = Warning : Most measurements are not valid before take-off and
+               after landing
+history      = First version of Picarro-g2401-m data
+
+contributor_name = X3:Y3:X3.Y3@domain.fr;
+                   X4:Y4:X4.Y4@domain.fr;
+contributor_role = resourceprovider;
+                   principalinvestigator;
+
+
+[LATITUDE]
+long_name           = Latitude
+#origin              = pos_lat_g2401m_valid_cal_%60
+origin              = ${choix_lat}
+
+[LONGITUDE]
+long_name           = Longitude
+origin              = pos_lon_g2401m_valid_cal_%60
+
+[ALTITUDE]
+long_name           = Altitude
+origin              = alt_g2401m_valid_cal_%60
+standard_name       = altitude
+
+[CH4]
+long_name           = CH4 mixing ratio from Picarro instrument G2401-m
+origin              = chm_CH4_g2401m_valid_cal_%60
+ancillary_variables = CH4_STDEV FLAG_CH4 NB_POINT_CH4
+
+[CH4_STDEV]
+long_name           = Standard deviation of CH4 mixing ratio from Picarro instrument G2401-m
+origin              = chm_CH4_stdev_g2401m_valid_cal_%60
+
+[NB_POINT_CH4]
+long_name           = Number of points used for the calculation CH4 mixing ratio from Picarro instrument G2401-m
+origin              = chm_CH4_NbPoints_g2401m_valid_cal_%60
+
+[FLAG_CH4]
+long_name           = Flag+
+origin              = chm_CH4_flag_g2401m_valid_cal_%60
+standard_name       = +status_flag
+flag_values         = U, N, O, K, R, H
+flag_meanings       = data_correct_before_manual_quality_control data_incorrect_before_manual_quality_control data_correct_after_manual_quality_control data_incorrect_after_manual_quality_control data_correct_after_manual_quality_control_and_backwards_propagation data_incorrect_after_manual_quality_control_and_backwards_propagation
+
+...
+\end{Verbatim}
+
+
+Fichier de sélection passé en argument \texttt{choix\_vecteurs\_params}
+
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+# utilisation dans le fichier de configuration de prod_CDF.py :
+#   origine = ven_e_${choix_lat}_25
+[choix_lat]
+default      = pos_lat_g2401m_valid_cal_%60
+default_cmt  = test de prod_CDF
+fs170012     = aipov
+fs170012_cmt = utilisation de l'AIPOV car le GPS est HS
+as220025     = pos_lat_XXX_valid_cal_%60
+as220025_cmt = validation de XXX
+\end{Verbatim}
+
+\subsubsection{Type \texttt{status\_flag}}
+
+Extrait du fichier as\_status\_flag.V1.ccdf
+
+\begin{Verbatim}[fontsize=\myfontsize, commandchars=\\\{\}]
+[DIRECTIVES]
+prefix     = as_status_flag
+plateforme = atr
+reftime    = rft_time_PICARRO_%60
+mode       = mobile
+
+...
+
+[CH4]
+long_name           = CH4 mixing ratio from Picarro instrument G2401-m
+origin              = chm_g2401m_valid_cal_%60
+ancillary_variables = FLAG_CH4
+
+[FLAG_CH4]
+long_name           = Flag+
+origin              = chm_flag_g2401m_valid_cal_%60
+standard_name       = +status_flag
+flag_values         = U, N, O, K, R, H
+flag_meanings       = data_correct_before_manual_quality_control data_incorrect_before_manual_quality_control data_correct_after_manual_quality_control data_incorrect_after_manual_quality_control data_correct_after_manual_quality_control_and_backwards_propagation data_incorrect_after_manual_quality_control_and_backwards_propagation
+\end{Verbatim}
+
+\end{landscape}
+\restoregeometry
+
+
+\subsection{Annexes NetCDF}\label{ref:annexes}
+
+\subsubsection{Variables auxiliaires}
+
+
+\paragraph{\texttt{long\_name} et \texttt{standard\_name}} :
+
+Voir :
+\url{https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html\#ancillary-data}
+
+Le \texttt{long\_name} et le \texttt{standard\_name} d'une variable
+auxiliaire devraient être ceux de sa \textit{variable principale} augmenté
+d'un \textbf{modificateur}
+
+Exemple :
+
+\begin{itemize}
+\item
+  pour la variable \texttt{q}\\
+  standard\_name = \textbf{specific\_humidity}\\
+  ancillary\_variables = \texttt{q\_error\_limit}
+  \texttt{q\_detection\_limit}
+\item
+  pour la variable auxiliaire \texttt{q\_error\_limit}\\
+  standard\_name = \textbf{specific\_humidity} {standard\_error}
+\item
+  pour la variable auxiliaire \texttt{q\_detection\_limit}\\
+  standard\_name = \textbf{specific\_humidity} {detection\_minimum}
+\end{itemize}
+
+La description des 4 modificateurs prévus par la convention CF est
+présisée sous :\\
+\url{https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html\#standard-name-modifiers}.\\
+Ces modificateurs sont :
+
+\begin{itemize}
+\item
+  \textit{detection\_minimum}
+\item
+  \textit{number\_of\_observations}
+\item
+  \textit{standard\_error}
+\item
+  \textit{status\_flag}
+\end{itemize}
+
+Le modificateur \textit{status\_flag} est un cas particulier : voir
+\nameref{ref:status_flag}
+
+
+\subparagraph{Attention} :
+
+Cette liste ne couvre pas tout les besoins (ex :
+variable auxiliaire précisant le pourcentage de valeurs remplacées). De ce
+fait, \prodcdf ne vérifie pas les modificateurs qui lui sont fournis
+et \textbf{l'utilisateur peut définir son propre modicateur} sous la
+forme de mots séparés par le caractère '\_' (ex :
+percentage\_of\_gap\_filled\_values)
+
+
+\paragraph{\texttt{status\_flag}} : \label{ref:status_flag}
+
+Voir :\\
+\url{https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html\#flags}~\\
+et\\
+\url{https://cfconventions.org/Data/cf-conventions/cf-conventions-1.10/cf-conventions.html\#standard-name-modifiers}
+
+Toutes les variables auxiliaires ne sont pas de type
+\textit{status\_flag}.\\
+Dans le cas où la variable auxiliaire est vraiment un
+\textit{status\_flag}, la section de description de la variable doit
+contenir les options \texttt{flag\_values} et \texttt{flag\_meanings} :
+
+\begin{itemize}
+\item
+  \texttt{flag\_values} est l'ensemble des valeurs possibles de la
+  variable.\\
+  Les valeurs possibles sont séparées par des virgules.
+\item
+  \texttt{flag\_meanings} est une description de chacune des valeurs de
+  \texttt{flag\_values}.\\
+  La descritpion d'une valeur est un ensemble de mots séparés par des
+  '\_'.\\
+  Les descriptionis sont séparées par des espaces.
+\end{itemize}
+
+Exemples :
+
+\begin{verbatim}
+flag_values:int8 = 0, 1, 2
+flag_meanings    = bon moyen mauvais
+\end{verbatim}
+
+\begin{verbatim}
+flag_values   = U, N, O, K, R, H
+flag_meanings = data_correct_before_manual_quality_control data_incorrect[...]
+\end{verbatim}
+
+%%:::::::::: ICI début
+%%:::::::::: ICI fin
+\begin{warning}
+
+  Pour les variables auxiliaires de type \textit{status\_flag} pour
+  lesquelles les valeurs possibles (\textit{flag\_values}) sont des lettres
+  (cf. lexemple ci-dessus), l'option \textit{flag\_values} est enregistrée
+  par \prodcdf dans le fichier \netcdf sous la forme Python "liste de lettres".
+  Cependant certains outils de validation interprètent ce format comme
+  "une chaîne de caractères" et peuvent afficher une erreur.
+\end{warning}
+
+\subsubsection{Validation des fichiers \netcdf}
+
+Il existe plusieurs outils pour valider les fichiers
+\netcdf dont : \url{https://compliance.ioos.us/index.html}
+
+\subsubsection{Visualisation des fichiers \netcdf}
+
+Il existe plusieurs outils de visualisation des fichiers
+\netcdf dont :
+
+\begin{itemize}
+\item
+  ncdump : \textit{dump} d'un fichier \netcdf en texte.
+\item
+  ncview et panoply : outils graphiques
+\end{itemize}
+

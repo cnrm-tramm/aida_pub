@@ -1,0 +1,11 @@
+%% Version anglaise de la formule de l'operateur : Tair_avion
+If needed, $T_t$ it converted to Kelvin, then
+\[
+T_s =
+\begin{cases}
+\frac{T_t}
+     {1 + r_f \left( \left(1 + \frac{\Delta P}{P_s}\right)
+        ^{R_a/c_{pa}} - 1\right)} \qquad \text{ if } \Delta P > 6 \\
+\text{valeur\_manquante} \qquad \text{ otherwise } \\
+\end{cases}
+\]

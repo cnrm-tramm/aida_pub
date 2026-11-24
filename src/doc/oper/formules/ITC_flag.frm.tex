@@ -1,0 +1,37 @@
+%% Formule de l'operateur : ITC_flag
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+$$
+Rap\_ITC = 100.\left\vert\frac{ITC - ITC_{mo}}{ ITC_{mo} } \right\vert
+$$
+
+La valeur de $Flag_{ITC}$ est déterminée en fonction de 
+$Rap\_ITC$ suivant le tableau ci-dessous :
+
+\begin{center}
+\begin{tabular}{ll}
+\hline 
+Intervalle $Rap\_ITC$ & $Flag_{ITC}$ \\ 
+\hline 
+0-15 & 1\\ 
+\hline 
+16-30 & 2 \\
+\hline 
+31-50 & 3 \\
+\hline 
+51-75 & 4 \\
+\hline 
+76-100 & 5 \\ 
+\hline 
+101-250 & 6 \\ 
+\hline 
+251-500 & 7 \\ 
+\hline 
+501-1000 & 8 \\ 
+\hline 
+> 1000 & 9 \\ 
+\hline 
+\end{tabular} 
+\end{center}

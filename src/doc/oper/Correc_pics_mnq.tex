@@ -1,0 +1,52 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Correction de pics simples avec prise en compte des valeurs manquantes}
+
+\itemstyle{Op\'erateur~:} \operfmt{Correc\_pics\_mnq}
+\index{Correc\_pics\_mnq}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Détection de pics supérieurs à un seuil se produisant sur une seule valeur. La valeur
+"fausse" est éventuellement remplacée par la moyenne des valeurs qui l'encadrent en fonction du paramètre $N_r$ en entrée. La détection de pics se fait aussi avant ou après des valeurs manquantes.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Correc_pics_mnq.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Correc_pics_mnq.frm.tex}
+
+%%%%%COMMENTAIRES%%%%
+\itemstyle{Commentaires :}
+
+Cet opérateur remplace l'opérateur  \operfmt{correc\_saut\_mnq}. \\
+Il améliore :
+\begin{itemize}
+\item  le traitements de tous les cas de sauts avant ou après une valeur manquante
+\item l'interpolation linéaire en cas de pics successifs
+\item la prise en compte du seuil de durée max ($N_r$) pour l'interpolation linéaire ( il ne remplace pas les valeurs déjà manquantes dans $X$)
+\end{itemize}
+\bigskip 
+
+\emph{Attention} : L'interpolation linéaire ne convient pas aux variables
+qui peuvent être naturellement discontinues, tels les caps et
+autres angles.
+
+
+
+
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

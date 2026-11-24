@@ -1,0 +1,37 @@
+%%%%%
+%
+\section{Rayonnement IR à partir d'un pyrgéomètre 
+(temp\'eratures en unité quelconque)}
+
+\itemstyle{Op\'erateur~:} {\sf rayon\_IR\_auto\_tempe}
+\index{rayon\_IR\_auto\_tempe}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul du flux de rayonnement infra-rouge \`a partir 
+des mesures brutes d'un radiom\`etre (pyrgéomètre) : tension fournie 
+par la thermopile et températures
+du boîtier et de la coupole.
+
+Cette version d\'etecte automatiquement l'unit\'e dans laquelle
+sont exprimées les temp\'eratures ( C ou K ) et assure
+la transformation en Kelvin \'eventuellement nécessaire.
+On suppose que les toutes les temp\'eratures 
+pass\'ees en argument ont la m\^eme unit\'e.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/rayon_IR_auto_tempe.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/rayon_IR_auto_tempe.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Chepfer-1996 \cite{AIE96-Chepfer}

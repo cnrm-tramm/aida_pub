@@ -1,0 +1,21 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Time_{reg}$ & Vecteur, \texttt{double} & Temps ($s$)\\
+$Time_{asyn}$ & Vecteur, \texttt{double} & Temps de la variable d'origine ($s$)\\
+$X_{asyn}$ & Vecteur, \texttt{float} &  Variable à interpoler\\
+$Size_{asyn}$ & Coeff., \texttt{Int\_32} & Nombre d'éléments de la variable à interpoler\\
+
+$\Delta T_{inter}$ & Coeff., \texttt{float} & Écart maximum toléré entre deux échantillons d'origine pour faire une interpolation ($s$)\\
+$\Delta T_{extra}$ & Coeff., \texttt{float} & Écart maximum toléré lors d'une extrapolation ($s$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X_{reg}$ & Vecteur, \texttt{float} & Variable interpolée à chaque instant 
+de $Time_{reg}$ (même unité que $X_{asyn}$)\\
+\end{tabarg}

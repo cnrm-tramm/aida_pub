@@ -1,0 +1,42 @@
+%%%%%
+%
+\section{Interpolation lin\'eaire d'une variable sur une autre base de temps.}
+
+\itemstyle{Op\'erateur~:} \operfmt{Interpol\_irreg}
+\index{Interpol\_irreg}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction interpole une variable $X_{asyn}$, qui est dat\'ee par
+le vecteur temps $Time_{asyn}$, sur une autre base de temps $Time_{reg}$ et 
+traite le cas où le nombre d'éléments de $X_{asyn}$ est différent de celui 
+de $Time_{reg}$. L'interpolation est lin\'eaire.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Interpol_irreg.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Interpol_irreg.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+  Il faut connaître le nombre d'éléments de $X_{asyn}$ (lorsque
+cet opérateur est appelé via adc, on peut utiliser \$Arg3.NbVal)
+
+ Cet opérateur ne fait pas d'extrapolation, et peut donc créer des 
+valeurs manquantes en début et fin de la série interpollée, si le temps
+de la première valeur d'origine est après le premier 
+temps du résultat (ou symétriquement en fin de fichier), même
+si les écarts de temps sont très petits.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

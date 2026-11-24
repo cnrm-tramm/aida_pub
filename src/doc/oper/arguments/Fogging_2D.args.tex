@@ -1,0 +1,28 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Time_{reg}$ & Vecteur, {\tt Float\_64} & Temps avec fr\'equence de 1 Hertz ($s$)\\
+$Image_{2D}$ & Matrice X1024, {\tt Int\_32} & Image\\
+$Time_{asyn}$ & Vecteur, {\tt Float\_64} & Temps de la variable d'entr\'ee Image ($s$)\\
+$TAS_{2D}$ & Vecteur, {\tt Int\_16} & True Air Speed ($m/s$)\\
+$Code\_Hexa\_sonde$ & Coefficient, {\tt String} & Code hexadecimal de la sonde\\
+$Masque\_sonde$ & Coefficient, {\tt String} & Masque hexadecimal des donn\'ees images\\
+$Bits\_temps$ & Coefficient, {\tt Int\_16} & Nombre de bits de codage du temps dans les s\'eparateurs\\
+$Nbval_{as}$ & Coefficient, {\tt Int\_32} & Nombre d'\'el\'ements dans le vecteur de temps ascynchrone\\
+$Temps_{debut}$ & Coefficient, {\tt Int\_32} & Temps du d\'ebut de l'analyse en secondes depuis minuit\\
+$Temps_{fin}$ & Coefficient, {\tt Int\_32} & Temps de la fin de l'analyse en secondes depuis minuit\\
+$Tronq_{debut}$ & Coefficient, {\tt Int\_16} & Num\'ero de la diode \`a consid\'erer (d\'ebut)\\
+$Tronq_{fin}$ & Coefficient, {\tt Int\_16} & Num\'ero de la diode \`a consid\'erer (fin)\\
+$Freq$ & Coefficient, {\tt Int\_16} & Nombre d'enregistrements \`a traiter ensemble pour la d\'etection de Fogging\\
+$Nettoyer$ & Coefficient, {\tt Int\_16} & Si on doit nettoyer les donn\'ees\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Fogging_{2D}$ & Vecteur, {\tt Int\_32} & Indice de Fogging\\
+$Images\_nettoyees_{2D}$ & Matrice X1024, {\tt Int\_32} & Donn\'ees Image de la sonde 2D nettoy\'ees si demand\'e\\
+\end{tabarg}

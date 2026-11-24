@@ -1,0 +1,14 @@
+%% Formule de l'operateur : HumW_T_Tdf
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\[
+e = 
+\begin{cases}
+ e_w(T_{df}) \text{ si } T_{df} \ge 0.0 \text{°C}\\
+ e_{wi}(T_{df}) \text{ sinon}\\
+\end{cases}
+H_u = 100 \times \frac{e}{e_w(T_s)} 
+\]
+Si $H_u > 102 \%$, $Hu = 103 \%$.

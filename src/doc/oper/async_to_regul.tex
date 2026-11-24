@@ -1,0 +1,34 @@
+%% TRANSFORMATIONS TEMPORELLES %%
+%
+\section{Interpolation d'une variable sur une autre base de temps.}
+
+\itemstyle{Op\'erateur~:} \operfmt{async\_to\_regul}
+\index{async\_to\_regul}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction interpole une variable $X_{asyn}$, qui est dat\'ee par
+le vecteur temps $Time_{asyn}$, sur une autre base de temps $Time_{reg}$.
+L'interpolation est lin\'eaire.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/async_to_regul.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/async_to_regul.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+\textbf{Limitation~:} Cet opérateur est limité au cas où le nombre d'éléments
+de $X_{asyn}$ est le même que celui de $Time_{reg}$.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

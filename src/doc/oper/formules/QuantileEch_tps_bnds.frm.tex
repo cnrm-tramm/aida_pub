@@ -1,0 +1,12 @@
+%% Formule de l'operateur : QuantileEch_tps_bnds
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%Recherche du quantile pour la valeur $val_{seuil}$ dans chaque échantillon
+
+Pour chaque j entre ${tb[i][0]}$ et ${tb[i][1]}$: 
+
+$X_{out}[i]$ = valeurs $X_{in}[j]$ pour laquelle on a $val_{seuil}*100 \%$ des valeurs supérieures à cette valeur 
+ 
+Pour chaque $X_{in}[j]$ diff\'{e}rent de NaN.

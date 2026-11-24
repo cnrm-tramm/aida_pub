@@ -1,0 +1,21 @@
+%%Chang_gam_angl
+
+$ E = 
+\begin{cases}
+ 360  & \text{si } unit = degree \\
+ 2 \pi & \text{si } unit = radian\\
+\end{cases}
+$
+
+$ B_{max} =  gamme . E / 360$
+
+$ B_{min} = B_{max} - E$
+
+$ Vs = 
+\begin{cases}
+ Ve + E & \text{si } Ve < B_{min} \\
+ Ve - E & \text{si } Ve > B_{max} \\
+ Ve    & \text{sinon} \\
+\end{cases}
+$
+

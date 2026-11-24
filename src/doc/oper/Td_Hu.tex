@@ -1,0 +1,44 @@
+%%%%%
+%
+\section{Point de rosée sachant l'humidité relative}
+
+\itemstyle{Op\'erateur~:} \operfmt{Td\_Hu}
+\index{Td\_Hu}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+ Calcul de la température du point de rosée à partir de l'humidité
+relative à l'eau liquide et la température de l'air.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Td_Hu.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Td_Hu.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}
+
+Les formules directes et réciproques de $ew(T)$ sont
+celles de l'article Bolton-1980 \cite{Bolton-80} :
+eq. 10, page 1047, décrite en annexe 
+\ref{annexe-ewbolton}.
+
+L'OMM spécifie explicitement
+que, aux températures inférieures à O°C,
+l'humidité relative doit
+être calculée relativement à l'eau liquide.
+(par exemple dans le
+\emph{Guide des instruments et des méthodes
+d'observation météorologique} \cite{OMM-N8-1996}, en
+annexe 4.A et au paragraphe 12.5.1).
+C'est pourquoi, ici, seule la formule
+relative à l'eau liquide est employée pour
+le calcul de $e$ à partir de Hu.

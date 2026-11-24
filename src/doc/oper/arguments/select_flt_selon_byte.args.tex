@@ -1,0 +1,23 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float} & Série de données à filtrer (unité quelconque).\\
+$Y$ & Vecteur, \texttt{U\_Int\_8} & vecteur sur lequel seront appliqués les critères (unité quelconde)\\
+$Crit1_{min}$ & Coeff., \texttt{U\_Int\_8} & valeur mini de la première gamme valide\\
+$Crit1_{max}$ & Coeff., \texttt{U\_Int\_8} & valeur maxi de la première gamme valide\\
+$Crit2_{min}$ & Coeff., \texttt{U\_Int\_8} & valeur mini de la deuxième gamme valide\\
+$Crit2_{max}$ & Coeff., \texttt{U\_Int\_8} & valeur maxi de la deuxième gamme valide\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X_{sel}$ & Vecteur, \texttt{float} & Série de données filtrées (même unité que $X$)\\
+\end{tabarg}

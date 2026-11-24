@@ -1,0 +1,23 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X_e$ & Vecteur, \texttt{float} & Composante sur l'axe Ouest-Est, positif vers l'Est (unité quelconque)\\
+$X_n$ & Vecteur, \texttt{float} & Composante sur l'axe Sud-Nord, positif vers le Nord (même unité que $X_e$)\\
+$\psi$ & Vecteur, \texttt{float} & Cap géographique ($radians$ ou $degres$)\\
+$unit$ & Coeff., \texttt{String} & Unité de mesure des angles ($radians$
+ou $degres$)\\
+$flag$ & Coeff., \texttt{float} & 1.0 pour transformation de géographique 
+\textbf{vers} mobile, -1.0 pour mobile \textbf{vers} géographique\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Y_t$ & Vecteur, \texttt{float} & Composante sur l'axe transverse, positif vers la 
+droite (même unité que $X_e$ et $X_n$)\\
+$Y_l$ & Vecteur, \texttt{float} & Composante sur l'axe longitudinal, positif vers 
+l'avant (même unité que $X_e$ et $X_n$)\\
+\end{tabarg}

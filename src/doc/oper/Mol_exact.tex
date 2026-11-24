@@ -1,0 +1,30 @@
+%%%%%
+%
+\section{Longueur de Monin-Obukhov (formule exacte)}
+
+\itemstyle{Op\'erateur~:} {\sf Mol\_exact}
+\index{Mol\_exact}
+\newline
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Longueur de Monin-Obukhov calcul\'ee par la formule exacte à partir des composantes du vent, des temp\'eratures (sonique, de l'air) et du rapport de m\'elange. La température sonique est assimilée à la température potentielle virtuelle $\theta_{v}$ ; cette approximation est légitime car la température dite sonique est très proche de $T_{v}$ elle même très proche de $\theta_{v}=T_{v}.(\frac{P_{0}}{P})^{0.286}$ quand la pression au point de mesure est peu différente de $P_{0}$ (avec $P_{0}=1000$ hPa). LMO est la hauteur (entre -200 et +200 m) à laquelle la production thermique de turbulence l'emporte sur la production mécanique :
+\begin{center}
+L>0 : stabilité ; L=0 : convection libre ; L<0 : instabilité 
+\end{center}
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Mol_exact.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Mol_exact.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

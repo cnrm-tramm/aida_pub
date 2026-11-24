@@ -1,0 +1,14 @@
+%% Formule de l'operateur : Covar_XY_ctl
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+Pour chaque période d'un durée $T_{int}$ et si $X_i$ et $Y_i$ ne sont pas manquants, on calcule : \\
+
+\begin{eqnarray*}
+Cov_{XY} & = & \sum^{T_{int}} (X_i - \overline{X}).(Y_i - \overline{Y})  \\ 
+Corr_{XY} & = & \frac{Cov_{XY}}{\sum^{T_{int}} (X_i - \overline{X}).\sum^{T_{int}}(Y_i - \overline{Y})   }
+\end{eqnarray*}
+
+$T_{valid}$ est le nombre de points non manquants utilisé par le calcul de la covariance, divisé par la fréquence d'échantillonnage $F_e$. 

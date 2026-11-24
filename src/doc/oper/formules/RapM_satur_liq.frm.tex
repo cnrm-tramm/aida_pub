@@ -1,0 +1,14 @@
+%% Formule de l'operateur : RapM_satur_liq
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\[
+RapM_{satur} = 1000 . \frac{R_a}{R_v} . \frac{e_{w}(T_{s})}{(P_{s} - e_{w}(T_{s}))}
+\]
+
+avec $\frac{R_a}{R_v} = \frac{M_v}{M_a} = 0.622$, et la 
+multiplication par 1000 permet d'exprimer le résultat en $g$/$kg$.
+
+La fonction $e_{w}(T)$ calcule la pression de vapeur saturante et
+est décrite en annexe \ref{annexe-thermo}.

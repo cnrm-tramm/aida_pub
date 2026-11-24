@@ -1,0 +1,38 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Correction de la hauteur GPS par rapport a l'ellipsoide
+ WGS84 avec l'ondulation du geoide}
+
+\itemstyle{Opérateur~:} \operfmt{Cor\_ondulation\_geoide84}
+\index{Cor\_ondulation\_geoide84}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Corrige la hauteur GPS par rapport à l'ellipsoide WGS84
+ avec l'ondulation du geoide pour le lieu.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Cor_ondulation_geoide84.args.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Le fichier EGM180.NOR contient des coefficients géopotentielles normalisés 
+(Cnm, SNM) pour le modèle WGS 84. Il est utilisé comme fichier d'entrée pour 
+l'opérateur.
+Sauvegardé sous le répertoire aida/extern/EGM\_84, il doit êstre copié sous
+ aida/share/common/EGM180.NOR.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+Le programme \textsc{fortran} qui fait effectivement les calculs
+a été chargé sur le site du National Geospatial-intelligence Agency (NGA).
+L'enrobage sous forme d'opérateur a été fait par P. Richard.
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}
+\url{http://earth-info.nga.mil/GandG/wgs84/gravitymod/wgs84_180/wgs84_180.html}

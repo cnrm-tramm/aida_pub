@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float} & Donnée d'origine (unité quelconque)\\
+time & Vecteur, \texttt{double} & Datation de $X$ (seconde)\\
+seuil & Coeff., \texttt{float} & Seuil (unité de $X$)\\
+decal\_down & Coeff., \texttt{float} & Décalage temporel à appliquer aux flancs descendants (seconde)\\
+decal\_up & Coeff., \texttt{float} & Décalage temporel à appliquer aux flancs montants (seconde)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Y$ & Vecteur, \texttt{float} & $X$ avec des franchissements de seuil décalés dans le temps (unité de $X$)\\
+\end{tabarg}

@@ -1,0 +1,24 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$U_*$ & Vecteur, \texttt{float} & Vitesse de frottement (m/s)\\
+$L$ & Vecteur, \texttt{float} & Longueur de Monin-Obukhof (m)\\
+$Z$ & Vecteur, \texttt{float} & Hauteur de mesure (m)\\
+$Hc$ & Coeff., \texttt{float} & Hauteur de la canopée (m)\\
+$\lambda$  & Coeff., \texttt{float} & Latitude (degrés)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$ITC_U$ & Vecteur, \texttt{float} & Caractéristique intégrale de la turbulence selon U\\
+$ITC_W$ & Vecteur, \texttt{float} & Caractéristique intégrale de la turbulence selon W \\
+$ITC_T$ & Vecteur, \texttt{float} & Caractéristique intégrale de la turbulence selon T \\
+\end{tabarg}

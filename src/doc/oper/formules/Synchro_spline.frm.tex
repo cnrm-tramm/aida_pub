@@ -1,0 +1,17 @@
+%% Formule de l'operateur : Synchro_spline
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+Les traitements suivants sont réalisés :
+\begin{itemize}
+\item  Dans un premier temps les valeurs pour lesquelles il y a un retour en arrière dans la base de temps de $X$ sont supprimées. \\
+\item Puis, un décalage temporel $D$ est appliqué à $X$.\\
+\item Enfin une interpolation par splines cubiques est faite avec la fonction Numpy  \textit{UnivariateSpline} (avec le paramètre s=0).\\
+\end{itemize}
+
+Si $Unite_X$ vaut "radians" ou "degres" alors ce sont $cos(X)$ et $sin(X)$ qui sont interpolés. $X_{sync}$ est ensuite calculé par l'arctangente (fonction \textit{arctan2 }de Numpy). \\
+
+Cet opérateur ne remplace pas  les valeurs manquantes dans $X$. C'est-à-dire, les valeurs qui sont manquantes dans $X$ sont aussi manquantes dans $X_{sync}$
+

@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$\Delta P$ & Vecteur, \texttt{float} & Pression dynamique : différence entre la 
+                  pression d'arrêt et la pression statique (hPa)\\
+unit$_{out}$ & Coeff., \texttt{String} & Unitée souhaitée pour le 
+                  résultat (kt ou m/s)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$V_c$ & Vecteur, \texttt{float} & Vitesse conventionnelle 
+                correspondant à $\Delta P$ (unit$_{out}$)\\
+\end{tabarg}

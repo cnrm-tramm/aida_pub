@@ -1,0 +1,21 @@
+[IDENTIFICATION]
+nom                    = ALPHA 
+date_debut             = 01/08/2021
+date_fin               = 01/08/2021
+projet                 = EXEMPLES-AIDA 
+region_geographique    = South of France, Toulouse
+un_m49_code            = 155
+geospatial_lat_min     =    
+geospatial_lat_max     = 
+geospatial_lon_min     =
+geospatial_lon_max     = 
+description = Objective : Learning AIDA with measurements from Meteopole ground station.  
+principal_investigator = XXX : YYY : XXX_YYY@mail.fr : Universite de Toulouse, Meteo-France, CNRS, Toulouse, France; XXX : YYY : XXX_YYY@mail.fr : Universite de Toulouse, Meteo-France, CNRS, Toulouse, France; XXX : YYY : XXX_YYY@mail.fr : Universite de Toulouse, Meteo-France, CNRS, Toulouse, France;
+
+
+[test-AIDA]
+liste_acqid            = ts210213-ts210213
+date_debut             = 01/08/2021 
+date_fin               = 01/08/2021
+principal_investigator = XXX : YYY : XXX_YYY@mail.fr : Universite de Toulouse, Meteo-France, CNRS, Toulouse, France;
+

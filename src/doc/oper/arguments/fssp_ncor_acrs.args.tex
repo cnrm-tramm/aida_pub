@@ -1,0 +1,28 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Strobe$ & Vecteur, {\tt float} & Nombre de gouttelettes dans la D.O.F 
+(Depth Of Field) (\textit{comptes par p\'eriode d'\'echantillonnage}) \\
+$Reset$ & Vecteur, {\tt float} & Nombre total de gouttelettes compt\'ees 
+(\textit{comptes par p\'eriode d'\'echantillonnage}) \\
+$A_m$ & Vecteur, {\tt float} & Activit\'e de l'appareil \\
+$\overline{T}$ & Vecteur, {\tt float} & Temps de transit moyen ($s$)\\
+$f_e$ & Coeff., {\tt float} & Fr\'equence d'\'echantillonnage ($Hz$)\\
+$\tau_1$ & Coeff., {\tt float} & D\'elai \'electronique court ($s$)\\
+$\tau_2$ & Coeff., {\tt float} & D\'elai \'electronique long ($s$)\\
+$\tau_r$ & Coeff., {\tt float} & D\'elai \'electronique du reset ($s$)\\
+$Crt_0$ & Coeff., {\tt float} & Taux de comptage minimal au dessus duquel on
+peut calculer le temps de transit ($s^{-1}$) \\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$N_{acrs}$ & Vecteur, {\tt float} & Nombre total de gouttes corrig\'e des 
+co\"{\i}ncidences (\textit{comptes par p\'eriode d'\'echantillonnage}) \\
+$\tau_{acrs}$ & Vecteur, {\tt float} & Temps de transit calcul\'e en tenant
+compte des co\"{\i}ncidences (s)\\
+\end{tabarg}

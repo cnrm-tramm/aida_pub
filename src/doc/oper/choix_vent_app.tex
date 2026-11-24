@@ -1,0 +1,44 @@
+%%%%%
+%
+\section{Vent apparent: vecteur unique fait à partir de deux vecteurs}
+
+\itemstyle{Op\'erateur~:} \operfmt{choix\_vent\_app}
+\index{choix\_vent\_app}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Choix d'une mesure de vent apparent à partir de 2 capteurs
+de même modèle situés de 2 coté d'un mât de mesure.\newline
+  Les critères de choix sont relativement empiriques.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/choix_vent_app.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/choix_vent_app.frm.tex}
+
+%%%% COMMENTAIRE %%%%
+\itemstyle{Commentaire~:}
+   
+Lorsque les girouettes sont montées avec le $0$ pointant vers
+l'arrière du bateau (cas d'EQUALANT, POMME), il faut que 
+la rotation corrective soit faite \textbf{avant} d'appliquer
+cet opérateur.
+
+\textbf{ATTENTION} : cet opérateur contient un test spécifique aux
+anémomètres YOUNG utilisés pendant EQUALANT-99 et POMME : On élimine la
+girouette 2 si la direction est supérieure à $171^\circ$ 
+ou inférieure à $178^\circ$, (après étude des 
+histogrammes de zones mortes des girouettes).
+   
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Campagne précédante FETCH

@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$\theta$ & Vecteur, \texttt{float} & Température potentielle (Celsius ou Kelvin)\\
+$r_v$ & Vecteur, \texttt{float} & Rapport de mélange en vapeur d'eau (g/kg)\\
+$\Lambda_r$ & Coeff., \texttt{float} & Constante \\
+$\gamma$ & Coeff., \texttt{float} & Rapport $R_v/C_p$\\
+$r_\star$ & Coeff., \texttt{float} & Constante de paramétrage (kg/kg)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$\theta_s$ & Vecteur, \texttt{float} & Température potentielle humide (m\^eme unité que $\theta$ )\\
+\end{tabarg}

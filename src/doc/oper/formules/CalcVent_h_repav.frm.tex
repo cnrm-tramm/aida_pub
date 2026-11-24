@@ -1,0 +1,15 @@
+%%CalcVent_h_repav_auto_unit
+
+Dans un premier temps, le vent est calcul\'e dans le rep\`ere lié à la 
+plate-forme mobile. Les 2 composantes sont not\'ees $U_a$ et $V_a$.
+\begin{eqnarray*}
+U_a & = & V_x - V_p.\cos\beta \\
+V_a & = & V_y - V_p.\sin\beta 
+\end{eqnarray*}
+
+Puis, une rotation permet d'obtenir le 
+vent dans le rep\`ere g\'eographique.
+\begin{eqnarray*}
+U = U_a.\sin\psi + V_a.\cos\psi \\
+V = U_a.\cos\psi - V_a.\sin\psi
+\end{eqnarray*}

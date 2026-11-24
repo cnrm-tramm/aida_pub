@@ -1,0 +1,52 @@
+%%%%% Introduction du catalogue des op\'erateurs %%%%
+
+Ce document rassemble les fiches descriptives des op\'erateurs
+de l'atelier de traitement de donn\'ees {\bf AIDA}.
+
+\subsection*{Quelques d\'efinitions}
+
+Un {\em op\'erateur} est une fonction de base de traitement. A 
+partir d'arguments d'entr\'ee, qui sont soit des coefficients, 
+soit des s\'eries temporelles d'un param\`etre pendant
+une acquisition, un op\'erateur produit une (ou plusieurs) s\'erie(s) temporelle(s)
+d'un (ou de plusieurs) nouveau(x) param\`etre(s).
+
+Dans {\bf AIDA}, les s\'eries temporelles d'un param\`etre pendant
+une acquisition sont d\'esign\'ees sous le terme de {\em vecteur}. Ce terme
+a \'et\'e choisi pour \'evoquer la dimension temporelle toujours
+pr\'esente, mais il ne signifie pas une limitation \`a cette seule dimension.
+
+\subsection*{Le contenu des fiches}
+
+Chaque fiche comporte les informations n\'ecessaires \`a l'utilisation
+d'un op\'erateur : un rappel de l'objet de la fonction, la liste des
+arguments et de leurs caract\'eristiques (dans l'ordre exact ou l'op\'erateur
+les attend), la formule (ou l'agorithme) employ\'ee, et un commentaire
+qui peut pr\'eciser l'objet ou les conditions d'utilisation de la fonction.
+
+Parmis les caract\'eristiques figurent la cat\'egorie (vecteur ou coefficient),
+ainsi que le type informatique, la dimension, et l'unit\'e. 
+
+Pour les vecteurs, la dimension temporelle est toujours implicite, donc un
+argument d\'efini comme "Vecteur, {\tt float}" est en fait un
+{\tt float[Nbre\_Echant]} (et sera parfois d\'ecrit dans le texte comme
+un vecteur "scalaire"), et un "Vecteur, {\tt int[16]}" 
+est en m\'emoire un {\tt int[Nbre\_Echant, 16]} (d\'ecrit comme un
+vecteur "1D").
+
+De m\^eme, dans toutes les formules d'op\'erateurs qui ne font
+pas de transformations temporelles, la boucle sur toutes
+les valeurs n'est pas explicit\'ee. Par exemple, dans la description
+de l'op\'erateur {\sf Plus}, la formule exacte :
+\[ Z[i] = X[i] + Y[i]  \qquad i=0, Nbre\_echant.-1  \]
+est simplifi\'ee en :
+\[ Z = X + Y\]
+
+\subsection*{Le traitement des erreurs arithm\'etiques}
+
+Sauf sp\'ecification contraire, le traitement des erreurs arithm\'etiques
+(divisions par z\'ero, log de nombre n\'egatif, \ldots) est effectu\'e par la
+librairie math\'ematique, selon les sp\'ecifications de la norme IEEE-754-1985.
+La principale caract\'eristique est que, en cas d'op\'eration erron\'ee,
+le programme ne "plante" pas, mais produit une valeur sp\'eciale (+INF,
+-INF ou NaN).

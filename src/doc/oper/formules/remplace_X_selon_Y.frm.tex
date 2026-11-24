@@ -1,0 +1,24 @@
+%% Formule de l'operateur : remplace_X_selon_Y
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+Si $Hors\_int = 0 $ : \\ 
+$$
+X_{rpl} =
+\begin{cases}
+ValR \text{ si } Y \ne Y_{mnq}  \text{ et } Crit\_min \le Y \le Crit\_max \\
+$X$ \text{ sinon}\\
+\end{cases}
+$$
+
+Si $Hors\_int = 1 $ : \\ 
+
+$$
+X_{rpl} =
+\begin{cases}
+ValR \text{ si } Y \ne Y_{mnq} \text{ et } Y < Crit\_min  \text{ ou } Y > Crit\_max \\
+$X$ \text{ sinon}\\
+\end{cases}
+$$

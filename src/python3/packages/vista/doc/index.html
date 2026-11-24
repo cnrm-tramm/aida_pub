@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+    <title>Menu d&eacute;roulant vertical sur clic</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+    <script type="text/javascript" src="functions.js"></script>
+</head>
+<body>
+
+<table border="1">
+<tr>
+    <td class="tdgauche" >
+        <div id="menu">
+	        <div class="menu" id="menu1" onclick="click_lien('vista.html');">
+		        <a href="#">&nbsp; Vista c'est quoi ?</a>
+	        </div>
+	
+	        <div class="menu" id="menu2" onclick="afficheMenu(this); click_lien('interface.html');">
+		        <a href="#">&nbsp; L'interface graphique</a>
+	        </div>
+	        <div id="sousmenu2" style="display:none">
+		        <div class="sousmenu">
+			        <a href="#" onclick="click_lien('barre_menus.html')">&nbsp;&nbsp;&nbsp; La barre de menus</a>
+		        </div>
+		        <div class="sousmenu">
+			        <a href="#" onclick="click_lien('barre_outils.html')">&nbsp;&nbsp;&nbsp; La barre d'outils</a>
+		        </div>
+		        <div class="sousmenu">
+			        <a href="#" onclick="click_lien('creer.html')">&nbsp;&nbsp;&nbsp; Cr&eacute;er un document</a>
+		        </div>
+
+                <div id="menu4"  class="sousmenu2" onclick="afficheMenu(this)">
+                    <a href="#" onclick="click_lien('configurer_contenu.html')">&nbsp;&nbsp;&nbsp; Configurer le contenu ...</a>
+                </div>
+                <div id="sousmenu4" style="display:none">
+                    <div class="sousmenu3">
+		                <a href="#" onclick="click_lien('configurer_document.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Configurer le document</a>
+	                </div>
+                    <div class="sousmenu3">
+		                <a href="#" onclick="click_lien('configurer_page.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Configurer une page</a>
+	                </div>
+                    <div id="menu5"  class="sousmenu3" onclick="afficheMenu(this)">
+                        <a href="#" onclick="click_lien('configurer_graphique.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Configurer un graphique ...</a>
+                    </div>
+                    <div id="sousmenu5" style="display:none">
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_graphique_ST.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graphique ST</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_graphique_PlotXY.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graphique PlotXY</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_graphique_Histo.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graphique Histo</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_graphique_Histo3D.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graphique Histo3D</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_graphique_RDV.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graphique RDV</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_graphique_Hov.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graphique Hov</a>
+	                    </div>
+                    </div>
+                    <div id="menu6"  class="sousmenu3" onclick="afficheMenu(this)">
+                        <a href="#" onclick="click_lien('configurer_trace.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Configurer un trac&eacute; ...</a>
+                    </div>
+                    <div id="sousmenu6" style="display:none">
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_trace_ST.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trac&eacute; ST</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_trace_PlotXY.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trac&eacute; PlotXY</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_trace_Histo.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trac&eacute; Histo</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_trace_Histo3D.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trac&eacute; Histo3D</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_trace_RDV.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trac&eacute; RDV</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('configurer_trace_Hov.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trac&eacute; Hov</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('operation.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Op&eacute;ration sur les donn&eacute;es</a>
+	                    </div>
+                        <div class="sousmenu4">
+		                <a href="#" onclick="click_lien('affichage_conditionnel.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Affichage conditionnel</a>
+	                    </div>
+                    </div>
+                     <div class="sousmenu3">
+		                <a href="#" onclick="click_lien('configurer_legende.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Configurer la l&eacute;gende</a>
+	                </div>
+                </div>
+                <div class="sousmenu">
+			        <a href="#" onclick="click_lien('visualiser.html')">&nbsp;&nbsp;&nbsp; Visualiser le document</a>
+		        </div>
+                <div class="sousmenu">
+			        <a href="#" onclick="click_lien('mise_en_page.html')">&nbsp;&nbsp;&nbsp; Mise en page</a>
+		        </div>
+	        </div>
+	
+	        <div class="menu" id="menu3" onclick="click_lien('ligne_commande.html');">
+		        <a href="#">&nbsp; Vista en ligne de commande</a>
+	        </div>
+        </div>
+    </td>
+    <td class="tddroite" ><iframe id="framedoc" src="vista.html" type="text/html"></iframe></td>
+</tr>
+
+</table>
+
+</body>
+</html> 

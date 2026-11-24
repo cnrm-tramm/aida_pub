@@ -1,0 +1,22 @@
+%%%% THERMODYNAMIQUE
+Si $\Delta P_b > 25 $hPa,
+\[
+Errstat = C_{errstat}[0] + C_{errstat}[1].\Delta P_b +
+	  C_{errstat}[2].\Delta P_b^2 + C_{errstat}[3].\Delta P_b^3 
+\]
+sinon
+\[
+Errstat =  {{\Delta P_b} \over 25} . Errstat(25)
+\]
+\[
+P_s = P_{sb} - Errstat
+\]
+$$
+\Delta P = \Delta P_b + Errstat
+$$
+$$
+\alpha = C_{\alpha}[0] + C_{\alpha}[1]. \frac{ \Delta P_v}{\Delta P}
+$$
+$$
+\beta = C_{\beta}[0] + C_{\beta}[1]. \frac{ \Delta P_h}{\Delta P}
+$$

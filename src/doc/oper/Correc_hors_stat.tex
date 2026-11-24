@@ -1,0 +1,37 @@
+%%%%%
+%
+\section{Élimination et correction de valeurs statistiquement hors-normes}
+
+\itemstyle{Op\'erateur~:} {\sf Correc\_hors\_stat}
+\index{Correc\_hors\_stat}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction détecte, élimine, (et remplace éventuellement)
+les valeurs en-dehors d'une statistique normale.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Correc_hors_stat.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Correc_hors_stat.frm.tex}
+
+%%%%%COMMENTAIRES%%%%
+\itemstyle{Commentaires}
+
+On peut prendre, par défaut, des valeurs de 7 pour
+Toler\_X , et 10 pour Toler\_dX.
+
+\emph{Attention} : L'interpolation linéaire ne convient pas aux variables
+qui peuvent être naturellement discontinues, tels les caps et
+autres angles.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

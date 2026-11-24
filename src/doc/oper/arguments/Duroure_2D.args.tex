@@ -1,0 +1,30 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Time_{reg}$ & Vecteur, {\tt Float\_64} & Temps avec fr\'equence de 1 Hertz ($s$)\\
+$Image_{2D}$ & Matrice X1024, {\tt Int\_32} & Image\\
+$Time_{asyn}$ & Vecteur, {\tt Float\_64} & Temps de la variable d'entr\'ee Image ($s$)\\
+$TAS_{2D}$ & Vecteur, {\tt Int\_16} & True Air Speed ($m/s$)\\
+$Code\_Hexa\_sonde$ & Coefficient, {\tt String} & Code hexadecimal de la sonde\\
+$Masque\_sonde$ & Coefficient, {\tt String} & Masque hexadecimal des donn\'ees images\\
+$Bits\_temps$ & Coefficient, {\tt Int\_16} & Nombre de bits de codage du temps dans les s\'eparateurs\\
+$Nbval_{as}$ & Coefficient, {\tt Int\_32} & Nombre d'\'el\'ements dans le vecteur de temps ascynchrone\\
+$Temps_{debut}$ & Coefficient, {\tt Int\_32} & Temps du d\'ebut de l'analyse en secondes depuis minuit\\
+$Temps_{fin}$ & Coefficient, {\tt Int\_32} & Temps de la fin de l'analyse en secondes depuis minuit\\
+$Tronq_{debut}$ & Coefficient, {\tt Int\_16} & Num\'ero de la diode \`a consid\'erer (d\'ebut)\\
+$Tronq_{fin}$ & Coefficient, {\tt Int\_16} & Num\'ero de la diode \`a consid\'erer (fin)\\
+$Sonde$ & Coefficient, {\tt String} & Nom de la sonde, soit 2D-P ou 2D-C\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Spec\_tot_{2D}$ & Vecteur, {\tt Float\_32} & Spectre total 2D\\
+$Spec\_moy_{2D}$ & Matrice X30, {\tt Float\_32} & Spectre moyen total 2D\\
+$Spec_{2D}$ & Matrice X30, {\tt Float\_32} & Spectre 2D\\
+$Spec\_dmoy_{2D}$ & Vecteur, {\tt Float\_32} & Diametre moyen 2D\\
+$Spec\_rugmoy_{2D}$ & Vecteur, {\tt Float\_32} & Rugosite moyenne 2D\\
+\end{tabarg}

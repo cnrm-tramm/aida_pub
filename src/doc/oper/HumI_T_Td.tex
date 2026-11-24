@@ -1,0 +1,42 @@
+%%%%%
+%
+\section{Humidité relative à la glace à partir de T et Td}
+
+\itemstyle{Op\'erateur~:} \textsf{HumI\_T\_Td}
+\index{HumI\_T\_Td}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcule l'humidité relative \`a partir de la temp\'erature 
+du point de ros\'ee et de la temp\'erature de l'air, en utilisant les
+formules relatives \`a la glace. 
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/HumI_T_Td.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/HumI_T_Td.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+Les fonctions $ew()$ et  $ewi()$ sont d\'ecrites en annexe
+\ref{annexe-thermo}.
+
+Pour les mesures météorologiques opérationnelles (par exemple
+les radiosondages), l'humidité relative est toujours définie
+par rapport à l'eau liquide, même à des températures
+inférieures à 0°C (cf. le \emph{Guide des instruments et des méthodes
+d'observation météorologique} \cite{OMM-N8-1996}). Le résultat
+de cet opérateur ne peut donc pas être directement 
+comparé à de telles mesures.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

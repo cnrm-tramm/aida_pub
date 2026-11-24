@@ -1,0 +1,45 @@
+%%%%%
+%
+\section{Calcul des flux de chaleur sensible par méthode aérodynamique}
+
+\itemstyle{Op\'erateur~:} {\sf Flux\_Aero}
+\index{Flux\_Aero}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+ Cet opérateur implémente la méthode dite aérodynamique,
+qui utilise les relations liant, d'une part $u_*$ et
+$du \over dz$, et d'autre part $\theta_*$ et $d\theta \over dz$,
+(profils universels de la théorie de la similitude de Monin-Obukhov)
+pour déduire le flux de chaleur sensible ($-\rho c_p u_* \theta_*$)
+à partir de mesures des gradients verticaux de température et de vent.
+
+La hauteur séparant les 2 niveaux de mesure est
+considérée fixe (1.5 m), mais la hauteur au-dessus du sol, et 
+la hauteur de la végétation (pour estimer la hauteur de
+déplacement) sont des variables d'entrée.
+
+En fin de calcul, le flux de chaleur latente (LE) est
+estimé en supposant le bilan énergétique fermé.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Flux_Aero.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Flux_Aero.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+Les fonctions $rho()$ et $tvir\_4m()$ sont d\'ecrites en annexe\ref{annexe-thermo}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Programme Fortran 77 de Dominique Puech et note de centre CNRM/GMEI nr 6 \cite{GMEI-6}.

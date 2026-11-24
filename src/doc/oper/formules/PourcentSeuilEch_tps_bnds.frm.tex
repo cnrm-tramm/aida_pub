@@ -1,0 +1,19 @@
+%% PourcentEchSeuil_tps_bnds
+%Recherche du pourcentage de valeurs inférieures à $val_{seuil}$ dans chaque échantillon
+
+Pour  i=$0$, Nbre  $Time_{bnds}$ :
+
+Pour chaque j entre $t_b[i][0]$ et $t_b[i][1]$:
+
+%\[
+%X_{out}[i]=
+%\frac{\displaystyle{nb de X_{in}[j]}}{N_i}
+%\]
+
+\[
+X_{out}[i]=
+\frac{\texttt{nb de } X_{in}[j]}{N_i}
+\]
+
+Pour chaque $X_{in}[j]$ inf\'erieur \`a $val_{seuil}$ 
+et $N_i$: nb de valeurs valides et différentes de $val_{seuil}$ dans l'intervalle.

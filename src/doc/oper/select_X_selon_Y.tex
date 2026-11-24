@@ -1,0 +1,37 @@
+%%%%%
+%
+\section{Sélection dans un vecteur selon un second vecteur (\texttt{float})}
+
+\itemstyle{Opérateur~:} \textsf{select\_X\_selon\_Y}
+\label{OP-select_X_selon_Y}
+\index{select\_X\_selon\_Y}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Sélection des données d'un vecteur selon des
+critères de gamme appliqués à un second vecteur de type \texttt{float}.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/select_X_selon_Y.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/select_X_selon_Y.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+  Dans le cas où le vecteur-critère («$Y$») est de type \texttt{int}, 
+utiliser l'opérateur
+\hyperref[OP-select_flag_data]{\operfmt{select\_flag\_data}}.
+Cet opérateur prend en compte les cas où $X$ est 1D et 2D.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}
+

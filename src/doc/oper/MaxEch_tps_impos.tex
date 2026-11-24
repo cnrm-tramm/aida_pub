@@ -1,0 +1,39 @@
+%%%%%
+%
+\section{Échantillonnage (et maximum) d'une variable sur une nouvelle base
+de temps}
+
+\itemstyle{Op\'erateur~:} \operfmt{MaxEch\_tps\_impos}
+\index{MaxEch\_tps\_impos}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction calcule, pour chaque instant $t$ d'une
+base de temps "time\_out", 
+une variable "X\_out", contenant le maximum des
+valeurs de  "X\_in" entre $t$-écart\_avant et $t$+écart\_après.
+
+Aucune supposition n'est faite sur la régularité de
+l'échantillonnage des 2 variables. Cette fonction peut
+donc servir, par exemple, à transformer une série temporelle
+asynchrone en une série régulière. Il est cependant nécessaire
+que time\_in (le temps de X\_in) soit "à peu près" trié par ordre
+croissant.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/MaxEch_tps_impos.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/MaxEch_tps_impos.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Néant.

@@ -1,0 +1,34 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Calcul d'un flag qualité selon la classification "Foken" du flux turbulent calculé par eddy-covariance  }
+
+\itemstyle{Op\'erateur~:} \operfmt{Combine\_flag\_EC\_Foken}
+\index{Combine\_flag\_EC\_Foken}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul d'un flag qualité de la mesure du flux turbulent par eddy-covariance $\overline{X'Y'}$ en 
+fonction des flags qualité de stationnarité et de caractéristique intégrale de la turbulence. Le flag résultat prend des valeurs entre 1 et 9 suivant la classification donnée par T. Foken. 
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Combine_flag_EC_Foken.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Combine_flag_EC_Foken.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Micro-meteorology, T. Foken, 2008 \cite{MICROMETEO-FOKEN} \\
+Sources du module QC\_QA de TK3 disponible en ligne : \\
+https://www.bayceer.uni-bayreuth.de/mm/de/software/software/software\_dl.php

@@ -1,0 +1,37 @@
+%%%%%
+%
+\section{Correction de valeurs hors-bornes}
+
+\itemstyle{Op\'erateur~:} {\sf Correc\_hors\_bornes}
+\index{Correc\_hors\_bornes}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction détecte et remplace les valeurs hors d'un intervalle
+spécifié. Si la durée des valeurs fausses consécutives est courte
+(inférieure à un seuil fixé), elles sont remplacées par interpolation
+linéaire. Dans le cas contraire, elles sont marquées  comme des
+«valeurs manquantes».
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Correc_hors_bornes.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Correc_hors_bornes.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+L'interpolation linéaire ne convient pas aux variables
+qui peuvent être naturellement discontinues, tels les caps et
+autres angles.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

@@ -1,0 +1,25 @@
+%%fssp_ncor_specacr
+L'algorithme et les formules \'etant complexes
+seul le principe de calcul est pr\'esent\'e ici.\\
+Selon Brenguier-89 \cite{Brenguier-89}, l'activit\'e
+et le nombre de gouttes mesur\'ees par un FSSP
+s'expriment comme 2 fonctions~: \\ 
+\begin{eqnarray}
+A & = & f_a ( N_c, \tau, \tau_1, \tau_2, \tau_r )  \label{eqn:acti}\\
+N & = & f_n ( N_c, \tau, \tau_1, \tau_2, \tau_r ) \label{eqn:crt}
+\end{eqnarray}
+o\`u~:\\
+$N$ : nombre total de gouttes compt\'ees \\
+$A $ : Activit\'e \\
+$N_c$ : nombre total de gouttes corrig\'e des
+co\"{\i}ncidences \\
+$\tau $ : temps de transit d'une particule \\
+\\
+On pose $\tau = \tau_{spec}$, $A=A_m$, et $N=Reset$.
+Ainsi, chaque \'equation ne
+poss\`ede plus qu'une inconnue $N_c$. 
+Elles sont r\'esolues s\'epar\'ement par it\'erations successives.   
+(\ref{eqn:acti}) donne $N_{ac}$ et (\ref{eqn:crt}) 
+donne $N_{rs}$.\\
+Si $Reset\times f_e \le Crt_0$ alors aucune correction
+est calcul\'ee et $N_{ac}=0$ et $N_{rs}=0$.

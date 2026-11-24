@@ -1,0 +1,11 @@
+%%fssp_lwc_lin_tab : calcul du rapport de m\'elange en eau liquide 
+% a partir d'une concentration totale et tableau  de comptage
+% dans lequel le diamètre moyen mesuré est fonction linéaire
+% de la classe.
+\begin{align*}
+\rho_w &= 1000 kg/m^3 \\
+\phi_k &= a \cdot k + b  \qquad \text{(diam\`etre m\'edian classe $k$)}\\
+LWC &=  \rho_w .\frac{\pi}{6}. Conc .
+\frac{\displaystyle\sum_{k=1}^{15} \phi_k^3.C_k} 
+     {\displaystyle\sum_{k=1}^{15} C_k} 
+\end{align*}

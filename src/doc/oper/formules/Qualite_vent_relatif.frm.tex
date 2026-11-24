@@ -1,0 +1,12 @@
+%%%% Qualité de la mesure du vent relatif
+
+Si $dp_{1} > 8$ alors \newline
+\begin{tabular}{rl}
+Test écart vitesses & si $|dp_{1} - dp_{2}| / dp_{1} > 0.03$ alors $flag_1 = 0001$ (alerte)\\
+       & si $|dp_{1} - dp_{2}| / dp_{1} > 0.07$ alors $flag_1 = 0002$ (détection)\\
+Test écart incidences& si $|incid_{rdm} - incid_{gir}| >3$ alors $flag_2 = 0010$ \\
+Test gamme incidence& si $dpi / dp_{1} < -0.51$ ou $dpi / dp_{1} > 0.48$ alors $flag_3 = 0100$ \\
+Test gamme dérapage& si $|dpj / dp_{1}| > 0.4$ alors $flag_4 = 1000$ \\
+\end{tabular}
+
+$flag_{vent} = flag_1 + flag_2 + flag_3 + flag_4$

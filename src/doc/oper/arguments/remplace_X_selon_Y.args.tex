@@ -1,0 +1,26 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float} & Paramètre avec valeurs à remplacer (unité quelconque)\\
+$Y$ & Vecteur, \texttt{float} & Paramètre selon lequel s'effectue la sélection (unité quelconque)\\
+$Hors\_int$ & Coeff, \texttt{float} & 0 ou 1 pour spécifier si les valeurs à remplacer sont dans ou hors de l'intervalle [$Crit\_{min}$, $Crit\_{max}$] \\
+$Crit\_{min}$ & Coeff., \texttt{float} & valeur mini de l'intervalle de test de  $Y$\\
+$Crit\_{max}$ & Coeff., \texttt{float} & valeur maxi de l'intervalle de test de $Y$\\
+$Y_{mnq}$ & Coeff., \texttt{float} & valeur manquante de $Y$ \\
+$ValR$ & Coeff., \texttt{float} & valeur de remplacement de $X$
+soit \texttt{\$Arg1.misval}\\
+
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X_{rpl}$ & Vecteur, \texttt{float} & $X$ avec valeurs remplacées (\$Arg1.unit)\\
+\end{tabarg}

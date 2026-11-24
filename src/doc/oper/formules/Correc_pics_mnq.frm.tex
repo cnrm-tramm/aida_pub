@@ -1,0 +1,54 @@
+%% Formule de l'operateur : Correc_pics_mnq
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+A chaque instant $j$ :
+\begin{itemize}
+\item un pic est d\'etect\'e si : \newline
+$X[j] - X[j-1] > S_0$ et $X[j] - X[j+1] > S_0$  (pic vers le haut)
+
+ou 
+
+$X[j-1] - X[j] > S_0$ et $X[j+1] - X[j] > S_0$  (pic vers le bas)
+
+\hspace*{1cm} alors $flag[j] = 1$ si pic vers le haut, ou $flag[j] = -1$ si 
+pic vers le bas \newline
+
+Dans ce cas si le nombre de pics détectés $\leq N_r$ alors $X_c[j]$ est remplacé par une interpolation linéaire entre les valeurs valides, sinon $X_c[j]$ = mnq \newline
+
+\item un saut après une valeur manquante est d\'etect\'e si :\newline
+$X[j-1] = mnq$
+et
+$|X[j+1] - X[j]| > S_{mnq}$ 
+
+\hspace*{1cm} alors $flag[j] = 3$  si saut vers le haut, ou $flag[j] = -3$ si 
+pic vers le bas 
+et $X_c[j] = mnq$ \newline
+
+\item un saut avant une valeur manquante est d\'etect\'e si :\newline
+$X[j+1] = mnq$
+et
+$|X[j] - X[j-1]| > S_{mnq}$ 
+
+\hspace*{1cm} alors $flag[j] = 2$ si saut vers le haut, ou $flag[j] = -2$ si 
+saut vers le bas$X_c[j] = X[j]$ \newline
+
+\item une forte variation positive est d\'etect\'e si :\newline
+$X[j+1] - X[j] > S_0$ et $X[j] - X[j-1] > S_0$  (forte variation vers le haut)
+
+\hspace*{1cm} alors $flag[j] = 4$ et  $X_c[j] = X[j]$ \newline
+
+\item une forte variation négative est d\'etect\'e si :\newline
+$X[j-1] - X[j] > S_0$ et $X[j] - X[j+1] > S_0$  (forte variation vers le bas)
+
+\hspace*{1cm} alors $flag[j] = -4$ et $X_c[j] = X[j]$ \newline
+
+\item aucune variation "particulière" n'est détectée :\newline
+\hspace*{1cm} alors $flag[j] = 0$ et $X_c[j] = X[j]$ \newline
+
+\end{itemize}
+
+
+

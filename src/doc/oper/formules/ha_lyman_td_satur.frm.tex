@@ -1,0 +1,21 @@
+%%ha_lyman_td
+Dans un premier temps, l'algorithme trie les valeurs du TD pour garder
+uniquement les points o\`u le capteur n'est pas en phase de recherche.
+La s\'election se fait suivant
+deux crit\`eres~:\\
+\indent - valeur de la tension de l'\'el\'ement Peltier proche de
+la valeur \`a l'\'equilibre (compris entre $V_{pelI}$ et $V_{pelS}$)\\
+\indent - $dp \geq 12.$ (vitesse air suffisante pour ventilater les capteurs)\\
+\\
+
+Lorsque $Td > Ts$, on considère que l'air est saturé, et le calcul
+de l'humidité absolue se fait avec $Td = Ts$
+
+La serie d'humidit\'e absolue de r\'ef\'erence est calcul\'ee \`a partir
+de la s\'erie des valeurs correctes du TD.\\
+Une r\'egression lin\'eaire est r\'ealis\'ee entre, les
+points d'humidit\'e absolue de r\'ef\'erence et, les points
+correspondants du Lyman-$\alpha$.
+Le Lyman-$\alpha$ est ensuite calibr\'e avec le r\'esultat de cette
+r\'egression.
+

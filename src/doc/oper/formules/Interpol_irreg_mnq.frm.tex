@@ -1,0 +1,17 @@
+%%Interpol_irreg_mnq
+%\[
+%%X_{reg}[i] = $X_{asyn}[j] \textrm{tq} \abs{Time_{reg}[i] - Time_{asyn}[j]} = 
+%%\min (Time_{reg} - Time_{asyn})
+%\]
+Pour chaque valeur de $Time_{reg}$, on recherche les 2 valeurs
+de $Time_{asyn}$ qui l'encadrent.
+
+Si on trouve ces 2 valeurs d'encadrement, et que l'écart de temps entre elles
+est inférieur à $\Delta T_{inter}$, on interpole lin\'eairement $X_{asyn}$ entre
+les 2 instants trouv\'es.
+
+Si on ne trouve qu'une valeur (cas où le temps recherché est en-dehors des
+bornes du temps disponible), on recopie dans $X_{reg}$ la valeur de 
+$X_{asyn}$ la plus proche si 
+l'écart de temps est inférieur à $\Delta T_{extra}$. 
+

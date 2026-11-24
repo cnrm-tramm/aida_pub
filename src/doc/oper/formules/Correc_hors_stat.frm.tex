@@ -1,0 +1,17 @@
+%%Correc_hors_stat
+  Une moyenne et un écart-type des échantillons de X
+et de sa dérivée sont calculés sur une fenêtre 
+de largeur $fenetre$ glissante par pas de $fenetre/10$.
+
+  Sont ensuite éliminés tous les échantillons :
+\begin{itemize}
+    \item en-dehors de l'intervalle [$Borne_{inf}$ , $Borne_{sup}$]
+    \item ou dont l'écart à la moyenne
+est plus grand que $ Toler\_X . \mathrm{ecart-type}$ 
+    \item ou dont l'écart de la dérivée à sa moyenne 
+est plus grand que $ Toler\_{dX} . \mathrm{ecart-type}$ 
+\end{itemize}
+  
+  Ensuite, les séries de valeurs manquantes de moins de
+$seuil\_duree$ échantillons consécutifs sont remplacées par interpolation
+linéaire.

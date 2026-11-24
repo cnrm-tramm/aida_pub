@@ -1,0 +1,16 @@
+%%Rotat_uv
+
+On ajoute $\pi$/2 à l'offset qui est donné par rapport au Nord et non à l'Est :
+$new\_offset  =  \frac{\pi}{2} + offset . \frac{\pi}{180}$
+On pose :
+\begin{align*}
+coso &= \cos (new\_offset)\\
+sino &= \sin (new\_offset)
+\end{align*}
+On en déduit les nouvelles composantes notées $U_{G}$ et $V_{G}$ :
+\begin{align*}
+U_{G} &= flag . coso . U  - sino . V\\
+V_{G} &= flag . sino . U  + coso . V
+\end{align*}
+
+

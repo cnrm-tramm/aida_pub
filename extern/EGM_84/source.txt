@@ -1,0 +1,6 @@
+Les fichiers proviennent du NGA / Office of Geomatics : National Geospatial-Intelligence Agency
+
+Ils sont été récupéré le 19 mai 2016 depuis :
+http://earth-info.nga.mil/GandG/wgs84/gravitymod/wgs84_180/wgs84_180.html
+
+The EGM180.NOR file contains normalized geopotential coefficients (Cnm, Snm) for the WGS 84 Earth Gravity Model complete to degree (n) and order (m) 180. It is used as input to the FORTRAN program, CLENQT.FOR, which utilizes spherical harmonics to compute the gravimetric quantities described in the user instructions. 

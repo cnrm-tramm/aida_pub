@@ -1,0 +1,2 @@
+Si des caractères latex ne sont pas correctement interprétés :
+		Aller dans "Documntation/Format_latex.py" puis ajouter à la liste un ".replace()"

@@ -1,0 +1,11 @@
+%%Pos_Trimble_to_dec
+Les coordonn\'ees Trimble brutes sont transmises dans un format particulier: (D)DDMM.dd\\
+Elles sont donc converties dans un premier temps en degr\'es d\'ecimaux: (D)DD.dd\\
+Puis projet\'ees sur le bon axe suivant la valeur de Dir:
+\[
+Pos\_dd = 
+\begin{cases}
+- Pos\_dd \qquad \text{si   } Dir = \text{S ou W}\\
+  Pos\_dd \qquad \text{sinon}\\
+\end{cases}
+\]

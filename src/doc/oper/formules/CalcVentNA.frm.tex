@@ -1,0 +1,24 @@
+%%CalcVentNA
+Dans un premier temps, le vent est calcul\'e dans le 
+rep\`ere avion. Ses 3 composantes sont not\'ees $U_a$, $V_a$,
+et $W_a$. 
+\begin{eqnarray*}
+U_a & = & V_x - V_p.D^{-1} + L_z . Vr_y - L_y . Vr_z\\
+V_a & = & V_y - V_p.D^{-1}.\tan\beta + L_x.Vr_z - L_z.Vr_x\\
+W_a & = & V_z - V_p.D^{-1}.\tan\alpha + L_y . Vr_x - L_x.Vr_y
+\end{eqnarray*}
+avec~: $ D = \sqrt{1+\tan^2\alpha+\tan^2\beta}$
+
+Puis, un changement de rep\`ere est effectu\'e pour obtenir le 
+vent dans le rep\`ere g\'eographique.
+
+$U = U_a.\sin\psi.\cos\theta +$
+        $V_a.(\cos\psi.\cos\phi+\sin\psi.\sin\theta.\sin\phi) +$
+        $W_a.(\sin\psi.\sin\theta.\cos\phi - \cos\psi.\sin\phi)$ \newline
+$V = U_a.\cos\psi.\cos\theta -$
+        $V_a.(\sin\psi.\cos\phi - \cos\psi.\sin\theta.\sin\phi) +$
+        $W_a.(\cos\psi.\sin\theta.\cos\phi + \sin\psi.\sin\phi)$\newline
+$W = U_a.\sin\theta -$ 
+        $V_a.\cos\theta.\sin\phi -$
+        $W_a.\cos\theta.\cos\phi$
+

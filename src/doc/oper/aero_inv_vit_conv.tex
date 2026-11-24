@@ -1,0 +1,39 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Réciproque de la vitesse conventionnelle aéronautique}
+
+\itemstyle{Opérateur~:} \operfmt{aero\_inv\_vit\_conv}
+\index{aero\_inv\_vit\_conv}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul de la pression dynamique correspondant à une
+vitesse conventionnelle donnée.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/aero_inv_vit_conv.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/aero_inv_vit_conv.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}
+
+Norme AFNOR  NF X 02-115 : \emph{Symbole et vocabulaire de la mécanique
+du vol} \cite{AFNOR-74}, paragraphe 5.6.1 page 45.
+
+Cette norme fixe en particulier les valeurs numériques de $P_0$ 
+(1013.25 hPa), de la vitesse du son $a_n$ (340.294 m.s$^{-1}$),
+et de $\gamma$ (1.400, ce qui induit $\frac{\gamma-1}{2} = 1/5$
+et $\frac{\gamma}{\gamma-1} = 7/2$).

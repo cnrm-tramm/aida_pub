@@ -1,0 +1,21 @@
+%% PercentileEch_tps_bnds
+Recherche du percentile pour la valeur $val_{seuil}$ inférieure a $val_{remplac}$ dans chaque échantillon
+
+Pour  i=$0$, Nbre  $Time_{bnds}$ :
+
+	Pour chaque j entre ${tb[i][0]}$ et ${tb[i][1]}$ 
+
+\[
+X_{out}[i] =
+\begin{cases}
+\begin{tabular}{ll}
+\texttt{ $X_{in}[j]$ telque $val_{seuil} \%$
+ des valeurs sont supérieures}
+&
+\texttt{ si chaque $X_{in}[j]$ < $val_{inv}$}
+\\
+\texttt{$val_{replac}$} & \texttt{ sinon}
+\end{tabular} 
+\\
+\end{cases}
+\]

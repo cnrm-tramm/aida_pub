@@ -1,0 +1,20 @@
+%% Formule de l'operateur : Calc_flag_filfin
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+\vspace{0.5cm}
+$Flag =
+\begin{cases}
+1  \text{ si DD est dans l'intervalle }\left] DD_{min}, DD_{max} \right[ \text{ (cas du vent de face )
+ ET  } FF \geq Seuil_{FF_{AR}} \\
+2 \text{ si DD est dans l'intervalle }\left] DD_{min}, DD_{max} \right[ \text{ (cas du vent de face )
+ ET  } FF < Seuil_{FF_{AR}} \\  
+3 \text{ si DD est hors de l'intervalle } \left] DD_{min}, DD_{max} \right[ \text{ (cas du vent arrière)}
+
+\end{cases}
+$
+
+
+

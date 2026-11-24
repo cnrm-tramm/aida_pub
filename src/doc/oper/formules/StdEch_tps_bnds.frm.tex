@@ -1,0 +1,18 @@
+%% Formule de l'operateur : StdEch_tps_bnds
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+Pour  i=$0$, Nbre $Time_{bnds}$ :
+\[
+X_{moy} = \frac{
+\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} X_{in}[j]} }
+{N_{i}} 
+\]
+
+\[
+X_{out}[i] = \frac{ \sqrt{
+\displaystyle{\sum_{tb[i][0]}^{tb[i][1]} (X_{in}[j] - X_{moy})²} }}
+{N_{i}} 
+\] 
+Pour chaque $X_{in}[j]$ diff\'{e}rent de NaN avec $N_i$ le nombre de donn\'ees dans l'intervalle tb  diff\'erent de NaN.

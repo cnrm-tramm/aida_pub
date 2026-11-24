@@ -1,0 +1,80 @@
+%% Formule de l'operateur : FT_analytique_Moncrieff
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+La fonction de transfert calculée est déterminé par l'argument $Type\_FT$ :
+\begin{itemize}
+\item 'HP': fonction de transfert passe-haut uniquement
+\item 'BP': fonction de transfert passe-bas uniquement
+\item 'HPBP': fonctions de transfert passe-haut et passe-bas combinées
+\end{itemize}
+\vspace{1cm}
+
+\begin{enumerate}
+
+
+\item La fonction de transfert passe-bas est le produit des fonctions de transfert
+des 2 capteurs, soit : $FT_{LP} = FT_{LP Capteur 1} * FT_{LP Capteur 2}$ \\
+
+Si le capteur est un anémomètre sonique alors :
+
+$$
+FT_{LP} = FT_{LP f}* FT{LP d}
+$$
+
+avec :
+
+\begin{eqnarray*}
+FT_{LP f}(f_j) & = & \frac{1.}{\sqrt{1. + \left(\frac{2 \pi f_j}{f_c}\right)^2 } } \\
+FT_{LP d}(f_j) & = & \frac{2.}{\pi.fs_j} . \left(1. + \frac{e^{-2 \pi fs_j}}{2} - 3 * \frac{1. - e^{-2 \pi fs_j } }{ 4 \pi * fs_j } \right) \\
+fs_j & = & f_j  * \left\vert \frac{V_{path}}{U_{moyi}} \right\vert
+\end{eqnarray*}
+
+Si le capteur est un hygromètre "open-path" alors :
+
+$$
+FT_{LP} = FT_{LP f}*FT_{LP_d}*FT_{LP vs}*FT_{LP hs}
+$$
+
+avec : 
+
+\begin{eqnarray*}
+FT_{LP f}(f_j)  & = & \frac{1}{\sqrt{1 + \left(\frac{2\pi f_j}{f_c}\right)^2 } } \\
+FT_{LP_d}(f_j) & = & \sqrt{ \frac{ 3+ e^{ -2.\pi.fs_j} - \frac{4}{2.\pi.fs_j} *
+(1. - e^{-2.\pi.fs_j}) }{2.\pi.fs_j } } \\
+FT_{LP vs}(f_j) & =  & \exp \left(-9.9* \left( f_j*\left\vert \frac{V_{sep}}{U_{moyi}}\right\vert \right)  ^{1.5} \right) \\
+FT_{LP hs}(f_j) & = & \exp \left(-9.9* \left( f_j*\left\vert \frac{H_{sep}}{U_{moyi}}\right\vert  \right) ^{1.5} \right)
+\end{eqnarray*}
+
+Les valeurs de $f_c$ et $V_{path}$ dépendent de chaque capteur.\\
+Ces valeurs sont prédéfinies 
+dans l'opérateur en fonction de $Type_{capteur1}$ et $Type_{capteur2}$ qui peuvent prendre les valeurs suivantes : 
+
+\begin{itemize}
+\item Anémomètres soniques : \texttt{ hs\_50, hs\_100, r2, r3\_50, r3\_100, r3a\_100, wm, wmpro, usoni3\_cage\_mpu, soni3\_classa\_mp, usa1\_standard, usa1\_fast, csat3, csat3b, 81000 }
+\item Hygromètres rapides : \texttt {  li7500, 
+li7500a, li7200, li7700, li6262, li7000 }
+\end{itemize}
+
+\vspace{1cm}
+\item La fonction de transfert passe-haut vaut : \\
+
+Si $Type\_HP$ est 'ba' (moyenne par bloc) : \\
+$$
+FT_{HP}(f_j) = 1. - \left( \frac{\sin(\pi.f_j.T_{int})}
+                            {\pi.f_j.T_{int}} \right)^2
+$$ 
+
+Si $Type\_HP$ est 'rm' (filtrage passe-haut par 'running mean') :  \\   
+          
+\begin{eqnarray*}
+\eta & = &  \exp \left( \frac{-1}{f_e.\tau_f} \right) \\
+\tau & = & \frac{\eta}{f_e. (1 - \eta)} \\
+\phi & = & 2.\pi * f_j * \tau \\
+FT_{HP}(f_j) & = & \frac{\phi^2}{1. + \phi^2 / \eta }
+\end{eqnarray*}
+
+
+\end{enumerate}

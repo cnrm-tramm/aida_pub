@@ -1,0 +1,51 @@
+%% THERMODYNAMIQUE %%
+%
+\section{Rapport de mélange en vapeur d'eau à partir de la température du
+point de rosée}
+
+\itemstyle{ Opérateur~: } \operfmt{RapM\_Td}
+\index{RapM\_Td}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Calcul du rapport de mélange en vapeur d'eau à partir
+de la température du point de rosée.
+
+%%%%%ARGUMENTS%%%%%
+\bigskip
+\input {arguments/RapM_Td.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input{formules/RapM_Td.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+La fonction $e_{w}(t)$ est décrite en annexe
+\ref{annexe-thermo}.
+
+Les formules employées correspondent à l'hypothèse que 
+l'argument d'entrée $T_d$ est toujours un point de rosée (et non
+un point de givre si $T_d < 0$°C); 
+si $T_d$ provient d'un calcul, cette hypothèse peut être vérifiée,
+mais si il provient d'un hygromètre à miroir
+refroidi, il est probable que les valeurs en-dessous de 0°C soient
+une mesure de point de givre, et il vaut mieux utiliser l'opérateur
+\hyperref[OP-RapM_Tdf]{\operfmt{RapM\_Tdf}}.
+
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ Références~:}
+Triplet-Roche\cite{Triplet-Roche},\\
+Définitions des humidités (relatives, absolues, spécifiques)
+et du rapport de mélange
+selon la table 4.3 des tables météorologiques internationales
+de l'OMM \cite{OMM-188.TP.94}.
+
+

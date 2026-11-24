@@ -1,0 +1,24 @@
+%%ha_lyman_td
+Dans un premier temps, l'algorithme trie les valeurs issues du
+capteur \`a point de ros\'ee (TD) pour garder
+uniquement les points o\`u le capteur n'est pas en phase de recherche.
+La s\'election se fait suivant
+deux crit\`eres~:\\
+\indent - valeur de la tension de l'\'el\'ement Peltier proche de
+la valeur \`a l'\'equilibre (compris entre $V_{pelI}$ et $V_{pelS}$)\\
+\indent - $Td \leq Ts$ (suppression des d\'epassements)\\
+\\
+La serie d'humidit\'e absolue de r\'ef\'erence est calcul\'ee \`a partir
+de la s\'erie des valeurs correctes du TD.\\
+A chaque pas de temps,
+une r\'egression lin\'eaire est r\'ealis\'ee entre, les
+N points d'humidit\'e absolue de r\'ef\'erence et, les N points
+correspondants
+du Lyman-$\alpha$, encadrant la valeur \`a calibrer.
+La validation du r\'esultat de cette r\'egression est soumise \`a
+deux crit\`eres~:\\
+\indent - \'ecart-type de l'humidit\'e absolue sup\'erieur \`a 0.5 $g/m^3$
+(dynamique du signal suffisante)\\
+\indent - coefficient de corr\'elation sup\'erieur \`a 0.8 (qualit\'e de
+la r\'egression)\\
+

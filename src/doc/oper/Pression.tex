@@ -1,0 +1,40 @@
+%% THERMODYNAMIQUE %%
+%
+\section{Pressions et angles d'incidence }
+
+\itemstyle{ Op\'erateur~: } {\sf Pression}
+\index{Pression}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Calcul de la pression statique et de la 
+surpression dynamique par correction  de l'erreur de 
+statique, et 
+calcul des angles d'incidence et de d\'erapage \`a 
+partir des pressions diff\'erentielles mesur\'ees suivant
+la verticale et l'horizontale de l'avion. \newline
+
+%%%%%ARGUMENTS%%%%%
+\bigskip
+\input {arguments/Pression.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input{formules/Pression.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{ Commentaire~:}
+
+L'erreur de statique est calcul\'ee \`a partir de
+la pression dynamique brute, par un polyn\^ome du 3$^{eme}$
+degr\'e dans la gamme [25,90] hPa (la gamme de vol normal), et
+par une interpolation dans la gamme [0,25] hPa.
+
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ R\'ef\'erences~:}

@@ -1,0 +1,23 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab{Entr\'ees}}\\
+\hline
+$P_{sb}$ & Vecteur, {\tt float} & Pression statique brute ($hPa$)\\
+$\Delta P_b$ & Vecteur, {\tt float} & Pression dynamique brute ($hPa$) \\
+$\Delta P_h$ & Vecteur, {\tt float} & Pression diff\'erentielle mesur\'ee suivant l'horizontale de l'avion ($hPa$) \\
+$\Delta P_v$ & Vecteur, {\tt float} & Pression diff\'erentielle mesur\'ee suivant la verticale de l'avion ($hPa$) \\
+$C_{\alpha}$ & Coeff., {\tt float[2]} & Coefficients de calibration d'incidence \\
+$C_{\beta} $  & Coeff., {\tt float[2]} & Coefficients de calibration de d\'erapage\\
+$C_{errstat} $  & Coeff., {\tt float[4]} & Coefficients de calcul de l'erreur de statique \\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab{Sorties}}\\
+\hline
+$P_s$ & Vecteur, {\tt float} & Pression statique ($hPa$)\\
+$\alpha$ & Vecteur, {\tt float} & Angle d'incidence ($rad$)\\
+$\beta$ & Vecteur, {\tt float} & Angle de d\'erapage ($rad$)\\
+$\Delta P$ & Vecteur, {\tt float} & Pression dynamique corrig\'ee de l'erreur de statique ($hPa$)
+\end{tabarg}

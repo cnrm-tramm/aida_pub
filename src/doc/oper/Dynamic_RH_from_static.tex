@@ -1,0 +1,33 @@
+%%%%%
+%
+\section{Simulation d'effet de vitesse sur l'humidité relative}
+
+\itemstyle{Op\'erateur~:} \operfmt{Dynamic\_RH\_from\_static}
+\label{OP-Dynamic_RH_from_static}
+\index{Dynamic\_RH\_from\_static}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul d'une humidité relative affectée par les effets de compression et de 
+réchauffement qui se produisent en fonction de la vitesse,
+à partir d'une humidité non-perturbée ("statique" ou "infinie-amont"), et
+des températures statiques/totales correspondant au réchauffement
+adiabatique induit par la vitesse.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Dynamic_RH_from_static.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Dynamic_RH_from_static.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Cette fonction est la récipoque de 
+\hyperref[OP-Calc_Static_RH_From_Dynamic_RH_V1]{\operfmt{Calc\_Static\_RH\_From\_Dynamic\_RH\_V1}}

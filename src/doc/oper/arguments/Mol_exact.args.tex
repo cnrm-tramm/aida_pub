@@ -1,0 +1,23 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$U_{f}$ & Vecteur, \texttt{float} & 1ère composante horizontale du vent filtrée type FRC300 (\textit{m/s})\\
+$V_{f}$ & Vecteur, \texttt{float} & 2ème composante horizontale du vent (\textit{m/s})\\
+$W_{f}$ & Vecteur, \texttt{float} & 3ème composante verticale du vent (\textit{m/s})\\
+$T_{sonique}$ & Vecteur, \texttt{float} & Temp\'erature sonique non filtrée (\textit{C} ou \textit{K})\\
+$T_{air}$ & Vecteur, \texttt{float} & Temp\'erature de l'air d\'eduite du Sonique et du Licor non filtrée (\textit{C} ou \textit{K})\\
+$r$ & Vecteur, \texttt{float} & Rapport de m\'elange en vapeur d'eau non filtré(\textit{g/kg})\\
+$Fe$ & Coeff., \texttt{float} & Fr\'equence d'\'echantillonnage des donn\'ees (\textit{/s})\\
+$t_{int}$ & Coeff., \texttt{float} & Temps d'int\'egration pour le calcul (\textit{s})\\
+$tau$ & Coeff., \texttt{float} & Constante de temps du filtrage (généralement entre 200 et 600 sec)(\textit{s})\\
+$rap_{mnq}$ & Coeff., \texttt{float} & Souvent 0.5 si plus de la moiti\'e des points (\textit{any})\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$L_{mon}$ & Vecteur, \texttt{float} & Longueur de Monin Obukhov (\textit{m})\\
+\end{tabarg}

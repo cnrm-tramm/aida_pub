@@ -1,0 +1,16 @@
+%%TPrimew
+% Calcul de la température pseudo-adiabatique du thermomètre mouillé
+% à partir de Ps, Ts et Hum 
+
+La température pseudo-adiabatique du thermomètre mouillé est déduite
+du point de condensation.
+Le point de condensation ($P_{condensation}$ et $T_{condensation}$) 
+est calculé par les fonctions $pcond()$ et $tcond()$ .
+
+Puis, la température pseudo-adiabatique au niveau de pression $P_s$
+( ou température pseudo-adiabatique du thermomètre mouillé ou plus
+communément point de courbe bleue ) est calculée par la fonction $twcurv()$ .
+
+Si la température $T_s$ est inférieure à -40 degrés Celsius, la température
+pseudo-adiabatique du thermomètre mouillé est alors mise à donnée manquante.
+

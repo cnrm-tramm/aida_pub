@@ -1,0 +1,42 @@
+%%%%%
+%
+\section{Passage d'un vecteur d'un repère mobile au rep\`ere géographique}
+
+\itemstyle{Op\'erateur~:} \operfmt{Mobile2geo\_3D}
+\index{Mobile2geo\_3D}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet op\'erateur calcule les composantes dans le repère géographique
+local d'un vecteur 3D donn\'e dans un rep\`ere mobile 
+caract\'eris\'e par 3 angles d'orientation.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Mobile2geo_3D.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Mobile2geo_3D.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Les trois angles d'attitude sont ceux dit "de Cardan" (lacet,
+tangage, roulis), qui possèdent des indéterminations ou des non définitions
+d'angles dans certaines configurations. Ces formules sont donc adaptées
+aux évolutions usuelles d'un bateau ou un avion, mais pas d'un mobile
+totalement libre.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Les angles couramment nommés cap, tangage, roulis  dans le domaine
+aéronautique sont précisément définis dans la norme des \textit{
+symboles et vocabulaire de la mécanique du vol} comme \emph{Azimut, 
+assiette longitudinale, et angle de gîte}, avec les 
+mêmes symboles $\Psi, \Theta, \Phi$, cf. norme AFNOR NFX02-115, page 7
+\cite{AFNOR-74}.

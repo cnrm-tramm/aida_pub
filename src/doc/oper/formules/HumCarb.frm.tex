@@ -1,0 +1,10 @@
+% calcul de l'humidite carbone
+\[
+Hu = \frac{ P_s . ew(T_i)}{(P_s + \Delta P) ew(T_s)}
+     .\left( C_m[0] + C_m[1].V + C_m[2].V^2 + C_m[3].V^3 + C_m[4].V^4 \right)
+\]
+$C_m$ est \'egal \`a $C_1$, $C_2$, ou $C_3$ selon la gamme de 
+temp\'erature.\newline
+$ew()$ est la tension de vapeur saturante par rapport \`a l'eau.
+Si $T_s < 0$, $ew()$ est remplac\'ee par la tension de vapeur saturante
+par rapport \`a la glace $ewi()$. 

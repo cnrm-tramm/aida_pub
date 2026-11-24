@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$FF$ & Vecteur, \texttt{float} & Force du vent \\
+$DD$& Vecteur, \texttt{float} & Direction du vent (degrés)\\
+$Seuil_{FF_{AR}}$ & Coeff., \texttt{float} & Seuil de force du vent par vent arrière (m\^eme unité que $FF$)\\
+$DD_{min}$ & Coeff., \texttt{float} & Borne inférieure du secteur vent de face (degrés)\\
+$DD_{max}$ & Coeff., \texttt{float} & Borne supérieure du secteur vent de face (degrés)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Flag$ & Vecteur, \texttt{float} & Flag qualité de la température (unitless)\\
+\end{tabarg}

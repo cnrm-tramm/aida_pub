@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X\_in$ & Vecteur, \texttt{float} &  Vecteur d'entrée\\
+$P\_in$ & Vecteur, \texttt{float} & Altitude en pression\\
+$tgt\_lat$ & Coeff., \texttt{float} & Latitude du point cible en degré décimal\\
+$tgt\_lon$ & Coeff., \texttt{float} & Longitude du point cible en degré décimal\\
+$tgt\_alt$ & Coeff., \texttt{float} & Altitude du point cible en degré décimal\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X\_out$ & Vecteur, \texttt{float} & Colonne extraite du vecteur d'entrée la plus proche du point cible\\
+\end{tabarg}

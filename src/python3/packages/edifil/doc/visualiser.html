@@ -1,0 +1,60 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<div class="banniere"> L'interface graphique<br><span>Visualiser le document</span></div>
+<p class="titre1"> La zone de visualisation </p>
+    <img class="img1" src="visualisation.png" />
+    <br><br>
+    <p class="paragraphe1">
+    La zone de visualisation des donn&eacute;es se pr&eacute;sente sous la forme d'un classeur o&ugrave; chaque page correspond &agrave; un onglet. Cliquer sur l'onglet pour afficher la page.<br>
+    Vista est WYSIWYG (What You See Is What You Get) ou du moins s'efforce de l'&ecirc;tre... Cela signifie que les proportions sont respect&eacute;es :
+la zone gris fonc&eacute; a les dimensions d'une page A4 (toutes proportions gard&eacute;es) et la taille de tous les &eacute;l&eacute;ments est donc proportionnelle et fonction du niveau de zoom. (le zoom 100% correspond &agrave; la taille par d&eacute;faut qu'affiche vista, qui est inf&eacute;rieure &agrave; la taille r&eacute;elle du format A4).<br>
+Pour afficher le document, cliquer sur le bouton <img src="valider.png" align="center"> de la barre d'outils ou utiliser le menu Edition.
+    </p>
+
+<p class="titre1"> La barre de s&eacute;lection des dates </p>
+    <img class="img1" src="barre_date.png" />
+    <br><br>
+    <p class="paragraphe1">
+    La s&eacute;lection de la p&eacute;riode de visualisation des donn&eacute;es se fait soit en choisissant un mois, soit en choisissant une date de d&eacute;but et une date de fin (intervalle). Pour s&eacute;lectionner une date, cliquer sur le bouton <img src="bouton_calendrier.png" align="center">. Une fen&ecirc;tre de s&eacute;lection appara&icirc;t :<br><br>
+    <img class="img1" src="calendrier.png">
+    <br><br>
+    La s&eacute;lection de la date se fait en utilisant le calendrier ou pour le choix d'un intervalle, en entrant un AcqId : la date associ&eacute;e &agrave; cet AcqId est automatiquement s&eacute;lectionn&eacute;e.<br>
+    Les fl&egrave;ches gauche et droite permettent d'affecter la date de d&eacute;but de l'intervalle &agrave; la date de fin et inversement. Ceci est notamment utile lorsqu'on souhaite visualiser une seulle journ&eacute;e.
+    </p>
+
+<p class="titre1"> Lien avec la zone de cr&eacute;ation / modification </p>
+   <p class="paragraphe1">
+    Il existe des liens forts entre la zone de visualisation des donn&eacute;es et la zone de cr&eacute;ation/modification du document (arbre).
+    <ul class="liste">
+    <li>Lorsqu'on modifie le document (structure ou param&egrave;tres), le document visualis&eacute; n'est pas en phase avec les modifications tant que l'on n'a pas appuy&eacute; sur le bouton  <img src="valider.png" align="center">. Pour mat&eacute;rialiser cet &eacute;tat, vista affiche une ic&ocirc;ne d'avertissement au dessus de la fen&ecirc;tre de visualisation : <br>
+    <img class="img1" src="bordure.png" /></li>
+    <li>Lorsqu'on change de page dans la zone de visualisation, la page correspondant dans l'arbre est s&eacute;lectionn&eacute;e et inversement. Ce comportement n'est plus actif d&egrave;s lors que le document est en cours de modification.</li>
+    </ul>
+    </p>
+
+<p class="titre1"> Examiner les donn&eacute;es </p>
+    <img class="img1" src="barre_matplotlib.png" />
+    <br><br>
+    <p class="paragraphe1">
+    Vista met &agrave; disposition la barre d'outils matlplotlib qui permet d'affiner la visualisation des donn&eacute;es gr&acirc;ce &agrave; des        fonctionnalit&eacute;s telles que le zoom ou le d&eacute;filement.<br>
+    Utiliser l'info-bulle sur la barre d'outils pour obtenir des informations sur ces fonctionnalit&eacute;.
+    </p>
+
+<p class="titre1"> Le bouton recharger les donn&eacute;es </p>
+    <img class="img1" src="reload.png" />
+    <br><br>
+    <p class="paragraphe1">
+    Vista ne va extraire les donn&eacute;es sur le serveur que lorsque cela est n&eacute;cessaire de fa&ccedil;on &agrave; gagner en performance. Donc, si l'intervalle de temps n'a pas &eacute;t&eacute; modifi&eacute; et si aucune nouvelle donn&eacute;e n'a &eacute;t&eacute; rajout&eacute;e depuis la derni&egrave;re visualisation, les donn&eacute;e ne seront pas recharg&eacute;es. Dans le cas o&ugrave; les donn&eacute;es ont &eacute;t&eacute; modifi&eacute;es sur le serveur, on veut pouvoir visualiser ces nouvelles donn&eacute;es sans pour autant modifier la date ou le contenu du document. C'est le r&ocirc;le du bouton recharger les donn&eacute;es : il visualise les donn&eacute;es en for&ccedil;ant l'extraction sur le serveur.
+    </p>
+
+<p class="titre1"> Etat d'avancement de la lecture des donn&eacute;es </p>
+    <p class="paragraphe1">
+    La lecture des donn&eacute;es peut prendre un certain temps en fonction de la p&eacute;riode &agrave; visualiser et du nombre de trac&eacute;s. Quand la lecture d&eacute;passe une seconde, vista affiche une barre de progression :<br><br>
+    
+    <img class="img1" src="progressbar.png" /><br><br>
+    <img class="img1" src="supprimer.png" /> : interrompt la lecture des donn&eacute;es.
+</p>
+<br>    
+</html>

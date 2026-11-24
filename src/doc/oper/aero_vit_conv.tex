@@ -1,0 +1,49 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Vitesse conventionnelle aéronautique}
+
+\itemstyle{Op\'erateur~:} \operfmt{aero\_vit\_conv}
+\index{aero\_vit\_conv}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul d'une vitesse conventionnelle aéronautique à partir
+d'une pression dynamique. Cette formule ne donne une
+vraie vitesse que lors de mesures dans les 
+conditions standard au niveau de la mer.
+
+En appliquant cette formule à une mesure directe
+d'un pitot d'un aéronef, on obtient une \emph{vitesse (conventionnelle)
+indiquée}, ou IAS. En appliquant cette formule à une mesure 
+de pitot corrigée des erreurs instrumentales connues (en particulier
+les effets liés à sa position : erreur 
+"de statique"), on obtient une \emph{vitesse corrigée}, ou CAS.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/aero_vit_conv.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/aero_vit_conv.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+
+Norme AFNOR  NF X 02-115 : \emph{Symbole et vocabulaire de la mécanique
+du vol} \cite{AFNOR-74}, paragraphe 5.6.1 page 45.
+
+Cette norme fixe en particulier les valeurs numériques de $P_0$ 
+(1013.25 hPa), de la vitesse du son $a_n$ (340.294 m.s$^{-1}$),
+et de $\gamma$ (1.400, ce qui induit $\frac{2}{\gamma-1} = 5$
+et $\frac{\gamma-1}{\gamma} = 2/7$).

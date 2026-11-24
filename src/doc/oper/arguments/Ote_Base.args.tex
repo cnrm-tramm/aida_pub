@@ -1,0 +1,20 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float} & paramètre à corriger (unité indifférente)\\
+$Flag\_X$ & Vecteur, \texttt{float} & paramètre de contrôle indiquant
+                          les séquences de mesure de zéro (unité indifférente)\\
+$S_b$ & Coeff., \texttt{float} & Passage à zéro lorsque $Flag\_X$ dépasse ce seuil (même unité que $Flag\_X$)\\
+$S_h$ & Coeff., \texttt{float} & Fonctionnement normal lorsque $Flag\_X$ est sous ce seuil (même unité que $Flag\_X$)\\
+$n\_delay$ & Coeff., \texttt{int} & temps de réponse du capteur (nb pt)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$base$ & Vecteur, \texttt{float} & estimation de la ligne de base (même unité que $X$)\\
+$Xcor$ & Vecteur, \texttt{float} & paramètre corrigé (même unité que $X$)\\
+\end{tabarg}

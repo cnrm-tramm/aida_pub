@@ -1,0 +1,18 @@
+%% Formule de l'operateur : StdMoyEch_tps_impos
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\[
+X_{moy} = \frac{
+\displaystyle{\sum_{t[i] - ecart\_avant}^{t[i] + ecart\_apres} X_{in}[j]} }
+{N} 
+\qquad i=0,Nbre\_Echant(time_{out})
+\]
+
+\[
+X_{out}[i] = \frac{ \sqrt{
+\displaystyle{\sum_{t[i] - ecart\_avant}^{t[i] + ecart\_apres} (X_{in}[j] - X_{moy})²} }}
+{N_{i}} 
+\] 
+Pour chaque $X_{in}[j]$ diff\'{e}rent de NaN avec $N_i$ le nombre de donn\'ees dans l'intervalle t[i] - ecart\_avant ,  t[i] + ecart\_apres  diff\'erent de NaN.

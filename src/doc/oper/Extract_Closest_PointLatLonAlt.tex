@@ -1,0 +1,32 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Extraction du point de grille le plus proche d'un point X(lat,lon,alt)}
+
+\itemstyle{Op\'erateur~:} \operfmt{Extract\_Closest\_PointLatLonAlt}
+\index{Extract\_Closest\_PointLatLonAlt}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Extraction du point de grille le plus proche d'un point X décrit par ses coordonnées latitutde,longitude,altitude.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Extract_Closest_PointLatLonAlt.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Extract_Closest_PointLatLonAlt.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Les degrés sont donnés en degrés décimaux en entrée de l'opérateur, qui se charge de convertir en radians.\\
+

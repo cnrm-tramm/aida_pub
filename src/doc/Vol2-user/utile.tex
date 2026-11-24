@@ -1,0 +1,159 @@
+\part{Utilitaires}
+\label{part:utile}
+\section{Introduction}
+Il existe sous AIDA d'autres outils et utilitaires. Généralement, ils
+présentent leur \textit{usage} lorsqu'ils sont lancés, dans un terminal, avec
+la seule option \textbf{-h}. Cependant, certains d'entre eux présentent leur
+\textit{usage} lorsqu'ils sont lancés sans option (ex : \textit{plt.py}).
+
+Les paragraphes suivants ne documentent que certains de ces outils et
+utilitaires. Pour connaitre la liste complète de ces outils et utilitaires,
+il suffit de consulter le contenu du répertoire \texttt{\$AIDA\_HOME/bin}.
+
+
+\section{Création de vecteurs}
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline
+  \textbf{commande} &
+  \textbf{rôle} \\}
+\tabletail{\hline}
+\tablelasttail{}
+
+\begin{supertabular}{|p{6cm}|p{9cm}|}
+\hline
+\textbf{commande} &
+\textbf{rôle}
+\\ \hline
+
+\path{cat_vect.py} &
+Concatenation de plusieurs vecteurs.
+\\ \hline
+
+\path{creer_vect_flag_periode.py} &
+Creation d'un vecteur FLAG \path{Int_32} qui vaut la valeur spécifiée en 4eme 
+colonne, dans les périodes de temps définies dans le fichier et 0 ailleurs.
+\\ \hline
+
+\path{creer_vect_time_sequences.py} &
+Utilitaire pour créer des vecteurs \path{rft_tim} et \path{rft_bnds} associés
+correspondant à des séquences du fichier \path{.inf} d'un acqid donné.
+\\ \hline
+
+\path{recale_vecteur.py} &
+Recale un vecteur entre J 00H et J+1 00H sur le principe que la 1ère valeur
+de J+1 appartient à J. On ajoute \path{_rec_} avant la fréquence au nom du
+vecteur.
+\\ \hline
+
+\end{supertabular}
+\end{center}
+
+
+\section{Listes d'acqid}
+Les acqids peuvent parfois être donnés sous forme de listes, comme dans les
+fichiers de description des campagnes de mesures (voir le document de
+référence : \url{refman.pdf}).
+Les outils suivants permettent de  travailler avec ces listes :
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline
+  \textbf{commande} &
+  \textbf{rôle} \\}
+\tabletail{\hline}
+\tablelasttail{}
+
+\begin{supertabular}{|p{6cm}|p{9cm}|}
+\hline
+\textbf{commande} &
+\textbf{rôle}
+\\ \hline
+
+\path{expand_acqids_list.py} &
+Affiche la liste exhaustive des acqids correspondants à la liste compacte
+d'acqids passée en argument.
+\\ \hline
+
+\path{diff_acqids_list.py} &
+Affiche la différence entre 2 listes compactes d'acqids passées en argument.
+\\ \hline
+
+\end{supertabular}
+\end{center}
+
+
+\section{Evolution des fichiers de configuration dans le temps}
+Les fichiers de configuration des différents outils AIDA peuvent évoluer dans
+le temps. La gestion des différentes versions peut être faite grâce à des
+fichiers \path{.histo} qui sont analysés par l'outil \path{histo_config.py}
+(voir : \ref{sec:histo_config}, page \pageref{sec:histo_config}).
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline
+  \textbf{commande} &
+  \textbf{rôle} \\}
+\tabletail{\hline}
+\tablelasttail{}
+
+\begin{supertabular}{|p{6cm}|p{9cm}|}
+\hline
+\textbf{commande} &
+\textbf{rôle}
+\\ \hline
+
+\path{histo_config.py} &
+Lit un fichier de type histo et retourne le fichier de config à utiliser pour
+le coupleur et la date donnés.
+\\ \hline
+
+\end{supertabular}
+\end{center}
+
+
+\section{Petits utilitaires}
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{\hline
+  \textbf{commande} &
+  \textbf{rôle} \\}
+\tabletail{\hline}
+\tablelasttail{}
+
+\begin{supertabular}{|p{6cm}|p{9cm}|}
+\hline
+\textbf{commande} &
+\textbf{rôle}
+\\ \hline
+
+\path{doy.py} &
+Utilitaire autour des datations de type DOY.
+\begin{verbatim}
+  doy.py <acqid>
+  doy.py <yy0xxx>
+  doy.py <yyyy-mm-dd>|<dd/mm/yyyy>
+  doy.py <yyyymmdd>
+\end{verbatim}
+\\ \hline
+
+\path{plt.py} &
+Utilitaire autour des noms et abreviations de platefomres.
+\begin{verbatim}
+  plt.py <abréviation>
+  plt.py <au moins 3 caractères>
+\end{verbatim}
+\\ \hline
+
+\path{Units.py} &
+Notation AIDA d'une unité.
+\begin{verbatim}
+  Units.py <votre unité>
+\end{verbatim}
+\\ \hline
+
+\end{supertabular}
+\end{center}
+

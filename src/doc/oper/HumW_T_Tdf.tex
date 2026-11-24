@@ -1,0 +1,44 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : 1/2
+
+\section[Humidité relative à partir du point de rosée ou de givre,
+seuillée à 102\%]{Humidité relative à partir de la température
+du point de rosée ou de givre, seuillée à 102\%}
+
+\itemstyle{Opérateur~:} \operfmt{HumW\_T\_Tdf}
+\label{OP-HumW_T_Tdf}
+\index{HumW\_T\_Tdf}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Cet opérateur calcule l'humidité relative à l'eau liquide à partir de la
+température 
+du point de rosée ou de givre et de la température de l'air.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/HumW_T_Tdf.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/HumW_T_Tdf.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+Les fonctions $ew()$ et  $ewi()$ sont d\'ecrites en annexe
+\ref{annexe-thermo}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}
+
+\emph{Météorologie Générale}, Triplet-Roche, édition de 1971\cite{Triplet-Roche}, p59.

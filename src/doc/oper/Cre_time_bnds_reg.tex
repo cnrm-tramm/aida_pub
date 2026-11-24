@@ -1,0 +1,42 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Génération d'un temps régulier avec bornes temporelles}
+
+\itemstyle{Op\'erateur~:} \operfmt{Cre\_time\_bnds\_reg}
+\index{Cre\_time\_bnds\_reg}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Génère un temps régulier à partir d'un instant initial, 
+d'une fréquence, et positionne l'attribut time\_bnds.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Cre_time_bnds_reg.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Cre_time_bnds_reg.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Commentaire~:}
+  Le vecteur est créé avec une taille de 
+  ceil($D$ * $f$) alors que la boucle de calcul 
+  ne va que jusqu'à floor(($D$ * $f$) + 0.5).
+
+  Si le calcul ne couvre pas la taille 
+complète du vecteur, le dernier élément
+ est initialisé en tant que valeur manquante.
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

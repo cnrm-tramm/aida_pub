@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+	<title>Aide aito</title>
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script type="text/javascript" src="functions.js"></script>
+</head>
+
+<body>
+<table border="1">
+<tr>
+	<td class="tdgauche" >
+		<div id="menu">
+			<div class="menu" id="menu1" onclick="click_lien('aito.html');"> <a href="#">&nbsp; Aito c'est quoi ? </a> </div>
+
+			<div class="menu" id="menu2" onclick="afficheMenu(this); click_lien('interface.html');"> <a href="#">&nbsp; L'interface graphique </a> </div>
+				<div id="sousmenu2" style="display:none">
+					<div class="sousmenu"> <a href="#" onclick="click_lien('bouton_menu.html'          )">&nbsp;&nbsp;&nbsp; Le bouton menu </a> </div>
+					<div class="sousmenu"> <a href="#" onclick="click_lien('barre_outils.html'         )">&nbsp;&nbsp;&nbsp; La barre d'outils </a> </div>
+					<div class="sousmenu"> <a href="#" onclick="click_lien('traitement_en_cours.html'  )">&nbsp;&nbsp;&nbsp; L'indicateur «traitement en cours» </a> </div>
+
+					<div class="sousmenu" id="menu3" onclick="afficheMenu(this); click_lien('navigation.html');"> <a href="#">&nbsp;&nbsp;&nbsp; La navigation </a> </div>
+						<div id="sousmenu3" style="display:none">
+							<div class="sousmenu3"> <a href="#" onclick="click_lien('navigation_mode.html'  )"       >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Le mode de naviagtion </a> </div>
+							<div class="sousmenu3"> <a href="#" onclick="click_lien('navigation_detail_outils.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Les outils de la liste détail </a> </div>
+							<div class="sousmenu3"> <a href="#" onclick="click_lien('navigation_outils.html')"       >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Les outils associé à la naviagtion </a> </div>
+						</div>
+					<div class="sousmenu"> <a href="#" onclick="click_lien('barre_fonctionnalites.html')">&nbsp;&nbsp;&nbsp; Les onglets de fonctionnalités </a> </div>
+
+				</div>
+
+			<div class="menu" id="menu4" onclick="afficheMenu(this); click_lien('fonctionnalite_detail.html');"> <a href="#">&nbsp;&nbsp;&nbsp; L'onglet de fonctionnalité <b>Détail</b></a> </div>
+				<div id="sousmenu4" style="display:none">
+					<div class="sousmenu2"> <a href="#" onclick="click_lien('fonctionnalite_detail_informations.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L'onglet Informations </a> </div>
+					<div class="sousmenu2"> <a href="#" onclick="click_lien('fonctionnalite_detail_donnees.html'     )">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L'onglet Données </a> </div>
+
+					<div class="sousmenu2" id="menu5" onclick="afficheMenu(this); click_lien('fonctionnalite_detail_traitements.html');"> <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L'onglet Traitements </a> </div>
+					<div id="sousmenu5" style="display:none">
+						<div class="sousmenu3"> <a href="#" onclick="click_lien('fonctionnalite_detail_traitements_graphe.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Le graphe </a> </div>
+						<div class="sousmenu3"> <a href="#" onclick="click_lien('fonctionnalite_detail_traitements_operation.html')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Opération sur le vecteur</a> </div>
+					</div>
+				</div>
+
+			<div class="menu" id="menu6" onclick="click_lien('fonctionnalite_import.html');"> <a href="#">&nbsp;&nbsp;&nbsp; L'onglet de fonctionnalité <b>Importation</b></a> </div>
+			<div class="menu" id="menu7" onclick="click_lien('fonctionnalite_export.html');"> <a href="#">&nbsp;&nbsp;&nbsp; L'onglet de fonctionnalité <b>Exportation</b></a> </div>
+		</div>
+	</td>
+	<td class="tddroite" >
+		<iframe id="framedoc" src="aito.html" type="text/html"></iframe>
+	</td>
+</tr>
+
+</table>
+
+</body>
+</html> 

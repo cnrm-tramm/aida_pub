@@ -1,0 +1,36 @@
+%%Rotat_rep_vent_moy
+Application d'une rotation destinée à annuler
+les composantes transverses moyennes du vent :
+\[
+  \left(
+\begin{array}{c}
+u_r \\ v_r \\ w_r \\
+\end{array}
+  \right)
+=
+  \left(
+\begin{array}{ccc}
+\cos\epsilon \cos\theta & \sin\epsilon \cos\theta & \sin\theta \\
+-\sin\epsilon & \cos\epsilon & 0 \\
+-\cos\epsilon \sin\theta & -\sin\epsilon \sin\theta & \cos\theta \\
+\end{array}
+  \right)
+.
+  \left(
+\begin{array}{c}
+u \\ v \\ w \\
+\end{array}
+  \right)
+\]
+
+avec $\cos\epsilon=\frac{\overline{u}}{\sqrt{\overline{u}^2+\overline{v}^2}}$,
+    $\sin\epsilon=\frac{\overline{v}}{\sqrt{\overline{u}^2+\overline{v}^2}}$,
+    $\cos\theta=\frac{\sqrt{\overline{u}^2+\overline{v}^2}}
+                     {\sqrt{\overline{u}^2+\overline{v}^2+\overline{w}^2}}$,
+et  $\sin\theta=\frac{\overline{w}}
+                     {\sqrt{\overline{u}^2+\overline{v}^2}+\overline{w}^2}$ 
+(avec $\theta$ limité à 20 degrés).
+
+Puis détermination d'un angle $\beta$. minimisant $\overline{v'w'}$,
+par résolution itérative de $2K\sin^2\beta+...= 0$
+

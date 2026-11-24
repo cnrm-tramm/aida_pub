@@ -1,0 +1,44 @@
+%%%%%
+%
+\section{Échantillonnage et moyenne d'une variable sur une nouvelle base
+de temps donnée par un time\_{bnds}}
+
+\itemstyle{Op\'erateur~:} \textsf{MoyEch\_tps\_{bnds}}
+\index{MoyEch\_tps\_bnds}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction calcule, pour chaque instant $t$ d'une
+base de temps $time_{out}$, 
+une variable $X_{out}$, contenant la moyenne des
+valeurs de  $X_{in}$ entre les bornes données par le $time_{bnds}$ associé à $time_{out}$.
+
+Aucune supposition n'est faite sur la régularité de
+l'échantillonnage des 2 variables. Cette fonction peut
+donc servir, par exemple, à transformer une série temporelle
+asynchrone en une série régulière. Il est cependant nécessaire
+que $time_{in}$ (le temps de $X_{in}$) soit "à peu près" trié par ordre
+croissant.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/MoyEch_tps_bnds.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/MoyEch_tps_bnds.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+\textit{tb} est un tableau d'intervalles de temps déterminés à partir du vecteur temps $time_{out}$.
+Cet opérateur prend en compte des vecteurs 1D et 2D.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Néant.

@@ -1,0 +1,13 @@
+# Exemple de script de traitement AIDA :
+#   il utilise les données de la plateforme test-aida du profil EXEMPLES.
+#
+#   il doit être lancé avec l'application adc par la commande :
+#     adc <ACQID> exemple_traitement.fil
+
+# Calcul d'un rapport de melange en vapeur d'eau
+RapM_Hu (hum_relcapa_bs_c1_cal_%60, tpr_air_bs_c1_cal_%60, pre_air_c1_cal_%60, hum_rapmel_bs_Hu_%60)
+
+# Moyenne pour passer à la fréquence 30min
+Cre_time_bnds_reg (86400, 1800, 1/1800, "-1800,0", rft_time_reg_%1800)
+MoyEch_tps_bnds (hum_rapmel_bs_Hu_%60, rft_time_campbel11_%60, 4, rft_time_reg_%1800, $Arg4.time_bnds, $Arg4.NbVal, hum_rapmel_bs_Met_%1800)
+

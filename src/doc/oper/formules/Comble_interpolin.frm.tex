@@ -1,0 +1,23 @@
+%% Formule de l'operateur : Comble_interpolin
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+\vspace{1cm}
+L'algorithme de comblement des valeurs manquantes fonctionne de la
+manière suivante : \\
+
+
+\begin{itemize}
+
+\item Calcul de la moyenne glissante de $X$ sur $Nbpt$ points. 
+\item Entre 2 valeurs valides de $X$, les valeurs manquantes sont comblées
+par une interpolation linéaire de la moyenne glissante de $X$
+\item Si la série $X$ débute ou se termine par des valeurs manquantes, respectivement
+la 1ere ou la dernière valeur valide est utilisée pour combler $X_f$
+\end{itemize}
+\vspace{1cm}
+Le paramètre $Flag$ vaut 0 si l'échantillon  $X_f = X $ (pas de comblement), et vaut 1
+si l'échantillon de $X_f$ a été comblé. 
+

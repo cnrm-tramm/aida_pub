@@ -1,0 +1,42 @@
+%%%%%
+%
+\section{Composantes du vent \`a partir des vitesses mesurées dans un rep\`ere mobile}
+
+\itemstyle{Op\'erateur~:} \operfmt{CalcVentNA}
+\index{CalcVentNA}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul des 3 composantes du vecteur vent à partir de mesures faites
+dans un repère lié à une plate-forme mobile (avion, bateau, ...). 
+
+Cet opérateur est adapté au cas où la mesure du vent relatif est exprimée
+en module, angles d'incidence et dérapage, et n'est donc utilisable
+que lorsque le vent vient uniquement de l'avant de la plate-forme mobile
+(l'incidence n'est pas définie lorsque le dérapage est de +/- $\pi/2$).
+
+Cet opérateur tient compte des trois composantes de la distance entre
+le point de mesure de la vitesse du vent relatif (l'air par rapport au mobile)
+et le point de mesure de la vitesse par rapport au sol.
+
+Le calcul est effectu\'e dans le rep\`ere li\'e au mobile, puis les composantes 
+sont transform\'ees vers le rep\`ere g\'eographique terrestre local
+(ENU : axes orient\'es vers l'Est, le Nord, et verticalement).
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/CalcVentNA.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/CalcVentNA.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Bulletin NCAR-RAF Nr 23 \cite{RAF-23}.

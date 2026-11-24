@@ -1,0 +1,40 @@
+%%%%%
+%
+\section{Sous-échantillonnage régulier (paramètre \texttt{float})}
+
+\itemstyle{Op\'erateur~:} \operfmt{Ech}
+\index{Ech}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Echantillonnage d'un param\`etre \`a une
+fr\'equence inf\'erieure. La fr\'equence 
+finale  doit \^etre un diviseur
+de la fr\'equence d'origine.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Ech.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Ech.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+$R_f$ doit \^etre compris dans l'intervalle $]0, 1]$, 
+et \^etre l'inverse d'un entier. \\
+$Decal$ doit \^etre compris dans l'intervalle
+$[0, 1/R_f[$. \\
+Le nombre d'\'echantillons du vecteur de sortie est le produit du
+nombre d'\'echantillons du vecteur d'entr\'ee par $R_f$, arrondi 
+\`a l'entier sup\'erieur.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

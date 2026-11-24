@@ -1,0 +1,43 @@
+%%%%%
+%
+\section{Échantillonnage (et variance) d'une variable sur une nouvelle base
+de temps donnée par un time\_bnds}
+
+\itemstyle{Op\'erateur~:} \textsf{VarEch\_tps\_bnds}
+\index{VarEch\_tps\_bnds}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction calcule, pour chaque instant $t$ d'une
+base de temps "time\_out", 
+une variable "X\_out", contenant la variance des
+valeurs de  "X\_in" entre les bornes données par le "time\_bnds" associé à "time\_out".
+
+Aucune supposition n'est faite sur la régularité de
+l'échantillonnage des 2 variables. Cette fonction peut
+donc servir, par exemple, à transformer une série temporelle
+asynchrone en une série régulière. Il est cependant nécessaire
+que time\_in (le temps de X\_in) soit "à peu près" trié par ordre
+croissant.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/VarEch_tps_bnds.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/VarEch_tps_bnds.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+\textit{tb} est un tableau d'intervalles de temps déterminés à partir du vecteur temps $time_{out}$.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Néant.

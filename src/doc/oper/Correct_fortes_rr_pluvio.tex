@@ -1,0 +1,46 @@
+%%%%%
+%
+\section{Correction des fortes pr\'ecipitations mesur\'ees par pluviom\`etre (Algorithme de fortes pr\'ecipitations fourni par la
+DSO)}
+
+\itemstyle{Op\'erateur~:} \textsf{Correct\_fortes\_rr\_pluvio}
+\index{Correct\_fortes\_rr\_pluvio}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur corrige les éventuels débordements non pris en compte par le pluviom\`etre en cas de fortes précipitations. Le
+cumul des intensités de précipitation est majoré en fonction de la valeur de l'intensité par pas de 0.1 mm et le reste
+est porté sur la mesure suivante.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Correct_fortes_rr_pluvio.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Correct_fortes_rr_pluvio.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire :}
+Cette correction est utilis\'ee pour les pluvio préci mécaniques du réseau radome à la DSO.
+\text{Valeurs des coefficients utilisés pour le Pr\'ecis-m\'ecanique:}
+$$
+\begin{tabular}{lll}
+A = -5.68 & B = 2.56 & C=0
+\end{tabular}
+$$
+
+
+
+%%%%%AUTEUR%%%%
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}\\
+Algorithme de traitement des donn\'ees du pr\'eci-M\'ecanique
+Version 1.1 du 28/01/2013 DSO

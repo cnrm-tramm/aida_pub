@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float[$N_{level}$]} & Profils à filtrer (any)\\
+$W$ & Coeff., \texttt{float} & Fraction de fréquences filtrées (entre 0. et 1)\\
+$z_{min}$ & Coeff., \texttt{int} & Distance minimum pour l'extrapolation (m)\\
+$Type\_{extrap}$ & Coeff., \texttt{String} & Type d'extrapolation ('cst' ou 'lin')\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X_f$ & Vecteur, \texttt{float[$N_{level}$]} & Profils filtrés\\
+\end{tabarg}
+

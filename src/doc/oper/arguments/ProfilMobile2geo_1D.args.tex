@@ -1,0 +1,23 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float[$N_{level}$]} & Signal mesuré \\
+$D$ & Coeff., \texttt{int} & 1 si mesure vers le haut, -1 si mesure vers le bas  \\
+$\phi$ & Vecteur, \texttt{float} & Roulis (degrés)\\
+$\theta$ & Vecteur, \texttt{float} & Tangage (degrés)\\
+$Alt$ & Vecteur, \texttt{float} & Altitude de la plateforme (m)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Alt_X$ & Vecteur, \texttt{float[$N_{level}$]} & Altitude des mesures X (m)\\
+\end{tabarg}
+

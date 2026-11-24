@@ -1,0 +1,25 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$\rho_a$ & Vecteur, \texttt{float} & Densité de l'air sec ($kg.m^{-3}$)\\
+$\rho_v$ & Vecteur, \texttt{float} & Concentration en vapeur d'eau ($g/m^3$)\\
+$\rho_c$ & Vecteur, \texttt{float} & Concentration du composé dont on veut corriger le flux ($g/m^3$)\\
+$T_a$ & Vecteur, \texttt{float} & Température de l'air ($^\circ$ C ou K)\\
+$Cov\_w\rho_v$ & Vecteur, \texttt{float} & Covariance $\overline{w'\rho_v'}$ ($g.s^{-1}.m^{-2}$)\\
+$Cov\_wt$ & Vecteur, \texttt{float} & Covariance $\overline{w'T_a'}$ (m.K.s-1)\\
+$Cov\_w\rho_c$ & Vecteur, \texttt{float} & Covariance $\overline{w'\rho_c'}$ sur laquelle on va appliquer la correction ($g.s^{-1}.m^{-2}$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$w_d$ & Vecteur, \texttt{float} & Vitesse verticale moyenne dûe au flux de densité (m/s)\\
+$Flx_{WPL}$ & Vecteur, \texttt{float} &  Flux du composé corrigé du flux de densité selon WPL ($g.s^{-1}.m^{-2}$)\\
+\end{tabarg}

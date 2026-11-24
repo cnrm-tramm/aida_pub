@@ -1,0 +1,35 @@
+%%%%%
+%
+\section{Calcul de Flux Bulk simplifié (Chaleur sensible, latente et quantité de mouvement)}
+
+\itemstyle{Op\'erateur~:} \textsf{Flux\_bulk\_simple}
+\index{Flux\_bulk\_simple}
+\newline
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+On calcule par la méthode BULK les flux de chaleur sensible, latente et Tau (équivalent à un flux de quantité de mouvement ). La formulation Bulk s'applique de manière simple (pas d'hypothèse ou de calculs sur le milieu, la position géographique (latitude, longitude, altitude), et pas de corrections. La longueur de rugosité est calculée ici par la formule de Charnock à partir de ustar, dont on suppose la disponiblité dans les paramètres d'entrée. Les deux fonctions de stabilité dépendent du signe du nombre de Richardson, calculé en utilisant la température virtuelle et non la température potentielle.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Flux_bulk_simple.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Flux_bulk_simple.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Les fonctions $clw()$, $ew()$, $rmel()$, et $tvir()$ sont d\'ecrites en annexe
+\ref{annexe-thermo}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+ note de centre CNRM No15, Flux97 workshop for final COARE archive.
+

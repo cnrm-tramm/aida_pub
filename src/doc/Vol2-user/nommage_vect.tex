@@ -1,0 +1,125 @@
+
+\subsection{Les trois états de paramètre}
+
+On considère que les données d'un paramètre peuvent passer par trois états
+différents.
+La construction du nom du vecteur contenant ces données dépend de cet état.
+Ces états sont :
+\begin{description}
+\item[•] {brut (ou quanta)} : \\
+         les données brutes d'un paramètre sont une simple et exacte copie du
+         contenu du fichier d'origine (issu généralement du système
+         d'acquisition). Elles n'ont subi aucune transformation
+         lors de la lecture puis de la ré-écriture en vecteur. \\
+         Le terme de quanta est appliqué aux données dont l'unité n'est pas
+         une grandeur physique mesurée directement. Les données sont par
+         exemple en Ohm et il faut leur appliquer un calcul purement
+         automatique, pour connaitre la grandeur géophysique correspondante.
+         \textbf{\textit{Note : la notion de données de type quanta tend a
+         disparaître avec la modernisation des systèmes d'acquisition.}}
+
+\item[•] {calibré} : \\
+         les données calibrées d'un paramètre sont les données brutes
+         auxquelles a été appliqué un calcul purement automatique, dans le but
+         d'obtenir la grandeur physique mesurée (une température,
+         une pression, etc.)
+
+\item[•] {traité} : \\
+         les données traitées d'un paramètre sont des données de n'importe quel
+         type, qui ont fait l'objet d'une expertise et d'une validation
+         humaine ou automatique.
+\end{description}
+
+
+\subsection{Construction du nom des vecteurs}
+Le cas des données de type quanta est simple : leur nom du vecteur est celui
+qui est trouvé dans le fichier d'origine, écrit entièrement en majuscules. \\
+
+Pour tous les autres types de donnée (brut, calibré, traité), le schéma
+de construction du nom du vecteur est le même : \\
+
+\begin{center}
+  \textbf{<famille>\_<paramètre>\_<capteur>\_<type>\_<fréquence>.vbn}
+\end{center}
+
+avec :
+
+\begin{center}
+\begin{tabular}{|p{3cm}|p{11cm}|}
+\hline
+
+\textbf{<famille>} &
+abréviation de la famille des données.
+
+ex : \texttt{tpr} pour température.
+
+Voir le fichier \texttt{\$AIDA\_HOME/config/familles}.
+\\ \hline
+
+\textbf{<paramètre>} &
+mnémonique du nom physique de la grandeur mesurée.
+
+ex : \texttt{air} pour une pression statique.
+\\ \hline
+
+\textbf{<capteur>} &
+mnémonique du nom du (ou des) capteur(s).
+
+ex : \texttt{li7500} pour un licor-7500.
+\\ \hline
+
+\textbf{<type>} &
+type de données ou de taitement.
+
+\begin{itemize}
+  \item[\texttt{raw}] pour des données brutes.
+  \item[\texttt{cal}] pour des données calibrées.
+  \item[\texttt{xxx}] mnémonique de l’algorithme de calcul. 
+                      Ex : \texttt{\textbf{Chb}} si une \textbf{C}orrection
+                      des valeurs \textbf{h}ors\-\textbf{b}ornes a été appliquée.
+\end{itemize}
+\\ \hline
+
+\textbf{<fréquence>} &
+fréquence d’échantillonnage des donnée.
+
+Les règles de formatage sont * :
+\begin{itemize}
+  \item[•] lorsque l’échantillonnage est irrégulier :
+
+           la fréquence est écrite sous la forme 0.
+
+           ex : \texttt{OMEGA\_\textbf{0}.vbn}
+
+  \item[•] pour une fréquence supérieure à 2 Hz :
+
+           la fréquence est écrite comme un nombre entier (arrondi au plus
+           proche).
+
+           ex : \texttt{ven\_v\_gillv\_cal\_\textbf{21}.vbn}
+
+  \item[•] pour une fréquence ente 0.5 et 2 Hz :
+
+           la fréquence est écrite comme un nombre décimal avec au plus
+           2 chiffres après le point décimal.
+
+           ex : \texttt{ctl\_tboacr2\_rs\_cal\_\textbf{0.83}.vbn}
+
+  \item[•] pour une fréquence inférieure à 0.5 Hz (période supérieure à
+           2 secondes) :
+
+           on écrit la période (inverse de la fréquence), arrondie à l’entier
+           le plus proche, précédée de «\%»
+
+           ex : \texttt{pre\_air\_c0\_cal\_\textbf{\%60}.vbn}
+\end{itemize}
+\\ \hline
+
+\end{tabular}
+\end{center}
+
+* Les règles de formatage font que la partie “fréquence” du nom de paramètre ne
+sera pas systématiquement identique au champ fréquence de l’en-tête. Mais en
+appliquant ces règles de formatage à la valeur contenue dans l’en-tête, on doit
+obtenir une chaîne de caractère identique à la partie finale du nom.
+

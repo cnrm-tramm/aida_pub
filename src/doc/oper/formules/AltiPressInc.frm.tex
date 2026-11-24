@@ -1,0 +1,11 @@
+%%% Altitude pression incrémentale
+$Tv$ est convertie en Kelvin, si besoin est, puis :
+\begin{align*}
+Z_{i0} &= Z0 \qquad \text{ avec } i0 \text{ tq.  ref\_time}_{i0} = S0\\
+Z_j &= Z_{i} + \frac{R_a}{g}.\left(\frac{Tv_j+Tv_{i}}{2}\right).\log \left( \frac{Ps_{i}}{Ps_j} \right) \qquad \text{avec} 
+\begin{cases}
+i = j+1 \text{ pour } j<i0\\
+i = j-1 \text{ pour } j>i0
+\end{cases}
+\end{align*}
+

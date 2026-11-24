@@ -1,0 +1,30 @@
+First, relative wind components are computed in
+aircraft frame :
+\begin{eqnarray*}
+U_a & = & - V_p.D^{-1} \\
+V_a & = & - V_p.D^{-1}.\tan\beta + L.Vr_z\\
+W_a & = & - V_p.D^{-1}.\tan\alpha - L.Vr_y
+\end{eqnarray*}
+where~: $ D = \sqrt{1+\tan^2\alpha+\tan^2\beta}$
+
+Then, relative wind components are rotated
+to the local geographical frame :
+\newcommand\relphantom[1]{\mathrel{\phantom{#1}}}
+\begin{equation*}\begin{split}
+U_{ag} &= U_a.\sin\psi.\cos\theta +  
+          V_a.(\cos\psi.\cos\phi + \sin\psi.\sin\theta.\sin\phi) \\
+      &\relphantom{=} +  W_a.(\sin\psi.\sin\theta.\cos\phi - \cos\psi.\sin\phi) \\   
+V_{ag} &= U_a.\cos\psi.\cos\theta - 
+          V_a.(\sin\psi.\cos\phi - \cos\psi.\sin\theta.\sin\phi) \\
+      &\relphantom{=}  + W_a.(\cos\psi.\sin\theta.\cos\phi + \sin\psi.\sin\phi) \\
+W_{ag} &= U_a.\sin\theta - 
+          V_a.\cos\theta.\sin\phi -
+          W_a.\cos\theta.\cos\phi
+\end{split}\end{equation*}
+Eventually, the wind vector is the sum of the relative wind
+and the platform speed relative to ground :
+\begin{equation*}
+\begin{pmatrix}U \\ V \\ W  \end{pmatrix} = 
+\begin{pmatrix}U_{ag} \\ V_{ag} \\  W_{ag} \end{pmatrix} + 
+\begin{pmatrix} V_e \\ V_n \\ V_v  \end{pmatrix}
+\end{equation*}

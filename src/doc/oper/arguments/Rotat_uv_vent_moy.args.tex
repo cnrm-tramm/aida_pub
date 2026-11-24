@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$U$ & Vecteur, \texttt{float} & 1ère composante du vent (unité quelconque)\\
+$V$ & Vecteur, \texttt{float} & 2ème composante du vent (m\^eme unité que $U$)\\
+$F_e$ & Coeff., \texttt{float} & Fréquence d'échantillonnage (Hz)\\
+$T_{int}$ & Coeff., \texttt{float} & Période d'intégration pour le calcul de la moyenne (s)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$U_r$ & Vecteur, \texttt{float} & Composante du vent dans l'axe du vent moyen (m\^eme unité que $U$ et $V$)\\
+$V_r$ & Vecteur, \texttt{float} & Composante du vent transverse (à gauche) à l'axe du vent moyen (m\^eme unité que $U$ et $V$)\\
+\end{tabarg}

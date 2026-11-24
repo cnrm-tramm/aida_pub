@@ -1,0 +1,9 @@
+%%TPotBolton
+% Calcul de la température potentielle selon la formule de BOLTON
+% à partir de Ps, Ts et Hum 
+Si besoin est, $T_s$ est convertie en Kelvin \newline
+Le rapport de mélange $r_{mel}$ est calculé par fonction \texttt{rmel\_hu()} \\
+\[
+\theta = T_s . \frac{1000}{P_s} ^{ 0.2854 . \left(1-0.00028 . r_{mel}\right) }
+\]
+et $\theta$ est converti dans l'unit\'e d'origine de $T_s$.

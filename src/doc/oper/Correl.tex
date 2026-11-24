@@ -1,0 +1,35 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Calibration par corr\'elation}
+
+\itemstyle{Op\'erateur~:} \operfmt{Correl}
+\index{Correl}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calibration d'un vecteur1 avec le vecteur2 par r\'egression lin\'eaire selon
+le principe des moindres carr\'es ordinaires appliqu\'e de proche en proche sur un intervalle
+d\'efini par l'argument fenetre (en secondes).
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Correl.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formules}
+\input{formules/Correl.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Les 2 vecteurs doivent \^etre synchrones et à la m\^eme fr\'equence d'\'echantillonnage.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%

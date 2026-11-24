@@ -1,0 +1,23 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$T_t$ & Vecteur, \texttt{float} &  Température totale ($K$ ou $^\circ C$)\\
+$\Delta P$ & Vecteur, \texttt{float} & Pression dynamique ($hPa$)\\
+$P_s$ & Vecteur, \texttt{float} & Pression statique ($hPa$)\\
+$r_f$ & Coeff., \texttt{float} & Coefficient de récupération du capteur utilisé\\
+$R_a/c_{pa}$ & Coeff., \texttt{float} & Rapport de la constante spécifique de
+l'air sec sur la chaleur massique à pression constante de l'air sec\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$T_s$ & Vecteur, \texttt{float} & Température statique de l'air (même unité que $T_t$)\\
+\end{tabarg}

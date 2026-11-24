@@ -1,0 +1,18 @@
+%%select_X_selon_Y
+
+Soit $dY$ la variation de $Y$.\\
+A l'instant $t$ :
+\[
+X_{valid}(t) = 
+\begin{cases} 
+X(t) \text{ si }
+\begin{cases}
+Y(t) \ne NaN \text{ et } \\
+Y(t) \ne Y_{inval} \text{ et } \\
+Crit\_min \le Y(t) \le Crit\_max  \text{ et } \\
+\mid dY(t+\tau_{av})\mid < \Delta Y   \text{ et } \\
+\mid dY(t-\tau_{ap}) \mid < \Delta Y  \\
+\end{cases} \\
+Inv\_val \text{ sinon }\\
+\end{cases} \\
+\]

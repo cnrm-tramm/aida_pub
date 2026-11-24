@@ -1,0 +1,43 @@
+%%%%%
+%
+\section{Moyenne-Echantillonnage d'un paramètre \texttt{float}}
+
+\itemstyle{Opérateur~:} \operfmt{MoyEch}
+\index{MoyEch}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Moyenne glissante et échantillonnage d'un
+paramètre à une fréquence donnée, diviseur
+de la fréquence du paramètre d'entrée.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/MoyEch.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/MoyEch.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+$R_f$ doit être l'inverse d'un entier. Si ce n'est pas le cas, utiliser
+\hyperref[OP-MoyEch_ff]{\operfmt{MoyEch\_ff}}.\newline
+Le nombre d'échantillons du vecteur de sortie est le produit du
+nombre d'échantillons du vecteur d'entrée par $R_f$, arrondi
+à l'entier supérieur. \newline
+%Pour chaque échantillon du résultat, s'il existe, dans la série de
+%donnée en entrée un seul échantillon valeur manquantes 
+
+%% Formulation a trouver pour les angles....
+%%\emph{Attention} : Le calcul de moyenne convient pas aux variables
+%%
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}

@@ -1,0 +1,24 @@
+%% Formule de l'operateur : CovarXYmax_tps_bnds
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+Pour chaque période de $time\_bnds$ d'une durée $T_{int}$, chaque décalage temporel $t$, et si $X_i$ et $Y_i$ ne sont pas manquants, on calcule : \\
+
+\begin{eqnarray*}
+Cov_{XY}(t) & = & \sum^{T_{int}} (X_i - \overline{X}).(Y_i - \overline{Y})  \\ 
+Corr_{XY}(t) & = & \frac{Cov_{XY}}{\sum^{T_{int}} (X_i - \overline{X}).\sum^{T_{int}}(Y_i - \overline{Y})   }
+\end{eqnarray*}
+
+Puis :\\
+
+$Tlag$ est la valeur de $t$ pour laquelle  $\left \vert Cov_{XY}(t) \right \vert$ est maximale.
+
+\begin{eqnarray*}
+Cov_{XY} & = Cov_{XY} (Tlag) & \\ 
+Corr_{XY} & = Corr_{XY} (Tlag)
+\end{eqnarray*}
+
+
+$T_{valid}$ est le nombre de points non manquants utilisé par le calcul de la covariance maximale, divisé par la fréquence d'échantillonnage de la période de calcul. 

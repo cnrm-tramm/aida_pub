@@ -1,0 +1,38 @@
+%%%%%
+%
+\section{Régression linéaire entre 2 paramètres}
+
+\itemstyle{Op\'erateur~:} \operfmt{Reg\_lin}
+\index{Reg\_lin}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur calcule les coefficients de la régression linéaire
+par la méthode des "moindres carrés" et le paramètre estimé.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Reg_lin.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Reg_lin.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Pour un gain de temps, cet opérateur utilise
+une formule de calcul des variances et covariance
+qui ne nécessite pas un calcul préalable de la moyenne.
+Cette méthode est sujette à des risques d'imprecision numérique
+lorsque le nombre d'échantillons est grand (> 10$^{4}$),
+et il est alors préférable d'utiliser l'opérateur
+\hyperref[OP-Reg_lin2]{\operfmt{Reg\_lin2}}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Vialar 1977 \cite{VIALAR-T3}.

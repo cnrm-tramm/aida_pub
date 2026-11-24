@@ -1,0 +1,44 @@
+%% THERMODYNAMIQUE %%
+%
+\section{Rapport de m\'elange en vapeur d'eau \`a partir de l'humidit\'e
+relative}
+
+\itemstyle{ Op\'erateur~: } {\sf RapM\_Hu}
+\index{RapM\_Hu}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Calcul du rapport de m\'elange en vapeur d'eau \`a partir
+de l'humidit\'e relative de l'air et des variables
+d'état (P, T).
+
+Comme pour la fonction symétrique ({\sf Hu\_RapM}), le calcul de la
+tension de vapeur saturante ($ew(T)$) se fait TOUJOURS par 
+rapport à de l'eau liquide.
+
+%%%%%ARGUMENTS%%%%%
+\bigskip
+\input {arguments/RapM_Hu.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input{formules/RapM_Hu.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+Les fonctions $ew()$ et $ewi()$ sont d\'ecrites en annexe
+\ref{annexe-thermo}.
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ R\'ef\'erences~:}
+Triplet-Roche\cite{Triplet-Roche}\\
+Définitions des humidités (relatives, absolues, spécifiques)
+et du rapport de mélange 
+selon la table 4.3 des tables météorologiques internationales
+de l'OMM \cite{OMM-188.TP.94}.

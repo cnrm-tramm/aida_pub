@@ -1,0 +1,25 @@
+% Annexes
+\part{Annexes}
+\section{Format de fichier INI}
+\label{sec:anx_ini}
+
+  Les fichiers sont divisés en sections.
+
+  Chaque section débutte par un nom écrit entre crochets (\texttt{[]}),
+  suivi par des lignes du type : \\
+  \texttt{option~=~valeur}.
+
+  Les commentaires sont introduits par le caractère dièse (\texttt{\#}).
+
+  Les noms de section et d'option sont généralement \textit{case-sensitive}
+  (''sensible à la casse'').
+
+  Ex :
+  \begin{lstlisting}
+    # Description du format de fichier INI
+    [section_1]
+    option_1 = exemple
+
+    [EDITOR]
+    Prefered = vi
+  \end{lstlisting}

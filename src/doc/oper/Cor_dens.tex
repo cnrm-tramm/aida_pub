@@ -1,0 +1,46 @@
+%%%%%
+%
+\section{Correction d'un param\`etre \texttt{float} par le rapport des masses volumiques
+$\rho / \rho_0$ }
+
+\itemstyle{Op\'erateur~:} \operfmt{Cor\_dens}
+\index{Cor\_dens}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur multiplie un param\`etre de type \texttt{float} par le 
+facteur $\rho/\rho_0$, qui est le
+rapport entre la masse volumique de l'air ambiant et la masse volumique de
+l'air sec standard \`a 1013.5 hPa et 15 $^{\circ}C$.
+
+Le paramètre d'entrée peut être scalaire ou de taille quelconque sur une
+dimension.
+ 
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Cor_dens.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Cor_dens.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire :}
+Cette correction est utilis\'ee pour certaines sondes
+micro-physique (PCASP, TSI) lorsqu'une la pompe de régulation du débit
+est asservie en "masse constante"
+alors qu'on souhaite travailler \`a "volume constant".
+
+%%%%%AUTEUR%%%%
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}\\
+Principe de la correction :\\
+Fichier ADJUSCF.TXT du 04/12/1997, par Ch. Allet (INSU/Volothèque).\\
+Valeur de $\rho_0$ : \\
+Standard ISO2533-1975 (Atmosphère-type) \cite{ISO-2533}, tableau 5.

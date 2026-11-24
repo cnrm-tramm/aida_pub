@@ -1,0 +1,40 @@
+%%%%%
+%
+\section{Sous-échantillonnage régulier (paramètre \texttt{double})}
+
+\itemstyle{Op\'erateur~:} \operfmt{ Ech\_dbl}
+\index{Ech\_dbl}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Echantillonnage d'un param\`etre \texttt{double} \`a une
+fr\'equence inf\'erieure. La fr\'equence 
+finale  doit \^etre un diviseur
+de la fr\'equence d'origine.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Ech_dbl.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Ech_dbl.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+$R_f$ doit \^etre l'inverse d'un entier. 
+
+Le nombre d'\'echantillons du vecteur de sortie est le produit du
+nombre d'\'echantillons du vecteur d'entr\'ee par $R_f$, arrondi 
+\`a l'entier sup\'erieur.
+
+Le ref\_time du vecteur résultat ($Xe$) s'appelle time\_\$\{freq\}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

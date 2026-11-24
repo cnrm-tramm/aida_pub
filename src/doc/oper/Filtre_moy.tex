@@ -1,0 +1,45 @@
+%%%%%
+%
+\section{Filtrage simple par moyenne glissante}
+
+\itemstyle{Op\'erateur~:} \operfmt{Filtre\_moy}
+\index{Filtre\_moy}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur filtre un paramètre à une fréquence de 
+coupure donnée par une moyenne glissante. Il ne fait
+pas d'échantillonnage. 
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Filtre_moy.args.tex}
+
+%%%%%Algorithme %%%%
+\itemstyle{Algorithme}
+
+{\centering
+\includegraphics[width=0.8\linewidth]{images/algo_Filtre_moy.png}
+\captionof{figure}{Schéma fonctionnel de \operfmt{Filtre\_moy}}
+\label{fig:algo_Filtre_moy}
+}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Le passage par PPCM($f_e$, $f_c$) permet de lever l'obligation 
+que $f_e$ soit un multiple de $f_c$, mais impose de 
+nouvelles conditions :
+\begin{itemize}
+\item Si $f_c$ est inférieure à 1, il peut y avoir des problèmes
+d'arrondi (par ex, 1/15 = 6,666666667e-2, puis ppcm (1/15, 1)=9
+au lieu de 1.
+\item De façon générale, si PPCM($f_e$, $f_c$) est trop grand, il est
+pr\'ef\'erable d'employer une autre technique.
+\end{itemize}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

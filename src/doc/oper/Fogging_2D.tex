@@ -1,0 +1,51 @@
+%%%%%
+%
+\section{Indice de Fogging des images d'une sonde PMS 2D-C et nettoyage des donn\'ees}
+
+\itemstyle{Op\'erateur~:} {\sf Fogging\_2D}
+\index{Fogging\_2D}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur calcule un indice de Fogging \`a partir des donn\'ees images 
+d'une sonde PMS 2D-C. Un nettoyage des donn\'ees est effectu\'e
+optionnellement.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Fogging_2D.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Fogging_2D.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Les données images de la sonde PMS-2D-C sont analysées par imagette.
+La méthode de détection des imagettes a été modifiée afin d'utiliser la même
+que celle de l'opérateur Compte\_img\_2D.
+Les séparateurs, lorsqu'il y a fogging des données, peuvent être
+et sont souvent endommagés. Ceci fausse beaucoup les calculs de spectre, de
+compte de particules et de détection de types de particules. La seule méthode
+de calcul qui est la moins touchée est le calcul des spectres par la méthode
+à Bill Hall (NCAR) car celle-ci fait non pas de l'analyse d'imagettes, mais
+plutôt de l'analyse de groupes de pixels. Le seul impact dans ce cas-ci est
+la présence de bruit dans les données, même après nettoyage, ou la
+sous-estimation de la taille causée par le nettoyage et la suppression de
+pixels et la moins bonne précision dans le positionnement des particules dans
+le temps.
+La méthode utilisée pour calculer l'indice de Fogging est de compter le nombre
+d'occurences des patron 010 et 0110 dans les colonnes de données images.
+L'option de nettoyage des données remplace les patrons 010 et 0110 par 000 et
+0000 respectivement.
+Pour des données bruitées par le fogging, l'ordre de grandeur de l'indice se
+situe aux environs de 10\^4. Une plage d'enregistrements ayant un indice de
+fogging moins de 800 est considéré comme n'ayant pas de fogging.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/MNP
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

@@ -1,0 +1,27 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float} & 1ère variable\\
+$Y$ & Vecteur, \texttt{float} & 2ème variable\\
+$T_{int}$ & Coeff., \texttt{float} & Temps d'intégration de la covariance  ($s$)\\
+$Tlag_{min}$ & Coeff., \texttt{float} & Décalage temporel minimal à appliquer entre $X$ et $Y$ (s)\\
+$Tlag_{max}$ & Coeff., \texttt{float} & Décalage temporel maximal à appliquer entre $X$ et $Y$ (s)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Cov_{XY}$ & Vecteur, \texttt{float} & Covariance entre $X$ et $Y$ \\
+$Corr_{XY}$ & Vecteur, \texttt{float} & Corrélation entre  $X$ et $Y$ \\
+$T_{valid}$ & Vecteur, \texttt{float} & Temps d'intégration réel de la covariance à partir 
+du nombre de données valides  ($s$)\\
+$Tlag$ & Vecteur, \texttt{float} & Décalage temporel qui maxmimise la covariance  ($s$)\\
+\end{tabarg}
+

@@ -1,0 +1,53 @@
+%%%%%
+%
+\section{Passage du rep\`ere ECEF au rep\`ere ENU}
+
+\itemstyle{Op\'erateur~:} \operfmt{ecef\_to\_enu}
+\index{ecef\_to\_enu}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Transformation d'un vecteur du rep\`ere ECEF
+au rep\`ere ENU dans un cadre simpliste (terre sph\'erique).
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/ecef_to_enu.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/ecef_to_enu.frm.tex}
+
+%%%% COMMENTAIRE %%%%
+
+\itemstyle{Commentaire~:}
+
+Le rep\`ere ECEF (Earth Centered Earth Fixed) est d\'efini
+de la mani\`ere suivante~:
+\begin{description}\itemsep0pt
+ \item[~ Origine :] Centre de la Terre
+ \item[~ X :] de l'origine vers le point $0^\circ$ N $0^\circ$ W
+ \item[~ Y :] de l'origine vers le point $0^\circ$ N $90^\circ$ E
+ \item[~ Z :] de l'origine vers le p\^ole Nord 
+\end{description}
+
+Le rep\`ere ENU (East, North, Up : rep\`ere "g\'eographique" ) est d\'efini
+de la mani\`ere suivante~:
+\begin{description}\itemsep0pt
+ \item[~ Origine :] Position du mobile
+ \item[~ X :] de l'origine vers l'Est tangent \`a la surface terrestre
+ \item[~ Y :] de l'origine vers le Nord tangent \`a la surface terrestre
+ \item[~ Z :] de l'origine vers le haut perpendiculaire \`a la surface terrestre
+\end{description}
+
+Le cas limite (les p\^oles, o\`u le rep\`ere ENU n'est pas d\'efini)
+n'est pas trait\'e.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Hofmann-Wellenhof \cite{Hofmann-GPS}

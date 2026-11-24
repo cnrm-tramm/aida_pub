@@ -1,0 +1,40 @@
+%% THERMODYNAMIQUE %%
+%
+\section{Rapport de m\'elange en vapeur d'eau \`a partir de l'humidit\'e absolue (approximation) }
+
+\itemstyle{ Op\'erateur~: } {\sf RapM\_Ha\_approx}
+\index{RapM\_Ha\_approx}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Calcul approché du rapport de m\'elange en vapeur d'eau (rapport entre la
+masse de vapeur d'eau et la masse d'air \textbf{sec}, en g/kg)
+\`a partir de l'humidit\'e absolue de l'air (en g/m$^3$).
+
+Ce calcul est une division par la masse volumique ("densité") de l'air (kg/m3).
+
+L'approximation réside dans le fait qu'on fait ce calcul avec
+les constantes de l'air sec (Ra). Cette approximation peut être
+justifiée dans les cas où l'humidité est faible (haute atmosphère)
+ou que l'on part d'une température sonique, voir virtuelle (dans ce cas,
+le calcul est exact).
+
+%%%%%ARGUMENTS%%%%%
+\bigskip
+\input {arguments/RapM_Ha_approx.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input{formules/RapM_Ha_approx.frm.tex}
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ R\'ef\'erences~:}
+Triplet-Roche\cite{Triplet-Roche}\\
+Définitions des humidités (relatives, absolues, spécifiques)
+selon les tables météorologiques internationales
+de l'OMM \cite{OMM-188.TP.94}.

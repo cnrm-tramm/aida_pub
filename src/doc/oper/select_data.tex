@@ -1,0 +1,36 @@
+%%%%%
+%
+\section{Sélection de données dans un vecteur.}
+
+\itemstyle{Op\'erateur~:} \operfmt{ select\_data}
+\index{select\_data}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}\newline
+Cet opérateur permet de sélectionner les échantillons d'un
+vecteur appartenant à une gamme donnée.
+
+Les données non sélectionnées sont mises à la valeur choisie par l'utilisateur
+et passée en argument ("misval", $0$, autre valeur).
+
+On sélectionne les données comprises entre crit$1$\_min et crit$1$\_max et
+éventuellement entre crit$2$\_min et crit$2$\_max.\newline
+On peut ne renseigner qu'un seul critère, dans ce cas on passe la valeur
+($0.$/$0.$) pour les critères non renseignés.
+ 
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/select_data.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/select_data.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

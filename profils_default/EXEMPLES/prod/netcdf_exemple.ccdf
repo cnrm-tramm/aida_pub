@@ -1,0 +1,40 @@
+[DIRECTIVES]
+prefix                 = ALPHA_TEST-AIDA_MTO
+plateforme             = test-AIDA
+reftime                = rft_time_campbel11_%60
+mode                   = jour
+replace_missing_vector = True
+
+[GENERAL]
+title                  = EXEMPLES - Meteorologival meaasurements at TEST-AIDA station
+summary                = This dataset contains meteorological measurements
+keywords               = earth science, atmosphere, ... 
+keywords_vocabulary    = GCMD: https://gcmd.earthdata.nasa.gov/KeywordViewer/scheme/all?gtm_scheme=all
+
+project                = EXEMPLES AIDA
+processing_level       = L1
+platform               = station
+source                 = observation station
+doi                    = https://doi.org/XX.XXXXX/XX
+
+institution            = CNRM, Université de Toulouse, Météo-France, CNRS, Toulouse, France
+creator_name           = XXX YYY
+creator_email          = XXX_YYY@mail.fr
+creator_institution    = CNRM, Université de Toulouse, Météo-France, CNRS, Toulouse, France
+
+contributor_name       = XXX: YYY: XX_YYY@mail.fr: CNRM, Université de Toulouse, Météo-France, CNRS, Toulouse, France; XXX: YYY: XXX_YYY@mail.fr: CNRM, Université de Toulouse, Météo-France, CNRS, Toulouse, France; XXX: YYY: XXX_YYY@mail.fr: CNRM, Université de Toulouse, Météo-France, CNRS, Toulouse, France
+contributor_role       = principalInvestigator; ressourceProvider; contributor
+
+
+[TAIR_2M]
+long_name = Air temperature at 2m AGL
+origin    = tpr_air_bs_c1_cal_%60
+
+[PRE_AIR]
+long_name =  Atmospheric pressure at 2m AGL
+origin    = pre_air_c1_cal_%60
+
+[HUM_2M]
+long_name = Relative humidity at 2m AGL
+origin    = hum_relcapa_bs_c1_cal_%60
+

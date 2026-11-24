@@ -1,0 +1,22 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$Cosp$ & Vecteur, \texttt{float[$N_{freq}$]} & Cospectre théorique\\
+$FT$ & Vecteur, \texttt{float[$N_{freq}$]} & Fonction de transfert du système de mesure \\
+$Flux$ & Vecteur, \texttt{float} & Flux à corriger\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Flux_{cor}$ & Vecteur, \texttt{float} & Flux corrigé (même unité que $Flux$)\\
+$SCF$  & Vecteur, \texttt{float} & Facteur de correction (sans unité) \\
+\end{tabarg}
+

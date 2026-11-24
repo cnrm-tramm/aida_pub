@@ -1,0 +1,21 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X_{in}$ & Vecteur, {\tt float} & 1ère Composante horizontal du vent ($m/s$)\\
+$Y_{in}$ & Vecteur, {\tt float} & 2ème Composante horizontal du vent ($m/s$)\\
+$Z_{in}$ & Vecteur, {\tt float} & Composante verticale du vent ($m/s$) \\ 
+$time\_out$ & Vecteur, {\tt float} & Base de temps de sortie dont le time\_bnds définit les plages de calcul\\
+$Rap\_mnq$ & Coeff., {\tt float} & Fraction de valeurs manquantes minimale pour le calcul de TKE (compris entre 
+0 et 1 )\\
+
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$TKE$ & Vecteur, {\tt float} & Energie cinétique turbulente ($m^2/s^2$)\\
+
+\end{tabarg}

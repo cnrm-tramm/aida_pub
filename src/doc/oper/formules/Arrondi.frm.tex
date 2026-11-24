@@ -1,0 +1,28 @@
+%% Formule de l'operateur : Arrondi
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\begin{itemize}
+\item Si $type$ = 0 :
+\[
+X_a = a*\mid {\frac{X}{a} + 0.5 } \mid
+\]
+\item Si $type$ = -1 :
+\[
+X_a = a*floor(\frac{X}{a}) 
+\]
+\item Si $type$ = 1 :
+\[
+X_a = a*ceil(\frac{X}{a}) 
+\]
+\end{itemize}
+
+avec :
+
+\begin{itemize}
+\item $floor(X)$ : fonction de la librairie math du langage C qui fournit le plus grand entier inférieur ou égal à $X$
+\\
+\item $ceil(X)$ :  fonction de la librairie math du langage C qui fournit le plus petit entier supérieur ou égal à $X$
+\end{itemize}
+

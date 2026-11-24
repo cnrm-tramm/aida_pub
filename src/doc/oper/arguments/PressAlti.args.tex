@@ -1,0 +1,23 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$P_0$ & Vecteur, \texttt{float} &  Pression au niveau $Z_0$ (hPa)\\
+$T_m$ & Vecteur, \texttt{float} & Température moyenne de la couche (Kelvin ou Celsius )\\
+$Z_0$ & Coeff., \texttt{float} & Altitude de la pression $P_0$ (m)\\
+$Z$ & Coeff., \texttt{float} & Altitude  (m)\\
+$R_a/g$ & Coeff., \texttt{float} & Rapport de la constante sp\'ecifique de
+l'air sec sur l'acc\'el\'eration de la pesanteur\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$P$ & Vecteur, \texttt{float} & Pression estimée \`a l'altitude Z (hPa)\\
+\end{tabarg}

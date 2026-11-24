@@ -1,0 +1,49 @@
+%%%%%
+%
+\section{Intensité de précipitation pour un pluviomètre Hasse}
+\itemstyle{Op\'erateur~:} {\sf Rain\_rate\_Hasse}
+\index{Rain\_rate\_Hasse}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+%Algorithme de calcul d'une intensité de précipitation sous influence 
+%d'un vent : Les paramètres d'entrée sont les valeurs de 3 compteurs 
+%(supérieur, latéral et anémomètre) à la même fréquence que le vecteur
+%de sortie.
+
+Calculer une intensité de précipitation à partir des quantités d'eau
+récoltées sur deux collecteurs (supérieur et latéral), en fonction
+de la vitesse du vent mesurée près du pluviomètre.
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Rain_rate_Hasse.args.tex}
+
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule :}
+
+\input{formules/Rain_rate_Hasse.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}\\
+Un premier traitement des données brutes (comptage) a permis d'obtenir des taux d'accroissement :
+Cs= 0.2972*(Vi-Vi-1)*120/10\\
+Cl= 0.1607*(Vi-Vi-1)*120/10\\
+U= (Vi-Vi-1)*0.1/10\\
+On a moyenné sur 10 minute pour "lisser" et éviter les retours à " zéro sur 10 secondes, puis on a appliqué l'algorithme\\
+Remarque : On a procédé à plusieurs essais pour la moyenne, (sur 1, 2, 5 puis 10 minutes) car il n'existe pas d'indications du constructeur sur le fonctionnement de l'appareil. Les meilleurs résultats, comparativement à l'ORG sont obtenus avec 10 minutes.\\
+\\
+\underline{Comparaison à un autre pluviomètre optique de type ORG :}\\
+\textbf{Attention}, du fait de la comptabilisation des gouttes sur la surface latérale, les intensités Hasse sont supérieures à celles de l'ORG par vent conséquent.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+
+Manuel du constructeur (Eigenbrodt) \cite{Hasse}.
+

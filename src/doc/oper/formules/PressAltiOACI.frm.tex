@@ -1,0 +1,39 @@
+%% Formule de l'operateur : PressAltiOACI
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+
+Altitude géopotentielle $H= (\frac{r*h}{r+h}) $\\
+Rayon de la terre r=6356766,0 m\\
+Accéleration normalisée de la pesanteur  $g_0$ = 9,80665 $m/s^2$ \\
+Constante massique des gaz parfaits spécifique de l'air  R  = 287,05287 $J/(K*kg)$\\
+
+Si H inférieure à -5000 m  \\
+ hors de la norme OACI, $P=misval$\\
+
+Si H comprise entre -5000 et 0 m  \\
+$P = P_b[1+ \frac{\beta }{T_b}(H-H_b)]^{(\frac{-g_0}{\beta R})}$\\
+avec $P_b$ = 1776,87 hPa\\
+et $\beta$ = -0,0065 K/m\\
+et  $T_b$ = 320,65 K\\
+et  $H_b$  = -5000,0 m\\
+
+Si H comprise entre 0 et 11000 m  \\
+$P = P_b[1+ \frac{\beta }{T_b}(H-H_b)]^{(\frac{-g_0}{\beta R})}$ \\
+avec $P_b$ = 1013,25 hPa\\
+et $\beta$ = -0,0065 K/m\\
+et  $T_b$ = 288,15 K\\
+et  $H_b$  = 0,0 m\\
+
+Si H comprise entre 11000 et 20000 m \\
+$P = P_b e^{\frac{-g_0}{R T}(H-H_b)}$ \\
+avec $P_b$ = 226,320 hPa\\
+et $\beta$ = 0 K/m\\
+et  $T$ = 216,65 K\\
+et  $H_b$  = 11000,0 m\\
+
+Sinon si H supérieure à  20000 m  \\
+ $P=misval$\\
+

@@ -1,0 +1,21 @@
+%%%%%ENTREES%%%%/
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab{Entr\'ees}}\\
+\hline
+$V$ & Vecteur, \texttt{float} & Tension de la sonde carbone ($V$) \\
+$T_s$ & Vecteur, \texttt{float} & Temp\'erature statique de l'air ($K$ ou $^\circ C$) \\
+$T_i$ & Vecteur, \texttt{float} & Temp\'erature d'impact ($K$ ou $^\circ C$) \\
+$P_s$ & Vecteur, \texttt{float} & Pression statique ($hPa$)\\
+$\Delta P$ & Vecteur, \texttt{float} & Pression dynamique ($hPa$)\\
+$C_1$ & Coeff., \texttt{float[4]} & Coefficients pour la gamme : $ T_s< -10^\circ C $\\
+$C_2$ &  Coeff., \texttt{float[4]} & Coefficients pour la gamme : $ -10^\circ C \leq T_s \leq +12^\circ C $\\
+$C_3$ &  Coeff., \texttt{float[4]} & Coefficients pour la gamme : $ +12^\circ C < T_s $\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab{Sorties}}\\
+\hline
+$H_u$ & Vecteur, \texttt{float} & Humidit\'e relative ($\%$)\\
+\end{tabarg}

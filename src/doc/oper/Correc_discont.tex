@@ -1,0 +1,41 @@
+%%%%%
+%
+\section{Correction de discontinuités}
+
+\itemstyle{Op\'erateur~:} \operfmt{Correc\_discont}
+\index{Correc\_discont}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Détecte les discontinuités dans les séries temporelles.
+On considére qu'un point provoque une discontinuité si :\\
+1) il est en dehors de bornes plausibles, ou alors.\\
+2) l'écart avec le précédent point correct est supérieur (en
+valeur absolue) à un seuil.
+
+Les points ainsi détectés sont (au choix) remplacé par
+une valeur spéciale ("valeur manquante"), ou par une
+interpolation.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Correc_discont.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Correc_discont.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Cette fonction n'est utile que si il y a une différence
+d'amplitude marquée entre les sauts normaux ("petits") et
+les sauts anormaux ("grands").
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

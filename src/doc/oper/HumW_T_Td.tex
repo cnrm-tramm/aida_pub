@@ -1,0 +1,46 @@
+%% THERMODYNAMIQUE %%
+%
+\section{Humidité relative à partir de la température du point
+de rosée, seuillée à 101\%}
+
+\itemstyle{ Opérateur~: } \operfmt{HumW\_T\_Td}
+\index{HumW\_T\_Td}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Cet opérateur calcule l'humidité relative à l'eau liquide à partir
+des températures de l'air et du point de rosée.
+
+%%%%%ARGUMENTS%%%%%
+\bigskip
+\input {arguments/HumW_T_Td.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input{formules/HumW_T_Td.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+La fonction $ew()$ est décrite en annexe
+\ref{annexe-thermo}.
+
+Les formules employées correspondent à l'hypothèse que 
+l'argument d'entrée $T_d$ est toujours un point de rosée (et non
+un point de givre si $T_d < 0$°C); 
+si $T_d$ provient d'un calcul, cette hypothèse peut être vérifiée,
+mais si il provient d'un hygromètre à miroir
+refroidi, il est probable que les valeurs en-dessous de 0°C soient
+une mesure de point de givre, et il vaut mieux utiliser l'opérateur
+\hyperref[OP-HumW_T_Tdf]{\operfmt{HumW\_T\_Tdf}}.
+
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ Références~:}
+
+\emph{Météorologie Générale}, Triplet-Roche, édition de 1971\cite{Triplet-Roche}, p59.

@@ -1,0 +1,18 @@
+%% Formule de l'operateur : Tdf_Hu
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+$Ts$ est converti en Kelvin, si besoin est, puis :
+\[
+e = \frac{Hu}{100} . e_w(Ts) \qquad \text{(définition de Hu)}
+\]
+et
+\[
+Tdf_K = 
+\begin{cases}
+e_{w}^{-1}(e) \qquad \text{ si } e > 6.11 hPa \\
+e_{i}^{-1}(e) \qquad \text{ sinon }  \\
+\end{cases}
+\]
+enfin, $Tdf = Tdf_K -273,15 $.

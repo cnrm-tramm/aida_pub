@@ -1,0 +1,97 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<div class="banniere"> L'interface graphique<br><span>La barre de menus</span></div>
+<br>
+<img src="barre_menus.png">
+<p class="titre1"> Le menu Fichier </p>
+    <img class="img1" src="menu_fichier.png" />
+    <br>
+    <p class="paragraphe1">
+    <b>Nouveau : </b> ouvre un nouveau document.
+    </p>
+    <p class="paragraphe1">
+    <b>Ouvrir : </b> ouvre un document existant. Une fen&ecirc;tre s&eacute;lecteur de fichiers appara&icirc;t et propose les fichiers de configuration de vista (extension .vista).
+    </p>
+    <p class="paragraphe1">
+    <b>Enregistrer : </b> enregistre le document courant, le nom du fichier se trouve dans la barre de titre de la fen&ecirc;tre vista.
+    </p>
+    <p class="paragraphe1">
+    <b>Enregistrer sous : </b> enregistre le document courant sous un nouveau nom. Une fen&ecirc;tre s&eacute;lecteur de fichiers appara&icirc;t. Nommer les fichiers avec l'extension .vista .
+    </p>
+    <p class="paragraphe1">
+    <b>Exporter en PDF, PS, PNG : </b> exporte le document courant dans le format correspondant. <br>Le fichier est cr&eacute;&eacute; dans le r&eacute;pertoire /var/tmp.<br>Le nom du fichier est de la forme <i>nom_datedebut_datefin.extension</i> pour les formats pdf et ps. Pour le format png, un fichier par page est cr&eacute;&eacute; et de la forme <i>nom_datedebut_datefin.numpage.png</i>
+
+    </p>
+    <p class="paragraphe1">
+    <b>Imprimer : </b>imprime le document courant. Une fen&ecirc;tre proposant le choix de l'imprimante appara&icirc;t. La configuration des param&egrave;tres de l'imprimante est sans effet.
+    </p>
+    <p class="paragraphe1">
+    <b>Quitter : </b> quitte vista.
+    </p>
+<br>
+<p class="titre1"> Le menu Edition </p>
+    <img class="img1" src="menu_edition.png" />
+    <br>
+    <p class="paragraphe1">
+    <b>Ajouter un &eacute;l&eacute;ment : </b> ajoute un &eacute;l&eacute;ment dans le container s&eacute;lectionn&eacute; (cf.  &sect;Cr&eacute;er un document).
+    </p>
+    <p class="paragraphe1">
+    <b>Supprimer un &eacute;l&eacute;ment : </b> supprime l' &eacute;l&eacute;ment s&eacute;lectionn&eacute; (cf.  &sect;Cr&eacute;er un document).
+    </p>
+    <p class="paragraphe1">
+    <b>Visualiser le document : </b> visualise le document (cf.  &sect;Visualiser le document).
+    </p>
+    <p class="paragraphe1">
+    <b>Recharger les donn&eacute;es : </b> visualise le document en for&ccedil;ant le rechargement des donn&eacute;es (cf.  &sect;Visualiser le document).
+    </p>
+<p class="titre1"> Le menu Affichage </p>
+    <img class="img1" src="menu_affichage.png" />
+    <br>
+    <p class="paragraphe1">
+    <b>Barre d'outils : </b> affiche la barre d'outils (cf.  &sect;La barre d'outils).
+    </p>
+    <p class="paragraphe1">
+    <b>Console : </b> affiche la zone console au bas de la fen&ecirc;tre vista. Cette zone contient les messages de logs de vista. Elle est &eacute;galement pilot&eacute;e par 3 boutons :<br>
+    <img class="img1" src="ouvrir_console.png" />  affiche la zone console. <br>
+    <img class="img1" src="actions_console.png" />  efface et ferme la zone console.<br>
+    <b>&nbsp;&nbsp;&nbsp;Attention :</b>&nbsp;la console n'est disponible que si vista a &eacute;t&eacute; lanc&eacute; avec l'option -c,--console (cf &sect;Vista en ligne de commande).
+    </p>
+    <p class="paragraphe1">
+    <b>Zoom : </b> zoom sur la fen&ecirc;tre de visualisation. Le niveau de zoom se choisit dans le sous-menu associ&eacute; :
+    </p>
+    <img class="img1" src="menu_zoom.png" />
+<p class="titre1"> Le menu Outils </p>
+    <img class="img1" src="menu_outils.png" />
+    <br>
+    <p class="paragraphe1">
+    <b>Mettre &agrave; jour la liste des vecteurs ... : </b> ouvre une bo&icirc;te de dialogue dans laquelle on choisit la plateforme pour laquelle on veut mettre &agrave; jour la liste des vecteurs.
+    <br>
+    <br>
+    <img class="img1" src="selection_plateforme2.png" /><br></br>
+    Vista recherche les nouveaux vecteurs depuis la date de derni&egrave;re mise &agrave; jour. On laisse la possibilit&eacute; de modifier cette date via le bouton d'&eacute;dition
+    <img src="bouton_calendrier.png" align="center"><br></br>
+    </p>
+
+    <p class="paragraphe1">
+    <b>AcqId -> date ... : </b> ouvre une bo&icirc;te de dialogue dans laquelle on saisit un AcqId pour obtenir la date correspondante.
+    <br>
+    <br>
+    <img class="img1" src="box_acqid_date.png" /><br></br>
+    Saisir un AcqId dans la zone appropri&eacute;e puis cliquer sur la fl&egrave;che. La date correspondant &agrave; l'AcqId appara&icirc;t dans la zone &apos;Date&apos;.
+
+    </p>
+
+    <p class="paragraphe1">
+<p class="titre1"> Le menu Aide </p>
+<img class="img1" src="menu_aide.png" />
+    <br>
+    <p class="paragraphe1">
+    <b>A propos : </b> affiche la version de vista.
+    </p>
+    <p class="paragraphe1">
+    <b>Manuel de l'utilisateur : </b> affiche cette aide.
+    </p>
+
+</html>

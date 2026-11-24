@@ -1,0 +1,37 @@
+%%%%%
+%
+\section{D\'ecalage\_flt}
+
+\itemstyle{Op\'erateur~:} {\sf Decale\_flt}
+\index{Decale\_flt}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+D\'ecalage temporel d'un param\`etre de dimension>1 par
+interpolation lin\'eaire. 
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Decale_flt.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Decale_flt.frm.tex}
+
+\itemstyle{Commentaire~:}
+
+Si $t_0$ est multiple de la p\'eriode
+d'\'echantillonnage ($1/f_e$), alors le signal
+est d\'ecal\'e d'un nombre entier de points, mais il
+reste le m\^eme. Dans le cas contraire, 
+le signal r\'esultat est interpol\'e 
+lin\'eairement. Donc,  
+la partie haute-fr\'equence est att\'enu\'ee. 
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

@@ -1,0 +1,26 @@
+%% Formule de l'operateur : Assure_croit
+%\begin{tabular}{llll}
+%    $X_{cor}[i]=val_{manq}$ & si &$X[i-1]> X[i]$ \\
+%    &&ou $X[i] =inv_{val}$ \\
+%    &&ou $X[i-1] =inv_{val}$ \\
+%    && ou $X[i] =val_{manq}$ \\
+%    $X_{cor}[i] =X[i]$&sinon& 
+%\end{tabular}
+
+\begin{tabular}{llll}
+    si &$X[i-1]> X[i]$ ou $X[i] =inv_{val}$ ou $X[i-1] =inv_{val}$ ou $X[i] =val_{manq}$ \\
+    alors  \\
+    &$X_{cor}[i]=val_{manq}$  \\
+    sinon&  \\
+    &$X_{cor}[i] =X[i]$ 
+\end{tabular}
+
+%\[
+%\begin{tabular}{lll}
+%    %X_{cor}[i]=val_{manq} & \text{si} X[i-1]> X[i] \\
+%    &\text{ou} X[i]=inv_{val} &\\
+%    &\text{ou} X[i-1]=inv_{val}& \\
+%    & \text{ou} X[i]=val_{manq}& \\
+%    %X_{cor}[i]=X[i]&\text{sinon} 
+%\end{tabular}
+%\]

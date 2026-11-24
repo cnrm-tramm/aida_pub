@@ -1,0 +1,100 @@
+%%Flux_bulk_simple
+%%\[
+ Les flux $H_{s}$, $L_{e}$ et $Tau$ sont calcul\'es pour chaque pas de temps.
+%%\]
+%Algorithme utilisé :
+%
+%En entrée :
+%Ps        hPa               Pressure on surface
+%Uz        %                 Relative Humidity
+%Ts        Kelvin or Celsius Air Temperature at height 0
+%Tz        Kelvin or Celsius Air Temperature at height z
+%Vz        m/s 	       Wind Strength (speed) at height z ; relatif a la mer si courant!!
+%Ustar     m/s               Friction velocity 
+%Hz        m                 Height of (Tz, Uz) measurements
+%En sortie
+%Hs        W/m2              Sensible heat flux 
+%Le        W/m2              latent heat flux 
+%Tau       N/m2              Turbulent part of wind stress 
+%
+
+
+\begin{align}
+H_{s} & = -\rho_h  \times  C_{h}  \times  V_{z} \times C_{ph}  \times  (T_{sK} - T_{zK})\\
+L_{e} & = -\rho_h  \times  C_{h}  \times  V_{z}  \times  L_{v}  \times  \frac{(r_{surf}\_sat - r_{z})}{1000}\\
+Tau & =  \rho_h  \times  C_{d}  \times  {V_{z}}^{2}                                                
+\end{align}
+
+avec \\
+Définition des termes utilisés :\\
+$H_{z}$ : Hauteur de mesure en m (niveau z)\\
+$R_{a}$ : Constante spécifique de l'air sec, en (J/K/kg) (=R/M$_{a}$=287.05)\\
+$\rho_h$ : Masse volumique de l'air humide  ($kg/m^3$)\\
+$C_{ph}$ : Chaleur massique (specific heat) à P constant de l'air humide (J/kg/K)\\
+$C_{pa}$ : Chaleur massique (specific heat) à P constant de l'air sec (J/kg/K)\\
+$T_{sK}$ : Température au niveau du sol (ou sst si c'est la mer) en Kelvin \\
+$T_{zK}$ : Température au niveau z (z en m) en Kelvin \\
+$T_{xK}$ signifie que la température est convertie en Kelvin si elle est fournie en celsius\\
+$T_{v}$ : Température virtuelle en Kelvin au niveau z\\
+$r_{surf}$ : rapport de mélange en g/kg a la surface (sol ou mer)\\
+$r_{surf}\_sat$ : rapport de mélange saturé en g/kg a la surface (sol ou mer)\\
+$r_{z}$ : rapport de mélange en g/kg au niveau de mesure z\\
+Le rapport de mélange $r_{z}$ est calculé par la fonction \texttt{rmel\_Hu()} \\
+$V_{z}$ : Vitesse du vent en m/s au niveau z\\
+$f_{m}$ : Fonction de stabilité pour le mouvement dépendant du signe du nombre de Richardson\\
+$f_{h}$ : Fonction de stabilité pour la chaleur et l'humidite dépendant aussi du signe du nombre de Richardson\\
+$C_{h}$ : Coefficient d'echange en surface pour la chaleur et l'humidite\\
+$C_{d}$ : Coefficient d'echange en surface pour le mouvement\\
+$cdn$ : Coefficient d'echange de quantité de mouvement à la neutralité\\
+$K$ : Contante de Karman (entre 0.35 et 0.41)\\
+$z0$ : Longueur de rugosité en m ($\overline{u}$ est nul du sol jusqu'au niveau z0)\\
+$z0$ est calculée ici par la formule de Charnock à partir de $ustar$ qui est la vitesse de vitesse de frottement en m/s.\\
+$ustar$ est un des paramètres d'entrée.\\
+$Charnock$ : Coefficient valant 0.021\\
+$g$ : Gravité valant ici 9.81 $m/s^2$ (varie en fonction de la latitude)\\
+$Ri$ : Nombre de Richardson calculé ici avec la température virtuelle :
+la vraie formule avec la température potentielle $\theta$ est :
+\begin{eqnarray*}
+ Ri & = & \dfrac{\frac{g}{\overline{\theta}} \times \frac{\overline{\theta_{z} - \theta_{0}}}{H_{z}}}{{(\frac{\overline{V_{z}}}{H_{z}})}^{2}} =
+ \dfrac{g \times H_{z} \times (\overline{\theta_{z} - \theta_{0}})}{\overline{\theta}  \times  {\overline{V_{z}}^{2}}}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\rho_h & = & P_{s}  \times  \frac{100}{R_{a}  \times  T_{v}}\\
+C_{ph} & = & (C_{pa} + \frac{(\frac{r_{z}}{1000}  \times  Cpv)}{1 + (\frac{r_{z}}{1000})}\\
+L_{v} & = & (2.501 - 0.00237  \times  (T_{sK} - 273.15) ) \times 10^6\\
+z0 & = & Charnock \times \frac{{ustar}^{2}}{g}\\
+cdn & = & \left( \frac{K}{log\frac{H_{z}}{z0}} \right) ^{2}\\
+\text{on pose } dt  =  T_{v}-T_{sK}\\
+\text{on calcule le nombre de Richardson} \\
+Ri & = & g  \times  Hz  \times  \frac{dt}{(T_{v}  \times  {V_{z}}^{2})}\\
+C_{h} & = & cdn  \times  f_{h}\\
+C_{d} & = & cdn  \times  f_{m}\\
+\end{eqnarray*}
+
+%\usepackage{amsmath}
+\begin{equation*}
+\begin{aligned}
+fm = &
+\begin{cases}
+1.-10. \times \dfrac{Ri}{(1.+75. \times cdn \times sqrt(\frac{H_{z}}{z0 \times fabs(Ri)}))} & \text{si $Ri <= 0$,}\\
+\dfrac{1.}{(1.+10. \times \dfrac{Ri}{sqrt(1.+5. \times Ri))}} & \text{si $Ri > 0$.}\\
+\end{cases} \\
+& \text{avec } cdn=\frac{K}{{log(\frac{Hz}{z0})}^{2}}
+\end{aligned}
+\end{equation*}
+\begin{equation*}
+\begin{aligned}
+fh = &
+\begin{cases}
+1.-15. \times \dfrac{Ri}{(1.+75. \times cdn \times sqrt(\frac{Hz}{z0 \times fabs(Ri)}))} & \text{si $Ri <= 0$,} \\
+\dfrac{1.}{(1.+15. \times Ri \times sqrt(1.+5. \times Ri))} & \text{si $Ri > 0$.}\\
+\end{cases} \\
+\end{aligned}
+\end{equation*}
+
+
+
+
+

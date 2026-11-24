@@ -1,0 +1,11 @@
+%% UNDEFINED NAME. There's a bug somewhere.
+%%Ote_Base_auto
+La série des $Flag_X$ est séparée en deux populations de part et d'autre de la moyenne.
+$S_h$ ($S_b$) est calculé comme la moyenne de la population supérieure (inférieure) moins (plus) cinq écart type.
+Pour chaque période continue où $Flag\_X > S_h$, on considère le minimum
+des $X$.\newline
+L'estimation de la ligne de base est construite par interpolation
+entre ces valeurs.\newline
+Enfin, pour les instants où  $Flag\_X < S_b$ et qui sont
+situés à plus de $n\_delay$ échantillons après un passage à zéro,
+$Xcor = X - base$

@@ -1,0 +1,34 @@
+%%Valid_empir_deltaFF
+1- recherche si une des mesures $ffbas$ ou $ffhaut$ est manquante alors : \\
+\hspace*{2cm} $flag_{deltaFF}$ = -9999 \\
+\\
+2- recherche de coh\'erence lorsque $ffbas$ ou $ffhaut$ sont \'egaux a l'offset : \\
+\\
+\indent Si $ffbas$ =  $offset_{bas}$ et $ffhaut$ incoh\'erent
+( $ffhaut$ >  $offset_{haut}$ + 0.5 ) alors : \\
+\hspace*{2cm} $flag_{deltaFF}$ = -1 \\
+\\
+\indent Si $ffhaut$ =  $offset_{haut}$ et $ffbas$ incoh\'erent
+( $ffbas$ >  $offset_{bas}$ + 0.3 ) alors  :\\
+\hspace*{2cm} $flag_{deltaFF}$ = +1 \\
+\\
+3- tests par rapport a une droite empirique ($ffhaut$ = a * $ffbas$ + b) : \\
+\\
+\indent Si $ffhaut$ est trop "fort" ( $ffhaut$ > $ffhaut_{maxi}$ ) alors \\
+\hspace*{2cm} $flag_{deltaFF}$ = -2 \\
+\\
+\indent Si $ffhaut$ est trop "faible" ( $ffhaut$ < $ffhaut_{min}$ ) alors \\
+\hspace*{2cm} $flag_{deltaFF}$ = +2 \\
+\\
+Formules des droites empiriques délimitant la zone de cohérence :\\
+\hspace*{1cm} Si $ffbas$ < 4 m/s :\\
+\hspace*{2cm} $ffhaut$ doit être inférieur à $ffhaut_{maxi1}$ avec \\ 
+$ffhaut_{maxi1}$ = 1.225 * $ffbas$ + 0.7\\
+\\
+\hspace*{1cm} Sinon :\\
+\hspace*{2cm} $ffhaut$ doit être inférieur à $ffhaut_{maxi2}$ avec \\ 
+$ffhaut_{maxi2}$ = 1.6 * $ffbas$ - 0.8\\
+\\
+\hspace*{1cm} Dans tous les cas (quelle que soit la valeur de $ffbas$):\\
+\hspace*{2cm} $ffhaut$ doit être supérieur à $ffhaut_{min}$ avec \\ 
+$ffhaut_{min}$ = 1.08 * $ffbas$ - 0.5\\

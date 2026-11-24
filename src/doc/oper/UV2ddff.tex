@@ -1,0 +1,44 @@
+%% THERMODYNAMIQUE %%
+%
+\section{Direction et vitesse du vent à partir des composantes}
+
+\itemstyle{Op\'erateur~:} \operfmt{UV2ddff}
+\index{UV2ddff}
+
+%%%%%OBJET%%%%%
+\itemstyle{Objet~: }
+Calcul des composantes polaires du vent (direction, vitesse), selon la
+convention météorologique usuelle, à partir de composantes cartésiennes
+dans le repère géographique
+local. La convention météorologique consiste à indiquer la direction
+d'où vient le vent, exprimée dans le sens rétrograde à partir du nord
+géographique.
+
+%%%%%ARGUMENTS%%%%%
+\bigskip
+\input {arguments/UV2ddff.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/UV2ddff.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~: }
+
+Bien que le résultat pour la direction s'appelle $DD$, comme dans les
+descriptions du codage des messages météo, il est exprimé comme un nombre réel,
+et pas selon ces règles de codage (dans lesquelles la valeur est arrondie à
+la dizaine de degrés la plus proche, dans l'intervalle $[10, 360]$, $0$ étant
+réservé au vent nul).
+
+Bien que le résultat pour la vitesse s'appelle $FF$, cette grandeur est bien
+une vitesse (distance parcourue pendant un certain temps), et pas une force
+(qui serait exprimée en Newton).
+
+%%%%%AUTEUR%%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{R\'ef\'erences~:}

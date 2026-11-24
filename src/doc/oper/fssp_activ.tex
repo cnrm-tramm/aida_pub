@@ -1,0 +1,43 @@
+%%%%%
+%
+\section{FSSP: Activité à partir l'enregistrement brut}
+
+\itemstyle{Op\'erateur~:} \operfmt{fssp\_activ}
+\index{fssp\_activ}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul de l'activité d'un FSSP exprimée en proportion (gamme $[0, 1]$)
+à partir de l'enregistrement brut de la voie "activité".
+
+L'enregistrement brut est basé sur le comptage des pulsations
+d'horloge dans les périodes pendant lesquelles la sonde
+travaille (détection de gouttes, dimensionnement ou rejet).
+
+Dans la sonde, le nombre de pulsations est divisé
+par $2^x$, donc le coefficient est égal à
+$2^x$ / (fréquence de l'horloge).
+
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/fssp_activ.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/fssp_activ.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+La valeur de $C_A$ pour le FSSP du CAM/SAFIRE est de 8.02e-6.
+
+Pour d'autres FSSP, on trouve plutôt 1.00e-3.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Brenguier-89 \cite{Brenguier-89}

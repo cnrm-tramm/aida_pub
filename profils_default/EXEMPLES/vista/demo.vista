@@ -1,0 +1,200 @@
+{
+    "version_vista": "4.0.10",
+    "pages": [
+        {
+            "autoAgencement": "non",
+            "graphiques": [
+                {
+                    "height": 23,
+                    "policeTitre": "Sans Bold 12",
+                    "titre": "ST",
+                    "width": 60,
+                    "x": 5,
+                    "y": 7,
+                    "traces": [
+                        {
+                            "couleur": "#FF6B00",
+                            "legende": "ts:ray_ird_cal_%60",
+                            "parametre": "ray_ird_cal_%60",
+                            "plateforme": "ts"
+                        },
+                        {
+                            "couleur": "#FF0000",
+                            "legende": "ts:ray_rgd_cal_%60",
+                            "parametre": "ray_rgd_cal_%60",
+                            "plateforme": "ts"
+                        },
+                        {
+                            "axe_y": 1,
+                            "couleur": "#00FF00",
+                            "legende": "ts:tpr_air_cal_%60",
+                            "parametre": "tpr_air_cal_%60",
+                            "plateforme": "ts"
+                        }
+                    ]
+                },
+                {
+                    "azimut": -68,
+                    "elevation": 29,
+                    "height": 17,
+                    "largeurBarre": 50,
+                    "legendeAida": "non",
+                    "norme": "oui",
+                    "policeTitre": "Sans Bold 12",
+                    "titre": "Histo3D",
+                    "type": "Histo3D",
+                    "width": 22,
+                    "x": 74,
+                    "y": 9,
+                    "traces": [
+                        {
+                            "couleur": "#FF6B00",
+                            "legende": "ts:ray_ird_cal_%60",
+                            "parametre": "ray_ird_cal_%60",
+                            "plateforme": "ts",
+                            "type": "Histo3D"
+                        },
+                        {
+                            "couleur": "#FF0000",
+                            "legende": "ts:ray_rgd_cal_%60",
+                            "parametre": "ray_rgd_cal_%60",
+                            "plateforme": "ts",
+                            "type": "Histo3D"
+                        }
+                    ]
+                },
+                {
+                    "height": 25,
+                    "policeTitre": "Sans Bold 12",
+                    "titre": "          PlotXY",
+                    "type": "PlotXY",
+                    "width": 35,
+                    "x": 60,
+                    "y": 35,
+                    "traces": [
+                        {
+                            "couleur": "#0000FF",
+                            "legende": "ts:pre_air_c1_cal_%60",
+                            "marqueur": ".",
+                            "parametre": "pre_air_c1_cal_%60",
+                            "parametre_x": "tpr_air_cal_%60",
+                            "plateforme": "ts",
+                            "plateforme_x": "ts",
+                            "regression": "oui",
+                            "type": "PlotXY",
+                            "typeLigne": "None"
+                        }
+                    ]
+                },
+                {
+                    "height": 20,
+                    "policeTitre": "Sans Bold 12",
+                    "titre": "Histo",
+                    "type": "Histo",
+                    "width": 35,
+                    "x": 5,
+                    "y": 38,
+                    "traces": [
+                        {
+                            "couleur": "#FF6B00",
+                            "legende": "ts:ray_ird_cal_%60",
+                            "parametre": "ray_ird_cal_%60",
+                            "plateforme": "ts",
+                            "type": "Histo"
+                        },
+                        {
+                            "couleur": "#FF0000",
+                            "legende": "ts:ray_irm_cal_%60",
+                            "parametre": "ray_irm_cal_%60",
+                            "plateforme": "ts",
+                            "type": "Histo"
+                        }
+                    ]
+                },
+                {
+                    "height": 25,
+                    "policeTitre": "Sans Bold 12",
+                    "roseStandard": "non",
+                    "secteursRDV": 36,
+                    "titre": "                RDV",
+                    "type": "RDV",
+                    "width": 35,
+                    "x": 20,
+                    "y": 66,
+                    "traces": [
+                        {
+                            "legende": "ts:ven_ffmoy1mn_cal_%60",
+                            "parametre": "ven_ffmoy1mn_cal_%60",
+                            "parametre_x": "ven_ddmoy1mn_cal_%60",
+                            "plateforme": "ts",
+                            "type": "RDV"
+                        }
+                    ]
+                }
+            ],
+            "policeTitre": "Sans Bold 12",
+            "titre": "METEOPOLE-FLUX du $DATEDEBUT1 au $DATEFIN1"
+        },
+        {
+            "autoAgencement": "non",
+            "graphiques": [
+                {
+                    "height": 35,
+                    "legendeVisible": "oui",
+                    "positionLegende": "0,0.0,0.0,0.0,0.0",
+                    "width": 80,
+                    "x": 10,
+                    "y": 55,
+                    "traces": [
+                        {
+                            "conditions": "a=ts:tpr_air_cal_%60##a>3,#54DC14,None,1,T>3\u00b0,oui##condition non \u00e9valuable,#1642EF,-,1",
+                            "couleur": "#FF0000",
+                            "legende": "Pression",
+                            "parametre": "pre_air_c1_cal_%60",
+                            "plateforme": "ts"
+                        }
+                    ]
+                },
+                {
+                    "height": 32,
+                    "policeTitre": "Sans Bold 12",
+                    "titre": "Hov (1 niveau)",
+                    "type": "Hov",
+                    "width": 35,
+                    "x": 57,
+                    "y": 13,
+                    "traces": [
+                        {
+                            "legende": "ts:tpr_air_cal_%60",
+                            "parametre": "tpr_air_cal_%60",
+                            "plateforme": "ts",
+                            "type": "Hov"
+                        }
+                    ]
+                },
+                {
+                    "height": 32,
+                    "inverseAxeYHov": "oui",
+                    "policeTitre": "Sans Bold 12",
+                    "titre": "Hov (profil)",
+                    "type": "Hov",
+                    "typeHov": "shading",
+                    "width": 35,
+                    "x": 8,
+                    "y": 13,
+                    "traces": [
+                        {
+                            "legende": "ts:tpr_profil_sol_cal_%900",
+                            "parametre": "tpr_profil_sol_cal_%900",
+                            "plateforme": "ts",
+                            "type": "Hov"
+                        }
+                    ]
+                }
+            ],
+            "orientation": "landscape",
+            "policeTitre": "Sans Bold 12",
+            "titre": "METEOPOLE-FLUX du $DATEDEBUT1 au $DATEFIN1"
+        }
+    ]
+}

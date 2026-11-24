@@ -1,0 +1,9 @@
+%%% Temperature de l'air \`a partir de la tempe sonique
+
+On calcule d'abord une humidité spécifique en 
+\textit{kg}/\textit{kg} :
+$ q= \frac{10^{-3}r}{1+10^{-3}r}$
+
+Puis : \[ T = (1 - 0.518 . q).T_m \] 
+(Avec, si nécessaire, conversion 
+des degrés Celsius vers Kelvin et retour).

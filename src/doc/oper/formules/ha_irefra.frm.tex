@@ -1,0 +1,15 @@
+% calcul de l'humidite en fonction
+% de la refractivite 
+La tension de vapeur d'eau $e$ est d\'eduite de la
+formule suivante :   
+\[
+N = 77.604.\frac{(P_s-e)}{T_s} + 64.79.\frac{e}{T_s} 
+    + 3.776.10^5.\frac{e}{T_s^2}
+\]
+Puis l'humidit\'e absolue est calcul\'ee de la
+mani\`ere suivante~:
+\[
+H_a = \frac{Ps \time 100}{R_a.T_s}
+      .\frac{R_a}{R_v}.\frac{e}{(P_s-e)}
+\]
+avec $\frac{R_a}{R_v} = 0.622$ et $R_a = 287.05 J.kg^{-1}.K^{-1}$

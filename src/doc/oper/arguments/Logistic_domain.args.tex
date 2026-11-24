@@ -1,0 +1,26 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, {\tt float} & Op\'erande (unit\'e quelconque)\\
+$A$ & Coeff., \texttt{double} & Coefficient multiplicateur A du terme exponentiel()\\
+$K$ & Coeff., \texttt{double} & Coefficient multiplicateur K de la  fonction()\\
+$\alpha$ & Coeff., {\tt double} & Coefficient pour l'exposant du terme de degr\'e 0.\\
+$\beta$ & Coeff., {\tt double} & Coefficient pour l'exposant du terme de degr\'e 1.\\
+$\gamma$ & Coeff., {\tt double} & Coefficient pour l'exposant du terme de degr\'e 2.\\
+$Borne\_{min}$ & Coeff., {\tt float} & Borne minimale pour le parametre X\\
+$Borne\_{max}$ & Coeff., {\tt float} & Borne maximale pour le parametre X\\
+$Unit\_{res}$ & Coeff., {\tt String} & Unit\'e du r\'esultat.\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Z$ & Vecteur, \texttt{float} & R\'esultat (unit\'e indiqu\'ee par $Unit\_{res}$) \\
+\end{tabarg}

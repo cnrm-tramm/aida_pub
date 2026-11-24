@@ -1,0 +1,23 @@
+[IDENTIFICATION]
+nom                    =  BETA 
+date_debut             = 28/10/2020
+date_fin               = 28/10/2020
+projet                 = EXEMPLES-AIDA 
+region_geographique    = South of France, Toulouse
+un_m49_code            = 155
+geospatial_lat_min     = 42.8954   
+geospatial_lat_max     = 44.1380
+geospatial_lon_min     = 1.3739
+geospatial_lon_max     = 6.5138
+description = Objective : Learning AIDA with measurements from SAFIRE Falcon aircraft.  
+principal_investigator = X1 : Y1 : X1.Y1@domain.fr : Institue ; X2 : Y2 : X2.Y2@domain.fr : Institue ; X3 : Y3 : X3.Y3@domain.fr : Institue ;
+
+
+[falcon] 
+liste_acqid            = fs200013-fs200013
+date_debut             = 28/10/2020 
+date_fin               = 28/10/2020
+principal_investigator = X3 : Y3 : X3.Y3@domain.fr : Institue ;
+
+
+

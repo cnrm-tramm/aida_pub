@@ -1,0 +1,15 @@
+%% Formule de l'operateur : Tair_avion
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+Si besoin est, $T_t$ est converti en Kelvin, puis
+\[
+T_s =
+\begin{cases}
+\frac{T_t}
+     {1 + r_f \left( \left(1 + \frac{\Delta P}{P_s}\right)
+        ^{R_a/c_{pa}} - 1\right)} \qquad \text{ si } \Delta P > 6 \\
+\text{valeur\_manquante} \qquad \text{ sinon } \\
+\end{cases}
+\]

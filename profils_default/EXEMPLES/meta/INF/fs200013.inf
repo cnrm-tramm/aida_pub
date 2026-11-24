@@ -1,0 +1,286 @@
+[FORMAT]
+format_coord = C (D)DDdMM.X(X) (C=lettre (N,E,S ou W)), (D)DD= degres 2 ou 3 chiffres, MM=minutes, X(X)= fraction decimale de minutes;
+format_heure = HHMMSS (HH= heures, MM=minutes, SS= secondes);
+format_date  = JJ/MM/AAAA (JJ= jour, MM=mois, AAAA=annee, le tout en chiffres);
+format_duree = HH.D (HH= heure, D= dixiemes d'heure);
+
+[IDENTIFICATION]
+plate-forme  = M20;
+acq_id       = fs200013;
+date         = 28/10/2020;
+campagne     = HISA-3;
+#theme = theme scientifique de l'acquisition;
+lieu_depart  = Francazal;
+lieu_arrivee = Francazal;
+
+[HORAIRES_UTC]
+depart_parking      = ;
+decollage           = 081007;
+atterrissage        = 110934;
+retour_parking      = ;
+duree_reglementaire = ;
+
+[TRAITEMENT]
+base_de_nom = 2020-hisa3;
+
+[ACQUISITION]
+systeme_acquisition = calculateur M20 2020;
+debut_acquisition   = 28/10/2020/074738;
+fin_acquisition     = 28/10/2020/111239;
+media               = HD;
+#autre_acquisition = nom d'autres acquisitions sur la meme plate-forme;
+#commentaire = commentaire;
+
+[POINTS_CARACTERISTIQUES]
+#wpt = nom/Nxxdxx.x/Wxxxdxx.x; #acronyme et coordonnees du point
+# way-points from file : fs200013_planet.csv
+wpt      = BOX1/N44d30.168/E004d37.710;
+wpt      = BOX2/N43d11.976/E004d37.056;
+wpt      = BOX3/N43d11.496/E006d50.538;
+wpt      = BOX4/N44d29.934/E006d49.878;
+#radar = nom/Nxxdxx.x/Wxxxdxx.x;# acronyme et coordonnees du point
+#balise = nom/Nxxdxx.x/Wxxxdxx.x;# acronyme et coordonnees du point
+#bouee = nom/Nxxdxx.x/Wxxxdxx.x;# acronyme et coordonnees du point
+#station = nom/Nxxdxx.x/Wxxxdxx.x;# acronyme et coordonnees du point
+#ville = nom/Nxxdxx.x/Wxxxdxx.x;# acronyme et coordonnees du point
+
+[PERSONNEL]
+#pilote = Initiale du prenon. Nom Nom du pilote de la plate-forme (avion);
+#copilote = Nom du copilote de la plate-forme;
+#operateur = Nom de l'operateur du systeme d'acquisition;
+operateur = F. Pouvesle;
+operateur = T. Jiang;
+operateur = H. Bellec;
+#scientifique = Nom du scientifique de la mission;
+#directeur_de_mission = Nom du directeur de la mission;
+#invite = Nom de l'invite;
+#commandant_de_bord = Nom du commandant de bord (bateau);
+
+[METEO_DEBUT]
+QNH      = 1019;
+#QFE = xxxx hPa;# Valeur du QFE;
+#vent = Direction en degres et force en noeuds du vent reel;
+#temperature = xxx C ou  xxx F Temperature en degres C ou F;
+#point_de_rosee = xxx C ou  xxx F Temperature en degres C ou F;
+#visibilite = xxxx m;# Visibilite en metres;
+#commentaire = Commentaire;
+
+[SEQUENCES]
+#palier = nom/hhmmss_deb/hhmmss_fin/Wpt_deb/Wpt_fin/Cap/Alt./comment;
+#sondage = nom/hhmmss_deb/hhmmss_fin/Wpt_deb/Wpt_fin/Alt_deb/Alt_fin/comment;
+#cercle = nom/hhmmss_deb/hhmmss_fin/Wpt/Alt/comment;
+#zoom = nom/hhmmss_deb/hhmmss_fin/Wpt_deb/Wpt_fin/Cap/Alt_deb/Alt_fin/comment;
+#station = nom/hhmmss_deb/hhmmss_fin/Wpt/Cap/Alt/comment;
+#sequence = nom/hhmmss_deb/hhmmss_fin/comment;
+
+[ETAT_CAPTEURS]
+#avant_acq = commentaire sur l'etat des capteurs avant l'acquisition;
+#pendant_acq = commentaire sur l'etat des capteurs pendant l'acquisition;
+#apres_acq = commentaire sur l'etat des capteurs apres l'acquisition;
+
+[PARAMETRES_ACQUIS]
+ALTADC            = Altitude Air Data Computer;
+ALTBADC           = Altitude baro Air Data Computer;
+IASADC            = Vitesse indiquee ADC;
+MACHADC           = Mach Air Data Computer;
+SATADC            = Temperature statique Air Data Computer;
+TASADC            = Vitesse vraie air Air Data Computer;
+TATADC            = Temperature totale air Data Computer;
+TIME_ARINC0_RX4   = Temps des echantillons (horloge calee sur reference GPS;
+VMOADC            = Vitesse max admissible Air Data Computer;
+VVADC             = Vitesse verticale Air Data Computer;
+ALTAIPOV          = Altitude AIRINS;
+CAPAIPOV          = cap geographique AIRINS;
+CKSAIPOV          = Somme de controle AIRINS;
+GXAIPOV           = Acceleration axe X avion AIRINS;
+GYAIPOV           = Acceleration axe Y avion AIRINS;
+GZAIPOV           = Acceleration axe Z avion AIRINS;
+LATAIPOV          = Latitude AIRINS;
+LONGAIPOV         = Longitude AIRINS;
+PITCHAIPOV        = Tangage AIRINS;
+ROLLAIPOV         = Roulis AIRINS;
+STATAIPOV         = Status AIRINS;
+TIMEAIPOV         = Temps UTC AIRINS;
+TRAIPOV           = Route AIRINS;
+VEAIPOV           = vitesse est inertielle AIRINS;
+VNAIPOV           = vitesse nord inertielle AIRINS;
+VRXAIPOV          = Vitesse angulaire axe X avion AIRINS;
+VRYAIPOV          = Vitesse angulaire axe Y avion AIRINS;
+VRZAIPOV          = Vitesse angulaire axe Z avion AIRINS;
+VVAIPOV           = Vitesse verticale AIRINS;
+VXAIPOV           = Vitesse axe X avion AIRINS;
+VYAIPOV           = Vitesse axe Y avion AIRINS;
+VZAIPOV           = Vitesse axe Z avion AIRINS;
+DATA_NB           = numéro de bloc (1 par seconde;
+TOPNB             = top de l'evenement;
+ALTIGPS           = Hauteur ellipsoidale mesuree par GPS;
+BALCR2            = signal balance hygrometre cryogenique;
+CBGPS             = Biais horloge GPS;
+CBRGPS            = Taux de biais de l'horlogue GPS;
+CONSTEL           = informations satellites GPS;
+DEBITCR2          = debit du CR2;
+DPBPAV            = pression dynamique perche;
+DPI               = Pression differentielle incidence radome;
+DPJ               = Pression differentielle derapage radome;
+ECEFTIME          = heure GPS ECEF;
+ENUTIME           = heure GPS ENU;
+FIXSTGPS          = statut sur le correctif additionel du GPS;
+GPSUTC            = Offset entre le temps GPS et UTC;
+HEALTHGPS         = Etat du GPS;
+HUMAERO           = Humidite relative;
+LATGPS            = Latitude GPS;
+LLATIME           = heure position GPS;
+LONGPS            = longitude GPS;
+PCABINE           = Pression cabine;
+PCR2              = Pression hygrometre cryogenique;
+PPMVCR2           = Rapport de melange;
+PSBAV             = Pression brute statique avant perche;
+QNH               = qnh;
+RALT              = Hauteur radioaltimetre avion;
+STATGPS           = etat du GPS;
+TDCR2             = point de rosee hygrometre cryogénique;
+TIME              = Temps des echantillons (horloge calee sur reference GPS;
+TSOUTAV           = Temperature soute avant;
+TTAERO            = Temperature;
+TTBRTD            = Temperature degivree Rosemount;
+VEGPS             = vitesse GPS selon l'axe Est;
+VNGPS             = vitesse GPS selon l_axe Nord;
+VUPGPS            = vitesse GPS de montee;
+SATELLITE         = Numero identification du satellite (almanach;
+T_ZC              = Temps Z count (almanach;
+WEEK_NUMBER       = Numero de semaine (almanach;
+ECCENTRICITY      = Excentricite (almanach;
+T_OA              = Datation de l almanach (almanach;
+I_O               = Angle d inclinaison (almanach;
+OMEGA_DOT         = Vitesse d ascension (almanach;
+SQUARE_ROOT_A     = Racine carre du demi-grand axe (almanach;
+OMEGA_O           = Perigee (almanach;
+OMEGA             = Ascension (almanach;
+M_O               = Anomalie moyenne (almanach;
+GPS_TIME_WEEK     = Temps GPS de la semaine;
+GPS_WEEK_NUMBER   = Numero de la semaine;
+GPS_UTC_OFFSET    = Decalage GPS UTC;
+MODE              = Mode de fonctionnement de la selection des satellites;
+SATELLITE_NUMBERS = Numeros des 4 satellites selectionnes (4 bytes;
+PDOP              = Coefficient d affaiblissement de la precision de la position 3D;
+HDOP              = Coefficient d affaiblissement de la precision de la composante horizontale;
+VDOP              = Coefficient d affaiblissement de la precision de la composante verticale;
+TDOP              = Coefficient d affaiblissement de la precision du temps;
+STATUS_CODE       = Code d etat du module acutime;
+ERROR_CODE        = Code d erreur du module acutime;
+LAT_GPS           = Latitude simple precision (LLA;
+LONG_GPS          = Longitude simple precision (LLA;
+ALTI_GPS          = Altitude simple precision (LLA;
+LLA_CLOCK_BIAS    = Biais de l horloge (coordonnees LLA simple precision;
+LLA_TIME_FIX      = Datation des coordonnees LLA simple precision;
+MACHINE_ID        = Identificateur du module acutime;
+STATUS_1          = Mot d etat 1 du module acutime;
+STATUS_2          = Mot d etat 2 du module acutime;
+BIAS              = Biais satellite 1;
+BIAS_RATE         = Taux du biais satellite 1;
+BIAS_TIME_FIX     = Datation du biais et taux de biais du satellite 1;
+VEAST_ENU         = Vitesse est (ENU;
+VNORTH_ENU        = Vitesse nord (ENU;
+VUP_ENU           = Vitesse verticale (ENU;
+ENU_BIAS_RATE     = Taux du biais de l horloge (ENU;
+ENU_TIME_FIX      = Datation des vitesses (ENU;
+SAT_PRN_NB        = Numero PRN du satellite (donnee brute;
+SAMPLE_LENGHT     = Duree d echantillonnage (donnee brute;
+SIGNAL_LEVEL      = Niveau de signal (donnee brute;
+CODE_PHASE        = Valeur codephase (donnee brute;
+DOPPLER           = Valeur Doppler (donnee brute;
+RAW_TIME          = Temps de mesure (donnee brute;
+SV_PRN_NB         = Numero PRN SV du satellite (etat ephemeride;
+EPHEM_TIME        = Datation de l ephemeride du satellite (temps GPS;
+HEALTH            = Etat du satellite (etat ephemeride;
+IODE              = IODE (etat ephemeride;
+TOE               = Etat du satellite (etat ephemeride;
+FIT_FLAG          = Etat ? (etat ephemeride;
+URA               = Precision SV (URA) (etat ephemeride;
+FIX_STATUS_0      = Mot d etat supplementaire sur le calcul de position;
+FIX_STATUS_1      = Mot d etat supplementaire sur le calcul de position;
+FAILURE           = Message d'erreur (ascii;
+MODE_ALL          = Mode de fonctionnement de la selection des satellites;
+PDOP_ALL          = Coefficient d affaiblissement de la precision de la position 3D;
+HDOP_ALL          = Coefficient d affaiblissement de la precision de la composante horizontale;
+VDOP_ALL          = Coefficient d affaiblissement de la precision de la composante verticale;
+TDOP_ALL          = Coefficient d affaiblissement de la precision du temps;
+SV_PRN_0          = SV PRN;
+SV_PRN_1          = SV PRN;
+SV_PRN_2          = SV PRN;
+SV_PRN_3          = SV PRN;
+SV_PRN_4          = SV PRN;
+SV_PRN_5          = SV PRN;
+SV_PRN_6          = SV PRN;
+SV_PRN_7          = SV PRN;
+SV_PRN_8          = SV PRN;
+SV_PRN_9          = SV PRN;
+TIME_BC637_ASYNC  = Temps des echantillons (horloge calee sur reference GPS;
+CYCLEICE_RS       = Cycle du detecteur de glace;
+ERRORICE_RS       = Erreurs du detecteur de givre;
+FAILHEATICE_RS    = Nombre de panne du chauffage du detecteur de givre;
+FAILICE_RS        = Nombre d erreur ICE1 ICE2 ICE3 du detecteur de givre;
+FAILMSOICE_RS     = Nombre total de fois des pannes MSO du detecteur de givre;
+FAILSTATICE_RS    = Nombre total FAIL/STATUS en panne du detecteur de givre;
+FAILTOTALICE_RS   = Nombre total de panne du detecteur de givre;
+FAULT1ICE_RS      = Rapport d erreur 1 du detecteur de givre;
+FAULT2ICE_RS      = Rapport d erreur 2 du detecteur de givre;
+FAULT3ICE_RS      = Rapport d erreur 3 du detecteur de givre;
+FAULT4ICE_RS      = Rapport d erreur 4 detecteur de givre;
+FAULT5ICE_RS      = Rapport d erreur 5 detecteur de givre;
+FAULT6ICE_RS      = Rapport d erreur 6 detecteur de givre;
+FAULT7ICE_RS      = Rapport d erreur 7 detecteur de givre;
+MSOFREQICE_RS     = Frequence MSO du detecteur de glace;
+PERRORICE_RS      = Erreurs permanentes du detecteur de glace;
+POWINTICE_RS      = Nombre d interruption de fonctionnement du detecteur de glace;
+STATOPICE_RS      = Etat du fonctionnement du detecteur de givre;
+STATSIGICE_RS     = Etat du signal de sortie du detecteur de givre;
+TIME_NAI_1_CH0    = Temps des echantillons reçus sur le canal 0 du slot 1 (horloge calee sur GPS;
+TIMEICE_RS        = Duree de fonctionnement du detecteur de glace;
+TOTALICE_RS       = Nombre total du comptage de glace du detecteur de givre;
+IRB_RS            = Rayonnement infra rouge montant;
+IRH_RS            = Rayonnement infra rouge descendant;
+RGB_RS            = Rayonnement global montant;
+RGH_RS            = Rayonnement global descendant;
+THIRB_RS          = Rayonnement Thermopile infra rouge montant;
+THIRH_RS          = Rayonnement thermopile infra rouge descendant;
+TIME_NAI_1_CH1    = Temps des echantillons reçus sur le canal 1 du slot 1 (horloge calee sur GPS;
+TIRB_RS           = Temperature infra rouge montant;
+TIRH_RS           = Temperature infra rouge descendant;
+ADJWVS_RS         = point milieu corrigé WVSS-2;
+BLCFWVS_RS        = facteur de correction loi de Beer WVSS-2;
+LASWVS_RS         = Signal du laser WVSS-2;
+MIDPTWVS_RS       = point milieu WVSS-2;
+MRWVS_RS          = Concentration en vapeur d'eau WVSS-2;
+NULLWVS_RS        = valeur du zero WVSS-2;
+PEAKWVS_RS        = indice du point haut WVSS-2;
+PP2FWVS_RS        = PP2F WVSS-2;
+PRESWVS_RS        = Pression interne de la chambre WVSS-2;
+PTWVS_RS          = facteur de correction pression/temperature WVSS-2;
+TEMPWVS_RS        = Temperature de la chambre du WVSS2;
+TIME_NAI_0_CH2    = Temps des echantillons reçus sur le canal 2 du slot 0 (horloge calee sur GPS;
+BALCR2_RS         = balance td cryo CR2;
+FLAGCR2_RS        = etat miroir td cryo CR2;
+MRCR2_RS          = rapport de melange td cryo CR2;
+PRESCR2_RS        = pression td cryo CR2;
+PWMCR2_RS         = PWM td cryo CR2;
+STATCR2_RS        = status flag td cryo CR2;
+TBOACR2_RS        = temperature du circuit td cryo CR2;
+TDCR2_RS          = temperature miroir td cryo CR2;
+TEMPCR2_RS        = temperature du td cryo CR2;
+TIME_NAI_0_CH1    = Temps des echantillons reçus sur le canal 1 du slot 0 (horloge calee sur GPS;
+LASWVS            = Tension laser WVSS-2;
+MRWVS             = Rapport de melange WVSS-2;
+PEAKWVS           = Position WVSS-2;
+PRESSWVS          = Pression MC;
+SIGLWVS           = Tension du signal 2F WVSS-2;
+STATWVS           = Status WVSS-2;
+TEMPWVS           = Temperature de la chambre du WVSS2;
+TIME_ARINC0_RX1   = Temps des echantillons (horloge calee sur reference GPS;
+
+[ACQUISITIONS_EXTERNES]
+airins   = centrale inertielle;
+ce332    = climat cimel;
+ce376    = lidar;
+
+[FIN]

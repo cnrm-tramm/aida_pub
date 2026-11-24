@@ -1,0 +1,25 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$U$ & Vecteur, \texttt{float} & Composante du vent suivant axe X \\
+$V$ & Vecteur, \texttt{float} & Composante du vent suivant axe Y \\
+$W$ & Vecteur, \texttt{float} & Composante du vent suivant axe Z \\
+$\alpha$ & Coeff., \texttt{float} & Angle de rotation autour de l'axe X (degrés)\\
+$\beta$ & Coeff., \texttt{float} & Angle de rotation autour de l'axe Y (degrés) \\
+$ b_0$ & Coeff., \texttt{float} & Correction d'offset de $W$\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$U_r$ & Vecteur, \texttt{float} & Composante U dans le nouveau repère (m\^eme unité que $U$)\\
+$V_r$ & Vecteur, \texttt{float} & Composante V dans le nouveau repère (m\^eme unité que $V$)\\
+$W_r$ & Vecteur, \texttt{float} & Composante W dans le nouveau repère (m\^eme unité que $W$)\\
+\end{tabarg}

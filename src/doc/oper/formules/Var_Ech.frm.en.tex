@@ -1,0 +1,12 @@
+%%Var_Ech
+For  i=$0$, $Number\_Sample(X). R_f$ :
+\[
+I_i = \left\{X_j | \frac{i}{R_f} + Shift \leq j \le \frac{i+1}{R_f} -1 + Shift,
+ X_j \in \mathbb{R}\right\}
+\]
+\[
+m_i = \frac{1}{\mathrm{card}(I_i)} \sum_{I_i} X
+\]
+\[
+V_x[i] = \frac{1}{\mathrm{card}(I_i)} \sum_{I_i} (X -m_i)^2
+\]

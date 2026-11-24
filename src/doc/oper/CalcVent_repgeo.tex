@@ -1,0 +1,37 @@
+%% THERMODYNAMIQUE %%
+%
+\section{Composantes du vent \`a partir des vitesses "avion" dans le rep\`ere terrestre}
+
+\itemstyle{ Op\'erateur~: } \operfmt{CalcVent\_repgeo}
+\index{CalcVent\_repgeo}
+
+%%%%%OBJET%%%%%
+\itemstyle{ Objet~: }
+Cet op\'erateur calcule les 3 composantes du vecteur vent. La vitesse
+de l'air par rapport \`a l'avion est transform\'ee vers le
+rep\`ere g\'eographique terrestre 
+(ENU : axes orient\'es vers l'Est, le Nord, et verticalement).
+Puis, le vent est calcul\'e dans ce rep\`ere par combinaison avec la
+vitesse de l'avion par rapport au sol.
+Cet op\'erateur tient compte de la distance entre le point
+de mesure de la vitesse de l'air par rapport \`a l'avion
+et le point de mesure de la vitesse avion par rapport au sol.
+Mais le calcul suppose que ces deux points sont situ\'es
+sur l'axe longitudinal de la plate-forme mobile.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/CalcVent_repgeo.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{ Formule }
+
+\input {formules/CalcVent_repgeo.frm.tex}
+
+%%%%%AUTEUR%%%%%
+\itemstyle{ Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCES%%%%%
+\itemstyle{ R\'ef\'erences~:}
+Bulletin NCAR-RAF Nr 23 \cite{RAF-23}.

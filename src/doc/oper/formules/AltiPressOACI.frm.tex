@@ -1,0 +1,43 @@
+%% Formule de l'operateur : AltiPressOACI
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+$P_{-5000}=1776,87$ hPa(pression pour une altitude geopotentielle de -5000m)\\
+$P_0=1013,25 $ hPa(pression pour une altitude geopotentielle de 0m) \\
+$P_{11000}=226,320 $ hPa(pression pour une altitude geopotentielle de 11000m)\\
+$P_{20000}=54,7487 $ hPa(pression pour une altitude geopotentielle de 20000m)\\
+
+Rayon de la terre r=6356766.0 m\\
+Acceleration normalisee de la pesanteur  $g_0 = 9,80665 m/{s^2}$ \\
+Constante massique des gaz parfaits spécifique de l'air  $R  = 287,05287 J/(K*kg)$\\
+
+Si P superieure à $P_{-5000}$  \\
+ hors de la norme OACI, $P=misval$\\
+
+Si P comprise entre $P_{-5000}$ et $P_0$  \\
+$H =\left[\left(\frac{P}{P_b}\right)^ {\frac{-\beta *R}{g_0}}-1.0\right]*(T_b/\beta )+H_b$\\
+avec $P_b$ = $P_{-5000}$\\
+et $\beta$ = -0,0065 K/m\\
+et  $T_b$ = 320,65 K\\
+et  $H_b$  = -5000,0 m\\
+
+Si P comprise entre $P_0$ et $P_{11000} $\\
+$H =\left[\left(\frac{P}{P_b}\right)^ {\frac{-\beta *R}{g_0}}-1.0\right]*(T_b/\beta )+H_b$\\
+avec $P_b$ = $P_0$\\
+et $\beta$ = -0,0065 K/m\\
+et  $T_b$ = 288,15 K\\
+et  $H_b$  = 0,0 m\\
+
+Si P comprise entre $P_{11000}$ et $P_{20000}$\\
+$H = log(P/P_b)*\frac{R*T}{-g_0}+H_b$ \\
+avec $P_b$ = $P_{11000}$\\
+et  $T$ = 216,65 K\\
+et  $H_b$  = 11000,0 m\\
+
+Si P inferieure à  $P_{20000}$  \\
+  $P=misval$\\
+
+Valeur de h \\
+$h=\frac{(r*H)}{(r-H)}$

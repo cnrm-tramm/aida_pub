@@ -1,0 +1,269 @@
+\part{Développements en langage C}
+\label{part:dev_C}
+
+\textbf{\textit{note : le codage en langage C est abandonné au profit du codage
+en langage Python.}}
+
+\section{Règles de codages}
+   AIDA est pour l'instant un petit projet, qui ne concerne pas un
+grand nombre de programmeurs. Nous n'avons donc pas mis en place
+de règles de codages strictes. Ce n'est pas une raison pour écrire
+du code incompréhensible, non-portable, ... Il est donc fortement
+recommandé de connaître une des règles de codages existantes
+(par exemple, le «GNU Coding standard» 
+\footnote{\url{http://www.gnu.org/prep/standards_toc.html}})
+, et de la suivre, sinon \`a la lettre, du 
+moins dans les grands principes.
+
+  Pour uniformiser la présentation et faciliter la (re)lecture
+des sources, l'usage s'est répandu (et même systématisé à TRAMM)
+d'automatiser la mise en forme des sources avec l'utilitaire \texttt{indent}.
+
+  Les commentaires seront rédigés de manière à faciliter la
+création d'une documentation technique par des outils automatiques.
+Actuellement, la recommandation est d'utiliser l'outil
+Doxygen\footnote{\url{https://www.doxygen.nl/}},
+avec style de commentaires se
+rapprochant de javadoc\footnote{\url{http://fr.wikipedia.org/wiki/Javadoc}}.
+Historiquement, la documentation automatique des premiers programmes (la 
+bibliothèque \texttt{rapt}, par exemple) était faite avec l'outil
+\texttt{cextract/cextdoc}.
+Certains commentaires «ancien style» persistent donc encore
+dans les sources.
+
+
+\section{La bibliothèque \texttt{rapt}}
+\label{sec:rapt}
+   Un certain nombre de fonctions utilisées fréquemment dans
+l'environnement AIDA (lecture/écriture d'un vecteur, codage
+ou décodage d'un "AcqId", ...) ont été rassemblées dans une 
+bibliothèque, baptisée \textit{rapt}\footnote{Historiquement,
+cela signifiait \textit{Research Aircraft Processing Tools}}.
+Voici une présentation générale des différents groupes de fonctions
+(une présentation détaillée de chaque fonction, avec le type
+de chaque argument, et un court texte descriptif se trouve
+dans le fichier \texttt{rapt.doc.ps} du répertoire 
+\path{$AIDA_HOME/src/lib/rapt}).
+
+\subsection{Fonctionnement général et traitement des erreurs}
+  Cette bibliothèque fonctionne selon un système semblable à 
+celui de la bibliothèque standard pour les appels systèmes en C. En cas
+d'erreur, la fonction retourne une valeur invalide (indice
+négatif, pointeur NULL, ...) et une variable globale 
+précise le type d'erreur.
+
+  Dans cette bibliothèque, la variable globale s'appelle \texttt{errapt},
+et les fonctions \texttt{strerrapt()} et \texttt{perrapt()} permettent
+d'obtenir, respectivement, une chaîne de caractère ou 
+l'écriture d'un message décrivant l'erreur.
+
+\subsection{Manipulation des types connus par AIDA}
+\begin{description}
+  \item[AidaTypCode()] : sert à reconnaître un nom de format : reçoit une
+    chaîne de caractère, et renvoie le code correspondant (membre de l'enum
+    \texttt{AIDA\_TYPE\_CODE)}.
+  \item[AidaTypNom()] : fournit les noms (chaîne de caract. ) des types
+    standard connus de AIDA (symétrique de AidaTypCode()).
+  \item[AidaTypSize()] : fournit la taille (en octet) des types standard
+    connus de AIDA.
+\end{description}
+
+\subsection{Manipulation des "AcqId" (noms uniques de chaque série de mesure)}
+\begin{description}
+  \item[Full2Id() :] construit un "Identificateur d'acquisition" (AcqId)
+à partir des informations unitaires (nom de plate-forme, année, numéro
+d'acquisition dans l'année).
+  \item[Id2DataPath() :] construit le chemin du répertoire contenant les
+données d'une acquisition.
+  \item[Id2Full() :] fournit les informations unitaires (nom de plate-forme,
+ année, numéro d'acquisition dans l'année) à partir de l'identificateur
+d'acquisition" (AcqId).
+\end{description}
+
+\subsection{Utilisation des variables d'environnement}
+         Le principe général est qu'une seule variable 
+d'environnement (\texttt{AIDA\_HOME}) est nécessaire, mais
+que d'autres variables (\texttt{AIDA\_LIB},  \texttt{AIDA\_DATA}, ...)
+permettent de travailler sur des répertoires particuliers. La fonction
+\texttt{AidaGetEnv()} gère automatiquement ce système
+de valeurs particulières qui peuvent remplacer une valeur
+par défaut.
+
+\subsection{Travail sur les en-têtes}
+            fonctions GetHdrValxxx, SetHdrValxxx
+
+\subsection{Travail sur les données}
+            fonctions AccessVectData, AllocVectData, FreeVectData
+
+\section{Écriture d'un opérateur}
+\label{sec:ecr_oper}
+
+\textbf{\textit{note : le développement d'opérateurs en langage C est
+abandonné au profit du développement d'opérateurs en langage Python (voir :
+\nameref{sec:adc_oper}, page \pageref{sec:adc_oper}) \\
+Cependant les opérateurs développés en langage C sont exécutables par
+l'interpréteur de commande \texttt{adc} (voir \url{user.pdf})}}
+\bigbreak
+
+   Un opérateur, dans l'environnement AIDA, c'est une fonction
+compilée, incluse dans une bibliothèque à chargement dynamique, qui travaille
+sur une série temporelle de données (la notion de vecteur), avec les
+fonctions d'interfaçage nécessaire pour être utilisée par l'interpréteur
+de commandes adc 
+(ou tout autre programme utilisant la même interface d'appel comme l'ancien
+interpréteur fvb).
+
+Concrètement, un opérateur est l'association de quatre choses :
+\begin{itemize}
+  \item une fonction, qui fait effectivement les calculs. Généralement en
+    C ou en Fortran. Cette fonction peut faire appel à d'autres fonctions, ou
+    à des bibliothèques.
+  \item une fonction d'interface, qui permet à toutes les fonctions
+    de pouvoir être appelées avec une même syntaxe d'appel (liste et types
+    d'arguments).
+  \item une fonction de documentation, qui remplit une structure décrivant
+    l'opérateur et ses arguments.
+  \item la documentation (format \LaTeX ).
+\end{itemize}
+
+\subsection{Le code-source d'un opérateur}
+La convention de nommage est la suivante : pour un opérateur
+dont le nom est <nom\_oper>, les sources sont dans un
+fichier <nom\_oper>.c, qui contient la fonction d'interface
+OP\_<nom\_oper> et la fonction de documentation ID\_<nom\_oper>.
+La plupart du temps, la fonction qui fait le calcul est dans le
+même fichier et s'appelle  <nom\_oper>, mais il peut y avoir
+des exceptions lorsqu'une seule fonction peut être appelée
+par deux opérateurs distincts\footnote{Par exemple, l'opérateur
+Plus\_flt fait appel à la fonction de calcul Plus qui est
+définie dans le source de l'opérateur Plus}
+\footnote{Une autre exception est le fichier Tair.c, qui 
+contient les fonction Tair, OP\_Tair et ID\_Tair, 
+ainsi que OP\_Tair\_avion et ID\_Tair\_avion, qui définissent
+l'opérateur Tair\_avion, mais ne font rien d'autre qu'un appel
+à Tair avec une liste d'arguments spécifique}.
+
+
+\subsubsection{Spécifications des propriété des vecteurs produits}
+    La fonction ID\_<nom\_oper> retourne un tableau de structures,
+dont chaque élément décrit un argument, et en spécifie les
+attributs.
+
+\begin{tabular}{l|l|l}
+ nom          & type   & description  \\
+\hline
+nom	& Chaîne & \\
+\hline
+nom anglais	& Chaîne & \\
+\hline
+array\_dim	& float\_64 & \\
+\hline
+sample	& float\_64 & \\
+\hline
+NbVal	& float\_64 & \\
+\hline
+unit	& Chaîne & \\
+\hline
+ref\_time	& float\_64 & \\
+\hline
+misval	& float\_64 & \\
+\hline
+famille	& Chaîne & \\
+\hline
+\end{tabular}
+
+\subsection{Écriture de la documentation d'un opérateur}
+
+  La documentation d'un opérateur est écrite en \LaTeX, et répartie en
+trois fichiers : les sections spécifiques à la description des arguments
+et à la formule (ou l'algorithme) employée sont écrites dans des fichiers
+séparés,
+qui seront inclus dans le document général, mais qui peuvent aussi être
+réutilisés et inclus dans
+d'autres documents (rapports de traitement, ...)
+
+   Comme tous les sources LaTeX, ces fichiers sont de simples fichiers
+textes, modifiables avec des éditeurs généralistes (vi, emacs) ou
+spécialisés (TexMaker, ...). Les
+accents des textes contenus dans ces fichiers doivent être codée en
+ISO-8859-15
+\footnote{ISO-8859-15 est aussi baptisé
+"latin9", et quasi-équivalent, pour notre usage, au
+« code page » cp1252 de Windows.}.
+Si vous êtes dans un environnement de travail où il est
+impossible de configurer
+un éditeur pour travailler en ISO-8859-15, il est toujours possible de
+saisir les accents
+« à l'ancienne », c'est à dire \clavier{\textbackslash'e} pour é, 
+\clavier{\textbackslash`a} pour à, ...
+
+Ces fichiers résidents dans le répertoire \pathfmt{AIDA_HOME/src/doc/oper}. Par
+convention, pour un opérateur baptisé
+<oper>, le fichier principal sera \pathfmt{<oper>.tex}, le fichier de
+description des arguments sera \pathfmt{arguments/<oper>.args.tex},
+et le fichier de description des formules sera
+\pathfmt{formules/<oper>.frm.tex}. 
+Enfin, pour pouvoir produire
+des documentations de traitement en anglais, 
+il est nécessaire qu'une version anglaise de la formule 
+soit rédigée dans le fichier :
+\pathfmt{formules/<oper>.frm.en.tex}.
+
+ Il n'est jamais nécessaire de créer ces fichiers à partir de rien. Si
+l'opérateur que l'on vient de créer ressemble à un opérateur existant,
+il suffira de copier et modifier les fichiers de
+cet opérateur.
+Sinon, il existe un programme qui sait créer un squelette de
+documentation : il se trouve
+dans le répertoire \path{$AIDA_HOME/src/lib/oper/} et il s'appelle
+\texttt{oper2doc}.
+
+Dans le premier cas, l'effort de modification de la description peut
+être minime, mais il
+faut être attentif aux changements techniques (nombre, ordre et unité
+des arguments).
+Dans le second cas, la liste des arguments (et leurs propriétés : type,
+catégorie, unité) créée
+automatiquement sera parfaitement exacte, mais sans aucune intelligence
+: les noms
+seront Arg1, Arg2, Argn, et la formule sera vide.
+
+La plupart du temps, il n'est pas nécessaire d'être expert en
+\LaTeX{} pour écrire la documentation. Si besoin est, une
+rapide introduction à l'écriture de mathématiques en
+\LaTeX{}  se trouve sur le site des tuteurs de l'ENS :
+\url{http://www.tuteurs.ens.fr/logiciels/latex/maths.html}.
+Il faut être attentif à quelques points :\begin{itemize}
+\item Les noms des variables utilisés dans la formule
+doivent correspondre aux noms donnés dans la liste des
+arguments.
+\item Il ne faut pas utiliser la commande 
+\clavier{\textbackslash\textbackslash} pour forcer 
+un changement de ligne de texte, car celle-ci devient une fin 
+de ligne de tableau si le fichier est inclus dans une
+cellule d'un tableau. Les méthodes recommandées
+sont d'utiliser le mode math hors-texte ( \verb+\[ ... \]+ ),
+ou le changement de paragraphe
+canonique (ligne vide).
+Au pire, utiliser \clavier{\textbackslash{}newline}
+\end{itemize}
+
+\noindent Il faut ensuite :\begin{itemize}
+ \item Modifier le fichier \pathfmt{CATALOG_OPER.tex} pour ajouter 
+une ligne \newline
+\clavier{\textbackslash input\{<nom\_oper>\}\textbackslash newpage}
+dans le chapitre adapté.
+ \item Produire la nouvelle
+version de \pathfmt{CATALOG_OPER.pdf} par la commande \newline
+\clavier{make  CATALOG\_OPER.pdf}
+ \item Itérer les actions d'édition/compilation/relecture jusqu'à
+  satisfaction
+ \item Éventuellement, tester si la documentation qui vient d'être
+écrite est bien utilisable pour générer la documentation automatique
+d'un traitement. Pour cela, il faut qu'un vecteur ait été calculé
+avec l'opérateur, créer un petit fichier texte contenant 
+le nom de ce vecteur, puis exécuter :\newline
+\clavier{mk\_doctrt <AcqId> <nom\_du\_fichier\_texte> /tmp/TEST\_DOC}
+ \item Enregistrer les fichiers dans le système de gestion 
+de code ("\clavier{commit}").
+\end{itemize}

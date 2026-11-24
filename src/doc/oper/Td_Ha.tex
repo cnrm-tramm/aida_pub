@@ -1,0 +1,35 @@
+%%%%%
+%
+\section{Température du point de rosée à partir de
+l'humidité absolue}
+
+\itemstyle{Op\'erateur~:} \operfmt{Td\_Ha}
+\index{Td\_Ha}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul de la température du point de rosée à partir de
+l'humidité absolue et de la température de l'air.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Td_Ha.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Td_Ha.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire}
+
+$ e = ew(Td)$ (définition de Td) et $Ha = e / (Rv . T)$ (Dalton et Gaz Parfait) 
+s'inversent en  $Td = ew^{-1}(Ha . Rv . T)$.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+La fonction réciproque de $e_w(T)$ utilisée est celle de Bolton-1980 \cite{Bolton-80}

@@ -1,0 +1,371 @@
+%%%%%
+%
+\section{Thermodynamique}
+\label{annexe-thermo}
+
+\subsection{Tension de vapeur saturante par rapport \`a l'eau}
+
+  Il existe plusieurs formules qui permettent de calculer
+une valeur (parfois approchée) de la tension de vapeur saturante par
+rapport \`a l'eau, pour une température donnée.
+
+  Pour des raisons historiques, la plupart des opérateurs utilisent la
+première formule ci-dessous. Les autres formules sont néanmoins
+disponibles pour un usage particulier.
+
+  Toutes ces formules sont écrites de manières à être interchangeables :
+elles s'appliquent à de températures exprimées en Kelvin,
+et fournissent leurs résultats en hPa.
+
+\subsubsection{Fonction : \texttt{ew\_PYREX}}
+\label{annexe-thermo-ew}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/ew_PYREX.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Fonction utilis\'ee par Pierre Durand (L.A.), et consignée dans
+le recueil de formules réalisé à l'occasion de l'expérience PYREX.
+
+\subsubsection{Fonction : \texttt{ew\_AFNOR}}
+%\itemstyle{Fonction~:} ew\_AFNOR
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/ew_AFNOR.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+norme AFNOR NFX15-110, page 12.
+
+\subsubsection{Fonction : \texttt{ew\_abadie}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+\input{formules/ew_abadie.frm.tex}
+
+\itemstyle{R\'ef\'erences~:}
+Fonction utilis\'ee par Gabriel Abadie, et transmise 
+au CAM à la fin des années 1980.
+
+\subsubsection{Fonction : \texttt{ew\_Bolton}}
+\label{annexe-ewbolton}
+C'est une formule dans le style de celle de Tetens, qui a l'avantage
+d'être simple à calculer, et dont les coefficients ont
+été modifiés pour prendre en compte
+aux travaux de Wexler(1976) et atteindre ainsi une précision de 0.3\%
+entre -35 degC et +35 degC. On notera que $-35 < 0$, et que cette
+formule cherche donc à couvrir aussi les valeurs négatives.
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/ew_bolton.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM.
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Bolton-1980  \cite{Bolton-80}, eq. 10, page 1047. Les coefficients ont
+été modifiés pour un T exprimé en Kelvin, au lieu de degrés Celsius
+dans l'article.
+
+\subsubsection{Fonction : \texttt{inv\_ew\_Bolton}}
+\label{annexe-invewbolton}
+Fonction réciproque de la précédente.
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\renewcommand{\InvEwBoltonRes}{T}
+\input{formules/inv_ew_bolton.frm.tex}
+avec $e$ en Pa, et le résultat $T$ est fourni en Kelvin.
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+La formule précédente
+%(\ref{annexe-ewbolton} )
+a été explicitement inversée. Le résultat est équivalent à
+l'équation 11, page 1047, de Bolton-1980  \cite{Bolton-80}.
+
+\subsection{Tension de vapeur saturante par rapport \`a la glace}
+\label{annexe-thermo-ewi}
+
+\subsubsection{Fonction : \texttt{ewi}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/ewi.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Fonction utilis\'ee par Pierre Durand (L.A.).
+%%%%
+
+\subsubsection{Fonction : \texttt{ewi\_AFNOR}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/ewi_AFNOR.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+norme AFNOR NFX15-110, page 12.
+
+\subsubsection{Fonction : \texttt{ewi\_OMM}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/ewi_OMM.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{Références~:}
+\emph{Guide des instruments et des méthodes
+d'observation météorologique}, publication OMM-N°8 \cite{OMM-N8-1996}, en
+annexe 4.B 
+
+\subsubsection{Fonction : \texttt{inv\_ewi\_OMM}}
+\label{annexe-invewiOMM}
+Fonction réciproque de la précédente.
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/inv_ewi_OMM.frm.tex}
+
+\itemstyle{Références~:}
+\emph{Guide des instruments et des méthodes
+d'observation météorologique}, publication OMM-N°8 \cite{OMM-N8-1996}, en
+annexe 4.B 
+
+\subsection{Comparaison des fonctions e$_w$($T$)}
+La figure \ref{fig-superp_ew} présente les tracés des
+différentes fonctions e$_w$($T$) entre -50 et +50 degrés
+Celsius (223 à 323 Kelvin) et  e$_{wi}$($T$) entre
+-70 et 0 degrés Celsius (203 à 273 Kelvin). A cette échelle
+(le graphe couvre 4 décades et demie),
+les différents tracés ne sont pas distinguables.
+
+\includegraphics[width=0.99\linewidth]{images/ew_AIDA.png}
+\captionof{figure}{Représentation graphique des fonctions ew(T)}
+\label{fig-superp_ew}
+
+La figure suivante (\ref{fig-ecart_abs_ew}) présente les tracés des
+écarts entre chaque fonction et la moyenne. Les écarts maxima apparaissent
+pour les fortes valeurs de e$_w$, et ne dépassent pas 0.4 hPa.
+
+\includegraphics[width=0.99\linewidth]{images/diff-abs-ew-AIDA.png}
+\captionof{figure}{Écarts absolus}
+\label{fig-ecart_abs_ew}
+
+Enfin, le tracé des écarts relatifs (toujours par rapport à la moyenne) 
+(figure \ref{fig-ecart_rel_ew}) 
+montre que cet écart est la plupart du temps inférieur à 0,3\%,
+et ne dépasse jamais 1\%.
+
+\includegraphics[width=0.99\linewidth]{images/diff-rel-ew-AIDA.png}
+\captionof{figure}{Écarts relatifs}
+\label{fig-ecart_rel_ew}
+
+
+\newpage
+\subsection{Températures potentielles et potentielles équivalentes}
+
+\subsubsection{Fonction : \texttt{tpot}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/tpot_lib.frm.tex}
+avec~:\\
+$Ts$ : température, en Kelvin.\\
+$Ps$ : pression, en hPa.\\
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+M\'et\'eorologie G\'en\'erale, Triplet-Roche \cite{Triplet-Roche}
+
+\subsubsection{Fonction : \texttt{tpoteq}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/tpoteq.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Fonction utilis\'ee par Pierre Durand (L.A.).
+
+\subsubsection{Fonction : \texttt{tpot\_Bolton}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/tpot_Bolton.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Bolton 1980 \cite{Bolton-80} -Formule 7
+
+\subsubsection{Fonction : \texttt{tpoteq\_Bolton}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/tpoteq_Bolton.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Bolton 1980 \cite{Bolton-80} -Formule 43
+
+\newpage
+\subsection{Transformations adiabatiques et Point de condensation}
+
+Deux fonctions sont utilisées pour conna\^itre le point de condensation
+d'une particule d'air définie par $P_s$, $T_s$ et $Hu$ (pression, température.
+et humidité relative). 
+Ces 2 fonctions sont tcond() et pcond() qui permettent respectivement
+de calculer la température et la pression de ce point de condensation.
+
+\subsubsection{Fonction : \texttt{tcond}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/tcond.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM d'après LIBMTO D. Puech .
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Bolton-1980  \cite{Bolton-80}, eq. 22, page 1048.
+
+\subsubsection{Fonction : \texttt{pcond}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/pcond.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+Le calcul se fait en deux temps :
+\begin{itemize}
+\item 1 : calcul de $T_{cond}$ par la fonction $tcond()$
+\item 2 : calcul de $P_{cond}$ par égalité du rapport des rapports de 
+mélange entre les 2 niveaux de pression $P_s$ et $P_{cond}$.
+\end{itemize}
+
+La fonction $ew()$ utilisée est celle de l'article de Bolton \cite{Bolton-80}
+décrite ci-dessus au paragraphe \ref{annexe-ewbolton}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM d'après LIBMTO D. Puech .
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+
+\newpage
+%%%%
+\subsection{Transformations pseudo-adiabatiques}
+
+Calcul d'une température pseudo-adiabatique pour un niveau de pression donné 
+à partir du point de condensation (température et pression).
+
+\subsubsection{Fonction : \texttt{twcurv}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/twcurv.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM d'après LIBMTO D. Puech .
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+
+\newpage
+%%%%
+\subsection{Utilisation de la température virtuelle}
+
+calcul de la masse volumique d'une particule d'air humide
+définie par : pression , température , humidité .
+
+\subsubsection{Fonction : \texttt{DensAirhum}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/DensAirhum.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM d'après LIBMTO D. Puech .
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+
+\subsubsection{Fonction : \texttt{TVirt\_ptu}}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/TVirt_ptu.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM d'après LIBMTO D. Puech .
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

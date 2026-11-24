@@ -1,0 +1,20 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$C_{WU}$ & Vecteur, \texttt{float} & Covariance entre le vent vertical et la 1ère composante du vent horizontal ($m^2.s{-2}$)\\
+$C_{WV}$ & Vecteur, \texttt{float} & Covariance entre le vent vertical et la 2ème composante du vent horizontal ($m^2.s{-2}$)\\
+$\rho_a$ & Vecteur, \texttt{float} & Densité de l'air sec (kg/m3)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$\tau$ & Vecteur, \texttt{float} & Flux de quantité de mouvement (N/m2)\\
+\end{tabarg}

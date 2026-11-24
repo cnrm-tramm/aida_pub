@@ -1,0 +1,35 @@
+%%%%%
+%
+\section{Conversion du format \texorpdfstring{\texttt{int}}{int}
+vers {\texorpdfstring{\texttt{float}}{float}} }
+
+\itemstyle{Op\'erateur~:} \operfmt{CnvInt2Flt}
+\index{CnvInt2Flt}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Transcodage d'un param\`etre du format \texttt{int\_16} vers le 
+format \texttt{float}
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/CnvInt2Flt.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/CnvInt2Flt.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Cette opération ne comporte pas de risque de débordement puisque
+les flottants 32 bits selon la norme IEEE754 ont une mantisse
+de 23 bits, dont la précision relative est largement suffisante 
+pour des entiers 16 bits.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}

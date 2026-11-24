@@ -1,0 +1,24 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, {\tt float} & Paramètre brut (unité indifférente)\\
+$MisVal$ & Coeff., {\tt float} & Valeur particulière pour donnée manquante\\
+$Borne_{inf}$ & Coeff., {\tt float} & Plus petite valeur autorisée.\\
+$Borne_{sup}$ & Coeff., {\tt float} & Plus grande valeur autorisée.\\
+$Toler\_X$ & Coeff., {\tt float} & écart à la moyenne maximal autorisé (nombre d'écart-type)\\
+$Toler\_{dX}$ & Coeff., {\tt float} & idem $Toler\_X$, mais pour la dérivée\\
+$fenetre$ & Coeff., {\tt Int} & largeur de la fenètre glissante de calcul
+          des statistiques (nb d'échantillons). Doit être compris entre 50
+          et 10000.\\
+$seuil\_duree$ & Coeff., {\tt Int} & Nombre maximal de points manquants
+         que l'on s'autorise à remplacer par interpolation (nb d'échantillons)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$X_{cor}$ & Vecteur, {\tt float} & Paramètre corrigé (même unité que $X$)\\
+\end{tabarg}

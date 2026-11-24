@@ -1,0 +1,327 @@
+
+\part{Organisation des meta-données}
+\label{part:meta}
+   Le terme de \textbf{meta-données} désigne les 
+<<données sur les données>>, c'est à dire toutes
+les informations sur les conditions de la mesure
+et du traitement de celle-ci.
+
+   Dans le cadre d'AIDA, on considère (principe d'auto-documentation)
+que chaque vecteur contient l'information sur les 
+conditions de sa propre production (attributs \textit{name},
+\textit{unit}, \textit{origine},
+\textit{fct\_origine}, \ldots). 
+
+   Il reste donc à décrire : 
+\begin{itemize}
+  \item les informations propres à la configuration d'AIDA sur une machine
+      particulière (liste et caractéristiques des plates-formes connues,
+      liste des séries de mesures disponibles)
+  \item des informations propres à l'architecture d'AIDA (par exemple
+   la façon de regrouper les variables en familles).
+  \item les informations relatives à une série de mesure (par exemple, 
+      la description d'un vol, son découpage en paliers, \ldots) 
+  \item les informations relatives aux campagnes de mesures
+\end{itemize}
+
+Il est important que toutes ces informations, même
+celles qui évoluent peu, soient contenues dans des fichiers de
+type texte, avec un format simple, car cette méthode est la
+seule qui garantisse que les différents programmes, écrits dans
+différents langages (C, Python, ...) partagent la même
+information, et travaillent de façon cohérente.
+
+Ces fichiers sont regroupés dans les répertoires : \\
+\-\hspace{1cm} \path{${AIDA_META}} et \path{${AIDA_HOME}/config}. 
+
+A l'exception notable du fichier donnant les détails
+de chaque "acquisition" (ou période de mesure), tous
+ces fichiers sont organisés de la même façon,
+dans le format INI. Ces fichiers sont divisés en paragraphes débutant par un
+nom écrit entre
+crochets (par ex. \texttt{[merlin]}), suivi par des
+lignes du type \texttt{attribut~=~valeur}. Les 
+déclarations multi-lignes sont interdites, et les 
+commentaires sont introduits par le caractère "\#"(dièse).
+
+Ces fichiers n'ayant pas tous le même rôle, ils n'évolueront pas
+de la même manière. Par exemple, ceux qui correspondent 
+à l'organisation d'AIDA seront identiques sur
+différents ordinateurs, et ne changeront que très
+rarement. Ceux qui décrivent la liste des séries de
+mesures disponibles évolueront rapidement, et pourront être
+différents d'un site à l'autre.
+
+\section{Description des plates-formes}
+\label{sec:platef}
+   La liste des plates-formes de mesure connues d'AIDA se trouve dans
+le fichier \texttt{plates-formes}, dans le répertoire
+\path{${AIDA_HOME}/profils/${AIDA_PROFIL}/}. Ce
+fichier sert principalement à établir la relation entre le nom standard d'une
+plate forme et l'abréviation qui permet de construire les
+identificateurs uniques de chaque série de mesure 
+(cf section \ref{sec:AcqId}), mais il contient aussi une
+description un peu plus détaillée, qui est utilisée pour
+renseigner les fichiers de documentation produits par
+certains programmes de diffusion de données.
+
+\subsection{Format}
+  C'est un fichier au format "INI", divisé en paragraphes. Chaque
+  paragraphe correspond à une plate-forme, et se présente comme suit :
+\begin{description}
+  \item[[Nom de la plate-forme]] tel qu'il est utilisé partout dans AIDA.
+  \item[nom\_long] description en une ligne de texte, en français.
+  \item[abrev] chaîne de deux caractères.
+  \item[aliases] liste d'autres noms qui désignent parfois la plate-forme,
+    séparés par des virgules.
+  \item[nom\_serie\_mesure] nom d'une période de mesure dans la liste :
+    Journee, Vol, Lacher, Lacher\_en\_vol, Drone  (la périodicité "Acquisition"
+    n'est plus supportée et est équivalente à Journee)
+  \item[duree\_vecteur] indique quelle est la durée d'un vecteur dans AIDA pour
+    cette plate-forme. Les valeurs utilisées sont : "journee", "acquisition".
+    Cette information est utilisée par les outils d'importation de données
+    dans AIDA vers le format vecteur.
+  \item[position] pour les plate-formes fixes, indique la position selon le
+    format "latitude/longitude/altitude". Pour indiquer explicitement qu'une
+    plate-forme n'est pas fixe, indiquer "mobile".\\
+    Les coordonnées latitude et longitude sont écrites en degrés décimaux,
+    positifs respectivement vers le Nord et l'Est.
+\end{description}
+
+  De manière optionnelle, et selon le type de plate-forme, des indicatifs
+et/ou immatriculations peuvent être indiqués. Les syntaxes de ces champs sont :
+\begin{description}
+  \item[ICAO\_indicator] pour les plate-formes situées sur un aéroport,
+    indicatif OACI de celui-ci.
+  \item[WMO\_station\_index\_number] pour les stations synoptiques,
+    indicatif OMM.
+  \item[call-sign] pour les avions, immatriculation.
+\end{description}
+
+  Enfin, d'autres informations optionnelles peuvent être mentionnées :
+\begin{description}
+  \item[responsable] nom du reponsable de la plate-forme
+\end{description}
+
+\section{Description des acquisitions}
+\input{format_inf.tex}
+
+
+\section{Description des campagnes de mesures}
+\label{sec:campagnes}
+Une campagne de mesure est un ensemble de séries de mesures provenant de une ou plusieurs
+plate-formes.
+
+\subsection{Emplacement}
+\texttt{\$AIDA\_META\//campagnes}
+ 
+\subsection{Nommage}
+
+Le fichier est nommé du nom de la campagne officiel transformé 
+en majuscules avec l'extension \texttt{.camp}.\\
+Dans le cas de campagnes ayant le même nom mais à quelques années d'intervalles on rajoutera 
+l'année derrière le nom.
+
+\subsection{Format}
+
+C'est un fichier au format "INI", divisé en paragraphes.
+
+Il contient un paragraphe IDENTIFICATION contenant les informations générales
+de la campagne.
+Il contient ensuite un paragraphe par plate-forme ayant participé à la campagne, nommé par le nom de la 
+plate-forme défini dans le fichier plate-formes.
+
+\subsubsection{[IDENTIFICATION]}
+
+\saute
+\noindent\begin{tabular}{|p{4.3cm}|p{2.2cm}|p{3.9cm}|p{5.5cm}|}
+\hline 
+Champ& Caractère& Format valeur& Description \\
+\hline 
+\hline 
+\texttt{nom}& \textbf{obligatoire} & \textit{texte}& Nom de la campagne, identique au nom du fichier\\
+\hline 
+\texttt{date\_debut}& \textbf{recommandé} & \textit{JJ/MM/AAAA} & Date de début de la campagne\\
+\hline 
+\texttt{date\_fin }& \textbf{recommandé} & \textit{JJ/MM/AAAA} ou \textit{running} si la  campagne n'est pas terminée & Date de fin de la campagne \\
+\hline 
+\texttt{projet }& \textbf{recommandé} & \textit{texte} & Acronyme du projet. Le projet est plus large que la campagne. Il peut contenir plusieurs campagnes.\\
+\hline 
+\texttt{description }& \textbf{obligatoire} & \textit{texte} & Description succincte en anglais de la campagne et des objectifs scientifiques. \\
+\hline
+\texttt{region\_geographique }& \textbf{recommandé} & \textit{texte} & Texte en anglais. Exemple : South-West of France \\
+\hline
+\texttt{un\_m49\_code}& \textbf{recommandé} & \textit{Code un\_m49 de la région} & Codes disponibles sous : \href{https://en.wikipedia.org/wiki/UN_M49}{https://en.wikipedia.org/wiki/
+UN\_M49}.\\
+\hline 
+\texttt{geospatial\_lat\_min }& \textbf{recommandé} & Degrés décimaux & Latitude minimale de la zone géographique explorée au cours de la campagne\\
+\hline 
+\texttt{geospatial\_lat\_max }& \textbf{recommandé} & Degrés décimaux & Latitude maximale de la zone géographique explorée \\
+\hline 
+\texttt{geospatial\_lon\_min }& \textbf{recommandé} & Degrés décimaux & Longitude minimale de la zone géographique explorée \\
+\hline 
+\texttt{geospatial\_lon\_max }& \textbf{recommandé} & Degrés décimaux & Longitude maximale de la zone géographique explorée \\
+\hline 
+\texttt{description }& \textbf{obligatoire} & \textit{texte} & Description succincte en anglais de la campagne et des objectifs scientifiques. \\
+\hline 
+\texttt{principal\_investigator }& \textbf{obligatoire} & \textit{prenom1:nom1:email1:
+institution1; prenom2:nom2:
+email2:institution2; ...} & PI(s) de la campagne globale au même format que celui utilisé dans nos fichiers NetCDF.\\
+\hline 
+
+
+\end{tabular}
+\saute
+
+\subsubsection{[<nom plate-forme>]}
+
+
+\saute
+\noindent\begin{tabular}{|p{4.3cm}|p{2.1cm}|p{4.7cm}|p{5cm}|}
+\hline 
+Champ& Caractère& Format valeur& Description \\
+\hline 
+
+\texttt{date\_debut}& \textbf{recommandé} & \textit{JJ/MM/AAAA} & Date de début de des mesures de la plate-forme dans la campagne\\
+\hline 
+\texttt{date\_fin }& \textbf{recommandé} & \textit{JJ/MM/AAAA} ou \textit{running} si la  campagne n'est pas terminée & Date de fin de des mesures de la plate-forme dans la campagne. \\
+\hline 
+\texttt{principal\_investigator }& \textbf{obligatoire} & \textit{prenom1:nom1:email1:
+institution1; prenom2:nom2:
+email2:institution2; ...} & PI(s) de la plateforme au même format que celui utilisé dans nos fichiers NetCDF. \\
+\hline 
+
+\texttt{liste\_acqid }& \textbf{obligatoire} & Liste d'Acq\_Id séparés par des virgules.\newline
+Description d'une plage d'Acq\_Id sous la forme :\newline
+\textit{<Acq\_Id\_deb>$-$<Acq\_Id\_fin>}
+\textit{<Acq\_Id\_fin>} peut être égal à * si la campagne est en cours & Liste des identificateurs d'acquisition (Acq\_Id) correspondant à la campagne.\\
+\hline 
+
+\end{tabular}
+\saute
+
+\section{Description des familles de paramètres }
+\label{sec:familles}
+
+Il peut être utile de regrouper les paramètres en familles, ce qui
+permet des tris thématiques, des aides à la saisie, etc.
+Le fichier \path{familles}
+décrit la liste des familles de paramètres connues d'AIDA.
+
+\subsection{Emplacement}
+ Le fichier \path{familles} est situé dans le répertoire
+ \path{${AIDA_HOME}/config/}
+
+\subsection{Format}
+   C'est un fichier au format "INI". Il est encodé en
+utf-8\footnote{contrairement à la plupart des fichiers d'AIDA,
+qui sont codés en ISO8859-15}.
+   Il est structuré sous la forme d'un paragraphe par famille. 
+
+Chaque paragraphe se présente comme suit :
+\begin{description}
+  \item[[Nom du paragraphe]] nom de la famille, en codage ASCII sans accents (par exemple, \texttt{temperature})
+  \item[acronyme = ]un groupe de trois lettres
+  \item[nom:fr = ] le nom en français correct, avec accents (par exemple, \texttt{température})
+  \item[nom:en = ] le nom en anglais
+\end{description}
+  S'il apparaît un besoin de traduction dans une autre langue,
+il est possible de rajouter autant de lignes \textbf{\texttt{nom:<code\_langue>}} que nécessaire,
+en utilisant pour code\_langue les valeurs de la table ISO639-1 (par
+exemple \texttt{nom:ca} pour le catalan)
+
+
+\section{Description des aéroports}
+\label{sec:aeroports}
+  Certains traitements ont besoin d'informations sur des aéroports : par
+exemple, l'altitude de la piste, pour calculer une altitude-pression par
+intégration à partir du décollage. Ces informations sont rassemblées dans
+le fichier \path{airports.fdd}
+
+\subsection{Emplacement}
+  Le fichier \path{airports.fdd} est situé dans le répertoire
+  \path{${AIDA_HOME}/profils/${AIDA_PROFIL}/}
+
+\subsection{Format}
+   C'est un fichier au format "INI", contenant un paragraphe par aéroport.
+Le nom du paragraphe (entre crochets) est le nom de l'aéroport,
+en français, sans accents, espace ni caractère de soulignement (\texttt{\_}).
+Pour les noms composés, des tirets (\texttt{-}) seront
+utilisés. Exemples : \texttt{La-Corogne}, \texttt{Baden-baden},
+\texttt{Nimes-Courbessac}.
+
+  Ce nom doit correspondre à celui utilisé pour les
+champs \texttt{lieu\_depart} et \texttt{lieu\_arrivee}
+du paragraphe \texttt{IDENTIFICATION} du fichier .inf.
+
+  Les attributs possibles sont :\newline
+\noindent\begin{tab3col}
+\hline 
+Champ& Format valeur& Description valeur\\
+\hline 
+\hline 
+\texttt{ICAO\_ID}& \textit{4 caractères majuscule}& l'indicatif OACI de l'aéroport\\
+\hline 
+\texttt{Z0}& \textit{valeur numérique en mètres}& L'altitude de la piste (de l'endroit où se font la plupart des décollages)\\
+\hline 
+\end{tab3col}
+\saute
+
+\section{Description de l'évolution des paramètres de traitement.}
+\label{sec:Evolution}
+  Certains traitements utilisent des paramètres qui évoluent dans le temps. Ces
+paramètres sont représentés par la syntaxe \$Chrono.PARAM dans la ligne de
+commande adc. La valeur de PARAM est lue dans un fichier
+\texttt{nom\_plateforme.chrono.}
+
+\subsection{Emplacement}
+  Les fichiers \path{nom_plateforme.chrono} sont situés dans le répertoire
+  \path{${AIDA_HOME}/profils/${AIDA_PROFIL}/chrono}
+ 
+\subsection{Format}
+ Les lignes commençant par \# sont des commentaires.
+ Les lignes blanches sont autorisées.
+ \\
+ 
+ Le fichier se compose d'une section par paramètre. La section est identifiée par le nom du paramètre entre crochets : [PARAM].
+ Chaque section contient des lignes qui décrivent une plage de dates et la valeur de PARAM à l'intérieur de cette plage. Les bornes de la plage sont comprises. Le séparateur est constitué d'un ou plusieurs espaces ou tabulations.
+ \\
+ 
+ \textbf{Format des dates} : YYYY-MM-DDTHH:MI:SSZ
+ 
+ \textbf{Valeurs possibles de PARAM} :
+ 
+ -nombre (ex: -1.5)
+        
+ -chaîne (ex: "celsius")
+      
+ -nom de vecteur (ex: hum\_sol3cm\_ec5\_c3\_\%900)
+ \\
+ 
+ 
+ \textbf{Exemple de fichier chrono} : 
+ 
+ \begin{lstlisting}
+ # Chrono toulouse-flux
+ 
+ # délai du LICOR
+ [DELAI]
+ 2012-06-15T00:00:00Z    2014-10-14T23:59:59Z    -0.200
+ 2014-10-15T00:00:00Z    2015-05-28T23:59:59Z    -0.250
+ 2015-05-29T00:00:00Z    2020-12-31T23:59:59Z    -0.200
+ 
+ # unité températures pour tests
+ [UNITE_TPR]
+ 2012-06-15T00:00:00Z    2014-07-09T23:59:59Z    "Kelvin"
+ 2014-07-10T00:00:00Z    2020-12-31T23:59:59Z    "Celsius"
+ 
+ # vecteur pour tests
+ [VECTEUR]
+ 2014-06-15T00:00:00Z    2014-07-09T23:59:59Z    hum_sol3cm_ec5_c3_%900
+
+ 2014-07-10T00:00:00Z    2020-12-31T23:59:59Z    hum_sol3cm_ec5_c3_bis_%900
+ \end{lstlisting}
+
+ \saute 
+ 
+ 

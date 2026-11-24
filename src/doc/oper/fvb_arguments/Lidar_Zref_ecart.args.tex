@@ -1,0 +1,25 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float[$N_{level}$]} & Signal lidar \\
+$Z$ & Vecteur, \texttt{float[$N_{level}$]} & Altitudes réelles des portes du lidar (m)\\
+$N_{level}$ & Coeff., \texttt{float} & Nombre de portes (\$Arg1.array\_dim)\\
+$Z_1$ & Coeff., \texttt{float} & Altitude minimale par rapport au lidar de la zone de recherche (m)\\
+$Z_2$ & Coeff., \texttt{float} & Altitude maximale par rapport au lidar de la zone de recherche (m)\\
+$N_{step}$ & Coeff., \texttt{int} & Nombre de points de la moyenne glissante de $X$ \\
+\end{tabarg}
+
+
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$Z_{ref}$ & Vecteur, \texttt{float} & Altitude de référence du signal moléculaire  (m)\\
+\end{tabarg}

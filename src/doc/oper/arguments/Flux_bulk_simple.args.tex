@@ -1,0 +1,22 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$P_{s}$ & Vecteur, \texttt{float} & Pression à la surface (\textit{hPa})\\
+$U_{z}$ & Vecteur, \texttt{float} & Humidité relative (\textit{\%})\\
+$T_{s}$ & Vecteur, \texttt{float} & Température de surface (z=0)(\textit{C} ou \textit{K})\\
+$T_{z}$ & Vecteur, \texttt{float} & Température de l'air à la hauteur $H_{z}$ (\textit{C} ou \textit{K})\\
+$V_{z}$ & Vecteur, \texttt{float} & Vitesse du vent à la hauteur $H_{z}$ ; relatif au courant si surface en eau(\textit{m/s})\\
+$Ustar$ & Vecteur, \texttt{float} & Vitesse de frottement (\textit{m/s})\\
+$H_{z}$ & Coeff., \texttt{float} & Hauteur de mesure de ($T_{z}$, $U_{z}$)(\textit{m})\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$H_{s}$ & Vecteur, \texttt{float} & Flux de chaleur sensible (\textit{W/m2})\\
+$L_{e}$ & Vecteur, \texttt{float} & Flux de chaleur latente (\textit{W/m2})\\
+$Tau$ & Vecteur, \texttt{float} & Partie turbulente du stress du vent (\textit{N/m2})\\
+\end{tabarg}

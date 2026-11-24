@@ -1,0 +1,38 @@
+%%%%%
+%
+\section{Température de l'air à partir de la température sonique et
+de l'humidité absolue}
+
+\itemstyle{Op\'erateur~:} {\sf Tair\_soni\_ha}
+\index{Tair\_soni\_ha}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet opérateur calcule la température statique de l'air à partir de 
+la température sonique et de l'humidité absolue. 
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Tair_soni_ha.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Tair_soni_ha.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+ On appelle température "sonique" une température calculée
+à partir de la vitesse de propagation du son dans l'air
+en assimilant l'air à un gaz parfait sec : $c = \sqrt{ \gamma_a R_a T}$
+donne $T = \frac{c^2}{\gamma_a R_a}$.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+
+Triplet-Roche \cite{Triplet-Roche},
+Pr\'esentation \`a l'atelier intrumentation de 1996 \cite{AIE96-TAA}.

@@ -1,0 +1,28 @@
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$N_{freq}$ & Coeff., \texttt{float} & Nombre de points de la fonction de transfert\\
+$Type\_FT$ & Coeff., \texttt{String} & Type de fonction de transfert ('HP', 'LP, ou 'HPLP')\\
+$f_e$ & Coeff., \texttt{float} & Fréquence d'échantillonnage du système de mesure ($Hz$)\\
+$T_{int}$ & Coeff., \texttt{float} & Temps d'intégration des flux ($s$)\\
+$Type_{capteur1}$ & Coeff., \texttt{String} & Type du capteur 1 \\
+$Type_{capteur2}$ & Coeff., \texttt{String} & Type du capteur 2\\
+$H_{sep}$ & Coeff., \texttt{float} & Distance horizontale entre les capteurs 1 et 2 (m)\\
+$V_{sep}$ & Coeff., \texttt{float} & Distance verticale entre les capteurs 1 et 2 (m)\\
+$Type\_HP$ & Coeff., \texttt{String} & Type de méthode de calcul des fluctuations ( 'ba', ou 'rm')\\
+$\tau_f$ & Coeff., \texttt{float} & Taux du filtrage passe-haut si $Type\_HP$ = 'rm' ($s$)\\
+$U_{moy}$ & Vecteur, \texttt{float} & Vitesse du vent ($m/s$)\\
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$FT$ & Vecteur, \texttt{float[$N_{freq}]$} & Fonction de transfert\\
+\end{tabarg}

@@ -1,0 +1,51 @@
+\part{Documentation des données et traitements effectués}
+\label{part:doc}
+\section{Introduction}
+
+   L'architecture AIDA est conçue pour traiter la metadonnée
+conjointement à la donnée : 
+en-tête de fichier vecteur contenant des attributs descriptifs,
+méta-données sur les acquisitions regroupées dans fichiers \path{.inf}
+
+    Pour être utilisée, affichée, partagée, cette information
+doit être sélectionnée, parcourue, mise en forme. C'est le rôle 
+des programmes décrits ici.
+
+
+\section{mk\_doctrt}
+     Qu'il soit une mesure brute ou le résultat d'un
+calcul, chaque fichier-vecteur contient dans son en-tête 
+des informations sur les conditions de sa production. 
+
+Le programme \texttt{mk\_doctrt} produit un document \LaTeX
+décrivant une liste de vecteurs, typiquement le contenu d'un
+fichier produit et diffusé.
+
+\texttt{mk\_doctrt} a deux syntaxes d'appel :
+\begin{itemize}
+\item La première forme consiste en une simple liste d'arguments, qui
+doivent être en nombre fixe (3) et dans l'ordre : \lstinline[basicstyle=\ttfamily]{mk_doctrt Acq_id  list_vect AA-EXP}
+\item La seconde forme utilise le système usuel des lignes
+de commandes, ce qui permet des arguments optionnel, et un ordre qui
+n'est pas figé :\\
+ \lstinline[basicstyle=\ttfamily]
+  {mk_doctrt -a Acq_id -f list_vect -d AA-EXP [-l LL] [-u s|m|h|d|F] }
+\end{itemize}
+
+\begin{description}
+ \item[Acq\_id] identificateur d'acquisition (6 à 8 caractères). Ex : \texttt{me9814}
+ \item[list\_vect] fichier contenant la liste des vecteurs à documenter. Ce
+               fichier peut être un fichier de type \texttt{.ofs}.  
+               Ce nom sera utilisé comme nom du "dataset".
+ \item[AA-EXP] répertoire de campagne contenant la doc dans "notes" (ex : 98-FETCH)
+ \item[LL] Code ISO-639-1 de la langue (fr pour français, en pour anglais)
+ \item[s|m|h|d|F] unité de la fréquence : F pour Hertz, s pour période en seconde, ...
+\end{description}
+
+\section{tab\_camp\_HTML\_v2}
+
+Ce script produit un tableau récapitulatif d'une campagne au format HTML.
+
+Il trouve, parmi les fichiers .inf d'une plate-forme, ceux qui correspondent
+à une campagne donnée, et en extrait les lieux et heures
+de départ et d'arrivée, ainsi que le thème.

@@ -1,0 +1,12 @@
+%%TPotEqBolton
+% Calcul de la température potentielle équivalente selon la formule de BOLTON
+% à partir de Ps, Ts et Hum 
+
+Conversion éventuelle de la température $T_s$ en Kelvin \newline
+Calcul du rapport de mélange $r_{mel}$ = \texttt{rmel\_hu($Hum$, $T_s$, $P_s$)} (en g/kg)\newline
+Calcul de la température potentielle $\theta$ = \texttt{tpot\_{Bolton}($P_s$, $T_s$, $Hum$)} \newline
+Calcul de la température du point de condensation $T_{cond}$ = \texttt{tcond($T_s$, $Hum$)} 
+\[
+Tpot_{eq} = \theta . \exp \left( \left( \frac{3.376}{T_{cond}} - 0.00254 \right) . r_{mel}. \left( 1 + 0.00081 . r_{mel} \right) \right) 
+\]
+Si la température $T_s$ était en degrés Celsius, conversion de $Tpot_{eq}$ en degrés Celsius

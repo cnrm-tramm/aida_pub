@@ -1,0 +1,37 @@
+%%%%%
+%
+\section{Validation des deltaFF (dispositif flux a\'erodynamique)}
+
+\itemstyle{Op\'erateur~:} {\sf Valid\_Empir\_deltaFF}
+\index{Valid\_empir\_deltaFF}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cette fonction détecte les incoh\'erences dans les valeurs de vitesses
+de vent mesur\'es (niveau bas et niveau haut). Cette m\'ethode est empirique : elle 
+a été mise au point à partir des mesures de deltaFF des campagnes de mesures ESCOMPTE et
+SMOS notamment. Cette fonction retourne un flag indicateur de la
+«pertinence» des mesures de vent aux 2 niveaux.
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Valid_empir_deltaFF.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Valid_empir_deltaFF.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+Cette fonction ne permet que d'\'evaluer la coh\'erence des
+mesures (haut et bas) entre elles. Elle ne donne pas de      
+diagnostic absolu de la validit\'e des mesures en elles-mêmes.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

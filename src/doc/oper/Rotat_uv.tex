@@ -1,0 +1,35 @@
+%%%%%
+%
+\section{Rotation horizontale appliquée à un vecteur vent pour passer dans le repère géographique}
+
+\itemstyle{Op\'erateur~:} {\sf Rotat\_uv}
+\index{Rotat\_uv}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:} 
+Applique une rotation horizontale à un vecteur (u,v) exprimé dans un repère orthogonal [$\overrightarrow{i},\overrightarrow{j},\overrightarrow{k}$] pour passer dans un repère géographique avec les conventions dites "météo".
+
+Cet opérateur permet de traiter 2 cas : le repère direct peut être soit  [$\overrightarrow{i},\overrightarrow{j},\overrightarrow{k}$], soit
+[$-\overrightarrow{j},\overrightarrow{i},\overrightarrow{k}$].
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Rotat_uv.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Rotat_uv.frm.tex}
+
+%%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}\\
+\underline{Application à des données de vents d'un anémomètre sonique comme le GILL :}\\
+L'offset est la somme de l'angle d'orientation du GILL par rapport au Nord géographique (ou parfois l'avant du bateau) et de l'angle (30 degrés sur un GILL HS) entre l'axe support de U et l'axe de l'armature du GILL ("Nord du GILL").\\
+\textbf{Attention}, tout est compté dans le sens trigonométrique.\\
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+

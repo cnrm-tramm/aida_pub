@@ -1,0 +1,6 @@
+%%Filtre_RC
+\[
+X_f[i] = e^{-\frac{2\pi.f_c}{f_e}}.X_f[i-1] + 
+         \left( 1 - e^{-\frac{2\pi.f_c}{f_e}} \right). X[i]
+\]
+si $Type = 1$ alors $X_f = X - X_f$

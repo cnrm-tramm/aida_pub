@@ -1,0 +1,35 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Fonction de transfert analytique de la mesure de flux turbulents selon Moncrieff}
+
+\itemstyle{Op\'erateur~:} \operfmt{FT\_analytique\_Moncrieff}
+\index{FT\_analytique\_Moncrieff}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Calcul de la fonction de transfert analytique d'un système de mesure de flux
+turbulents par eddy-covariance selon Moncrieff.\\
+Cet opérateur calcule les fonctions de transfert passe-bas qui dépend du système de mesure, passe-haut qui dépend de la méthode utilisée pour le calcul des fluctuations; et combine éventuellement des 2 fonctions. 
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/FT_analytique_Moncrieff.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/FT_analytique_Moncrieff.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+\cite{MONCRIEFF-1997}
+\cite{MONCRIEFF-2004}\\
+Les données des capteurs proviennent de EDDYPRO version 7.0 

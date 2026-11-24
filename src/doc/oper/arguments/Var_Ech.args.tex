@@ -1,0 +1,22 @@
+%%%%%ENTREES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Entr\'ees}}\\
+\hline
+$X$ & Vecteur, \texttt{float} & Paramètre sur lequel effectuer le calcul (unité indifférente)\\
+$R_f$ & Coeff., \texttt{double} & Rapport des fr\'equences ($\frac{F_{sortie}}
+{F_{entree}}$)\\
+$Decal$ & Coeff., \texttt{Int\_32} & Décalage (nombre d'échantillons,
+dans l'intervalle $[-1/R_f, 1/R_f]$)\\
+$Toler\_{mnq}$ & Coeff., \texttt{Int\_32} & Tolérance pour les valeurs manquantes (nombre d'échantillons)\\
+$flag$ & Coeff., \texttt{Int\_32} & réservé pour un usage ultérieur (sans objet)\\
+%%
+\end{tabarg}
+
+\medskip
+%%%%%SORTIES%%%%
+\begin{tabarg}
+\multicolumn{3}{l}{\titretab {Sorties}}\\
+\hline
+$V_x$ & Vecteur, \texttt{float} & Série des variances empiriques successives 
+(carré de l'unité de $X$)\\
+\end{tabarg}

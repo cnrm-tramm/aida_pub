@@ -1,0 +1,40 @@
+%%%%%
+%
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+\section{Vent 3D à partir du vent apparent en coordonnées rectangulaires et de la vitesse du support dans le repère terrestre}
+
+\itemstyle{Op\'erateur~:} \operfmt{CalcVent\_rect\_repgeo}
+\index{CalcVent\_rect\_repgeo}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+Cet op\'erateur calcule les 3 composantes du vecteur vent
+dans le repère géographique terrestre, à partir de mesures sur
+une plate-forme mobile, dans le cas où :
+\begin{itemize}
+ \item la mesure du vent relatif à la plate-forme ("vent apparent")
+est exprimée en coordonnées rectangulaires.
+ \item la mesure de la vitesse de la plate-forme par rapport au sol
+est exprimée dans le repère géographique local (vers l'Est, le Nord, et 
+la verticale).
+\end{itemize}
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/CalcVent_rect_repgeo.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/CalcVent_rect_repgeo.frm.tex}
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Bulletin NCAR-RAF Nr 23 \cite{RAF-23}.

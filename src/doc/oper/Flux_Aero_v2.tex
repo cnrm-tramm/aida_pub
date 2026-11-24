@@ -1,0 +1,68 @@
+%%%%%
+%
+\section{Calcul des flux de chaleur sensible par méthode aérodynamique version 2}
+
+\itemstyle{Op\'erateur~:} {\sf Flux\_Aero\_v2}
+\index{Flux\_Aero\_v2}
+
+%%%%%OBJET%%%%
+\itemstyle{Objet~:}
+ Cet opérateur implémente la méthode dite aérodynamique,
+qui utilise les relations liant, d'une part $u_*$ et
+$du \over dz$, et d'autre part $\theta_*$ et $d\theta \over dz$,
+(profils universels de la théorie de la similitude de Monin-Obukhov)
+pour déduire le flux de chaleur sensible ($-\rho c_p u_* \theta_*$)
+à partir de mesures des gradients verticaux de température et de vent.
+
+La hauteur séparant les 2 niveaux de mesure est
+considérée fixe (1.5 m), mais la hauteur au-dessus du sol, et 
+la hauteur de la végétation (pour estimer la hauteur de
+déplacement) sont des variables d'entrée.
+
+En fin de calcul, le flux de chaleur latente (LE) est
+estimé en supposant le bilan énergétique fermé.
+
+Différences par rapport à la version précédente de cet opérateur (Flux\_Aero) :
+des tests sont effectuées sur plusieurs paramètres afin de ne pas effectuer les calculs lorsque les mesures sont jugées douteuses. D'autre part, un flag est renvoyé.
+Les différents tests effectués sont les suivants, ainsi que les valeurs de flag associées :
+\begin{itemize}
+\item Test sur les valeurs en journées très faibles de mesures de $\Delta$FF : si $\Delta$FF < 0.01 (m/s) alors l'opérateur renvoie des valeurs manquantes pour
+ HS et LE (en journée : Rayt net > 20 W/m2) \\
+ ---> $flag$ = -1
+\item Test sur les valeurs en journées très faibles de mesures de $\Delta$T :
+ si $\Delta$T < 0.01 (m/s) en valeur absolue alors l'opérateur renvoie des
+ valeurs manquantes pour HS et LE  (en journée : Rayt net > 20 W/m2)\\
+ ---> $flag$ = -1
+\item Test sur la fourchette de validité des mesures de $\Delta$T :
+ si $\Delta$T n'est pas compris dans l'intervalle [-2. ; +3 ] alors
+ l'opérateur renvoie des valeurs manquantes pour HS et LE \\
+ ---> $flag$ = -1
+\item Test sur la cohérence du flux de chaleur sensible calculé (HS) : si HS est inférieur à RN (rayonnement net) alors l'opérateur renvoie des valeurs manquantes (HS et LE)\\
+ ---> $flag$ = -2
+\item Test sur la valeur de la hauteur du niveau du portique ($hbas$) : si
+$hbas$ est négatif (cas des tests par exemple lorsque les 2 mesures sont
+effectuées au même niveau) alors l'opérateur renvoie des valeurs manquantes (HS et LE)\\
+ ---> $flag$ = -3
+\end{itemize}
+
+%%%%%ARGUMENTS%%%%
+\bigskip
+\input{arguments/Flux_Aero_v2.args.tex}
+
+%%%%%FORMULE%%%%
+\itemstyle{Formule}
+
+\input{formules/Flux_Aero_v2.frm.tex}
+
+%%%%COMMENTAIRE%%%%
+\itemstyle{Commentaire~:}
+
+Les fonctions $rho()$ et $tvir\_4m()$ sont d\'ecrites en annexe\ref{annexe-thermo}.
+
+%%%%%AUTEUR%%%%
+\itemstyle{Auteur~:}
+CNRM/GMEI/TRAMM
+
+%%%%%REFERENCE%%%%
+\itemstyle{R\'ef\'erences~:}
+Programme Fortran 77 de Dominique Puech et note de centre CNRM/GMEI nr 6 \cite{GMEI-6}.

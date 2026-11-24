@@ -1,0 +1,25 @@
+%% Formule de l'operateur : Stationnarite_Ustar
+%% Dans ce fichier, les éventuels accents sont codés
+%% en ISO-8859-15 (aka latin9)
+%% La ligne suivante donne trois exemples 
+%% e accent aigu : é, e accent grave : è, e-dans-l'o : ½
+
+$M$ est le nombre de sous-périodes sur lesquelles on calcule $U_*$. 
+Donc $M$ vaut $T_2 /T_1$ ( $T_2$ > $T_1$ et $T_2$ multiple de $T_1$ )\\
+
+$U_*$ sur la $i$ème période $T_1$ est calculée par :
+$$
+(U_*)_i = \left( \left ( \overline{U'W'} \right)^2_i + 
+                 \left ( \overline{V'W'} \right)^2_i \right)^{1/4} 
+$$
+
+Puis $U_*$ moyen vaut
+$$
+U_{*moy} = \frac{1}{M} \sum_i (U_*)_i
+$$
+L'indice de stationnarité vaut :
+$$
+Istat = \left\vert  \frac{ U_*  - U_{*moy} }
+                   { U_* } \right\vert
+$$
+avec $U_*$ : vitesse de frottement calculée sur toute la période $T_2$

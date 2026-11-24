@@ -1,0 +1,18 @@
+%%% calcul LWC barreau Sextant
+%%%
+\begin{align*}
+T_w &= \frac{1}
+               {C_t[0]}.\left( 
+          \frac{R_b}
+               {C_t[1]} - 1 \right)	\\
+P_w &= C_{pw}[0] .P_b . \frac{C_{pw}[1]}{R_b} \\  
+P_{sec} &= C_p[0]. ( T_w - T_t).\left[
+          \frac{P_s.V_p. (T_s +120)}
+               {T_s^{5/2} }
+          \right]^C_p[1] \\
+LWC &= 1000 \times 
+         \frac{ P_w - P_{sec} }
+              {C_l[0].V_p.
+               \left[ C_l[1] + C_l[2].\left(T_w - T_s \right)
+               \right] } \\  
+\end{align*}
