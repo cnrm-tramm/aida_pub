@@ -1,0 +1,38 @@
+name: Fermer les Pull Requests externes
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+jobs:
+  close-pr:
+    # Vérifie que l'auteur de la PR n'est pas le propriétaire du dépôt
+    if: github.event.pull_request.user.login != github.repository_owner
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Fermer et verrouiller la PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Ajoute un commentaire explicatif (optionnel)
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: 'Ce dépôt est en lecture seule. Les Pull Requests ne sont pas acceptées.'
+            });
+            // Ferme la Pull Request
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              state: 'closed'
+            });
+            // Verrouille la discussion
+            await github.rest.issues.lock({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
